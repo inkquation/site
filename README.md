@@ -24,11 +24,20 @@ The default production build retains the Vinext / Cloudflare project structure. 
 
 The [Pages workflow](.github/workflows/pages.yml) publishes `main` through GitHub Actions. It also supports manual runs. Pages must use **GitHub Actions** as its publishing source. The workflow obtains the site path and origin from `actions/configure-pages`, builds both languages, checks their links and assets, and deploys only `dist/client`.
 
-For a local export matching the repository's default Pages URL:
+The production site uses the custom domain [inkquation.app](https://inkquation.app/), with Japanese at `/` and English at `/en/`. Its base path is empty. For a matching local export and verification:
+
+```sh
+NEXT_PUBLIC_BASE_PATH='' NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.app npm run build:pages
+NEXT_PUBLIC_BASE_PATH='' NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.app npm run verify:pages
+```
+
+Changing the Pages domain does not rewrite an existing export: CSS, JavaScript, image URLs, and language links are generated at build time. After a domain change, publish a new commit and verify both public language URLs. An export for the former `/site/` path will leave those references broken on the custom domain.
+
+For an export matching the repository's default Pages URL instead:
 
 ```sh
 NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io npm run build:pages
-npm run verify:pages
+NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io npm run verify:pages
 ```
 
 The export contains `index.html` and `en/index.html`, so both language URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places the English HTML at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
