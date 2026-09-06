@@ -49,13 +49,21 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `public/assets/inkquation-editor.jpg`: a direct capture of the actual app using a synthetic demo notebook.
 - `reference/site-demo.inkqbackup`: the synthetic notebook used for the screenshot, outside the public directory.
 
+## Contact address handling
+
+Both contact buttons decode the Base64 address only inside their click handler. The initial HTML and RSC payloads have no plaintext address or `mailto:` link; the client bundle contains only the encoded address. After the main button is clicked, its caption shows the decoded address so the visitor can copy it if their email app does not open. A localized `noscript` message explains that contacting requires JavaScript.
+
+This is obfuscation, not cryptographic protection. A bot that evaluates the JavaScript can recover the address. The address may also remain available from previously published pages or repository history. See [MDN's Base64 decoding reference](https://developer.mozilla.org/en-US/docs/Web/API/Window/atob).
+
+`npm run test:contact` checks the mailbox and subject handling. `npm run verify:pages` also checks every public HTML, RSC, JavaScript, JSON, and CSS file for the literal address before deployment.
+
 ## Follow-up work
 
 [TODO.md](TODO.md) tracks the TourBox Elite preset, hardware verification, bilingual setup guide, and eventual website download section. No preset is published yet.
 
 ## Content and publication notes
 
-The copy was checked against the local app source on 2026-09-07. The existing site at https://inkquation.app/ supplied the public contact address. It advertised cloud sync and had a download link targeting `#`; this proposal does not claim cloud sync or invent a download URL. The contact CTA opens a mail composer without sending a message.
+The copy was checked against the local app source on 2026-09-07. The existing site at https://inkquation.app/ supplied the public contact address. It advertised cloud sync and had a download link targeting `#`; this proposal does not claim cloud sync or invent a download URL. The contact buttons open a mail composer after a user clicks, without sending a message.
 
 Features described in the proposal are grounded in:
 

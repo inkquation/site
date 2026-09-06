@@ -33,6 +33,8 @@ jobs:
         run: npm ci
       - name: Typecheck
         run: npx tsc --noEmit
+      - name: Check contact address handling
+        run: npm run test:contact
       - name: Export the Japanese and English pages
         run: npm run build:pages
         env:

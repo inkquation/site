@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { contactEmail } from '../lib/contact-email.mjs';
 
 const output = path.resolve('dist/client');
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
@@ -29,6 +30,16 @@ for (const { locale, route, file } of routes) {
   assert(
     html.includes(`<html lang="${locale}"`),
     `${file}: wrong document language`,
+  );
+  assert(!/href=["']mailto:/i.test(html), `${file}: exposed mailto link`);
+  assert.equal(
+    [
+      ...html.matchAll(
+        /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
+      ),
+    ].length,
+    2,
+    `${file}: both contact actions must be buttons`,
   );
   const pageUrl = new URL(
     `${prefix}${file.replace(/index\.html$/, '')}`,
@@ -88,4 +99,29 @@ for (const { locale, route, file } of routes) {
 }
 
 await stat(path.join(output, '.nojekyll'));
+
+// Check all public text, including RSC payloads and client bundles, so a future
+// refactor cannot accidentally reintroduce the literal address outside HTML.
+const address = contactEmail().address.toLowerCase();
+async function checkPublicText(directory) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const filename = path.join(directory, entry.name);
+    if (entry.isDirectory()) await checkPublicText(filename);
+    else if (/\.(html|rsc|js|json|css|map)$/.test(entry.name)) {
+      const content = (await readFile(filename, 'utf8')).toLowerCase();
+      assert(
+        !content.includes(address),
+        `${filename}: exposed contact address`,
+      );
+      assert(
+        !content.includes(encodeURIComponent(address)),
+        `${filename}: exposed URI-encoded address`,
+      );
+    }
+  }
+}
+await checkPublicText(output);
+console.log(
+  'Contact address is absent from public HTML, RSC payloads, and bundles.',
+);
 console.log('GitHub Pages export verified.');

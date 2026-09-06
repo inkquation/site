@@ -10,6 +10,7 @@
     "build": "vinext build",
     "build:pages": "GITHUB_PAGES=true vinext build && node scripts/finalize-pages.mjs",
     "verify:pages": "node scripts/verify-pages.mjs",
+    "test:contact": "node --test scripts/contact-email.test.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt"
