@@ -4,6 +4,7 @@ import PaperDemo from './paper-demo';
 import { siteCopy, type Locale, type SiteCopy } from './copy';
 import TextLines from './text-lines';
 import ShortcutGuide from './shortcut-guide';
+import { sitePath } from '../site.config';
 import {
   ArrowDown,
   ArrowUpRight,
@@ -18,7 +19,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
   return (
     <figure className="preview-figure actual-preview">
       <a
-        href="/assets/inkquation-editor.jpg"
+        href={sitePath('/assets/inkquation-editor.jpg')}
         target="_blank"
         rel="noopener noreferrer"
         className="screenshot-link"
@@ -26,7 +27,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
       >
         <img
           className="app-screenshot"
-          src="/assets/inkquation-editor.jpg"
+          src={sitePath('/assets/inkquation-editor.jpg')}
           width="768"
           height="837"
           fetchPriority="high"
@@ -37,7 +38,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
         <span className="caption-dot" />
         {copy.caption}
         <a
-          href="/assets/inkquation-editor.jpg"
+          href={sitePath('/assets/inkquation-editor.jpg')}
           target="_blank"
           rel="noopener noreferrer"
           className="screenshot-expand"
@@ -60,7 +61,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         <div className="container header-inner">
           <a className="brand" href="#top" aria-label={copy.nav.home}>
             <img
-              src="/assets/inkquation-icon.png"
+              src={sitePath('/assets/inkquation-icon.png')}
               alt=""
               width="38"
               height="38"
@@ -79,7 +80,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </nav>
             <nav className="language-switch" aria-label={copy.nav.language}>
               <a
-                href="/"
+                href={sitePath('/')}
                 lang="ja"
                 hrefLang="ja"
                 aria-current={locale === 'ja' ? 'page' : undefined}
@@ -88,7 +89,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               </a>
               <span aria-hidden="true">/</span>
               <a
-                href="/en"
+                href={sitePath('/en/')}
                 lang="en"
                 hrefLang="en"
                 aria-current={locale === 'en' ? 'page' : undefined}

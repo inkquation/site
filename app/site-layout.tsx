@@ -1,16 +1,23 @@
 import type { Metadata } from 'next';
 import { siteCopy, type Locale } from './copy';
+import { siteOrigin, sitePath } from '../site.config';
 import './globals.css';
 
 export function localeMetadata(locale: Locale): Metadata {
   return {
     ...siteCopy[locale].meta,
+    metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
     alternates: {
-      languages: { ja: '/', en: '/en', 'x-default': '/' },
+      canonical: sitePath(locale === 'ja' ? '/' : '/en/'),
+      languages: {
+        ja: sitePath('/'),
+        en: sitePath('/en/'),
+        'x-default': sitePath('/'),
+      },
     },
     icons: {
-      icon: '/assets/inkquation-icon.png',
-      apple: '/assets/inkquation-icon.png',
+      icon: sitePath('/assets/inkquation-icon.png'),
+      apple: sitePath('/assets/inkquation-icon.png'),
     },
   };
 }
