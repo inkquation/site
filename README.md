@@ -1,6 +1,6 @@
 # Inkquation website concept
 
-A Japanese/English single-page website proposal for Inkquation. This is a local design proposal; the existing production website has not been changed and no Sites deployment has been created.
+A Japanese/English single-page website for Inkquation, with a local preview and a static GitHub Pages deployment.
 
 ## Run locally
 
@@ -11,14 +11,29 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, and English at `/en`. The header links switch languages; each URL can be opened or shared directly.
+Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, and English at `/en/`. The header links switch languages; each URL can be opened or shared directly.
 
 ```sh
 npm run build
 npm start
 ```
 
-The production build uses the generated Vinext / Cloudflare project structure. The page needs no database, accounts, uploads, analytics, or remote fonts.
+The default production build retains the Vinext / Cloudflare project structure. GitHub Pages uses the separate static export described below. The page needs no database, accounts, uploads, analytics, or remote fonts.
+
+## GitHub Pages
+
+The [Pages workflow](.github/workflows/pages.yml) publishes `main` through GitHub Actions. It also supports manual runs. Pages must use **GitHub Actions** as its publishing source. The workflow obtains the site path and origin from `actions/configure-pages`, builds both languages, checks their links and assets, and deploys only `dist/client`.
+
+For a local export matching the repository's default Pages URL:
+
+```sh
+NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io npm run build:pages
+npm run verify:pages
+```
+
+The export contains `index.html` and `en/index.html`, so both language URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places the English HTML at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
+
+The workflow follows [GitHub's custom Pages workflow guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). It uses the built-in workflow token and pins official Actions to commit SHAs. The synthetic notebook in `reference/` and server build files are outside the deployed directory.
 
 ## Edit
 
