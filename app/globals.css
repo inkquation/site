@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans:
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+}
+:root {
+  --background: #fcfdff;
+  --foreground: #202b3e;
+  --primary: #2d4eaa;
+  --primary-foreground: #fff;
+  --muted: #f0f3f9;
+  --muted-foreground: #606d80;
+  --border: #dce2ec;
+  --ring: #2d4eaa;
+  --paper: #fff;
+  --serif: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+  --latin: Georgia, 'Times New Roman', serif;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.8;
+}
+::selection {
+  color: #183b93;
+  background: #dfe9ff;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+a,
+button {
+  touch-action: manipulation;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 5px;
+}
+button {
+  font: inherit;
+}
