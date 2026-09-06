@@ -1,6 +1,6 @@
 # Inkquation website concept
 
-A single-page website proposal for Inkquation. This is a local design proposal; the existing production website has not been changed and no Sites deployment has been created.
+A Japanese single-page website proposal for Inkquation. This is a local design proposal; the existing production website has not been changed and no Sites deployment has been created.
 
 ## Run locally
 
@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:3000).
+Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`.
 
 ```sh
 npm run build
@@ -20,6 +20,33 @@ npm start
 
 The production build uses the generated Vinext / Cloudflare project structure. The page needs no database, accounts, uploads, analytics, or remote fonts.
 
-## Product assets
+## Edit
 
-The icon comes from the current Inkquation app. The editor image is an unaltered capture of the real app using a synthetic demo notebook. Its reproducible notebook is stored in `reference/site-demo.inkqbackup`, outside the public directory.
+- `app/landing-page.tsx`: page structure, navigation, and actual editor screenshot.
+- `app/copy.ts`: Japanese copy with a shared TypeScript shape.
+- `app/(ja)/page.tsx`: Japanese `/` route.
+- `app/paper-demo.tsx`: accessible paper-style tabs (grid, ruled, plain).
+- `app/globals.css`: visual tokens, desktop and mobile layouts, reduced-motion handling.
+- `app/site-layout.tsx` and the route-group layouts: HTML language, page title/description, and favicon metadata.
+- `app/text-lines.tsx`: shared line breaks with word separation when responsive styles hide breaks.
+- `public/assets/inkquation-icon.png`: copied from the current app's icon asset.
+- `public/assets/inkquation-editor.jpg`: a direct capture of the actual app using a synthetic demo notebook.
+- `reference/site-demo.inkqbackup`: the synthetic notebook used for the screenshot, outside the public directory.
+
+## Content and publication notes
+
+The copy was checked against the local app source on 2026-09-07. The existing site at https://inkquation.app/ supplied the public contact address. It advertised cloud sync and had a download link targeting `#`; this proposal does not claim cloud sync or invent a download URL. The contact CTA opens a mail composer without sending a message.
+
+Features described in the proposal are grounded in:
+
+- `../inkquation/inkquation/ShapeTool.swift`: line, rectangle, ellipse, six line patterns, single/double lines.
+- `../inkquation/inkquation/PageStyle.swift`: plain, grid, ruled; A and B paper sizes.
+- `../inkquation/inkquation/MiniMapView.swift`: page thumbnails and bookmarked-page filtering.
+- `../inkquation/ARCHITECTURE.md`: pen/highlighter/eraser/lasso, folders, PDF export, backup and shortcut customization.
+- `../inkquation/inkquation/AppPersistence.swift`: local document storage.
+
+The hero now uses an unaltered screenshot of the actual editor, replacing the initial HTML imitation after user feedback. It was captured from an isolated, in-memory app session with a synthetic notebook. No production notes were used. The notebook was assembled as ordinary vector stroke data; the app is not being advertised as offering handwriting recognition, typesetting, or graph generation.
+
+The website uses a light palette. The app screenshot keeps its actual navy chrome: `EditorVisualTheme.swift` currently fixes those colors, even with the OS set to light appearance. No app theme implementation or screenshot recoloring was introduced. The interactive paper sample lower on the page is clearly labelled as a paper illustration, not an app screenshot.
+
+Before publication, replace the distribution contact section with a verified download URL and confirmed release/system information when available. Check that the public contact mailbox is operational. Neither release availability nor a working mailbox has been assumed.
