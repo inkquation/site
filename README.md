@@ -19,3 +19,7 @@ npm start
 ```
 
 The production build uses the generated Vinext / Cloudflare project structure. The page needs no database, accounts, uploads, analytics, or remote fonts.
+
+## Product assets
+
+The icon comes from the current Inkquation app. The editor image is an unaltered capture of the real app using a synthetic demo notebook. Its reproducible notebook is stored in `reference/site-demo.inkqbackup`, outside the public directory.
