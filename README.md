@@ -25,6 +25,7 @@ The production build uses the generated Vinext / Cloudflare project structure. T
 - `app/landing-page.tsx`: page structure, navigation, and actual editor screenshot.
 - `app/copy.ts`: Japanese copy with a shared TypeScript shape.
 - `app/(ja)/page.tsx`: Japanese `/` route.
+- `app/shortcut-guide.tsx`: shortcut feature section and standard/direct preset comparison.
 - `app/paper-demo.tsx`: accessible paper-style tabs (grid, ruled, plain).
 - `app/globals.css`: visual tokens, desktop and mobile layouts, reduced-motion handling.
 - `app/site-layout.tsx` and the route-group layouts: HTML language, page title/description, and favicon metadata.
@@ -39,6 +40,8 @@ The copy was checked against the local app source on 2026-09-07. The existing si
 
 Features described in the proposal are grounded in:
 
+- `../inkquation/inkquation/KeyboardShortcutSettings.swift`: exact standard/direct preset bindings and per-tool command contexts.
+- `../inkquation/inkquation/EditorKeyboardController.swift`: text-input exclusion, temporary laser restoration, and the one-second Command hint overlay.
 - `../inkquation/inkquation/ShapeTool.swift`: line, rectangle, ellipse, six line patterns, single/double lines.
 - `../inkquation/inkquation/PageStyle.swift`: plain, grid, ruled; A and B paper sizes.
 - `../inkquation/inkquation/MiniMapView.swift`: page thumbnails and bookmarked-page filtering.
@@ -50,3 +53,9 @@ The hero now uses an unaltered screenshot of the actual editor, replacing the in
 The website uses a light palette. The app screenshot keeps its actual navy chrome: `EditorVisualTheme.swift` currently fixes those colors, even with the OS set to light appearance. No app theme implementation or screenshot recoloring was introduced. The interactive paper sample lower on the page is clearly labelled as a paper illustration, not an app screenshot.
 
 Before publication, replace the distribution contact section with a verified download URL and confirmed release/system information when available. Check that the public contact mailbox is operational. Neither release availability nor a working mailbox has been assumed.
+
+## Shortcut presentation
+
+The main message is “ペンで書く。キーで操る。” The keyboard section follows the hero, before the general feature list. Its tabs compare four real tool bindings in the standard and direct presets. They only change the website's reference display; they do not configure the app or capture browser keyboard shortcuts. Arrow-key color changes, size controls, and hold-to-use Space laser behavior are common to both presets. Context restrictions appear next to the examples.
+
+Japanese product copy was edited using the `japanese-technical-writing` skill. Command bindings, applicable tools, and the one-second hint delay were checked against the source. This website change does not constitute a new runtime test of those app features.

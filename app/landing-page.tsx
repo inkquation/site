@@ -2,6 +2,7 @@
 import PaperDemo from './paper-demo';
 import { siteCopy, type Locale, type SiteCopy } from './copy';
 import TextLines from './text-lines';
+import ShortcutGuide from './shortcut-guide';
 import {
   ArrowDown,
   ArrowUpRight,
@@ -69,6 +70,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </a>
           <div className="header-controls">
             <nav className="main-navigation" aria-label={copy.nav.main}>
+              <a href="#shortcuts">{copy.nav.shortcuts}</a>
               <a href="#features">{copy.nav.features}</a>
               <a className="nav-contact" href="#get-app">
                 {copy.nav.distribution} <ArrowUpRight size={15} />
@@ -94,7 +96,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <TextLines lines={copy.hero.description} />
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#features">
+                <a className="button button-primary" href="#shortcuts">
                   {copy.hero.primary} <ArrowDown size={17} />
                 </a>
                 <a className="text-link" href="#workflow">
@@ -114,6 +116,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </span>
           </div>
         </section>
+        <ShortcutGuide copy={copy.shortcuts} />
         <section
           className="features-section container"
           id="features"
@@ -121,7 +124,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow section-eyebrow">01 / THE TOOLS</p>
+              <p className="eyebrow section-eyebrow">02 / THE TOOLS</p>
               <h2 id="features-title">
                 <TextLines lines={copy.features.title} />
               </h2>
@@ -194,7 +197,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <div className="container workflow-inner">
             <div className="workflow-copy">
               <p className="eyebrow section-eyebrow">
-                02 / YOUR WAY OF THINKING
+                03 / YOUR WAY OF THINKING
               </p>
               <h2 id="workflow-title">
                 <TextLines lines={copy.workflow.title} />

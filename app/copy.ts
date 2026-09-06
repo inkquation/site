@@ -10,6 +10,7 @@ const ja = {
     skip: '本文へ移動',
     home: 'Inkquation ホーム',
     main: 'メインナビゲーション',
+    shortcuts: 'ショートカット',
     features: 'できること',
     distribution: '配布について',
   },
@@ -22,7 +23,7 @@ const ja = {
       '色や線幅の調整も、キーボードから。',
       'ノートからポインターを動かさずに。',
     ],
-    primary: 'できることを見る',
+    primary: 'ショートカットを見る',
     secondary: '使い方を見る',
     platform: 'macOS のための手書きノートアプリ',
   },
@@ -31,6 +32,52 @@ const ja = {
     alt: 'Inkquation の実際の編集画面。左にページサムネイルと色・線幅のパレット、上に描画ツールバー、中央に方眼の数式ノート。',
     caption: '実際の編集画面 · デモノート',
     expand: '拡大して見る',
+  },
+  shortcuts: {
+    title: ['ツールも、色も、', 'キーボードから。'],
+    description:
+      'ペンと消しゴムの切り替えから、色・線幅の調整まで。よく使う操作に、ショートカットを用意しています。',
+    customizeTitle: '自分の手になじむ割り当てに。',
+    customizeDescription:
+      'プリセットを選んで、よく使う操作だけ自分好みに。設定画面でキーの組み合わせを変更できます。',
+    referenceTitle: 'ツールの切り替え',
+    presetsLabel: 'ショートカットのプリセット例を切り替える',
+    presets: {
+      standard: {
+        label: '標準',
+        description: 'Commandキーと組み合わせて、ツールを切り替えます。',
+      },
+      direct: {
+        label: '1キーでツール切り替え',
+        description: '文字キーひとつで、ツールを切り替えます。',
+      },
+    },
+    tools: {
+      pen: 'ペンに切り替える',
+      eraser: '消しゴムに切り替える',
+      highlighter: 'ハイライトに切り替える',
+      lasso: '投げ縄に切り替える',
+    },
+    note: 'アプリのプリセット例です。ノートの編集画面で、テキスト入力欄に入力していないときに使えます。',
+    commonLabel: '両方のプリセットに共通する操作',
+    keys: {
+      left: '左矢印',
+      right: '右矢印',
+      minus: 'マイナス',
+      plus: 'プラス',
+      space: 'スペース',
+    },
+    colorTitle: '色を切り替える',
+    colorDescription: 'ペン・ハイライト・図形の色を、前後に切り替えます。',
+    widthTitle: '線幅を調整する',
+    widthDescription:
+      'ペン・ハイライト・図形の線幅や、消しゴムの大きさを調整します。',
+    laserTitle: '押している間だけ、レーザーに',
+    laserDescription:
+      'Spaceキーを離すと元のツールへ。ノートを見せながら説明するときにも。',
+    hintTitle: 'キーを確認したいときは、Commandを長押し。',
+    hintDescription:
+      'ノートの編集画面でCommandキーを1秒間押し続けると、ツールやオプションのショートカットが表示されます。',
   },
   features: {
     title: ['手で考えるための、', 'ちょうどいい道具。'],
