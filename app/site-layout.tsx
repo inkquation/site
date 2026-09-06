@@ -6,7 +6,7 @@ export function localeMetadata(locale: Locale): Metadata {
   return {
     ...siteCopy[locale].meta,
     alternates: {
-      languages: { ja: '/', 'x-default': '/' },
+      languages: { ja: '/', en: '/en', 'x-default': '/' },
     },
     icons: {
       icon: '/assets/inkquation-icon.png',

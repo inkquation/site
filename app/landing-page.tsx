@@ -1,4 +1,5 @@
 /* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
+/* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import PaperDemo from './paper-demo';
 import { siteCopy, type Locale, type SiteCopy } from './copy';
 import TextLines from './text-lines';
@@ -74,6 +75,25 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <a href="#features">{copy.nav.features}</a>
               <a className="nav-contact" href="#get-app">
                 {copy.nav.distribution} <ArrowUpRight size={15} />
+              </a>
+            </nav>
+            <nav className="language-switch" aria-label={copy.nav.language}>
+              <a
+                href="/"
+                lang="ja"
+                hrefLang="ja"
+                aria-current={locale === 'ja' ? 'page' : undefined}
+              >
+                日本語
+              </a>
+              <span aria-hidden="true">/</span>
+              <a
+                href="/en"
+                lang="en"
+                hrefLang="en"
+                aria-current={locale === 'en' ? 'page' : undefined}
+              >
+                English
               </a>
             </nav>
           </div>

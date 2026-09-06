@@ -1,6 +1,6 @@
 # Inkquation website concept
 
-A Japanese single-page website proposal for Inkquation. This is a local design proposal; the existing production website has not been changed and no Sites deployment has been created.
+A Japanese/English single-page website proposal for Inkquation. This is a local design proposal; the existing production website has not been changed and no Sites deployment has been created.
 
 ## Run locally
 
@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`.
+Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, and English at `/en`. The header links switch languages; each URL can be opened or shared directly.
 
 ```sh
 npm run build
@@ -22,13 +22,13 @@ The production build uses the generated Vinext / Cloudflare project structure. T
 
 ## Edit
 
-- `app/landing-page.tsx`: page structure, navigation, and actual editor screenshot.
-- `app/copy.ts`: Japanese copy with a shared TypeScript shape.
-- `app/(ja)/page.tsx`: Japanese `/` route.
+- `app/landing-page.tsx`: shared page structure, navigation, language switch, and actual editor screenshot.
+- `app/copy.ts`: Japanese and English copy with a shared TypeScript shape.
+- `app/(ja)/page.tsx` and `app/(en)/en/page.tsx`: Japanese `/` and English `/en` routes.
 - `app/shortcut-guide.tsx`: shortcut feature section and standard/direct preset comparison.
 - `app/paper-demo.tsx`: accessible paper-style tabs (grid, ruled, plain).
 - `app/globals.css`: visual tokens, desktop and mobile layouts, reduced-motion handling.
-- `app/site-layout.tsx` and the route-group layouts: HTML language, page title/description, and favicon metadata.
+- `app/site-layout.tsx` and the route-group layouts: server-rendered HTML language, localized title/description, alternate-language links, and favicon metadata. Separate root layouts let each route render the correct language before JavaScript loads.
 - `app/text-lines.tsx`: shared line breaks with word separation when responsive styles hide breaks.
 - `public/assets/inkquation-icon.png`: copied from the current app's icon asset.
 - `public/assets/inkquation-editor.jpg`: a direct capture of the actual app using a synthetic demo notebook.
@@ -47,6 +47,8 @@ Features described in the proposal are grounded in:
 - `../inkquation/inkquation/MiniMapView.swift`: page thumbnails and bookmarked-page filtering.
 - `../inkquation/ARCHITECTURE.md`: pen/highlighter/eraser/lasso, folders, PDF export, backup and shortcut customization.
 - `../inkquation/inkquation/AppPersistence.swift`: local document storage.
+
+The English page translates the copy, tabs, image descriptions, accessibility labels, and contact subject. The screenshot itself retains the real Japanese app interface, identified in its English caption. Language selection is explicit through links; the site does not redirect based on browser language.
 
 The hero now uses an unaltered screenshot of the actual editor, replacing the initial HTML imitation after user feedback. It was captured from an isolated, in-memory app session with a synthetic notebook. No production notes were used. The notebook was assembled as ordinary vector stroke data; the app is not being advertised as offering handwriting recognition, typesetting, or graph generation.
 

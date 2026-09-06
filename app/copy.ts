@@ -1,4 +1,4 @@
-export type Locale = 'ja';
+export type Locale = 'ja' | 'en';
 
 const ja = {
   meta: {
@@ -13,6 +13,7 @@ const ja = {
     shortcuts: 'ショートカット',
     features: 'できること',
     distribution: '配布について',
+    language: '表示言語',
   },
   hero: {
     lead: 'ペンで書く。',
@@ -173,4 +174,180 @@ const ja = {
 
 export type SiteCopy = typeof ja;
 
-export const siteCopy: Record<Locale, SiteCopy> = { ja };
+const en: SiteCopy = {
+  meta: {
+    title: 'Inkquation — Write with a pen. Switch with a key.',
+    description:
+      'Handwritten notes meet keyboard shortcuts on Mac. Switch tools, change colors, and adjust stroke width from your keyboard. Choose single-key tool switching or customize shortcuts to suit your workflow.',
+  },
+  nav: {
+    skip: 'Skip to content',
+    home: 'Inkquation home',
+    main: 'Main navigation',
+    shortcuts: 'Shortcuts',
+    features: 'Features',
+    distribution: 'Get Inkquation',
+    language: 'Language',
+  },
+  hero: {
+    lead: 'Write with a pen.',
+    prefix: 'Switch with a ',
+    accent: 'key.',
+    description: [
+      'Write with one hand. Switch tools with the other.',
+      'Change colors and stroke width from your keyboard,',
+      'without moving the pointer away from your notes.',
+    ],
+    primary: 'Explore the shortcuts',
+    secondary: 'See how it works',
+    platform: 'A handwriting notebook, made for macOS',
+  },
+  screenshot: {
+    open: 'Open the full-size Inkquation editor screenshot',
+    alt: 'The actual Inkquation editor with its Japanese interface: page thumbnails and a color and width palette on the left, drawing tools above, and equations on grid paper in the center.',
+    caption: 'Actual editor · Demo note · Japanese UI',
+    expand: 'View full size',
+  },
+  shortcuts: {
+    title: ['Your tools. Your colors.', 'At your fingertips.'],
+    description:
+      'Switch between pen and eraser, change colors, or adjust stroke width. Keyboard shortcuts put the tools you use most within reach.',
+    customizeTitle: 'Make the keys feel like yours.',
+    customizeDescription:
+      'Start with a preset, then change the shortcuts you use most. Edit individual key combinations in the app’s settings.',
+    referenceTitle: 'Switching tools',
+    presetsLabel: 'Compare shortcut preset examples',
+    presets: {
+      standard: {
+        label: 'Standard',
+        description: 'Combine letter keys with Command to switch tools.',
+      },
+      direct: {
+        label: 'Single-key tool switching',
+        description: 'Press a single letter key to switch tools.',
+      },
+    },
+    tools: {
+      pen: 'Switch to pen',
+      eraser: 'Switch to eraser',
+      highlighter: 'Switch to highlighter',
+      lasso: 'Switch to lasso',
+    },
+    note: 'Examples from the app’s presets. Use these shortcuts in the note editor when you are not typing in a text field.',
+    commonLabel: 'Actions shared by both presets',
+    keys: {
+      left: 'Left arrow',
+      right: 'Right arrow',
+      minus: 'Minus',
+      plus: 'Plus',
+      space: 'Space',
+    },
+    colorTitle: 'Cycle through colors',
+    colorDescription:
+      'Move to the previous or next color for the pen, highlighter, or shape tool.',
+    widthTitle: 'Adjust stroke width',
+    widthDescription:
+      'Change the width of the pen, highlighter, or shapes, or adjust the eraser size.',
+    laserTitle: 'Hold for a laser pointer',
+    laserDescription:
+      'Release Space to return to your previous tool. Useful when walking someone through your notes.',
+    hintTitle: 'Need a reminder? Hold Command.',
+    hintDescription:
+      'Hold the Command key for one second in the note editor to reveal shortcuts for tools and their options.',
+  },
+  features: {
+    title: ['The right tools', 'for thinking by hand.'],
+    description: [
+      'Start writing. Make changes as you go.',
+      'Keep the path from idea to page simple.',
+    ],
+    write: {
+      title: 'Give an idea its first stroke.',
+      description:
+        'Write with the pen and mark what matters with the highlighter. Use the eraser and lasso selection to revise your notes as your thinking changes.',
+      details: ['Pen', 'Highlighter', 'Lasso'],
+    },
+    shape: {
+      title: 'Bring structure to your sketches.',
+      description:
+        'Draw lines, rectangles, and ellipses. Choose solid, dashed, wavy, or double lines to suit your diagrams.',
+      samples: 'Examples of solid, dashed, wavy, and double lines',
+    },
+    organize: {
+      title: 'Find your way back.',
+      description:
+        'See your notebook at a glance with page thumbnails. Filter to bookmarked pages to get straight to the parts you want to revisit.',
+      details: ['Page thumbnails', 'Bookmarks'],
+    },
+  },
+  workflow: {
+    title: ['Write freely.', 'Organize as you go.'],
+    description: [
+      'From a blank page to notes you can share.',
+      'Let your ideas take shape at your own pace.',
+    ],
+    steps: [
+      {
+        title: 'Choose a page that fits.',
+        description: 'Plain, grid, or ruled paper, in A- and B-series sizes.',
+      },
+      {
+        title: 'Keep growing notebooks organized.',
+        description:
+          'Use folders for your notes and thumbnails to navigate pages.',
+      },
+      {
+        title: 'Share your work as a PDF.',
+        description:
+          'Export your notes to share them. Save and restore backups, too.',
+      },
+    ],
+  },
+  paper: {
+    title: 'A page for your way of thinking.',
+    tabsLabel: 'Change the paper illustration',
+    styles: {
+      grid: {
+        label: 'Grid',
+        description: 'Line up your diagrams and equations.',
+      },
+      ruled: {
+        label: 'Ruled',
+        description: 'Follow your thoughts, one line at a time.',
+      },
+      plain: {
+        label: 'Plain',
+        description: 'Give your ideas room to spread out.',
+      },
+    },
+    intro: 'One observation leads to the next idea.',
+    diagramLabel:
+      'An idea diagram connecting Notice, Try, and Connect, with a loop back to try again',
+    stages: ['Notice', 'Try', 'Connect'],
+    note: 'Connect your ideas as you write.',
+    caption: 'Paper illustration',
+  },
+  mac: {
+    title: 'Right at home on your Mac.',
+    description: [
+      'Open notes in separate windows and write alongside your references.',
+      'Export finished notes as PDFs to use in other apps.',
+    ],
+    facts: ['Made for macOS', 'Notes stored locally', 'PDF export'],
+  },
+  contact: {
+    title: ['Your next idea', 'starts with a stroke.'],
+    description: [
+      'For information about getting Inkquation',
+      'and its system requirements, get in touch.',
+    ],
+    action: 'Ask about Inkquation',
+    subject: 'Getting Inkquation',
+  },
+  footer: {
+    tagline: 'A little room. A little ink. Your ideas.',
+    contact: 'Contact',
+  },
+};
+
+export const siteCopy: Record<Locale, SiteCopy> = { ja, en };
