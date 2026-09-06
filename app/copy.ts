@@ -165,6 +165,8 @@ const ja = {
     ],
     action: '配布について問い合わせる',
     subject: 'Inkquation の配布について',
+    hint: 'メールアプリが開きます。',
+    noScriptMessage: 'お問い合わせにはJavaScriptを有効にしてください。',
   },
   footer: {
     tagline: 'あなたの思考に、余白とインクを。',
@@ -343,6 +345,8 @@ const en: SiteCopy = {
     ],
     action: 'Ask about Inkquation',
     subject: 'Getting Inkquation',
+    hint: 'Opens your email app.',
+    noScriptMessage: 'Enable JavaScript to contact us.',
   },
   footer: {
     tagline: 'A little room. A little ink. Your ideas.',

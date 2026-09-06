@@ -4,6 +4,7 @@ import PaperDemo from './paper-demo';
 import { siteCopy, type Locale, type SiteCopy } from './copy';
 import TextLines from './text-lines';
 import ShortcutGuide from './shortcut-guide';
+import ContactButton from './contact-button';
 import { sitePath } from '../site.config';
 import {
   ArrowDown,
@@ -282,13 +283,13 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <p>
                 <TextLines lines={copy.contact.description} />
               </p>
-              <a
-                className="button button-light"
-                href={`mailto:contact@inkquation.app?subject=${encodeURIComponent(copy.contact.subject)}`}
-              >
-                {copy.contact.action} <ArrowUpRight size={18} />
-              </a>
-              <span className="contact-address">contact@inkquation.app</span>
+              <ContactButton
+                variant="primary"
+                label={copy.contact.action}
+                subject={copy.contact.subject}
+                hint={copy.contact.hint}
+                noScriptMessage={copy.contact.noScriptMessage}
+              />
             </div>
           </div>
         </section>
@@ -299,9 +300,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </a>
         <p>{copy.footer.tagline}</p>
         <div>
-          <a href="mailto:contact@inkquation.app">
-            {copy.footer.contact} <ArrowUpRight size={12} />
-          </a>
+          <ContactButton variant="footer" label={copy.footer.contact} />
           <span>© 2026 Inkquation</span>
         </div>
       </footer>

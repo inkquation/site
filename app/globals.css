@@ -950,6 +950,30 @@ h1 {
   font: 12px system-ui;
   margin-top: 14px;
 }
+.email-contact {
+  cursor: pointer;
+  border: 0;
+}
+.email-contact svg {
+  width: 18px;
+  height: 18px;
+}
+.footer-contact {
+  padding: 0;
+  height: auto;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border-radius: 0;
+}
+.footer-contact svg {
+  width: 12px;
+  height: 12px;
+}
+.get-app-action .contact-noscript {
+  margin-top: 14px;
+  font-size: 14px;
+}
 .site-footer {
   display: flex;
   align-items: center;
@@ -972,7 +996,8 @@ h1 {
   font-size: 11px;
   color: #78859b;
 }
-.site-footer > div > a {
+.site-footer > div > a,
+.site-footer .footer-contact {
   display: flex;
   gap: 6px;
   align-items: center;
