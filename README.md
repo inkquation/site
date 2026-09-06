@@ -34,6 +34,10 @@ The production build uses the generated Vinext / Cloudflare project structure. T
 - `public/assets/inkquation-editor.jpg`: a direct capture of the actual app using a synthetic demo notebook.
 - `reference/site-demo.inkqbackup`: the synthetic notebook used for the screenshot, outside the public directory.
 
+## Follow-up work
+
+[TODO.md](TODO.md) tracks the TourBox Elite preset, hardware verification, bilingual setup guide, and eventual website download section. No preset is published yet.
+
 ## Content and publication notes
 
 The copy was checked against the local app source on 2026-09-07. The existing site at https://inkquation.app/ supplied the public contact address. It advertised cloud sync and had a download link targeting `#`; this proposal does not claim cloud sync or invent a download URL. The contact CTA opens a mail composer without sending a message.
