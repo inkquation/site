@@ -1,0 +1,133 @@
+{
+  "updated": "2026-09-09",
+  "ja": {
+    "title": "プライバシーポリシー",
+    "updatedLabel": "最終更新日",
+    "websiteLabel": "Webで最新のポリシーを読む",
+    "contactLabel": "プライバシーについて問い合わせる",
+    "homeLabel": "Inkquationに戻る",
+    "intro": "このポリシーは、Junji Fujimotoが開発するmacOSアプリInkquationと、その公式サイトに適用されます。",
+    "sections": [
+      {
+        "id": "local",
+        "title": "ノートと設定の保存",
+        "paragraphs": [
+          "ノート、画像、フォルダ、タグ、アプリの設定はMacに保存されます。Inkquationには独自のアカウント登録、クラウド同期、広告、アクセス解析の機能はありません。アプリから開発者のサーバーへノートや利用状況を自動送信することはありません。",
+          "端末上のデータの保護はmacOSのアクセス制御やFileVaultなどの設定に依存します。Inkquation独自のパスワードによるノートの暗号化は行いません。"
+        ]
+      },
+      {
+        "id": "ai",
+        "title": "任意のAI接続",
+        "paragraphs": [
+          "AI接続は初期状態では無効です。「設定」の「AI接続」で有効にすると、同じmacOSユーザーで動くアプリが、MCP（Model Context Protocol）経由で開いているノートや選択範囲を読み取り、画像を追加できます。接続を有効にする前に、このアクセス範囲を確認してください。",
+          "接続先のAIクライアントがクラウドサービスを使う場合、ノートの内容がそのサービスへ送信されることがあります。送信、保存、学習への利用などは、利用者が選んだクライアントとAIサービスの設定・プライバシーポリシーに従います。機密情報を扱う前に接続先を確認してください。",
+          "「AI接続」を無効にすると以後の接続とアクセスを停止します。既に接続先へ渡ったデータは削除されません。接続先に保存された内容の削除は、そのサービスの手順に従ってください。"
+        ]
+      },
+      {
+        "id": "export",
+        "title": "ファイルとクリップボードへの書き出し",
+        "paragraphs": [
+          "画像の読み込み、PDFの書き出し、コピー、バックアップの保存・復元は利用者の操作に応じて行います。コピーした内容はmacOSのクリップボードを通じて他のアプリから利用できます。",
+          "全体バックアップは暗号化されません。ノートやゴミ箱の内容、保存済み画像に残る付加情報が含まれる場合があります。バックアップは安全な場所に保管してください。クラウド同期フォルダへ保存したファイルや共有したファイルは、保存先や共有先のサービスでも扱われます。"
+        ]
+      },
+      {
+        "id": "deletion",
+        "title": "保持と削除",
+        "paragraphs": [
+          "ノートは利用者が削除するまでMacに保存されます。ゴミ箱に移したノートは復元でき、ゴミ箱から完全に削除するとアプリのノート一覧から除かれます。この操作は記憶媒体上の復元不能な消去を保証するものではありません。",
+          "書き出したPDF、バックアップ、復元前の安全用バックアップ、他のアプリやOSのバックアップにあるコピーは、元のノートを削除しても残ります。不要なコピーは、それぞれの保存先で削除してください。開発者はMac内のノートにアクセスして削除することはできません。"
+        ]
+      },
+      {
+        "id": "diagnostics",
+        "title": "診断情報",
+        "paragraphs": [
+          "アプリは動作状況やエラーの種類をMacの診断ログに記録します。アプリ独自の診断情報の自動送信機能はありません。Appleによる診断情報の共有は、macOSの設定とAppleのプライバシーポリシーに従います。サポートへログや画面の画像を送る場合は、内容を確認してから共有してください。"
+        ]
+      },
+      {
+        "id": "support",
+        "title": "お問い合わせ",
+        "paragraphs": [
+          "メールでお問い合わせいただいた場合、送信元の名前・メールアドレス、本文、添付ファイルを対応のために使用します。必要のないノートや個人情報を送らないでください。お問い合わせ情報は対応に必要な期間保持し、不要になった情報は削除します。削除のご希望も同じ窓口で受け付けます。法令上の保存が必要な場合は、その範囲で保持します。"
+        ]
+      },
+      {
+        "id": "website",
+        "title": "公式サイトとポリシーの変更",
+        "paragraphs": [
+          "公式サイトはGitHub Pagesで配信しています。サイトへのアクセス時には、IPアドレスなどの接続情報が配信事業者によって処理されます。サイト独自の広告やアクセス解析は設置していません。配信事業者による取り扱いはGitHubのプライバシーステートメントをご確認ください。",
+          "データの扱いや機能が変わる場合は、このページの内容と最終更新日を更新します。アプリ内のポリシーはそのバージョンに同梱された内容です。最新の内容は公式サイトで確認できます。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Privacy Policy",
+    "updatedLabel": "Last updated",
+    "websiteLabel": "Read the current policy online",
+    "contactLabel": "Contact us about privacy",
+    "homeLabel": "Back to Inkquation",
+    "intro": "This policy applies to Inkquation, a macOS app developed by Junji Fujimoto, and its official website.",
+    "sections": [
+      {
+        "id": "local",
+        "title": "Notes and settings",
+        "paragraphs": [
+          "Your notes, images, folders, tags, and app settings are stored on your Mac. Inkquation has no app account registration, cloud sync, advertising, or analytics. The app does not automatically send your notes or usage information to a developer-operated server.",
+          "Protection of data on your device depends on macOS access controls and settings such as FileVault. Inkquation does not encrypt notes with a separate app password."
+        ]
+      },
+      {
+        "id": "ai",
+        "title": "Optional AI connections",
+        "paragraphs": [
+          "AI connections are off by default. Enabling AI Connection in Settings allows apps running as your macOS user to read open notes and selections and insert images through MCP (Model Context Protocol). Review this access before enabling the connection.",
+          "If your chosen AI client uses a cloud service, it may send note content to that service. Transmission, retention, and use for model training depend on your chosen client and AI service, their settings, and their privacy policies. Check the recipient before working with confidential information.",
+          "Disabling AI Connection stops subsequent connections and access. It does not delete data already received by a client or service. Follow that service’s instructions to delete any content it retains."
+        ]
+      },
+      {
+        "id": "export",
+        "title": "Exported files and clipboard",
+        "paragraphs": [
+          "Images are imported, PDFs are exported, selections are copied, and backups are saved or restored in response to your actions. Copied content is made available to other apps through the macOS clipboard.",
+          "Full backups are not encrypted. They may include notes, trashed notes, and metadata retained in stored images. Keep backups in a safe location. Files you save to a cloud-synced folder or share with others are also handled by the destination or recipient service."
+        ]
+      },
+      {
+        "id": "deletion",
+        "title": "Retention and deletion",
+        "paragraphs": [
+          "Notes remain on your Mac until you delete them. Trashed notes can be restored. Permanently deleting a note from the trash removes it from the app’s note library; this does not guarantee unrecoverable erasure from the storage device.",
+          "Exported PDFs, backups, safety backups made before a restore, and copies held by other apps or OS backups remain after the original note is deleted. Delete unwanted copies at their respective locations. The developer cannot access or delete notes on your Mac."
+        ]
+      },
+      {
+        "id": "diagnostics",
+        "title": "Diagnostics",
+        "paragraphs": [
+          "The app records operational status and error categories in local Mac diagnostic logs. It has no automatic diagnostic upload feature of its own. Sharing diagnostics with Apple is governed by your macOS settings and Apple’s privacy policy. Review logs and screenshots before choosing to share them with support."
+        ]
+      },
+      {
+        "id": "support",
+        "title": "Contacting support",
+        "paragraphs": [
+          "When you email support, your sender name, email address, message, and attachments are used to respond to your request. Avoid sending unnecessary notes or personal information. Support information is retained for as long as needed to handle the request and deleted when no longer needed. You can use the same contact to request deletion. Information that must be retained by law is kept for that purpose."
+        ]
+      },
+      {
+        "id": "website",
+        "title": "Website and policy updates",
+        "paragraphs": [
+          "The official website is hosted on GitHub Pages. When you visit it, the hosting provider processes connection information such as your IP address. The site has no advertising or analytics of its own. See GitHub’s Privacy Statement for the hosting provider’s practices.",
+          "Changes to data handling or features will be reflected on this page with an updated date. The in-app policy is the copy included with that app version. The current policy is available on the official website."
+        ]
+      }
+    ]
+  }
+}

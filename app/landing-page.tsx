@@ -300,6 +300,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </a>
         <p>{copy.footer.tagline}</p>
         <div>
+          <a href={sitePath(locale === 'ja' ? '/privacy/' : '/en/privacy/')}>
+            {locale === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy'}
+          </a>
           <ContactButton variant="footer" label={copy.footer.contact} />
           <span>© 2026 Inkquation</span>
         </div>

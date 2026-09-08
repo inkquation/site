@@ -17,9 +17,12 @@ const manifest = JSON.parse(
 const routes = [
   { locale: 'ja', route: '/', file: 'index.html' },
   { locale: 'en', route: '/en', file: 'en/index.html' },
+  { locale: 'ja', route: '/privacy', file: 'privacy/index.html' },
+  { locale: 'en', route: '/en/privacy', file: 'en/privacy/index.html' },
 ];
 
 for (const { locale, route, file } of routes) {
+  const isPrivacy = route.endsWith('/privacy');
   assert(
     manifest.routes.some(
       (entry) => entry.route === route && entry.status === 'rendered',
@@ -38,8 +41,8 @@ for (const { locale, route, file } of routes) {
         /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
       ),
     ].length,
-    2,
-    `${file}: both contact actions must be buttons`,
+    isPrivacy ? 1 : 2,
+    `${file}: contact actions must be buttons`,
   );
   const pageUrl = new URL(
     `${prefix}${file.replace(/index\.html$/, '')}`,
@@ -88,8 +91,8 @@ for (const { locale, route, file } of routes) {
   assert.deepEqual(
     languageLinks,
     new Map([
-      ['ja', prefix],
-      ['en', `${prefix}en/`],
+      ['ja', `${prefix}${isPrivacy ? 'privacy/' : ''}`],
+      ['en', `${prefix}en/${isPrivacy ? 'privacy/' : ''}`],
     ]),
   );
   assert(checked > 0, `${file}: no local assets found`);

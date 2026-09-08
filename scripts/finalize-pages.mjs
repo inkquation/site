@@ -16,6 +16,8 @@ if (basePath) {
 
 // GitHub Pages resolves directory URLs to index.html. Keep the RSC payload at
 // en.rsc; language links use full document navigation, not client-side routing.
-await mkdir('dist/client/en', { recursive: true });
-await rename('dist/client/en.html', 'dist/client/en/index.html');
+for (const route of ['en', 'privacy', 'en/privacy']) {
+  await mkdir(`dist/client/${route}`, { recursive: true });
+  await rename(`dist/client/${route}.html`, `dist/client/${route}/index.html`);
+}
 await writeFile('dist/client/.nojekyll', '');
