@@ -184,7 +184,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI接続を有効にしている期間には、追加操作128回と、追加画像の合計9,600万画素の上限があります。Undoしてもカウントは減らず、ノートの切り替えやAIアプリの再接続でも戻りません。長時間の利用で達する場合があります。これはアプリ全体のメモリ上限ではありません。"
+            "text": "画像追加と表示の読込では、現在の表示キャッシュと処理中の画像に、アプリ内で共有する9,600万画素の予算を使います。画面外の不要なキャッシュを自動で解放し、原本・配置・Undo/Redoを残して再表示時に読み直します。表示中の画像は保護し、空きが足りなければ追加や読込を待ちます。累積カウントではなく、AI接続の入れ直しでも保持量はリセットされません。原本データやPDFの高解像度表示などを含む、アプリ全体のメモリ上限ではありません。AI接続を有効にしている期間の追加操作128回の上限は、再送の重複防止記録のため別に残ります。"
           },
           {
             "type": "paragraph",
@@ -228,6 +228,10 @@
                 "一度に読む内容が上限を超えています。投げ縄で小さい範囲を選択し、選択範囲を読み取ってください。"
               ],
               [
+                "`image_memory_limit`",
+                "表示中の画像や処理が画像予算を使っています。処理を待つ、画像の多いページからスクロールする、使っていないノートを閉じるなどを試し、同じ操作IDと引数で再試行してください。ページが変わった場合は読み直します。"
+              ],
+              [
                 "`request_cancelled`",
                 "読み取りや編集の準備が取り消されたか、時間を超過しました。必要なら小さい範囲を選び、ページを読み直してから再試行します。"
               ],
@@ -249,7 +253,7 @@
               ],
               [
                 "`session_limit`",
-                "追加操作の回数または画像の累積量が上限に達しています。結果を確認してから設定でAI接続を無効・有効にし、AIアプリを再接続してページを読み直します。以前の操作を新しいIDで繰り返さないでください。"
+                "追加操作128回の上限に達しています。結果を確認してから設定でAI接続を無効・有効にし、AIアプリを再接続してページを読み直します。以前の操作を新しいIDで繰り返さないでください。"
               ]
             ]
           },
@@ -491,7 +495,7 @@
           },
           {
             "type": "paragraph",
-            "text": "While AI Connection remains enabled, the session allows up to 128 insertions and 96 million pixels of inserted images in total. Undo does not refund this allowance, and switching notes or reconnecting the AI app does not reset it. Long sessions may reach these limits. They are not a memory cap for the whole app."
+            "text": "Image insertion and display loading share a 96-million-pixel allowance across the app for retained display caches and in-flight image processing. Unused offscreen caches are released automatically; originals, placement, and Undo/Redo remain intact, and images reload when shown again. Visible images are protected; insertion or loading waits when there is no room. Usage is based on current retention and is not reset by toggling AI Connection. This is not a whole-app memory cap: original data and high-resolution PDF views are separate. The limit of 128 insertions while AI Connection remains enabled is separate, preserving records that prevent duplicate retries."
           },
           {
             "type": "paragraph",
@@ -535,6 +539,10 @@
                 "The content is too large to read in one request. Select a smaller area with the lasso and read that selection."
               ],
               [
+                "`image_memory_limit`",
+                "Visible images or processing fill the image allowance. Wait for processing, scroll away from image-heavy pages, or close unused notes, then retry with the same operation ID and arguments. Read the page again if it changed."
+              ],
+              [
                 "`request_cancelled`",
                 "Reading or preparing the edit was cancelled or exceeded its deadline. If needed, choose a smaller area, then read the page again before retrying."
               ],
@@ -556,7 +564,7 @@
               ],
               [
                 "`session_limit`",
-                "The insertion count or cumulative image allowance has been reached. Inspect the results, turn AI Connection off and on in Settings, reconnect the AI app, and read the page again. Do not repeat an earlier edit with a new ID."
+                "The limit of 128 insertions has been reached. Inspect the results, turn AI Connection off and on in Settings, reconnect the AI app, and read the page again. Do not repeat an earlier edit with a new ID."
               ]
             ]
           },
@@ -798,7 +806,7 @@
           },
           {
             "type": "paragraph",
-            "text": "在 AI 连接保持启用期间，每个会话最多允许 128 次添加操作，添加图片的总像素数最多为 9,600 万。撤销不会恢复额度，切换笔记或重新连接 AI 应用也不会重置计数。长时间使用可能达到这些上限。这并不是整个应用的内存上限。"
+            "text": "图片添加和显示加载共用应用内的 9,600 万像素额度，用于当前保留的显示缓存和正在处理的图像。屏幕外不再需要的缓存会自动释放；原始图像、位置及撤销/重做记录会保留，再次显示时会重新读取。正在显示的图像受到保护，空间不足时会暂停添加或加载。额度按当前保留量计算，开关 AI 连接也不会重置。原始数据和 PDF 高分辨率视图等另行使用内存，因此这不是整个应用的内存上限。AI 连接保持启用期间的 128 次添加上限单独保留，用于记录操作并防止重试造成重复添加。"
           },
           {
             "type": "paragraph",
@@ -842,6 +850,10 @@
                 "内容超过了单次读取上限。请用套索选择较小区域，再读取该选区。"
               ],
               [
+                "`image_memory_limit`",
+                "正在显示或处理的图像占满了图像额度。请等待处理完成、滚动离开图像较多的页面，或关闭暂时不用的笔记，然后使用相同的操作 ID 和参数重试。如果页面有变化，请重新读取。"
+              ],
+              [
                 "`request_cancelled`",
                 "读取或编辑准备已被取消，或超过了时限。必要时选择较小区域，重新读取页面后再试。"
               ],
@@ -863,7 +875,7 @@
               ],
               [
                 "`session_limit`",
-                "添加次数或图片累计额度已达上限。请先确认结果，再在设置中关闭并重新启用 AI 连接，重新连接 AI 应用并读取页面。不要使用新 ID 重复先前的编辑。"
+                "已达到 128 次添加操作的上限。请先确认结果，再在设置中关闭并重新启用 AI 连接，重新连接 AI 应用并读取页面。不要使用新 ID 重复先前的编辑。"
               ]
             ]
           },
@@ -1105,7 +1117,7 @@
           },
           {
             "type": "paragraph",
-            "text": "在 AI 連線持續啟用期間，每個工作階段最多允許 128 次新增操作，新增圖片的總像素數最多為 9,600 萬。復原不會恢復額度，切換筆記或重新連接 AI 應用程式也不會重設計數。長時間使用可能達到這些上限。這並不是整個應用程式的記憶體上限。"
+            "text": "圖片新增與顯示載入共用 App 內的 9,600 萬像素額度，用於目前保留的顯示快取和正在處理的影像。畫面外不再需要的快取會自動釋放；原始影像、位置及復原/重做記錄會保留，再次顯示時會重新讀取。正在顯示的影像受到保護，空間不足時會暫停新增或載入。額度按目前保留量計算，開關 AI 連線也不會重設。原始資料和 PDF 高解析度檢視等另外使用記憶體，因此這不是整個 App 的記憶體上限。AI 連線持續啟用期間的 128 次新增上限單獨保留，用於記錄操作並防止重試造成重複新增。"
           },
           {
             "type": "paragraph",
@@ -1149,6 +1161,10 @@
                 "內容超過單次讀取上限。請用套索選取較小範圍，再讀取該選取範圍。"
               ],
               [
+                "`image_memory_limit`",
+                "正在顯示或處理的影像占滿了影像額度。請等待處理完成、捲動離開影像較多的頁面，或關閉暫時不用的筆記，再使用相同的操作 ID 與參數重試。如果頁面有變更，請重新讀取。"
+              ],
+              [
                 "`request_cancelled`",
                 "讀取或編輯準備已被取消，或超過時限。必要時選取較小範圍，重新讀取頁面後再試。"
               ],
@@ -1170,7 +1186,7 @@
               ],
               [
                 "`session_limit`",
-                "新增次數或圖片累計額度已達上限。請先確認結果，再於設定中關閉並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。不要使用新 ID 重複先前的編輯。"
+                "已達到 128 次新增操作的上限。請先確認結果，再於設定中關閉並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。不要使用新 ID 重複先前的編輯。"
               ]
             ]
           },
@@ -1412,7 +1428,7 @@
           },
           {
             "type": "paragraph",
-            "text": "在 AI 連線保持啟用期間，每個工作階段最多允許 128 次新增操作，新增圖片的總像素數最多為 9,600 萬。還原不會恢復額度，切換筆記或重新連接 AI 應用程式也不會重設計數。長時間使用可能達到這些上限。這並不是整個應用程式的記憶體上限。"
+            "text": "圖片新增與顯示載入共用 App 內的 9,600 萬像素額度，用於目前保留的顯示快取和正在處理的圖像。畫面外不再需要的快取會自動釋放；原始圖像、位置及還原/重做記錄會保留，再次顯示時會重新讀取。正在顯示的圖像受到保護，空間不足時會暫停新增或載入。額度按目前保留量計算，開關 AI 連線也不會重設。原始資料和 PDF 高解像度檢視等另外使用記憶體，因此這不是整個 App 的記憶體上限。AI 連線保持啟用期間的 128 次新增上限單獨保留，用於記錄操作並防止重試造成重複新增。"
           },
           {
             "type": "paragraph",
@@ -1456,6 +1472,10 @@
                 "內容超過單次讀取上限。請用套索選取較小範圍，再讀取該選取範圍。"
               ],
               [
+                "`image_memory_limit`",
+                "正在顯示或處理的圖像佔滿了圖像額度。請等待處理完成、捲動離開圖像較多的頁面，或關閉暫時不用的筆記，再使用相同的操作 ID 與參數重試。如果頁面有變更，請重新讀取。"
+              ],
+              [
                 "`request_cancelled`",
                 "讀取或編輯準備已被取消，或超過時限。必要時選取較小範圍，重新讀取頁面後再試。"
               ],
@@ -1477,7 +1497,7 @@
               ],
               [
                 "`session_limit`",
-                "新增次數或圖片累計額度已達上限。請先確認結果，再於設定中停用並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。請勿使用新 ID 重複先前的編輯。"
+                "已達到 128 次新增操作的上限。請先確認結果，再於設定中停用並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。請勿使用新 ID 重複先前的編輯。"
               ]
             ]
           },
@@ -1719,7 +1739,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI 연결을 활성화한 동안 한 세션에서 최대 128회 추가할 수 있으며, 추가한 이미지의 총 픽셀 수는 9,600만까지입니다. 실행 취소해도 사용량이 줄지 않으며, 노트를 바꾸거나 AI 앱을 다시 연결해도 초기화되지 않습니다. 오래 사용하면 한도에 도달할 수 있습니다. 앱 전체의 메모리 한도를 뜻하지는 않습니다."
+            "text": "이미지 추가와 표시 로딩은 앱 전체에서 현재 보유한 표시 캐시 및 처리 중인 이미지에 대해 9,600만 픽셀 한도를 공유합니다. 화면 밖의 불필요한 캐시는 자동으로 해제하며, 원본·배치·실행 취소/다시 실행 기록은 유지하고 다시 표시할 때 읽어 옵니다. 표시 중인 이미지는 보호하며 공간이 부족하면 추가나 로딩을 기다립니다. 누적 사용량이 아닌 현재 보유량을 기준으로 하므로 AI 연결을 껐다 켜도 초기화되지 않습니다. 원본 데이터와 PDF 고해상도 표시 등은 별도이므로 앱 전체의 메모리 한도는 아닙니다. AI 연결을 활성화한 동안 최대 128회 추가할 수 있는 별도 제한은 중복 재시도를 방지하는 작업 기록을 유지하기 위한 것입니다."
           },
           {
             "type": "paragraph",
@@ -1763,6 +1783,10 @@
                 "한 번에 읽을 수 있는 분량을 초과했습니다. 올가미로 더 작은 영역을 선택한 뒤 해당 선택 영역을 읽으세요."
               ],
               [
+                "`image_memory_limit`",
+                "표시 중이거나 처리 중인 이미지가 한도를 채웠습니다. 처리가 끝날 때까지 기다리거나, 이미지가 많은 페이지에서 스크롤해 벗어나거나, 사용하지 않는 노트를 닫은 뒤 같은 작업 ID와 인수로 재시도하세요. 페이지가 바뀌었다면 다시 읽으세요."
+              ],
+              [
                 "`request_cancelled`",
                 "읽기 또는 편집 준비가 취소되었거나 제한 시간을 초과했습니다. 필요하면 더 작은 영역을 선택하고 페이지를 다시 읽은 뒤 재시도하세요."
               ],
@@ -1784,7 +1808,7 @@
               ],
               [
                 "`session_limit`",
-                "추가 횟수 또는 이미지 누적 사용량이 한도에 도달했습니다. 결과를 확인한 뒤 설정에서 AI 연결을 껐다 켜고, AI 앱을 다시 연결한 다음 페이지를 다시 읽으세요. 새 ID로 이전 편집을 반복하지 마세요."
+                "추가 작업 128회 한도에 도달했습니다. 결과를 확인한 뒤 설정에서 AI 연결을 껐다 켜고, AI 앱을 다시 연결한 다음 페이지를 다시 읽으세요. 새 ID로 이전 편집을 반복하지 마세요."
               ]
             ]
           },
