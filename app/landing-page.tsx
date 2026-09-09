@@ -1,6 +1,7 @@
 /* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import LanguageSwitch from './language-switch';
+import BrandWordmark from './brand-wordmark';
 import { aiGuidePath } from './ai-guide-paths';
 import { localePath } from './locale-paths';
 import policy from './privacy-policy.json';
@@ -72,9 +73,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               width="38"
               height="38"
             />
-            <span>
-              inkquation<span className="brand-period">.</span>
-            </span>
+            <BrandWordmark />
           </a>
           <div className="header-controls">
             <nav className="main-navigation" aria-label={copy.nav.main}>
@@ -332,7 +331,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
       </main>
       <footer className="site-footer container">
         <a className="brand footer-brand" href="#top">
-          inkquation<span className="brand-period">.</span>
+          <BrandWordmark />
         </a>
         <p>{copy.footer.tagline}</p>
         <div>

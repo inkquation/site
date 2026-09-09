@@ -10,6 +10,7 @@ import {
 import { localePath } from './locale-paths';
 import { siteCopy } from './copy';
 import LanguageSwitch from './language-switch';
+import BrandWordmark from './brand-wordmark';
 import guides from './ai-guide.json';
 import './ai-guide.css';
 
@@ -56,7 +57,7 @@ export default function AIGuide({ locale }: { locale: AIGuideLocale }) {
             href={localePath(locale)}
             aria-label={copy.homeLabel}
           >
-            inkquation<span className="brand-period">.</span>
+            <BrandWordmark />
           </a>
           <LanguageSwitch
             locale={locale}

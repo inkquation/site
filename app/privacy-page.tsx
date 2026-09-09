@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { siteOrigin } from '../site.config';
 import { localePath, languageAlternates } from './locale-paths';
 import LanguageSwitch from './language-switch';
+import BrandWordmark from './brand-wordmark';
 import { siteCopy, type Locale } from './copy';
 import ContactButton from './contact-button';
 import policy from './privacy-policy.json';
@@ -34,7 +35,7 @@ export default function PrivacyPage({ locale }: { locale: Locale }) {
             href={localePath(locale)}
             aria-label={copy.homeLabel}
           >
-            inkquation<span className="brand-period">.</span>
+            <BrandWordmark />
           </a>
           <LanguageSwitch
             locale={locale}
