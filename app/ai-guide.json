@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09",
+  "updated": "2026-09-10",
   "ja": {
     "title": "AI連携ガイド",
     "description": "Inkquationを外部AIアプリにつなぎ、ページの読み取りや画像・図形・ペンの線の追加を行うためのガイドです。",
@@ -175,6 +175,24 @@
         ]
       },
       {
+        "id": "safeguards",
+        "title": "安全策と処理の上限",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "ノートのタイトルや画像に書かれた指示は、追加の操作を許可するものではありません。AIアプリ側でも読み取り・編集の対象を確認してください。InkquationのMCPは任意のコマンド実行、ファイルの読み取り、URLの取得を提供しません。接続先AIの判断や、他のツールによる外部送信まで防げるわけではありません。"
+          },
+          {
+            "type": "paragraph",
+            "text": "AI接続を有効にしている期間には、追加操作128回と、追加画像の合計9,600万画素の上限があります。Undoしてもカウントは減らず、ノートの切り替えやAIアプリの再接続でも戻りません。長時間の利用で達する場合があります。これはアプリ全体のメモリ上限ではありません。"
+          },
+          {
+            "type": "paragraph",
+            "text": "読み取りや編集の準備には、Inkquation内の1回の処理につき30秒の期限があります。AIが考える時間には適用されません。編集やUndoを適用した後は、期限や接続の無効化、要求の取消から保存を保護します。保存自体の失敗は報告されます。接続を無効にすると応答が届かないため、結果はアプリで確認してください。"
+          }
+        ]
+      },
+      {
         "id": "recovery",
         "title": "再試行と取り消し",
         "blocks": [
@@ -202,12 +220,28 @@
                 "手書きや貼り付けなどの処理が終わるのを待ちます。成否が不明な追加の再試行には同じIDと引数を使います。"
               ],
               [
+                "`rate_limited`",
+                "呼び出しが集中しています。少し待ってから再試行します。追加の成否が不明なら、同じ操作IDと引数を使ってください。"
+              ],
+              [
+                "`read_limit`",
+                "一度に読む内容が上限を超えています。投げ縄で小さい範囲を選択し、選択範囲を読み取ってください。"
+              ],
+              [
+                "`request_cancelled`",
+                "読み取りや編集の準備が取り消されたか、時間を超過しました。必要なら小さい範囲を選び、ページを読み直してから再試行します。"
+              ],
+              [
+                "`disconnected`",
+                "AI接続が無効になっています。適用済みの編集の保存は続きます。アプリで結果を確認し、接続を再度許可した後にページを読み直してください。"
+              ],
+              [
                 "`operation_id_reused`",
                 "同じIDに異なる引数を指定しています。再試行なら元のツールと引数を使います。"
               ],
               [
                 "`isError: true`, `applied: true`, `persisted: false`",
-                "追加は画面上に反映されていますが、保存を確認できていません。ページを確認し、アプリで保存の再試行やUndoを行います。新しいIDで重ねて追加しないでください。"
+                "編集やUndoは画面上に反映されていますが、保存を確認できていません。ページを確認し、アプリで保存の再試行やUndoを行います。新しいIDで同じ編集を繰り返さないでください。"
               ],
               [
                 "`undo_conflict`",
@@ -215,7 +249,7 @@
               ],
               [
                 "`session_limit`",
-                "1回のAI接続セッションで追加操作が128件に達しています。結果を確認してから設定でAI接続を無効・有効にし、AIアプリを再接続してページを読み直します。"
+                "追加操作の回数または画像の累積量が上限に達しています。結果を確認してから設定でAI接続を無効・有効にし、AIアプリを再接続してページを読み直します。以前の操作を新しいIDで繰り返さないでください。"
               ]
             ]
           },
@@ -448,6 +482,24 @@
         ]
       },
       {
+        "id": "safeguards",
+        "title": "Safeguards and processing limits",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Instructions inside note titles or images do not authorize additional actions. Review the content the AI app may read or edit. Inkquation’s MCP tools do not execute arbitrary commands, read arbitrary files, or fetch URLs. These safeguards cannot control the AI’s judgment or data sent through its other tools."
+          },
+          {
+            "type": "paragraph",
+            "text": "While AI Connection remains enabled, the session allows up to 128 insertions and 96 million pixels of inserted images in total. Undo does not refund this allowance, and switching notes or reconnecting the AI app does not reset it. Long sessions may reach these limits. They are not a memory cap for the whole app."
+          },
+          {
+            "type": "paragraph",
+            "text": "Reading and preparing an edit have a 30-second deadline for each operation inside Inkquation. This does not include the AI’s thinking time. Once an edit or Undo has applied, saving is protected from that deadline, disabling the connection, and request cancellation. Actual save failures are still reported. Disabling the connection prevents the response from reaching the client, so inspect the result in the app."
+          }
+        ]
+      },
+      {
         "id": "recovery",
         "title": "Retries and Undo",
         "blocks": [
@@ -475,12 +527,28 @@
                 "Wait for drawing, pasting or other editor work to finish. Retry an uncertain insertion with the same ID and arguments."
               ],
               [
+                "`rate_limited`",
+                "Too many calls arrived together. Wait a moment before retrying. If an insertion’s outcome is uncertain, keep the same operation ID and arguments."
+              ],
+              [
+                "`read_limit`",
+                "The content is too large to read in one request. Select a smaller area with the lasso and read that selection."
+              ],
+              [
+                "`request_cancelled`",
+                "Reading or preparing the edit was cancelled or exceeded its deadline. If needed, choose a smaller area, then read the page again before retrying."
+              ],
+              [
+                "`disconnected`",
+                "AI Connection is disabled. Saving an edit already applied continues. Inspect the result in the app, then read the page again after enabling the connection."
+              ],
+              [
                 "`operation_id_reused`",
                 "The ID was reused with different arguments. For a retry, use the original tool and arguments."
               ],
               [
                 "`isError: true`, `applied: true`, `persisted: false`",
-                "The edit exists in the running app, but its save is unconfirmed. Inspect the page and retry saving or use Undo in the app. Do not insert again with a new ID."
+                "The edit or Undo has applied in the running app, but its save is unconfirmed. Inspect the page and retry saving or use Undo in the app. Do not repeat the edit with a new ID."
               ],
               [
                 "`undo_conflict`",
@@ -488,7 +556,7 @@
               ],
               [
                 "`session_limit`",
-                "The AI connection session has reached 128 insertions. Inspect the results, turn AI Connection off and on in Settings, reconnect the AI app, and read the page again."
+                "The insertion count or cumulative image allowance has been reached. Inspect the results, turn AI Connection off and on in Settings, reconnect the AI app, and read the page again. Do not repeat an earlier edit with a new ID."
               ]
             ]
           },
@@ -721,6 +789,24 @@
         ]
       },
       {
+        "id": "safeguards",
+        "title": "安全措施与处理上限",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "笔记标题或图片中的指令不代表获得了执行其他操作的许可。请在 AI 应用中确认允许读取和编辑的内容。Inkquation 的 MCP 工具不提供任意命令执行、任意文件读取或 URL 获取功能。这些措施无法控制 AI 的判断，也无法阻止其通过其他工具向外发送数据。"
+          },
+          {
+            "type": "paragraph",
+            "text": "在 AI 连接保持启用期间，每个会话最多允许 128 次添加操作，添加图片的总像素数最多为 9,600 万。撤销不会恢复额度，切换笔记或重新连接 AI 应用也不会重置计数。长时间使用可能达到这些上限。这并不是整个应用的内存上限。"
+          },
+          {
+            "type": "paragraph",
+            "text": "读取和编辑准备在 Inkquation 内的每次操作中有 30 秒时限，不包含 AI 思考的时间。编辑或撤销一旦生效，保存过程就不会因该时限、关闭连接或取消请求而被取消。实际的保存失败仍会报告。关闭连接后，客户端无法收到响应，请在应用中确认结果。"
+          }
+        ]
+      },
+      {
         "id": "recovery",
         "title": "重试与撤销",
         "blocks": [
@@ -748,12 +834,28 @@
                 "等待书写、粘贴或其他编辑处理结束。若添加结果不确定，重试时使用相同 ID 和参数。"
               ],
               [
+                "`rate_limited`",
+                "短时间内调用过多。请稍等后重试。如果无法确定添加是否成功，请使用相同的操作 ID 和参数。"
+              ],
+              [
+                "`read_limit`",
+                "内容超过了单次读取上限。请用套索选择较小区域，再读取该选区。"
+              ],
+              [
+                "`request_cancelled`",
+                "读取或编辑准备已被取消，或超过了时限。必要时选择较小区域，重新读取页面后再试。"
+              ],
+              [
+                "`disconnected`",
+                "AI 连接已关闭。已经生效的编辑仍会继续保存。请在应用中确认结果，重新启用连接后再读取页面。"
+              ],
+              [
                 "`operation_id_reused`",
                 "同一 ID 被用于不同的参数。如果是重试，请使用原来的工具和参数。"
               ],
               [
                 "`isError: true`, `applied: true`, `persisted: false`",
-                "编辑已经存在于运行中的应用，但尚未确认保存。请查看页面，在应用中重试保存或撤销。不要使用新 ID 再次添加。"
+                "编辑或撤销已在应用中生效，但尚未确认保存成功。请检查页面，在应用中重试保存或使用撤销。不要使用新 ID 重复同一编辑。"
               ],
               [
                 "`undo_conflict`",
@@ -761,7 +863,7 @@
               ],
               [
                 "`session_limit`",
-                "当前 AI 连接会话已达到 128 次添加操作。确认结果后，在设置中关闭并重新启用 AI 连接，再重新连接 AI 应用并读取页面。"
+                "添加次数或图片累计额度已达上限。请先确认结果，再在设置中关闭并重新启用 AI 连接，重新连接 AI 应用并读取页面。不要使用新 ID 重复先前的编辑。"
               ]
             ]
           },
@@ -994,6 +1096,24 @@
         ]
       },
       {
+        "id": "safeguards",
+        "title": "安全措施與處理上限",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "筆記標題或圖片中的指示不代表已獲准執行其他操作。請在 AI 應用程式中確認允許讀取和編輯的內容。Inkquation 的 MCP 工具不提供任意指令執行、任意檔案讀取或 URL 擷取功能。這些措施無法控制 AI 的判斷，也無法阻止其透過其他工具向外傳送資料。"
+          },
+          {
+            "type": "paragraph",
+            "text": "在 AI 連線持續啟用期間，每個工作階段最多允許 128 次新增操作，新增圖片的總像素數最多為 9,600 萬。復原不會恢復額度，切換筆記或重新連接 AI 應用程式也不會重設計數。長時間使用可能達到這些上限。這並不是整個應用程式的記憶體上限。"
+          },
+          {
+            "type": "paragraph",
+            "text": "讀取和編輯準備在 Inkquation 內的每次操作中有 30 秒時限，不包含 AI 思考的時間。編輯或復原一旦生效，儲存程序就不會因該時限、關閉連線或取消要求而被取消。實際的儲存失敗仍會回報。關閉連線後，用戶端無法收到回應，請在應用程式中確認結果。"
+          }
+        ]
+      },
+      {
         "id": "recovery",
         "title": "重試與復原",
         "blocks": [
@@ -1021,12 +1141,28 @@
                 "等待書寫、貼上或其他編輯處理結束。若新增結果不確定，重試時使用相同 ID 和參數。"
               ],
               [
+                "`rate_limited`",
+                "短時間內呼叫過多。請稍候再試。如果無法確定新增是否成功，請使用相同的操作 ID 和引數。"
+              ],
+              [
+                "`read_limit`",
+                "內容超過單次讀取上限。請用套索選取較小範圍，再讀取該選取範圍。"
+              ],
+              [
+                "`request_cancelled`",
+                "讀取或編輯準備已被取消，或超過時限。必要時選取較小範圍，重新讀取頁面後再試。"
+              ],
+              [
+                "`disconnected`",
+                "AI 連線已關閉。已經生效的編輯仍會繼續儲存。請在應用程式中確認結果，重新啟用連線後再讀取頁面。"
+              ],
+              [
                 "`operation_id_reused`",
                 "同一 ID 被用於不同的參數。如果是重試，請使用原來的工具和參數。"
               ],
               [
                 "`isError: true`, `applied: true`, `persisted: false`",
-                "編輯已經存在於執行中的 App，但尚未確認儲存。請查看頁面，在 App 中重試儲存或復原。不要使用新 ID 再次新增。"
+                "編輯或復原已在應用程式中生效，但尚未確認儲存成功。請檢查頁面，在應用程式中重試儲存或使用復原。不要使用新 ID 重複同一編輯。"
               ],
               [
                 "`undo_conflict`",
@@ -1034,7 +1170,7 @@
               ],
               [
                 "`session_limit`",
-                "目前 AI 連線工作階段已達到 128 次新增操作。確認結果後，在設定中關閉並重新啟用 AI 連線，再重新連接 AI App 並讀取頁面。"
+                "新增次數或圖片累計額度已達上限。請先確認結果，再於設定中關閉並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。不要使用新 ID 重複先前的編輯。"
               ]
             ]
           },
@@ -1267,6 +1403,24 @@
         ]
       },
       {
+        "id": "safeguards",
+        "title": "安全措施與處理上限",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "筆記標題或圖片中的指示不代表已獲准執行其他操作。請在 AI 應用程式中確認允許讀取及編輯的內容。Inkquation 的 MCP 工具不提供任意指令執行、任意檔案讀取或 URL 擷取功能。這些措施無法控制 AI 的判斷，也無法阻止其透過其他工具向外傳送資料。"
+          },
+          {
+            "type": "paragraph",
+            "text": "在 AI 連線保持啟用期間，每個工作階段最多允許 128 次新增操作，新增圖片的總像素數最多為 9,600 萬。還原不會恢復額度，切換筆記或重新連接 AI 應用程式也不會重設計數。長時間使用可能達到這些上限。這並不是整個應用程式的記憶體上限。"
+          },
+          {
+            "type": "paragraph",
+            "text": "讀取及編輯準備在 Inkquation 內的每次操作中有 30 秒時限，不包含 AI 思考的時間。編輯或還原一旦生效，儲存程序就不會因該時限、停用連線或取消要求而被取消。實際的儲存失敗仍會報告。停用連線後，用戶端無法收到回應，請在應用程式中確認結果。"
+          }
+        ]
+      },
+      {
         "id": "recovery",
         "title": "重試與還原",
         "blocks": [
@@ -1294,12 +1448,28 @@
                 "等待書寫、貼上或其他編輯處理結束。若新增結果不確定，重試時使用相同 ID 和參數。"
               ],
               [
+                "`rate_limited`",
+                "短時間內呼叫過多。請稍候再試。如果無法確定新增是否成功，請使用相同的操作 ID 及引數。"
+              ],
+              [
+                "`read_limit`",
+                "內容超過單次讀取上限。請用套索選取較小範圍，再讀取該選取範圍。"
+              ],
+              [
+                "`request_cancelled`",
+                "讀取或編輯準備已被取消，或超過時限。必要時選取較小範圍，重新讀取頁面後再試。"
+              ],
+              [
+                "`disconnected`",
+                "AI 連線已停用。已經生效的編輯仍會繼續儲存。請在應用程式中確認結果，重新啟用連線後再讀取頁面。"
+              ],
+              [
                 "`operation_id_reused`",
                 "同一 ID 被用於不同的參數。如果是重試，請使用原來的工具和參數。"
               ],
               [
                 "`isError: true`, `applied: true`, `persisted: false`",
-                "編輯已經存在於執行中的 App，但尚未確認儲存。請查看頁面，在 App 中重試儲存或還原。不要使用新 ID 再次新增。"
+                "編輯或還原已在應用程式中生效，但尚未確認儲存成功。請檢查頁面，在應用程式中重試儲存或使用還原。請勿使用新 ID 重複同一編輯。"
               ],
               [
                 "`undo_conflict`",
@@ -1307,7 +1477,7 @@
               ],
               [
                 "`session_limit`",
-                "目前 AI 連線工作階段已達到 128 次新增操作。確認結果後，在設定中關閉並重新啟用 AI 連線，再重新連接 AI App 並讀取頁面。"
+                "新增次數或圖片累計額度已達上限。請先確認結果，再於設定中停用並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。請勿使用新 ID 重複先前的編輯。"
               ]
             ]
           },
@@ -1540,6 +1710,24 @@
         ]
       },
       {
+        "id": "safeguards",
+        "title": "안전장치와 처리 한도",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "노트 제목이나 이미지에 적힌 지시는 추가 작업을 허용한다는 뜻이 아닙니다. AI 앱에서도 읽기와 편집을 허용할 내용을 확인하세요. Inkquation의 MCP 도구는 임의의 명령 실행, 파일 읽기, URL 가져오기를 제공하지 않습니다. 이러한 안전장치가 AI의 판단이나 다른 도구를 통한 외부 전송까지 통제하지는 못합니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "AI 연결을 활성화한 동안 한 세션에서 최대 128회 추가할 수 있으며, 추가한 이미지의 총 픽셀 수는 9,600만까지입니다. 실행 취소해도 사용량이 줄지 않으며, 노트를 바꾸거나 AI 앱을 다시 연결해도 초기화되지 않습니다. 오래 사용하면 한도에 도달할 수 있습니다. 앱 전체의 메모리 한도를 뜻하지는 않습니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "읽기와 편집 준비에는 Inkquation 내부의 작업 한 번마다 30초의 제한 시간이 적용됩니다. AI가 생각하는 시간은 포함하지 않습니다. 편집이나 실행 취소가 적용된 뒤에는 제한 시간 초과, 연결 비활성화, 요청 취소로 저장이 취소되지 않도록 보호합니다. 실제 저장 실패는 계속 보고됩니다. 연결을 비활성화하면 클라이언트가 응답을 받을 수 없으므로 앱에서 결과를 확인하세요."
+          }
+        ]
+      },
+      {
         "id": "recovery",
         "title": "재시도와 실행 취소",
         "blocks": [
@@ -1567,12 +1755,28 @@
                 "필기, 붙여넣기 등 편집 처리가 끝날 때까지 기다리세요. 추가 결과가 불확실한 작업을 재시도할 때는 같은 ID와 인수를 사용합니다."
               ],
               [
+                "`rate_limited`",
+                "짧은 시간에 호출이 몰렸습니다. 잠시 기다린 뒤 다시 시도하세요. 추가 성공 여부가 불확실하면 같은 작업 ID와 인수를 사용하세요."
+              ],
+              [
+                "`read_limit`",
+                "한 번에 읽을 수 있는 분량을 초과했습니다. 올가미로 더 작은 영역을 선택한 뒤 해당 선택 영역을 읽으세요."
+              ],
+              [
+                "`request_cancelled`",
+                "읽기 또는 편집 준비가 취소되었거나 제한 시간을 초과했습니다. 필요하면 더 작은 영역을 선택하고 페이지를 다시 읽은 뒤 재시도하세요."
+              ],
+              [
+                "`disconnected`",
+                "AI 연결이 비활성화되었습니다. 이미 적용된 편집의 저장은 계속됩니다. 앱에서 결과를 확인하고 연결을 다시 활성화한 뒤 페이지를 다시 읽으세요."
+              ],
+              [
                 "`operation_id_reused`",
                 "같은 ID에 다른 인수가 사용되었습니다. 재시도라면 원래 도구와 인수를 사용하세요."
               ],
               [
                 "`isError: true`, `applied: true`, `persisted: false`",
-                "편집은 실행 중인 앱에 반영되어 있지만 저장 여부는 확인되지 않았습니다. 페이지를 확인하고 앱에서 저장을 다시 시도하거나 실행 취소하세요. 새 ID로 다시 추가하지 마세요."
+                "편집이나 실행 취소는 앱에 적용되었지만 저장 성공은 확인되지 않았습니다. 페이지를 확인하고 앱에서 저장을 다시 시도하거나 실행 취소하세요. 새 ID로 같은 편집을 반복하지 마세요."
               ],
               [
                 "`undo_conflict`",
@@ -1580,7 +1784,7 @@
               ],
               [
                 "`session_limit`",
-                "현재 AI 연결 세션이 추가 작업 128회에 도달했습니다. 결과를 확인한 뒤 설정에서 AI 연결을 껐다 켜고, AI 앱을 다시 연결한 다음 페이지를 다시 읽으세요."
+                "추가 횟수 또는 이미지 누적 사용량이 한도에 도달했습니다. 결과를 확인한 뒤 설정에서 AI 연결을 껐다 켜고, AI 앱을 다시 연결한 다음 페이지를 다시 읽으세요. 새 ID로 이전 편집을 반복하지 마세요."
               ]
             ]
           },
