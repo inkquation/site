@@ -12,6 +12,64 @@ import {
 } from '../lib/ai-docs.mjs';
 import { contactEmail } from '../lib/contact-email.mjs';
 
+assert.deepEqual(
+  Object.keys(guides)
+    .filter((key) => key !== 'updated')
+    .sort(),
+  [...guideLocales].sort(),
+  'Every site language must have an AI guide',
+);
+for (const locale of guideLocales) {
+  const sections = guides[locale].sections;
+  assert.deepEqual(
+    sections.map(({ id }) => id),
+    guides.en.sections.map(({ id }) => id),
+    `${locale}: guide section coverage`,
+  );
+  for (const [index, section] of sections.entries()) {
+    const reference = guides.en.sections[index];
+    assert.deepEqual(
+      section.blocks.map(({ type }) => type),
+      reference.blocks.map(({ type }) => type),
+      `${locale}/${section.id}: guide block coverage`,
+    );
+    for (const [blockIndex, block] of section.blocks.entries()) {
+      const original = reference.blocks[blockIndex];
+      if (block.type === 'code')
+        assert.deepEqual(
+          block,
+          original,
+          `${locale}: JSON examples must match`,
+        );
+      if (block.items)
+        assert.equal(
+          block.items.length,
+          original.items.length,
+          `${locale}: missing list or link item`,
+        );
+      if (block.rows)
+        assert.equal(
+          block.rows.length,
+          original.rows.length,
+          `${locale}: missing table row`,
+        );
+    }
+  }
+  const identifiers = (guide) =>
+    [
+      ...new Set(
+        [...JSON.stringify(guide).matchAll(/`([^`]+)`/g)].map(
+          (match) => match[1],
+        ),
+      ),
+    ].sort();
+  assert.deepEqual(
+    identifiers(guides[locale]),
+    identifiers(guides.en),
+    `${locale}: technical identifiers differ`,
+  );
+}
+
 const output = path.resolve('dist/client');
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
   /\/+$/,
