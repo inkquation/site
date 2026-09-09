@@ -37,15 +37,27 @@ export const zhHans: SiteCopy = {
     expand: '查看大图',
   },
   shortcuts: {
-    title: ['工具与颜色，', '都在指尖。'],
+    title: ['右手写画，', '左手操作。'],
     description:
-      '从切换笔和橡皮擦，到调整颜色与线宽，常用操作都能通过快捷键完成。',
+      '新增“左手操作”预设。右手继续书写，左手即可切换工具、调整颜色和线宽、翻页及缩放。',
+    setupTitle: '在设置中应用“左手操作”。',
+    setupDescription:
+      '在 Inkquation 的“设置”→“快捷键”中选择“左手操作”，然后在确认窗口中应用。',
+    layoutNote: '使用美式（US）和日文（JIS）键盘左侧共有的字母与数字键。',
+    navigationTitle: '“左手操作”也能翻页和缩放。',
+    pageLabel: '上一页／下一页',
+    zoomLabel: '缩小／放大',
     customizeTitle: '让按键符合你的习惯。',
     customizeDescription:
       '先选择预设，再按自己的习惯调整常用操作。你可以在应用设置中修改各项组合键。',
     referenceTitle: '切换工具',
     presetsLabel: '切换快捷键预设示例',
     presets: {
+      leftHanded: {
+        label: '左手操作',
+        description:
+          '操作集中在左侧。用 Q、W、E、R 切换笔、橡皮擦、荧光笔和套索。',
+      },
       standard: { label: '标准', description: '配合 Command 键切换工具。' },
       direct: {
         label: '单键切换工具',
@@ -53,13 +65,17 @@ export const zhHans: SiteCopy = {
       },
     },
     tools: {
+      shape: '切换到形状',
+      selection: '切换到选择工具',
+      laser: '切换到激光笔',
+
       pen: '切换到笔',
       eraser: '切换到橡皮擦',
       highlighter: '切换到荧光笔',
       lasso: '切换到套索',
     },
     note: '以上为应用内的预设示例。在笔记编辑界面中，未在文本输入框内输入时可使用这些快捷键。',
-    commonLabel: '两种预设共用的操作',
+    optionsLabel: '所选预设的操作',
     keys: {
       left: '左箭头',
       right: '右箭头',
@@ -221,15 +237,27 @@ export const zhHant: SiteCopy = {
     expand: '查看大圖',
   },
   shortcuts: {
-    title: ['工具與顏色，', '都在指尖。'],
+    title: ['右手書寫，', '左手操作。'],
     description:
-      '從切換筆與橡皮擦，到調整顏色和線寬，常用操作都能透過快速鍵完成。',
+      '新增「左手操作」預設。右手持續書寫，左手即可切換工具、調整顏色與線寬、翻頁及縮放。',
+    setupTitle: '在設定中套用「左手操作」。',
+    setupDescription:
+      '在 Inkquation 的「設定」→「快速鍵」中選擇「左手操作」，再於確認視窗中套用。',
+    layoutNote: '使用美式（US）與日文（JIS）鍵盤左側共有的字母及數字鍵。',
+    navigationTitle: '「左手操作」也能翻頁與縮放。',
+    pageLabel: '上一頁／下一頁',
+    zoomLabel: '縮小／放大',
     customizeTitle: '讓按鍵配合你的習慣。',
     customizeDescription:
       '先選擇預設組合，再依照習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。',
     referenceTitle: '切換工具',
     presetsLabel: '切換快速鍵預設範例',
     presets: {
+      leftHanded: {
+        label: '左手操作',
+        description:
+          '操作集中在左側。用 Q、W、E、R 切換筆、橡皮擦、螢光筆與套索。',
+      },
       standard: { label: '標準', description: '搭配 Command 鍵切換工具。' },
       direct: {
         label: '單鍵切換工具',
@@ -237,13 +265,17 @@ export const zhHant: SiteCopy = {
       },
     },
     tools: {
+      shape: '切換至形狀',
+      selection: '切換至選取工具',
+      laser: '切換至雷射筆',
+
       pen: '切換至筆',
       eraser: '切換至橡皮擦',
       highlighter: '切換至螢光筆',
       lasso: '切換至套索',
     },
     note: '以上為 App 內的預設範例。在筆記編輯畫面中，未於文字輸入欄位輸入時可使用這些快速鍵。',
-    commonLabel: '兩種預設共用的操作',
+    optionsLabel: '所選預設的操作',
     keys: {
       left: '向左鍵',
       right: '向右鍵',
@@ -405,15 +437,27 @@ export const zhHK: SiteCopy = {
     expand: '查看大圖',
   },
   shortcuts: {
-    title: ['工具與顏色，', '都在指尖。'],
+    title: ['右手書寫，', '左手操作。'],
     description:
-      '從切換筆和擦膠，到調整顏色與線寬，常用操作都能透過快捷鍵完成。',
+      '新增「左手操作」預設。右手繼續書寫，左手即可切換工具、調整顏色和線寬、翻頁及縮放。',
+    setupTitle: '在設定中套用「左手操作」。',
+    setupDescription:
+      '在 Inkquation 的「設定」→「快捷鍵」中選擇「左手操作」，再於確認視窗中套用。',
+    layoutNote: '使用美式（US）和日文（JIS）鍵盤左側共有的字母及數字鍵。',
+    navigationTitle: '「左手操作」也能翻頁和縮放。',
+    pageLabel: '上一頁／下一頁',
+    zoomLabel: '縮小／放大',
     customizeTitle: '讓按鍵配合你的習慣。',
     customizeDescription:
       '先選擇預設組合，再按自己的習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。',
     referenceTitle: '切換工具',
     presetsLabel: '切換快捷鍵預設範例',
     presets: {
+      leftHanded: {
+        label: '左手操作',
+        description:
+          '操作集中在左側。用 Q、W、E、R 切換筆、擦膠、螢光筆和套索。',
+      },
       standard: { label: '標準', description: '配合 Command 鍵切換工具。' },
       direct: {
         label: '單鍵切換工具',
@@ -421,13 +465,17 @@ export const zhHK: SiteCopy = {
       },
     },
     tools: {
+      shape: '切換至形狀',
+      selection: '切換至選取工具',
+      laser: '切換至鐳射筆',
+
       pen: '切換至筆',
       eraser: '切換至擦膠',
       highlighter: '切換至螢光筆',
       lasso: '切換至套索',
     },
     note: '以上是 App 內的預設範例。在筆記編輯畫面中，未於文字輸入欄位輸入時可使用這些快捷鍵。',
-    commonLabel: '兩種預設共用的操作',
+    optionsLabel: '所選預設的操作',
     keys: {
       left: '向左鍵',
       right: '向右鍵',
@@ -589,15 +637,28 @@ export const ko: SiteCopy = {
     expand: '크게 보기',
   },
   shortcuts: {
-    title: ['도구도, 색상도,', '키보드에서 바로.'],
+    title: ['오른손으로 그리고,', '왼손으로 조작하세요.'],
     description:
-      '펜과 지우개 전환부터 색상과 선 굵기 조절까지, 자주 쓰는 기능을 단축키로 실행하세요.',
+      '새로운 왼손 조작 프리셋을 만나 보세요. 오른손으로 계속 그리면서 왼손으로 도구, 색상, 선 굵기를 바꾸고 페이지 이동과 확대·축소도 할 수 있습니다.',
+    setupTitle: '설정에서 왼손 조작을 적용하세요.',
+    setupDescription:
+      'Inkquation의 설정 → 키보드 단축키에서 왼손 조작을 선택한 뒤, 확인 창에서 적용하세요.',
+    layoutNote:
+      'US 및 일본어(JIS) 키보드에 공통으로 있는 왼쪽 문자·숫자 키를 사용합니다.',
+    navigationTitle: '왼손 조작으로 페이지 이동과 확대·축소도.',
+    pageLabel: '이전 / 다음 페이지',
+    zoomLabel: '축소 / 확대',
     customizeTitle: '내 손에 맞는 키 조합으로.',
     customizeDescription:
       '프리셋을 고른 뒤, 자주 쓰는 기능을 취향에 맞게 바꾸세요. 앱 설정에서 각 키 조합을 변경할 수 있습니다.',
     referenceTitle: '도구 전환',
     presetsLabel: '단축키 프리셋 예시 전환',
     presets: {
+      leftHanded: {
+        label: '왼손 조작',
+        description:
+          '왼쪽 키로 조작하세요. Q, W, E, R로 펜, 지우개, 형광펜, 올가미를 전환합니다.',
+      },
       standard: {
         label: '표준',
         description: 'Command 키와 함께 눌러 도구를 바꿉니다.',
@@ -608,13 +669,17 @@ export const ko: SiteCopy = {
       },
     },
     tools: {
+      shape: '도형으로 전환',
+      selection: '선택 도구로 전환',
+      laser: '레이저 포인터로 전환',
+
       pen: '펜으로 전환',
       eraser: '지우개로 전환',
       highlighter: '형광펜으로 전환',
       lasso: '올가미로 전환',
     },
     note: '앱에 제공되는 프리셋 예시입니다. 노트 편집 화면에서 텍스트 입력란에 입력 중이 아닐 때 사용할 수 있습니다.',
-    commonLabel: '두 프리셋의 공통 기능',
+    optionsLabel: '선택한 프리셋의 기능',
     keys: {
       left: '왼쪽 화살표',
       right: '오른쪽 화살표',

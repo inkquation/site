@@ -2045,3 +2045,83 @@ html:lang(zh) .paper-demo-controls > span,
 html:lang(ko) .paper-demo-controls > span {
   flex-basis: 100%;
 }
+
+.shortcut-tabs {
+  display: block;
+}
+.shortcut-setup {
+  margin-bottom: 28px;
+}
+.shortcut-setup h3,
+.shortcut-navigation h3 {
+  margin: 0 0 10px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+.shortcut-setup p {
+  margin: 8px 0;
+  color: #63738c;
+  font-size: 1rem;
+}
+.shortcut-navigation {
+  margin-top: 32px;
+}
+.shortcut-navigation dl {
+  margin: 16px 0 0;
+}
+.shortcut-navigation dl > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block: 16px;
+}
+.shortcut-navigation dt {
+  font-size: 0.875rem;
+  color: #63738c;
+}
+.shortcut-navigation dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.shortcut-navigation .shortcut-keys {
+  font-size: 1rem;
+}
+.shortcut-navigation .shortcut-keys > span {
+  min-width: 28px;
+  min-height: 30px;
+  padding-inline: 6px;
+}
+.shortcut-reference .shortcut-preset:first-child {
+  flex: 1;
+}
+.shortcut-reference .shortcut-preset {
+  padding-inline: 8px;
+}
+.shortcut-active-preset {
+  margin: 46px 0 14px;
+  color: #52698c;
+  font-size: 0.875rem;
+}
+.shortcut-more {
+  margin-top: 0;
+}
+@media (max-width: 600px) {
+  .shortcut-reference .shortcut-presets {
+    flex-wrap: wrap;
+  }
+  .shortcut-reference .shortcut-preset {
+    flex: 1 1 6rem;
+    min-height: 44px;
+  }
+  .shortcut-reference .shortcut-preset:first-child {
+    flex: 1 1 6rem;
+  }
+  .shortcut-more {
+    margin-top: 0;
+  }
+}

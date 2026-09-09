@@ -72,7 +72,8 @@ for (const { locale, route, file } of routes) {
     const reference = attrs.href ?? attrs.src;
     if (tag === 'link' && attrs.rel === 'alternate' && attrs.hreflang)
       alternates.set(attrs.hreflang, new URL(attrs.href, origin).href);
-    if (tag === 'link' && attrs.rel === 'canonical') canonical = new URL(attrs.href, origin).href;
+    if (tag === 'link' && attrs.rel === 'canonical')
+      canonical = new URL(attrs.href, origin).href;
     if (tag === 'a' && attrs.hreflang) {
       languageLinks.set(attrs.hreflang, attrs.href);
       assert.equal(
@@ -143,6 +144,51 @@ for (const { locale, route, file } of routes) {
         );
     }
   } else {
+    const shortcuts = html.match(
+      /<section\b[^>]*id="shortcuts"[^>]*>([\s\S]*?)<\/section>/,
+    )?.[1];
+    assert(shortcuts, `${file}: missing shortcut guide`);
+    const selectedTab = shortcuts.match(
+      /<button\b(?=[^>]*role="tab")(?=[^>]*aria-selected="true")[^>]*>([\s\S]*?)<\/button>/,
+    )?.[1];
+    const leftHandedLabel =
+      locale === 'en'
+        ? 'Left-Hand Operation'
+        : locale === 'ko'
+          ? '왼손 조작'
+          : '左手操作';
+    assert(
+      selectedTab?.includes(leftHandedLabel),
+      `${file}: left-hand preset should be selected initially`,
+    );
+    assert.equal(
+      [...shortcuts.matchAll(/role="tab"/g)].length,
+      3,
+      `${file}: missing shortcut presets`,
+    );
+    // Expected keys are checked against the native app's leftHandedOverrides.
+    for (const key of [
+      'Q',
+      'W',
+      'E',
+      'R',
+      'A',
+      'S',
+      'D',
+      'C',
+      'V',
+      'Z',
+      'X',
+      'Command + 1',
+      'Command + 2',
+      'Command + 3',
+      'Command + 4',
+    ]) {
+      assert(
+        shortcuts.includes(`aria-label="${key}"`),
+        `${file}: missing left-hand shortcut ${key}`,
+      );
+    }
     assert(html.includes('id="ai"'), `${file}: missing AI section`);
     assert(
       html.includes(`${expectedLanguages.get(locale)}privacy/#ai`),

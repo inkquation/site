@@ -51,7 +51,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
 - `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves the privacy page.
 - `app/(ja)`, `app/(en)`, `app/(zh-Hans)`, `app/(zh-Hant)`, `app/(zh-HK)`, and `app/(ko)`: language-specific home and privacy routes.
-- `app/shortcut-guide.tsx`: shortcut feature section and standard/direct preset comparison.
+- `app/shortcut-guide.tsx`: shortcut feature section and left-hand/standard/direct preset comparison.
 - `app/paper-demo.tsx`: accessible paper-style tabs (grid, ruled, plain).
 - `app/globals.css`: visual tokens, desktop and mobile layouts, reduced-motion handling.
 - `app/site-layout.tsx` and the route-group layouts: server-rendered HTML language, localized title/description, alternate-language links, and favicon metadata. Separate root layouts let each route render the correct language before JavaScript loads.
@@ -78,7 +78,7 @@ The copy was checked against the local app source on 2026-09-07. The existing si
 
 Features described in the proposal are grounded in:
 
-- `../inkquation/inkquation/KeyboardShortcutSettings.swift`: exact standard/direct preset bindings and per-tool command contexts.
+- `../inkquation/inkquation/KeyboardShortcutSettings.swift`: exact left-hand/standard/direct preset bindings and per-tool command contexts.
 - `../inkquation/inkquation/EditorKeyboardController.swift`: text-input exclusion, temporary laser restoration, and the one-second Command hint overlay.
 - `../inkquation/inkquation/ShapeTool.swift`: line, rectangle, ellipse, six line patterns, single/double lines.
 - `../inkquation/inkquation/PageStyle.swift`: plain, grid, ruled; A and B paper sizes.
@@ -96,7 +96,9 @@ Before publication, replace the distribution contact section with a verified dow
 
 ## Shortcut presentation
 
-The main message is “ペンで書く。キーで操る。” The keyboard section follows the hero, before the general feature list. Its tabs compare four real tool bindings in the standard and direct presets. They only change the website's reference display; they do not configure the app or capture browser keyboard shortcuts. Arrow-key color changes, size controls, and hold-to-use Space laser behavior are common to both presets. Context restrictions appear next to the examples.
+The main message is “ペンで書く。キーで操る。” The keyboard section follows the hero, before the general feature list. Its tabs compare all seven tool bindings in Left-Hand Operation, Standard, and Single-key tool switching, with Left-Hand Operation selected initially. Selecting a tab also changes the color and size key examples: C/V and Z/X for Left-Hand Operation, arrow keys and −/+ for the other two. Holding Space for a temporary laser pointer is shared by all three. The selected preset is named above these examples. These tabs only change the website's reference display; they do not configure the app or capture keyboard shortcuts.
+
+All six languages explain how to apply Left-Hand Operation in Settings → Shortcuts and note the shared left-side letters and numbers on US/JIS layouts. A separately labelled Left-Hand Operation guide shows previous/next page (⌘1/⌘2) and zoom out/in (⌘3/⌘4). Individual customization, text-field exclusions, and the one-second Command hint remain documented. Bindings and preset names were checked against `../inkquation/inkquation/KeyboardShortcutSettings.swift`, the app's string catalogs, and `../inkquation/LEFT_HAND_SHORTCUTS.md`.
 
 Japanese product copy was edited using the `japanese-technical-writing` skill. Command bindings, applicable tools, and the one-second hint delay were checked against the source. This website change does not constitute a new runtime test of those app features.
 

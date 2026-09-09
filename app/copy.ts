@@ -40,15 +40,27 @@ const ja = {
     expand: '拡大して見る',
   },
   shortcuts: {
-    title: ['ツールも、色も、', 'キーボードから。'],
+    title: ['ペンは右手に。', '操作は左手で。'],
     description:
-      'ペンと消しゴムの切り替えから、色・線幅の調整まで。よく使う操作に、ショートカットを用意しています。',
+      '「左手操作」プリセットを追加しました。右手で書きながら、左手でツールの切り替え、色・線幅の調整、ページ移動や拡大縮小を操作できます。',
+    setupTitle: '設定で「左手操作」を適用。',
+    setupDescription:
+      'Inkquationの「設定」→「ショートカット」で「左手操作」を選び、確認画面で適用します。',
+    layoutNote: 'US・JIS配列に共通する左側の英数字キーを使います。',
+    navigationTitle: '「左手操作」なら、ページ移動も。',
+    pageLabel: '前のページ／次のページ',
+    zoomLabel: '縮小／拡大',
     customizeTitle: '自分の手になじむ割り当てに。',
     customizeDescription:
       'プリセットを選んで、よく使う操作だけ自分好みに。設定画面でキーの組み合わせを変更できます。',
     referenceTitle: 'ツールの切り替え',
     presetsLabel: 'ショートカットのプリセット例を切り替える',
     presets: {
+      leftHanded: {
+        label: '左手操作',
+        description:
+          '左側のキーだけで操作。Q・W・E・Rでペン、消しゴム、ハイライト、投げ縄を切り替えます。',
+      },
       standard: {
         label: '標準',
         description: 'Commandキーと組み合わせて、ツールを切り替えます。',
@@ -59,13 +71,17 @@ const ja = {
       },
     },
     tools: {
+      shape: '図形に切り替える',
+      selection: '選択ツールに切り替える',
+      laser: 'レーザーに切り替える',
+
       pen: 'ペンに切り替える',
       eraser: '消しゴムに切り替える',
       highlighter: 'ハイライトに切り替える',
       lasso: '投げ縄に切り替える',
     },
     note: 'アプリのプリセット例です。ノートの編集画面で、テキスト入力欄に入力していないときに使えます。',
-    commonLabel: '両方のプリセットに共通する操作',
+    optionsLabel: '選択したプリセットの操作',
     keys: {
       left: '左矢印',
       right: '右矢印',
@@ -250,15 +266,28 @@ const en: SiteCopy = {
     expand: 'View full size',
   },
   shortcuts: {
-    title: ['Your tools. Your colors.', 'At your fingertips.'],
+    title: ['Draw with your right.', 'Control with your left.'],
     description:
-      'Switch between pen and eraser, change colors, or adjust stroke width. Keyboard shortcuts put the tools you use most within reach.',
+      'The new Left-Hand Operation preset keeps your right hand drawing while your left switches tools, changes colors and stroke width, turns pages, and zooms.',
+    setupTitle: 'Apply Left-Hand Operation in Settings.',
+    setupDescription:
+      'In Inkquation, open Settings → Shortcuts, choose Left-Hand Operation, then confirm to apply it.',
+    layoutNote:
+      'Uses letter and number keys on the left side shared by US and Japanese (JIS) keyboard layouts.',
+    navigationTitle: 'Left-Hand Operation: pages and zoom, too.',
+    pageLabel: 'Previous / next page',
+    zoomLabel: 'Zoom out / in',
     customizeTitle: 'Make the keys feel like yours.',
     customizeDescription:
       'Start with a preset, then change the shortcuts you use most. Edit individual key combinations in the app’s settings.',
     referenceTitle: 'Switching tools',
     presetsLabel: 'Compare shortcut preset examples',
     presets: {
+      leftHanded: {
+        label: 'Left-Hand Operation',
+        description:
+          'Keep controls on the left. Q, W, E, and R switch to the pen, eraser, highlighter, and lasso.',
+      },
       standard: {
         label: 'Standard',
         description: 'Combine letter keys with Command to switch tools.',
@@ -269,13 +298,17 @@ const en: SiteCopy = {
       },
     },
     tools: {
+      shape: 'Switch to shapes',
+      selection: 'Switch to selection tool',
+      laser: 'Switch to laser pointer',
+
       pen: 'Switch to pen',
       eraser: 'Switch to eraser',
       highlighter: 'Switch to highlighter',
       lasso: 'Switch to lasso',
     },
     note: 'Examples from the app’s presets. Use these shortcuts in the note editor when you are not typing in a text field.',
-    commonLabel: 'Actions shared by both presets',
+    optionsLabel: 'Actions for the selected preset',
     keys: {
       left: 'Left arrow',
       right: 'Right arrow',
