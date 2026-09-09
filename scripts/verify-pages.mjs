@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
+import locales from '../app/locales.json' with { type: 'json' };
+import policy from '../app/privacy-policy.json' with { type: 'json' };
 import { contactEmail } from '../lib/contact-email.mjs';
 
 const output = path.resolve('dist/client');
@@ -14,12 +16,18 @@ const prefix = `${basePath}/`;
 const manifest = JSON.parse(
   await readFile('dist/server/vinext-prerender.json', 'utf8'),
 );
-const routes = [
-  { locale: 'ja', route: '/', file: 'index.html' },
-  { locale: 'en', route: '/en', file: 'en/index.html' },
-  { locale: 'ja', route: '/privacy', file: 'privacy/index.html' },
-  { locale: 'en', route: '/en/privacy', file: 'en/privacy/index.html' },
-];
+const routes = Object.entries(locales).flatMap(([locale, { path: root }]) => [
+  {
+    locale,
+    route: root === '/' ? '/' : root.slice(0, -1),
+    file: `${root.slice(1)}index.html`,
+  },
+  {
+    locale,
+    route: `${root}privacy`,
+    file: `${root.slice(1)}privacy/index.html`,
+  },
+]);
 
 for (const { locale, route, file } of routes) {
   const isPrivacy = route.endsWith('/privacy');
@@ -49,6 +57,8 @@ for (const { locale, route, file } of routes) {
     origin,
   );
   const languageLinks = new Map();
+  const alternates = new Map();
+  let canonical;
   let checked = 0;
 
   for (const match of html.matchAll(/<(a|link|img|script)\b[^>]*>/g)) {
@@ -60,6 +70,9 @@ for (const { locale, route, file } of routes) {
       ]),
     );
     const reference = attrs.href ?? attrs.src;
+    if (tag === 'link' && attrs.rel === 'alternate' && attrs.hreflang)
+      alternates.set(attrs.hreflang, new URL(attrs.href, origin).href);
+    if (tag === 'link' && attrs.rel === 'canonical') canonical = new URL(attrs.href, origin).href;
     if (tag === 'a' && attrs.hreflang) {
       languageLinks.set(attrs.hreflang, attrs.href);
       assert.equal(
@@ -88,13 +101,55 @@ for (const { locale, route, file } of routes) {
     checked++;
   }
 
-  assert.deepEqual(
-    languageLinks,
-    new Map([
-      ['ja', `${prefix}${isPrivacy ? 'privacy/' : ''}`],
-      ['en', `${prefix}en/${isPrivacy ? 'privacy/' : ''}`],
+  const expectedLanguages = new Map(
+    Object.entries(locales).map(([language, { path: root }]) => [
+      language,
+      `${basePath}${root}${isPrivacy ? 'privacy/' : ''}`,
     ]),
   );
+  assert.deepEqual(
+    languageLinks,
+    expectedLanguages,
+    `${file}: language navigation`,
+  );
+  const expectedAlternates = new Map(
+    [...expectedLanguages, ['x-default', expectedLanguages.get('ja')]].map(
+      ([language, url]) => [language, new URL(url, origin).href],
+    ),
+  );
+  assert.deepEqual(
+    alternates,
+    expectedAlternates,
+    `${file}: alternate metadata`,
+  );
+  assert.equal(canonical, pageUrl.href, `${file}: canonical URL`);
+  if (isPrivacy) {
+    for (const section of policy[locale].sections) {
+      assert(
+        html.includes(`id="${section.id}"`),
+        `${file}: missing policy section ${section.id}`,
+      );
+      for (const paragraph of section.paragraphs)
+        assert(
+          html.includes(
+            paragraph
+              .replaceAll('&', '&amp;')
+              .replaceAll('"', '&quot;')
+              .replaceAll("'", '&#x27;')
+              .replaceAll('<', '&lt;')
+              .replaceAll('>', '&gt;'),
+          ),
+          `${file}: missing translated policy paragraph`,
+        );
+    }
+  } else {
+    assert(html.includes('id="ai"'), `${file}: missing AI section`);
+    assert(
+      html.includes(`${expectedLanguages.get(locale)}privacy/#ai`),
+      `${file}: wrong AI privacy link`,
+    );
+    assert(html.includes('MCP'), `${file}: missing AI connection explanation`);
+  }
   assert(checked > 0, `${file}: no local assets found`);
   console.log(
     `${file}: ${locale}, language links, and ${checked} local references OK`,

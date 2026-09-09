@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { siteCopy, type Locale } from './copy';
 import { siteOrigin, sitePath } from '../site.config';
+import { localePath, languageAlternates } from './locale-paths';
 import './globals.css';
 
 export function localeMetadata(locale: Locale): Metadata {
@@ -8,12 +9,8 @@ export function localeMetadata(locale: Locale): Metadata {
     ...siteCopy[locale].meta,
     metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
     alternates: {
-      canonical: sitePath(locale === 'ja' ? '/' : '/en/'),
-      languages: {
-        ja: sitePath('/'),
-        en: sitePath('/en/'),
-        'x-default': sitePath('/'),
-      },
+      canonical: localePath(locale),
+      languages: languageAlternates(),
     },
     icons: {
       icon: sitePath('/assets/inkquation-icon.png'),

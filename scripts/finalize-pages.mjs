@@ -1,5 +1,6 @@
 import { mkdir, rename, rmdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import locales from '../app/locales.json' with { type: 'json' };
 
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
   /\/+$/,
@@ -15,8 +16,12 @@ if (basePath) {
 }
 
 // GitHub Pages resolves directory URLs to index.html. Keep the RSC payload at
-// en.rsc; language links use full document navigation, not client-side routing.
-for (const route of ['en', 'privacy', 'en/privacy']) {
+// each route URL; language links use full document navigation, not client-side routing.
+const routes = Object.values(locales)
+  .flatMap(({ path: route }) => [route, `${route}privacy/`])
+  .filter((route) => route !== '/')
+  .map((route) => route.slice(1, -1));
+for (const route of routes) {
   await mkdir(`dist/client/${route}`, { recursive: true });
   await rename(`dist/client/${route}.html`, `dist/client/${route}/index.html`);
 }

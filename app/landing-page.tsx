@@ -1,5 +1,8 @@
 /* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
+import LanguageSwitch from './language-switch';
+import { localePath } from './locale-paths';
+import policy from './privacy-policy.json';
 import PaperDemo from './paper-demo';
 import { siteCopy, type Locale, type SiteCopy } from './copy';
 import TextLines from './text-lines';
@@ -14,6 +17,7 @@ import {
   Monitor,
   PenLine,
   Square,
+  Sparkles,
 } from 'lucide-react';
 
 function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
@@ -75,29 +79,12 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             <nav className="main-navigation" aria-label={copy.nav.main}>
               <a href="#shortcuts">{copy.nav.shortcuts}</a>
               <a href="#features">{copy.nav.features}</a>
+              <a href="#ai">{copy.nav.ai}</a>
               <a className="nav-contact" href="#get-app">
                 {copy.nav.distribution} <ArrowUpRight size={15} />
               </a>
             </nav>
-            <nav className="language-switch" aria-label={copy.nav.language}>
-              <a
-                href={sitePath('/')}
-                lang="ja"
-                hrefLang="ja"
-                aria-current={locale === 'ja' ? 'page' : undefined}
-              >
-                日本語
-              </a>
-              <span aria-hidden="true">/</span>
-              <a
-                href={sitePath('/en/')}
-                lang="en"
-                hrefLang="en"
-                aria-current={locale === 'en' ? 'page' : undefined}
-              >
-                English
-              </a>
-            </nav>
+            <LanguageSwitch locale={locale} label={copy.nav.language} />
           </div>
         </div>
       </header>
@@ -128,6 +115,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <p className="platform-line">
                 <Monitor size={15} /> {copy.hero.platform}
               </p>
+              <a className="ai-announcement" href="#ai">
+                <Sparkles size={16} aria-hidden="true" /> {copy.hero.aiLink}
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
             </div>
             <NotebookPreview copy={copy.screenshot} />
           </div>
@@ -212,6 +203,47 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </div>
         </section>
         <section
+          className="ai-section container"
+          id="ai"
+          aria-labelledby="ai-title"
+        >
+          <div className="ai-copy">
+            <p className="eyebrow section-eyebrow">{copy.ai.eyebrow}</p>
+            <h2 id="ai-title">
+              <TextLines lines={copy.ai.title} />
+            </h2>
+            <p className="ai-description">{copy.ai.description}</p>
+            <ul className="ai-capabilities">
+              {copy.ai.capabilities.map((capability) => (
+                <li key={capability}>{capability}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="ai-setup">
+            <h3>{copy.ai.setupTitle}</h3>
+            <ol className="workflow-steps">
+              {copy.ai.steps.map((step, index) => (
+                <li key={step.title}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h4>{step.title}</h4>
+                    <p>{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="ai-privacy">
+            <p>{copy.ai.privacy}</p>
+            <a
+              className="privacy-text-link"
+              href={`${localePath(locale, 'privacy/')}#ai`}
+            >
+              {copy.ai.privacyLink}
+            </a>
+          </div>
+        </section>
+        <section
           className="workflow-section"
           id="workflow"
           aria-labelledby="workflow-title"
@@ -219,7 +251,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <div className="container workflow-inner">
             <div className="workflow-copy">
               <p className="eyebrow section-eyebrow">
-                03 / YOUR WAY OF THINKING
+                04 / YOUR WAY OF THINKING
               </p>
               <h2 id="workflow-title">
                 <TextLines lines={copy.workflow.title} />
@@ -300,9 +332,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </a>
         <p>{copy.footer.tagline}</p>
         <div>
-          <a href={sitePath(locale === 'ja' ? '/privacy/' : '/en/privacy/')}>
-            {locale === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy'}
-          </a>
+          <a href={localePath(locale, 'privacy/')}>{policy[locale].title}</a>
           <ContactButton variant="footer" label={copy.footer.contact} />
           <span>© 2026 Inkquation</span>
         </div>

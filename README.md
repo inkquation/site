@@ -1,6 +1,6 @@
 # Inkquation website concept
 
-A Japanese/English single-page website for Inkquation, with a local preview and a static GitHub Pages deployment.
+A multilingual website for Inkquation, with a local preview and a static GitHub Pages deployment.
 
 ## Run locally
 
@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, and English at `/en/`. The header links switch languages; each URL can be opened or shared directly.
+Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, English at `/en/`, Simplified Chinese at `/zh-Hans/`, Traditional Chinese (Taiwan) at `/zh-Hant/`, Traditional Chinese (Hong Kong) at `/zh-HK/`, and Korean at `/ko/`. Each language includes its own `privacy/` page. The header links switch languages; each URL can be opened or shared directly.
 
 ```sh
 npm run build
@@ -22,16 +22,16 @@ The default production build retains the Vinext / Cloudflare project structure. 
 
 ## GitHub Pages
 
-The [Pages workflow](.github/workflows/pages.yml) publishes `main` through GitHub Actions. It also supports manual runs. Pages must use **GitHub Actions** as its publishing source. The workflow obtains the site path and origin from `actions/configure-pages`, builds both languages, checks their links and assets, and deploys only `dist/client`.
+The [Pages workflow](.github/workflows/pages.yml) publishes `main` through GitHub Actions. It also supports manual runs. Pages must use **GitHub Actions** as its publishing source. The workflow obtains the site path and origin from `actions/configure-pages`, builds all six languages and their privacy pages, checks their links and assets, and deploys only `dist/client`.
 
-The production site uses the custom domain [inkquation.app](https://inkquation.app/), with Japanese at `/` and English at `/en/`. Its base path is empty. For a matching local export and verification:
+The production site uses the custom domain [inkquation.app](https://inkquation.app/), with the same six language paths listed above. Its base path is empty. For a matching local export and verification:
 
 ```sh
 NEXT_PUBLIC_BASE_PATH='' NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.app npm run build:pages
 NEXT_PUBLIC_BASE_PATH='' NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.app npm run verify:pages
 ```
 
-Changing the Pages domain does not rewrite an existing export: CSS, JavaScript, image URLs, and language links are generated at build time. After a domain change, publish a new commit and verify both public language URLs. An export for the former `/site/` path will leave those references broken on the custom domain.
+Changing the Pages domain does not rewrite an existing export: CSS, JavaScript, image URLs, and language links are generated at build time. After a domain change, publish a new commit and verify all public language URLs. An export for the former `/site/` path will leave those references broken on the custom domain.
 
 For an export matching the repository's default Pages URL instead:
 
@@ -40,15 +40,17 @@ NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io
 NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io npm run verify:pages
 ```
 
-The export contains `index.html` and `en/index.html`, so both language URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places the English HTML at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
+The export contains an `index.html` for every language home and privacy page, so all 12 URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places each localized HTML file at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
 
 The workflow follows [GitHub's custom Pages workflow guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). It uses the built-in workflow token and pins official Actions to commit SHAs. The synthetic notebook in `reference/` and server build files are outside the deployed directory.
 
 ## Edit
 
 - `app/landing-page.tsx`: shared page structure, navigation, language switch, and actual editor screenshot.
-- `app/copy.ts`: Japanese and English copy with a shared TypeScript shape.
-- `app/(ja)/page.tsx` and `app/(en)/en/page.tsx`: Japanese `/` and English `/en` routes.
+- `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
+- `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
+- `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves the privacy page.
+- `app/(ja)`, `app/(en)`, `app/(zh-Hans)`, `app/(zh-Hant)`, `app/(zh-HK)`, and `app/(ko)`: language-specific home and privacy routes.
 - `app/shortcut-guide.tsx`: shortcut feature section and standard/direct preset comparison.
 - `app/paper-demo.tsx`: accessible paper-style tabs (grid, ruled, plain).
 - `app/globals.css`: visual tokens, desktop and mobile layouts, reduced-motion handling.
@@ -97,3 +99,13 @@ Before publication, replace the distribution contact section with a verified dow
 The main message is “ペンで書く。キーで操る。” The keyboard section follows the hero, before the general feature list. Its tabs compare four real tool bindings in the standard and direct presets. They only change the website's reference display; they do not configure the app or capture browser keyboard shortcuts. Arrow-key color changes, size controls, and hold-to-use Space laser behavior are common to both presets. Context restrictions appear next to the examples.
 
 Japanese product copy was edited using the `japanese-technical-writing` skill. Command bindings, applicable tools, and the one-second hint delay were checked against the source. This website change does not constitute a new runtime test of those app features.
+
+## Chinese, Korean, and AI integration (2026-09-09)
+
+The site follows the app's six language choices, including regional written Chinese terminology and Korean. Localized copy covers the feature explanations, shortcut and paper tabs, AI setup steps, contact actions, image descriptions, and accessibility labels. The editor screenshot remains an unaltered Japanese UI capture, identified in every other language's caption. Native system font stacks support each writing system; no remote fonts or translation services are added.
+
+The policy translations are copied from `../inkquation/inkquation/PrivacyPolicy.json`; existing Japanese and English policy text is unchanged. The site uses these translations for each localized policy page and footer label. App-side links that currently open the English policy can be updated after these new public URLs are deployed.
+
+The hero announcement and AI section describe the implemented local MCP connection: reading an open page or lasso selection as an image, inserting a prepared PNG, inspecting the result, and undoing an insertion. Setup requires enabling AI connections (off by default), copying the configuration to a compatible external AI app on the Mac, and keeping Inkquation open. The copy explains that a cloud-backed AI may send read content to its provider. Claims were checked against `../inkquation/mcp/README.md` and the bundled policy. The site does not run an AI client or configure the app itself.
+
+`verify:pages` checks all 12 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.

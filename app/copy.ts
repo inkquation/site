@@ -1,10 +1,13 @@
-export type Locale = 'ja' | 'en';
+import locales from './locales.json';
+import { zhHans, zhHant, zhHK, ko } from './translations';
+
+export type Locale = keyof typeof locales;
 
 const ja = {
   meta: {
     title: 'Inkquation — ペンで書く。キーで操る。',
     description:
-      'Inkquation は、手書きとキーボードショートカットを組み合わせるMac専用ノートアプリ。ツールの切り替え、色や線幅の調整をキーで操作。1キーでのツール切り替えや、割り当てのカスタマイズにも対応しています。',
+      'Inkquation は、手書きとキーボードショートカットを組み合わせるMac専用ノートアプリ。ツールの切り替え、色や線幅の調整をキーで操作。キーのカスタマイズと、外部AIアプリとのMCP連携にも対応しています。',
   },
   nav: {
     skip: '本文へ移動',
@@ -14,6 +17,7 @@ const ja = {
     features: 'できること',
     distribution: '配布について',
     language: '表示言語',
+    ai: 'AI連携',
   },
   hero: {
     lead: 'ペンで書く。',
@@ -27,6 +31,7 @@ const ja = {
     primary: 'ショートカットを見る',
     secondary: '使い方を見る',
     platform: 'macOS のための手書きノートアプリ',
+    aiLink: 'AI連携に対応しました',
   },
   screenshot: {
     open: 'Inkquation の実際の編集画面を拡大して開く',
@@ -105,6 +110,38 @@ const ja = {
       details: ['サムネイル', 'ブックマーク'],
     },
   },
+  ai: {
+    eyebrow: '03 / AI連携',
+    title: ['手書きのノートを、', 'AIと一緒に。'],
+    description:
+      'MCP（AIアプリとつなぐための仕組み）に対応。外部AIアプリから、開いているページや投げ縄で選んだ範囲を画像として読み取り、用意したPNG画像をノートに追加できます。',
+    capabilities: [
+      'ページ・選択範囲の読み取り',
+      'PNG画像の追加',
+      '追加結果の確認・取り消し',
+    ],
+    setupTitle: '設定から、AIアプリにつなぐ。',
+    steps: [
+      {
+        title: 'AI接続を有効にする',
+        description:
+          'Inkquationの「設定」→「AI接続」で許可します。初期状態では無効です。',
+      },
+      {
+        title: '接続設定をコピーする',
+        description:
+          '設定画面の接続設定を、Mac上のMCP対応AIアプリに登録します。',
+      },
+      {
+        title: 'ノートを開いて、AIに依頼する',
+        description:
+          'Inkquationを開いたまま、接続先のAIアプリから読み取りや画像の追加を依頼します。',
+      },
+    ],
+    privacy:
+      'AIの利用には外部AIアプリの設定と、そのサービスのアカウント等が必要です。クラウド型のAIを使う場合、読み取ったノートの内容が接続先のサービスに送信されることがあります。',
+    privacyLink: 'AI接続とプライバシーについて',
+  },
   workflow: {
     title: ['自由に書いて、', 'あとから整える。'],
     description: [
@@ -180,7 +217,7 @@ const en: SiteCopy = {
   meta: {
     title: 'Inkquation — Write with a pen. Switch with a key.',
     description:
-      'Handwritten notes meet keyboard shortcuts on Mac. Switch tools, change colors, and adjust stroke width from your keyboard. Choose single-key tool switching or customize shortcuts to suit your workflow.',
+      'Handwritten notes meet keyboard shortcuts on Mac. Switch tools, change colors, and adjust stroke width from your keyboard. Customize shortcuts and connect an external AI app through MCP to work with your notes.',
   },
   nav: {
     skip: 'Skip to content',
@@ -190,6 +227,7 @@ const en: SiteCopy = {
     features: 'Features',
     distribution: 'Get Inkquation',
     language: 'Language',
+    ai: 'AI integration',
   },
   hero: {
     lead: 'Write with a pen.',
@@ -203,6 +241,7 @@ const en: SiteCopy = {
     primary: 'Explore the shortcuts',
     secondary: 'See how it works',
     platform: 'A handwriting notebook, made for macOS',
+    aiLink: 'Now with AI integration',
   },
   screenshot: {
     open: 'Open the full-size Inkquation editor screenshot',
@@ -282,6 +321,38 @@ const en: SiteCopy = {
       details: ['Page thumbnails', 'Bookmarks'],
     },
   },
+  ai: {
+    eyebrow: '03 / AI INTEGRATION',
+    title: ['Bring your handwritten', 'notes into the conversation.'],
+    description:
+      'Connect an external AI app through MCP, a protocol for connecting AI apps to tools. It can read an open page or lasso selection as an image and add a prepared PNG image to your notes.',
+    capabilities: [
+      'Read pages and selections',
+      'Insert PNG images',
+      'Inspect and undo insertions',
+    ],
+    setupTitle: 'Connect your AI app in Settings.',
+    steps: [
+      {
+        title: 'Enable AI connections',
+        description:
+          'In Inkquation, open Settings → AI Connection and allow connections. This is off by default.',
+      },
+      {
+        title: 'Copy the connection configuration',
+        description:
+          'Add the configuration from Settings to an MCP-compatible AI app running on your Mac.',
+      },
+      {
+        title: 'Open a note and ask your AI app',
+        description:
+          'Keep Inkquation open, then ask the connected AI app to read a page or insert an image.',
+      },
+    ],
+    privacy:
+      'Set up an external AI app and any account required by its service. If you use a cloud-based AI, the note content it reads may be sent to that service.',
+    privacyLink: 'About AI connections and privacy',
+  },
   workflow: {
     title: ['Write freely.', 'Organize as you go.'],
     description: [
@@ -354,4 +425,11 @@ const en: SiteCopy = {
   },
 };
 
-export const siteCopy: Record<Locale, SiteCopy> = { ja, en };
+export const siteCopy: Record<Locale, SiteCopy> = {
+  ja,
+  en,
+  'zh-Hans': zhHans,
+  'zh-Hant': zhHant,
+  'zh-HK': zhHK,
+  ko,
+};

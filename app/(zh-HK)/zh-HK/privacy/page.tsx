@@ -1,0 +1,6 @@
+import PrivacyPage, { privacyMetadata } from '../../../privacy-page';
+
+export const metadata = privacyMetadata('zh-HK');
+export default function LocalizedPrivacyPage() {
+  return <PrivacyPage locale="zh-HK" />;
+}
