@@ -13,7 +13,10 @@
     "test:contact": "node --test scripts/contact-email.test.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
-    "format": "oxfmt"
+    "format": "oxfmt",
+    "predev": "node scripts/export-ai-docs.mjs",
+    "prebuild": "node scripts/export-ai-docs.mjs",
+    "prebuild:pages": "node scripts/export-ai-docs.mjs --pages"
   },
   "dependencies": {
     "react": "19.2.6",

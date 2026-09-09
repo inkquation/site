@@ -7,7 +7,7 @@ export const localeEntries = Object.entries(locales) as [
   { label: string; path: `/${string}` },
 ][];
 
-export function localePath(locale: Locale, page: '' | 'privacy/' = '') {
+export function localePath(locale: Locale, page: '' | 'privacy/' | 'ai/' = '') {
   return sitePath(`${locales[locale].path}${page}` as `/${string}`);
 }
 

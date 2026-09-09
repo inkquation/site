@@ -1,0 +1,535 @@
+{
+  "updated": "2026-09-09",
+  "ja": {
+    "title": "AI連携ガイド",
+    "description": "Inkquationを外部AIアプリにつなぎ、ページの読み取りや画像・図形・ペンの線の追加を行うためのガイドです。",
+    "updatedLabel": "内容確認日",
+    "markdownLabel": "Markdown版",
+    "contentsLabel": "このページの内容",
+    "homeLabel": "Inkquationのホームへ",
+    "sections": [
+      {
+        "id": "capabilities",
+        "title": "できることと制限",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquationは、AIアプリがツールを呼び出すための共通の仕組みであるMCPに対応しています。AIは開いているページや投げ縄の選択範囲を画像として読み取り、PNG画像、図形、点列で表すペンの線を追加できます。追加後のページの確認と、条件を満たす操作の取り消しにも対応しています。"
+          },
+          {
+            "type": "paragraph",
+            "text": "図形は塗りつぶしのない通常のペンの線になります。消しゴムや投げ縄で編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
+          }
+        ]
+      },
+      {
+        "id": "connect",
+        "title": "AIアプリにつなぐ",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "同じMac上で、ローカルのMCPサーバーに接続できるAIアプリを用意します。モデルやアカウントは接続先のAIアプリで設定します。InkquationにモデルのAPIキーを登録する必要はありません。",
+              "Inkquationでノートを開き、「設定」→「AI接続」で接続を許可します。初期状態では無効です。",
+              "設定画面でJSONまたはTOMLの接続設定をコピーし、AIアプリの既存設定に追加します。アプリの実行ファイルと接続先のパスはMacごとに異なるため、設定画面の値を使ってください。",
+              "AIアプリを再接続し、Inkquationを開いたまま使います。対象ページを画面に表示してください。AIアプリ側で編集ツールの許可が求められたら、依頼内容を確認して許可します。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "標準の接続にはPythonのインストールや開発用リポジトリは不要です。Inkquationを移動・改名した場合は、接続設定をコピーし直してください。Web版AIサービスのURL入力欄に、このサイトのURLを登録しても接続できません。"
+          }
+        ]
+      },
+      {
+        "id": "prompts",
+        "title": "最初の依頼例",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "「開いているInkquationのページを読んで、内容を説明して。ノートへの追加はまだしないで。」",
+              "「このページの空いている場所に青い円と矢印を追加して。既存の内容に重ならない位置を選び、追加後のページを見せて。」",
+              "「今追加した円と矢印を取り消して。」"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "AIがページを編集する手順",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "`inkquation_list_open_notes`で対象の`note_id`と`page_id`を取得します。`available: true`のページを使います。対象が不明なときはユーザーに確認します。",
+              "`inkquation_get_page`でページ画像、`revision`、論理サイズを読みます。選択範囲を使う場合は、ユーザーが先に投げ縄で選択し、`inkquation_get_selection`を呼び出します。",
+              "既存の内容と重ならない位置を確認し、追加ツールを呼び出します。読み取った値を`expected_revision`に指定し、新しいUUIDを`operation_id`に使います。",
+              "`inkquation_get_page`で結果を確認します。必要なら同じ`operation_id`を指定して`inkquation_undo`を呼び出します。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tools",
+        "title": "ツールと引数",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "接続後の`tools/list`が返す入力スキーマで、利用できるツールと引数を確認してください。追加ツールに共通する必須項目は`note_id`、`page_id`、`expected_revision`、`operation_id`です。以下の「編集共通項目」はこの4項目を指します。"
+          },
+          {
+            "type": "table",
+            "headers": ["ツール", "必須の引数", "動作"],
+            "rows": [
+              [
+                "`inkquation_list_open_notes`",
+                "なし",
+                "開いているノートとページのID、利用可否を取得します。"
+              ],
+              [
+                "`inkquation_get_page`",
+                "`note_id`, `page_id`",
+                "ページのPNG、`revision`、論理サイズなどを取得します。"
+              ],
+              [
+                "`inkquation_get_selection`",
+                "`note_id`, `page_id`",
+                "ユーザーが投げ縄で選択した範囲のPNGを取得します。`revision`はページ全体の値です。"
+              ],
+              [
+                "`inkquation_insert_image`",
+                "編集共通項目と `png_base64`, `x`, `y`, `width`, `height`",
+                "PNGを1枚追加します。標準の接続では画像のURLやローカルパスを渡せません。"
+              ],
+              [
+                "`inkquation_insert_strokes`",
+                "編集共通項目と `strokes`",
+                "点列からペンの線を追加します。"
+              ],
+              [
+                "`inkquation_insert_shapes`",
+                "編集共通項目と `shapes`",
+                "線・長方形・楕円・円・矢印を、通常のペンの線として追加します。"
+              ],
+              [
+                "`inkquation_undo`",
+                "`operation_id`",
+                "条件を満たす直前のAIによる追加を取り消します。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "coordinates",
+        "title": "座標・線・画像の制限",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "座標の原点はページの左下です。右がxの正方向、上がyの正方向です。縮小されたPNGのピクセル数ではなく、読み取り結果の`width`と`height`で示されるページの論理サイズを使います。",
+              "選択範囲のPNGは切り抜き画像です。配置先を決める際は`image_bounds`でページ上の範囲を確認してください。切り抜き画像の左上をページの原点として扱わないでください。",
+              "`shapes`は1回に1〜64項目。`kind`は`line`、`rectangle`、`ellipse`、`circle`、`arrow`です。長方形・楕円・円の`start`と`end`は外接矩形の対角の頂点で、円には縦横が等しい矩形を指定します。矢印は`start`から`end`へ向きます。",
+              "`strokes`も1回に1〜64項目。各項目の`points`には1〜4,096点、1回の呼び出し全体では16,384点まで指定できます。点は直線で結ばれ、1点なら点を描き、始点を末尾に繰り返すと閉じた線になります。曲線は点列に分けて指定します。",
+              "各図形・線には`stroke_width`（0.1〜100のページ単位）と、不透明なsRGB色の`color`（`#RRGGBB`形式）が必要です。線の太さと矢印の先端を含む全体がページ内に収まるようにします。図形・線の各バッチはまとめて1回のUndo対象になります。",
+              "PNGはBase64化する前のデータで1 MiBまでです。`png_base64`に渡し、配置する矩形全体をページ内に収めます。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "examples",
+        "title": "呼び出し例",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "以下はツールに渡す引数のテンプレートです。山括弧の値を実際のID・revisionと新しいUUIDに置き換えてください。座標は例示なので、読み取ったページのサイズと空き領域に合わせて調整します。別の追加操作には別のUUIDを使います。"
+          },
+          {
+            "type": "paragraph",
+            "text": "円と矢印を追加するには、次の引数で`inkquation_insert_shapes`を呼び出します。"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\",\n  \"page_id\": \"<page UUID>\",\n  \"expected_revision\": \"<revision from get_page>\",\n  \"operation_id\": \"<new UUID>\",\n  \"shapes\": [\n    {\n      \"kind\": \"circle\",\n      \"start\": {\n        \"x\": 60,\n        \"y\": 80\n      },\n      \"end\": {\n        \"x\": 160,\n        \"y\": 180\n      },\n      \"stroke_width\": 3,\n      \"color\": \"#1256E0\"\n    },\n    {\n      \"kind\": \"arrow\",\n      \"start\": {\n        \"x\": 180,\n        \"y\": 130\n      },\n      \"end\": {\n        \"x\": 300,\n        \"y\": 130\n      },\n      \"stroke_width\": 3,\n      \"color\": \"#1256E0\"\n    }\n  ]\n}"
+          },
+          {
+            "type": "paragraph",
+            "text": "折れ線を追加するには、次の引数で`inkquation_insert_strokes`を呼び出します。"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\",\n  \"page_id\": \"<page UUID>\",\n  \"expected_revision\": \"<revision from get_page>\",\n  \"operation_id\": \"<new UUID>\",\n  \"strokes\": [\n    {\n      \"points\": [\n        {\n          \"x\": 60,\n          \"y\": 80\n        },\n        {\n          \"x\": 100,\n          \"y\": 120\n        },\n        {\n          \"x\": 140,\n          \"y\": 80\n        }\n      ],\n      \"stroke_width\": 3,\n      \"color\": \"#1256E0\"\n    }\n  ]\n}"
+          }
+        ]
+      },
+      {
+        "id": "recovery",
+        "title": "再試行と取り消し",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "応答が途切れて追加の成否が不明な場合、同じツールに、同じ`operation_id`と完全に同じ引数を渡して再試行します。新しいIDで送り直すと重複するおそれがあります。再試行時に返るのは記録された操作結果で、その後の手動保存やUndoの状態を再確認した結果ではありません。"
+          },
+          {
+            "type": "table",
+            "headers": ["状態", "対処"],
+            "rows": [
+              [
+                "`page_changed`",
+                "ページを読み直し、配置を検討し直します。revisionだけを差し替えて機械的に再実行しないでください。"
+              ],
+              [
+                "`page_unavailable` / `empty_selection`",
+                "Inkquationで対象ページを表示するか、投げ縄で内容を選択してから読み直します。"
+              ],
+              [
+                "`busy`",
+                "手書きや貼り付けなどの処理が終わるのを待ちます。成否が不明な追加の再試行には同じIDと引数を使います。"
+              ],
+              [
+                "`operation_id_reused`",
+                "同じIDに異なる引数を指定しています。再試行なら元のツールと引数を使います。"
+              ],
+              [
+                "`isError: true`, `applied: true`, `persisted: false`",
+                "追加は画面上に反映されていますが、保存を確認できていません。ページを確認し、アプリで保存の再試行やUndoを行います。新しいIDで重ねて追加しないでください。"
+              ],
+              [
+                "`undo_conflict`",
+                "その後の編集やUndo履歴の変更により、MCPからは取り消せません。アプリのUndo操作で履歴を確認します。"
+              ],
+              [
+                "`session_limit`",
+                "1回のAI接続セッションで追加操作が128件に達しています。結果を確認してから設定でAI接続を無効・有効にし、AIアプリを再接続してページを読み直します。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "MCPのUndoは、そのAI操作が直前のUndo対象で、ページも変更されていない場合に限られます。接続を設定から無効にしたり、Inkquationを再起動したりすると、操作IDの記録は引き継がれません。以前の操作はアプリのUndoを確認してください。"
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "接続範囲とプライバシー",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "接続は同じMac上のローカルプロセスとの通信です。このWebサイトは接続方法を案内するもので、ノートを操作するMCPサーバーではありません。接続を許可すると、AIアプリはInkquationで開いている利用可能なページを読み取れます。クラウド型AIを使う場合、読み取った画像が接続先のサービスに送信されることがあります。"
+          },
+          {
+            "type": "paragraph",
+            "text": "読み取り対象を確認して使い、不要になったら「AI接続」を無効にしてください。無効にしても、すでに追加・保存した内容や、外部サービスへ渡したデータは削除されません。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "AI接続とプライバシーの詳細",
+                "href": "/privacy/#ai"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "compatibility",
+        "title": "利用可能な機能の確認",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "このガイドは2026年9月9日時点の実装をもとにしています。アプリの配布状況とは別に、接続先が返す`tools/list`を確認してください。図形や線の追加ツールが表示されない場合は、使用中のInkquationがその機能に対応しているか確認し、アプリの更新後にAIアプリを再接続します。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Inkquationの配布について",
+                "href": "/#get-app"
+              },
+              {
+                "label": "MCPのツール仕様",
+                "href": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "AI integration guide",
+    "description": "Connect an external AI app to Inkquation to read pages and insert images, shapes and pen strokes.",
+    "updatedLabel": "Content checked",
+    "markdownLabel": "Markdown version",
+    "contentsLabel": "On this page",
+    "homeLabel": "Back to Inkquation",
+    "sections": [
+      {
+        "id": "capabilities",
+        "title": "Capabilities and limits",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquation supports MCP, a shared protocol that lets AI apps call tools. A connected AI can read open pages or lasso selections as images, insert PNG images, shapes and pen strokes defined by points, inspect the result, and undo an eligible insertion."
+          },
+          {
+            "type": "paragraph",
+            "text": "Shapes become ordinary pen strokes with outlines and no fill. You can edit them with the eraser and lasso, but there are no dedicated shape dimension controls. Letters and symbols can be drawn as strokes; editable text and LaTeX insertion or compilation are not supported. Page reads return images, not recognized text."
+          }
+        ]
+      },
+      {
+        "id": "connect",
+        "title": "Connect your AI app",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Use an AI app on the same Mac that supports local MCP servers. Configure the model and account in that app. Inkquation does not require a model API key.",
+              "Open a note in Inkquation. In Settings → AI Connection, allow connections. This is off by default.",
+              "Copy the JSON or TOML configuration from Settings and merge it into your AI app’s existing configuration. Executable and connection paths depend on your Mac; use the values shown in Settings.",
+              "Reconnect the AI app and keep Inkquation running. Scroll the target page into view. If your AI app asks to approve editing tools, review the requested action and allow it."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The standard connection needs no Python installation or source checkout. If you move or rename Inkquation, copy its configuration again. Entering this website’s URL into a web AI service’s connection field does not establish a connection."
+          }
+        ]
+      },
+      {
+        "id": "prompts",
+        "title": "Try a request",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "“Read the open Inkquation page and explain its contents. Do not add anything to the note yet.”",
+              "“Add a blue circle and arrow in unused space on this page. Avoid existing content and show me the resulting page.”",
+              "“Undo the circle and arrow you just added.”"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "workflow",
+        "title": "How an AI should edit a page",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Call `inkquation_list_open_notes` to discover the exact `note_id` and `page_id`. Use a page with `available: true`. Ask the user if the intended target is unclear.",
+              "Call `inkquation_get_page` to read the page image, `revision` and logical dimensions. To read a selection, the user must first select content with the lasso; then call `inkquation_get_selection`.",
+              "Choose unused space, then call an insertion tool. Pass the read revision as `expected_revision` and a fresh UUID as `operation_id`.",
+              "Call `inkquation_get_page` to inspect the result. If needed, call `inkquation_undo` with that insertion’s `operation_id`."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tools",
+        "title": "Tools and arguments",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Use the input schemas returned by `tools/list` after connecting to check available tools and arguments. All insertion tools require `note_id`, `page_id`, `expected_revision` and `operation_id`. “Edit fields” below means these four fields."
+          },
+          {
+            "type": "table",
+            "headers": ["Tool", "Required arguments", "Behavior"],
+            "rows": [
+              [
+                "`inkquation_list_open_notes`",
+                "None",
+                "List open notes, page IDs and availability."
+              ],
+              [
+                "`inkquation_get_page`",
+                "`note_id`, `page_id`",
+                "Read a page PNG, revision and logical size."
+              ],
+              [
+                "`inkquation_get_selection`",
+                "`note_id`, `page_id`",
+                "Read the user’s current lasso selection as PNG; revision refers to the whole page."
+              ],
+              [
+                "`inkquation_insert_image`",
+                "Edit fields plus `png_base64`, `x`, `y`, `width`, `height`",
+                "Insert one PNG. The standard connection does not accept image URLs or local file paths."
+              ],
+              [
+                "`inkquation_insert_strokes`",
+                "Edit fields plus `strokes`",
+                "Insert pen strokes from point arrays."
+              ],
+              [
+                "`inkquation_insert_shapes`",
+                "Edit fields plus `shapes`",
+                "Insert lines, rectangles, ellipses, circles and arrows as ordinary pen strokes."
+              ],
+              [
+                "`inkquation_undo`",
+                "`operation_id`",
+                "Undo the latest AI insertion when its Undo conditions still hold."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "coordinates",
+        "title": "Coordinates, strokes and images",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "Coordinates have a bottom-left origin: x increases rightward and y upward. Use the page’s logical `width` and `height` from the read result, not the scaled PNG’s pixel dimensions.",
+              "Selection PNGs are cropped. Use `image_bounds` to locate the crop on the page. Do not treat the crop’s top-left corner as the page origin.",
+              "`shapes` accepts 1–64 items per call. Each `kind` is `line`, `rectangle`, `ellipse`, `circle` or `arrow`. For rectangles, ellipses and circles, `start` and `end` are opposite bounding-box corners. Circles require equal box width and height. Arrows point from `start` to `end`.",
+              "`strokes` also accepts 1–64 items. Each item’s `points` contains 1–4,096 points, with at most 16,384 points per call. Points are joined by straight segments. One point draws a dot; repeat the first point at the end to close a path. Sample curves into points.",
+              "Each shape or stroke requires `stroke_width` (0.1–100 page units) and an opaque sRGB `color` in `#RRGGBB` form. The entire drawing, including stroke thickness and arrowheads, must fit within the page. Each shape or stroke batch is one Undo action.",
+              "PNG data is limited to 1 MiB before Base64 encoding. Pass it in `png_base64` and fit its entire placement rectangle within the page."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "examples",
+        "title": "Example tool arguments",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "These are argument templates. Replace angle-bracket placeholders with actual IDs, the read revision and a fresh UUID. The coordinates are examples: adjust them to the page’s dimensions and unused space. Use a different UUID for each separate insertion."
+          },
+          {
+            "type": "paragraph",
+            "text": "Call `inkquation_insert_shapes` with these arguments to add a circle and arrow."
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\",\n  \"page_id\": \"<page UUID>\",\n  \"expected_revision\": \"<revision from get_page>\",\n  \"operation_id\": \"<new UUID>\",\n  \"shapes\": [\n    {\n      \"kind\": \"circle\",\n      \"start\": {\n        \"x\": 60,\n        \"y\": 80\n      },\n      \"end\": {\n        \"x\": 160,\n        \"y\": 180\n      },\n      \"stroke_width\": 3,\n      \"color\": \"#1256E0\"\n    },\n    {\n      \"kind\": \"arrow\",\n      \"start\": {\n        \"x\": 180,\n        \"y\": 130\n      },\n      \"end\": {\n        \"x\": 300,\n        \"y\": 130\n      },\n      \"stroke_width\": 3,\n      \"color\": \"#1256E0\"\n    }\n  ]\n}"
+          },
+          {
+            "type": "paragraph",
+            "text": "Call `inkquation_insert_strokes` with these arguments to add a polyline."
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\",\n  \"page_id\": \"<page UUID>\",\n  \"expected_revision\": \"<revision from get_page>\",\n  \"operation_id\": \"<new UUID>\",\n  \"strokes\": [\n    {\n      \"points\": [\n        {\n          \"x\": 60,\n          \"y\": 80\n        },\n        {\n          \"x\": 100,\n          \"y\": 120\n        },\n        {\n          \"x\": 140,\n          \"y\": 80\n        }\n      ],\n      \"stroke_width\": 3,\n      \"color\": \"#1256E0\"\n    }\n  ]\n}"
+          }
+        ]
+      },
+      {
+        "id": "recovery",
+        "title": "Retries and Undo",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "If a response is lost and the insertion’s outcome is uncertain, retry the same tool with exactly the same `operation_id` and arguments. A new ID can create a duplicate. Replay returns the recorded result; it does not re-check later manual saves or Undo actions."
+          },
+          {
+            "type": "table",
+            "headers": ["Result", "Next action"],
+            "rows": [
+              [
+                "`page_changed`",
+                "Read the page again and reconsider placement. Do not blindly replace the revision and repeat the edit."
+              ],
+              [
+                "`page_unavailable` / `empty_selection`",
+                "Show the target page in Inkquation or select content with the lasso, then read again."
+              ],
+              [
+                "`busy`",
+                "Wait for drawing, pasting or other editor work to finish. Retry an uncertain insertion with the same ID and arguments."
+              ],
+              [
+                "`operation_id_reused`",
+                "The ID was reused with different arguments. For a retry, use the original tool and arguments."
+              ],
+              [
+                "`isError: true`, `applied: true`, `persisted: false`",
+                "The edit exists in the running app, but its save is unconfirmed. Inspect the page and retry saving or use Undo in the app. Do not insert again with a new ID."
+              ],
+              [
+                "`undo_conflict`",
+                "A later edit or change to Undo history prevents MCP Undo. Review the history with the app’s Undo controls."
+              ],
+              [
+                "`session_limit`",
+                "The AI connection session has reached 128 insertions. Inspect the results, turn AI Connection off and on in Settings, reconnect the AI app, and read the page again."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "MCP Undo is available only while that AI operation is the latest Undo action and its page is unchanged. Operation IDs do not survive disabling AI Connection in Settings or restarting Inkquation. Review earlier operations with the app’s Undo controls."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Connection scope and privacy",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The connection communicates with local processes on the same Mac. This website provides documentation; it is not an MCP server that controls notes. Once allowed, the AI app can read available pages in open Inkquation notes. If the AI uses a cloud model, those images may be sent to its provider."
+          },
+          {
+            "type": "paragraph",
+            "text": "Check which content the AI reads and disable AI Connection when it is no longer needed. Disabling does not remove content already inserted or saved, or data already passed to an external service."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "AI connections and privacy",
+                "href": "/en/privacy/#ai"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "compatibility",
+        "title": "Check available features",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "This guide reflects the implementation checked on September 9, 2026. Check the connected server’s `tools/list` separately from app distribution status. If shape or stroke insertion tools are absent, check that your Inkquation build supports them and reconnect the AI app after updating."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Inkquation availability",
+                "href": "/en/#get-app"
+              },
+              {
+                "label": "MCP tools specification",
+                "href": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+.ai-guide {
+  padding-block: 64px 96px;
+  overflow-wrap: anywhere;
+}
+.ai-guide-heading {
+  max-width: 780px;
+  margin-bottom: 48px;
+}
+.ai-guide h1 {
+  margin-block: 12px 20px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.4;
+}
+.ai-guide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 24px;
+  color: #576273;
+  font-size: 0.875rem;
+}
+.ai-guide a {
+  color: #2551ae;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.ai-guide-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+.ai-guide-toc {
+  position: sticky;
+  top: 112px;
+  border-top: 2px solid var(--primary);
+  padding-top: 16px;
+  font-size: 0.875rem;
+}
+.ai-guide-toc p {
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.ai-guide-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ai-guide-toc li + li {
+  margin-top: 10px;
+}
+.ai-guide-body {
+  min-width: 0;
+  max-width: 820px;
+}
+.ai-guide-body > section {
+  margin-bottom: 48px;
+}
+.ai-guide h2 {
+  margin: 0 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  scroll-margin-top: 100px;
+}
+.ai-guide-body p {
+  margin: 16px 0;
+}
+.ai-guide-body ul,
+.ai-guide-body ol {
+  padding-left: 1.5em;
+  list-style: disc;
+}
+.ai-guide-body ol {
+  list-style: decimal;
+}
+.ai-guide-body li + li {
+  margin-top: 12px;
+}
+.ai-guide code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+}
+.ai-guide pre {
+  overflow-x: auto;
+  padding: 24px;
+  background: #edf1f8;
+  border: 1px solid var(--border);
+  line-height: 1.6;
+  margin-block: 24px;
+  border-radius: 8px;
+}
+.ai-guide-table {
+  overflow-x: auto;
+  margin-block: 24px;
+}
+.ai-guide table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.ai-guide th,
+.ai-guide td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  min-width: 150px;
+}
+.ai-guide th {
+  background: #edf1f8;
+  font-weight: 600;
+}
+.ai-guide td:last-child {
+  min-width: 260px;
+}
+.ai-guide pre:focus-visible,
+.ai-guide-table:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .ai-guide-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .ai-guide-toc {
+    position: static;
+  }
+  .ai-guide {
+    padding-block: 40px 64px;
+  }
+  .ai-guide pre {
+    padding: 16px;
+  }
+}

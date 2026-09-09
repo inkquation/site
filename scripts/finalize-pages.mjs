@@ -1,6 +1,7 @@
 import { mkdir, rename, rmdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import locales from '../app/locales.json' with { type: 'json' };
+import { guideLocales, guideRoute } from '../lib/ai-docs.mjs';
 
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
   /\/+$/,
@@ -17,8 +18,13 @@ if (basePath) {
 
 // GitHub Pages resolves directory URLs to index.html. Keep the RSC payload at
 // each route URL; language links use full document navigation, not client-side routing.
-const routes = Object.values(locales)
-  .flatMap(({ path: route }) => [route, `${route}privacy/`])
+const routes = [
+  ...Object.values(locales).flatMap(({ path: route }) => [
+    route,
+    `${route}privacy/`,
+  ]),
+  ...guideLocales.map(guideRoute),
+]
   .filter((route) => route !== '/')
   .map((route) => route.slice(1, -1));
 for (const route of routes) {
