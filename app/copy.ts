@@ -42,7 +42,7 @@ const ja = {
   shortcuts: {
     title: ['ペンは右手に。', '操作は左手で。'],
     description:
-      '「左手操作」プリセットを追加しました。右手で書きながら、左手でツールの切り替え、色・線幅の調整、ページ移動や拡大縮小を操作できます。',
+      '右手で書きながら、左手でツールの切り替え、色・線幅の調整、ページ移動や拡大縮小を操作できます。',
     setupTitle: '設定で「左手操作」を適用。',
     setupDescription:
       'Inkquationの「設定」→「ショートカット」で「左手操作」を選び、確認画面で適用します。',
@@ -268,7 +268,7 @@ const en: SiteCopy = {
   shortcuts: {
     title: ['Draw with your right.', 'Control with your left.'],
     description:
-      'The new Left-Hand Operation preset keeps your right hand drawing while your left switches tools, changes colors and stroke width, turns pages, and zooms.',
+      'Keep drawing with your right hand while your left switches tools, changes colors and stroke width, turns pages, and zooms.',
     setupTitle: 'Apply Left-Hand Operation in Settings.',
     setupDescription:
       'In Inkquation, open Settings → Shortcuts, choose Left-Hand Operation, then confirm to apply it.',

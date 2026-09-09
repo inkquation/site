@@ -39,7 +39,7 @@ export const zhHans: SiteCopy = {
   shortcuts: {
     title: ['右手写画，', '左手操作。'],
     description:
-      '新增“左手操作”预设。右手继续书写，左手即可切换工具、调整颜色和线宽、翻页及缩放。',
+      '右手继续书写，左手即可切换工具、调整颜色和线宽、翻页及缩放。',
     setupTitle: '在设置中应用“左手操作”。',
     setupDescription:
       '在 Inkquation 的“设置”→“快捷键”中选择“左手操作”，然后在确认窗口中应用。',
@@ -239,7 +239,7 @@ export const zhHant: SiteCopy = {
   shortcuts: {
     title: ['右手書寫，', '左手操作。'],
     description:
-      '新增「左手操作」預設。右手持續書寫，左手即可切換工具、調整顏色與線寬、翻頁及縮放。',
+      '右手持續書寫，左手即可切換工具、調整顏色與線寬、翻頁及縮放。',
     setupTitle: '在設定中套用「左手操作」。',
     setupDescription:
       '在 Inkquation 的「設定」→「快速鍵」中選擇「左手操作」，再於確認視窗中套用。',
@@ -439,7 +439,7 @@ export const zhHK: SiteCopy = {
   shortcuts: {
     title: ['右手書寫，', '左手操作。'],
     description:
-      '新增「左手操作」預設。右手繼續書寫，左手即可切換工具、調整顏色和線寬、翻頁及縮放。',
+      '右手繼續書寫，左手即可切換工具、調整顏色和線寬、翻頁及縮放。',
     setupTitle: '在設定中套用「左手操作」。',
     setupDescription:
       '在 Inkquation 的「設定」→「快捷鍵」中選擇「左手操作」，再於確認視窗中套用。',
@@ -639,7 +639,7 @@ export const ko: SiteCopy = {
   shortcuts: {
     title: ['오른손으로 그리고,', '왼손으로 조작하세요.'],
     description:
-      '새로운 왼손 조작 프리셋을 만나 보세요. 오른손으로 계속 그리면서 왼손으로 도구, 색상, 선 굵기를 바꾸고 페이지 이동과 확대·축소도 할 수 있습니다.',
+      '오른손으로 계속 그리면서 왼손으로 도구, 색상, 선 굵기를 바꾸고 페이지 이동과 확대·축소도 할 수 있습니다.',
     setupTitle: '설정에서 왼손 조작을 적용하세요.',
     setupDescription:
       'Inkquation의 설정 → 키보드 단축키에서 왼손 조작을 선택한 뒤, 확인 창에서 적용하세요.',
