@@ -120,8 +120,8 @@ export const zhHans: SiteCopy = {
     eyebrow: '03 / AI 连接',
     title: ['手写笔记，', '也能与 AI 一起处理。'],
     description:
-      '通过 MCP（连接 AI 应用与工具的协议），外部 AI 应用可以将打开的页面或套索选区读取为图像，并把准备好的 PNG 图像添加到笔记中。',
-    capabilities: ['读取页面与选区', '插入 PNG 图像', '查看并撤销插入结果'],
+      '通过 MCP（连接 AI 应用与工具的协议），外部 AI 应用可以将打开的页面或套索选区读取为图像，并将 PNG 图像、图形和笔画添加到笔记中。',
+    capabilities: ['读取页面与选区', '插入 PNG 图像、图形和笔画', '查看并撤销插入结果'],
     setupTitle: '在设置中连接 AI 应用。',
     steps: [
       {
@@ -136,11 +136,12 @@ export const zhHans: SiteCopy = {
       {
         title: '打开笔记，向 AI 提出请求',
         description:
-          '保持 Inkquation 打开，然后通过已连接的 AI 应用请求读取页面或添加图像。',
+          '保持 Inkquation 打开，然后通过已连接的 AI 应用请求读取页面或添加图像、图形。',
       },
     ],
     privacy:
       '使用前需设置外部 AI 应用，并准备其服务所需的账户等。如果使用云端 AI，读取的笔记内容可能会发送至该服务。',
+    guideLink: '阅读 AI 连接指南（英语）',
     privacyLink: '了解 AI 连接与隐私',
   },
   workflow: {
@@ -320,8 +321,8 @@ export const zhHant: SiteCopy = {
     eyebrow: '03 / AI 連線',
     title: ['手寫筆記，', '也能與 AI 一起處理。'],
     description:
-      '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為影像，並將準備好的 PNG 影像加入筆記。',
-    capabilities: ['讀取頁面與選取範圍', '插入 PNG 影像', '查看並復原插入結果'],
+      '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為影像，並將 PNG 影像、圖形和筆畫加入筆記。',
+    capabilities: ['讀取頁面與選取範圍', '插入 PNG 影像、圖形和筆畫', '查看並復原插入結果'],
     setupTitle: '在設定中連接 AI App。',
     steps: [
       {
@@ -336,11 +337,12 @@ export const zhHant: SiteCopy = {
       {
         title: '開啟筆記，向 AI 提出要求',
         description:
-          '保持 Inkquation 開啟，再透過已連接的 AI App 要求讀取頁面或加入影像。',
+          '保持 Inkquation 開啟，再透過已連接的 AI App 要求讀取頁面或加入影像、圖形。',
       },
     ],
     privacy:
       '使用前需設定外部 AI App，並準備其服務所需的帳號等。若使用雲端 AI，讀取的筆記內容可能會傳送至該服務。',
+    guideLink: '閱讀 AI 連線指南（英語）',
     privacyLink: '了解 AI 連線與隱私權',
   },
   workflow: {
@@ -520,8 +522,8 @@ export const zhHK: SiteCopy = {
     eyebrow: '03 / AI 連線',
     title: ['手寫筆記，', '也能與 AI 一起處理。'],
     description:
-      '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為圖像，並將準備好的 PNG 圖像加入筆記。',
-    capabilities: ['讀取頁面與選取範圍', '插入 PNG 圖像', '查看並還原插入結果'],
+      '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為圖像，並將 PNG 圖像、圖形和筆畫加入筆記。',
+    capabilities: ['讀取頁面與選取範圍', '插入 PNG 圖像、圖形和筆畫', '查看並還原插入結果'],
     setupTitle: '在設定中連接 AI App。',
     steps: [
       {
@@ -536,11 +538,12 @@ export const zhHK: SiteCopy = {
       {
         title: '開啟筆記，向 AI 提出要求',
         description:
-          '保持 Inkquation 開啟，再透過已連接的 AI App 要求讀取頁面或加入圖像。',
+          '保持 Inkquation 開啟，再透過已連接的 AI App 要求讀取頁面或加入圖像、圖形。',
       },
     ],
     privacy:
       '使用前需設定外部 AI App，並準備其服務所需的帳戶等。如使用雲端 AI，讀取的筆記內容可能會傳送至該服務。',
+    guideLink: '閱讀 AI 連線指南（英語）',
     privacyLink: '了解 AI 連線與私隱',
   },
   workflow: {
@@ -728,10 +731,10 @@ export const ko: SiteCopy = {
     eyebrow: '03 / AI 연결',
     title: ['손으로 쓴 노트를', 'AI와 함께 활용하세요.'],
     description:
-      'AI 앱과 도구를 연결하는 프로토콜인 MCP를 지원합니다. 외부 AI 앱에서 열린 페이지나 올가미 선택 영역을 이미지로 읽고, 준비된 PNG 이미지를 노트에 추가할 수 있습니다.',
+      'AI 앱과 도구를 연결하는 프로토콜인 MCP를 지원합니다. 외부 AI 앱에서 열린 페이지나 올가미 선택 영역을 이미지로 읽고, PNG 이미지, 도형, 펜 획을 노트에 추가할 수 있습니다.',
     capabilities: [
       '페이지와 선택 영역 읽기',
-      'PNG 이미지 삽입',
+      'PNG 이미지, 도형, 펜 획 삽입',
       '삽입 결과 확인 및 실행 취소',
     ],
     setupTitle: '설정에서 AI 앱을 연결하세요.',
@@ -749,11 +752,12 @@ export const ko: SiteCopy = {
       {
         title: '노트를 열고 AI에 요청하기',
         description:
-          'Inkquation을 열어 둔 상태에서 연결된 AI 앱에 페이지 읽기나 이미지 추가를 요청하세요.',
+          'Inkquation을 열어 둔 상태에서 연결된 AI 앱에 페이지 읽기나 이미지·도형 추가를 요청하세요.',
       },
     ],
     privacy:
       '외부 AI 앱 설정과 해당 서비스에서 요구하는 계정 등이 필요합니다. 클라우드 기반 AI를 사용하면 읽은 노트 내용이 해당 서비스로 전송될 수 있습니다.',
+    guideLink: 'AI 연결 가이드 읽기 (영어)',
     privacyLink: 'AI 연결과 개인정보 보호 알아보기',
   },
   workflow: {

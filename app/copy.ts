@@ -130,10 +130,10 @@ const ja = {
     eyebrow: '03 / AI連携',
     title: ['手書きのノートを、', 'AIと一緒に。'],
     description:
-      'MCP（AIアプリとつなぐための仕組み）に対応。外部AIアプリから、開いているページや投げ縄で選んだ範囲を画像として読み取り、用意したPNG画像をノートに追加できます。',
+      'MCP（AIアプリとつなぐための仕組み）に対応。外部AIアプリから、開いているページや投げ縄で選んだ範囲を画像として読み取り、PNG画像や図形、ペンの線をノートに追加できます。',
     capabilities: [
       'ページ・選択範囲の読み取り',
-      'PNG画像の追加',
+      'PNG画像・図形・ペンの線の追加',
       '追加結果の確認・取り消し',
     ],
     setupTitle: '設定から、AIアプリにつなぐ。',
@@ -151,11 +151,12 @@ const ja = {
       {
         title: 'ノートを開いて、AIに依頼する',
         description:
-          'Inkquationを開いたまま、接続先のAIアプリから読み取りや画像の追加を依頼します。',
+          'Inkquationを開いたまま、接続先のAIアプリから読み取りや画像・図形の追加を依頼します。',
       },
     ],
     privacy:
       'AIの利用には外部AIアプリの設定と、そのサービスのアカウント等が必要です。クラウド型のAIを使う場合、読み取ったノートの内容が接続先のサービスに送信されることがあります。',
+    guideLink: 'AI連携ガイドを読む',
     privacyLink: 'AI接続とプライバシーについて',
   },
   workflow: {
@@ -358,10 +359,10 @@ const en: SiteCopy = {
     eyebrow: '03 / AI INTEGRATION',
     title: ['Bring your handwritten', 'notes into the conversation.'],
     description:
-      'Connect an external AI app through MCP, a protocol for connecting AI apps to tools. It can read an open page or lasso selection as an image and add a prepared PNG image to your notes.',
+      'Connect an external AI app through MCP, a protocol for connecting AI apps to tools. It can read an open page or lasso selection as an image and add PNG images, shapes and pen strokes to your notes.',
     capabilities: [
       'Read pages and selections',
-      'Insert PNG images',
+      'Insert PNG images, shapes and strokes',
       'Inspect and undo insertions',
     ],
     setupTitle: 'Connect your AI app in Settings.',
@@ -379,11 +380,12 @@ const en: SiteCopy = {
       {
         title: 'Open a note and ask your AI app',
         description:
-          'Keep Inkquation open, then ask the connected AI app to read a page or insert an image.',
+          'Keep Inkquation open, then ask the connected AI app to read a page or insert an image or shape.',
       },
     ],
     privacy:
       'Set up an external AI app and any account required by its service. If you use a cloud-based AI, the note content it reads may be sent to that service.',
+    guideLink: 'Read the AI integration guide',
     privacyLink: 'About AI connections and privacy',
   },
   workflow: {

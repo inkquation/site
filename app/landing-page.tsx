@@ -1,6 +1,7 @@
 /* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import LanguageSwitch from './language-switch';
+import { aiGuidePath } from './ai-guide-paths';
 import { localePath } from './locale-paths';
 import policy from './privacy-policy.json';
 import PaperDemo from './paper-demo';
@@ -218,6 +219,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <li key={capability}>{capability}</li>
               ))}
             </ul>
+            <a className="privacy-text-link mt-6 inline-flex items-center gap-2" href={aiGuidePath(locale)}>
+              {copy.ai.guideLink} <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
           </div>
           <div className="ai-setup">
             <h3>{copy.ai.setupTitle}</h3>
