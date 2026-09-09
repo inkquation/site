@@ -21,22 +21,17 @@ export default function LanguageSwitch({
         <ChevronDown size={14} aria-hidden="true" />
       </summary>
       <nav className="language-switch" aria-label={label}>
-        {localeEntries
-          .filter(
-            ([language]) =>
-              page !== 'ai/' || language === 'ja' || language === 'en',
-          )
-          .map(([language, { label: name }]) => (
-            <a
-              key={language}
-              href={localePath(language, page)}
-              lang={language}
-              hrefLang={language}
-              aria-current={locale === language ? 'page' : undefined}
-            >
-              {name}
-            </a>
-          ))}
+        {localeEntries.map(([language, { label: name }]) => (
+          <a
+            key={language}
+            href={localePath(language, page)}
+            lang={language}
+            hrefLang={language}
+            aria-current={locale === language ? 'page' : undefined}
+          >
+            {name}
+          </a>
+        ))}
       </nav>
     </details>
   );

@@ -1,9 +1,9 @@
 import type { Locale } from './copy';
-import { localePath } from './locale-paths';
+import { localeEntries, localePath } from './locale-paths';
 
-export const aiGuideLocales = ['ja', 'en'] as const;
+export const aiGuideLocales = localeEntries.map(([locale]) => locale);
 export type AIGuideLocale = (typeof aiGuideLocales)[number];
 
 export function aiGuidePath(locale: Locale) {
-  return `${localePath(locale === 'ja' ? 'ja' : 'en')}ai/`;
+  return localePath(locale, 'ai/');
 }

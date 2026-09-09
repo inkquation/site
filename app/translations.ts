@@ -141,7 +141,7 @@ export const zhHans: SiteCopy = {
     ],
     privacy:
       '使用前需设置外部 AI 应用，并准备其服务所需的账户等。如果使用云端 AI，读取的笔记内容可能会发送至该服务。',
-    guideLink: '阅读 AI 连接指南（英语）',
+    guideLink: '阅读 AI 连接指南',
     privacyLink: '了解 AI 连接与隐私',
   },
   workflow: {
@@ -342,7 +342,7 @@ export const zhHant: SiteCopy = {
     ],
     privacy:
       '使用前需設定外部 AI App，並準備其服務所需的帳號等。若使用雲端 AI，讀取的筆記內容可能會傳送至該服務。',
-    guideLink: '閱讀 AI 連線指南（英語）',
+    guideLink: '閱讀 AI 連線指南',
     privacyLink: '了解 AI 連線與隱私權',
   },
   workflow: {
@@ -543,7 +543,7 @@ export const zhHK: SiteCopy = {
     ],
     privacy:
       '使用前需設定外部 AI App，並準備其服務所需的帳戶等。如使用雲端 AI，讀取的筆記內容可能會傳送至該服務。',
-    guideLink: '閱讀 AI 連線指南（英語）',
+    guideLink: '閱讀 AI 連線指南',
     privacyLink: '了解 AI 連線與私隱',
   },
   workflow: {
@@ -757,7 +757,7 @@ export const ko: SiteCopy = {
     ],
     privacy:
       '외부 AI 앱 설정과 해당 서비스에서 요구하는 계정 등이 필요합니다. 클라우드 기반 AI를 사용하면 읽은 노트 내용이 해당 서비스로 전송될 수 있습니다.',
-    guideLink: 'AI 연결 가이드 읽기 (영어)',
+    guideLink: 'AI 연결 가이드 읽기',
     privacyLink: 'AI 연결과 개인정보 보호 알아보기',
   },
   workflow: {

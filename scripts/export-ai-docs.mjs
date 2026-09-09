@@ -25,4 +25,6 @@ for (const locale of guideLocales) {
   );
 }
 await writeFile('public/llms.txt', llmsText(origin, basePath));
-console.log('Generated English llms.txt and Japanese/English Markdown guides.');
+console.log(
+  `Generated English llms.txt and Markdown guides in ${guideLocales.length} languages.`,
+);

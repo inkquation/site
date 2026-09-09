@@ -40,5 +40,5 @@ next-env.d.ts
 
 # Generated from app/ai-guide.json before development and builds.
 /public/ai/index.md
-/public/en/ai/index.md
+/public/*/ai/index.md
 /public/llms.txt
