@@ -35,7 +35,7 @@ jobs:
         run: npx tsc --noEmit
       - name: Check contact address handling
         run: npm run test:contact
-      - name: Export all six languages and privacy pages
+      - name: Export all languages, privacy pages, and AI documentation
         run: npm run build:pages
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}

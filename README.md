@@ -49,7 +49,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/landing-page.tsx`: shared page structure, navigation, language switch, and actual editor screenshot.
 - `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
-- `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves the privacy page.
+- `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves privacy and AI guide routes. The AI guide is available in Japanese and English.
 - `app/(ja)`, `app/(en)`, `app/(zh-Hans)`, `app/(zh-Hant)`, `app/(zh-HK)`, and `app/(ko)`: language-specific home and privacy routes.
 - `app/shortcut-guide.tsx`: shortcut feature section and left-hand/standard/direct preset comparison.
 - `app/paper-demo.tsx`: accessible paper-style tabs (grid, ruled, plain).
@@ -108,6 +108,16 @@ The site follows the app's six language choices, including regional written Chin
 
 The policy translations are copied from `../inkquation/inkquation/PrivacyPolicy.json`; existing Japanese and English policy text is unchanged. The site uses these translations for each localized policy page and footer label. App-side links that currently open the English policy can be updated after these new public URLs are deployed.
 
-The hero announcement and AI section describe the implemented local MCP connection: reading an open page or lasso selection as an image, inserting a prepared PNG, inspecting the result, and undoing an insertion. Setup requires enabling AI connections (off by default), copying the configuration to a compatible external AI app on the Mac, and keeping Inkquation open. The copy explains that a cloud-backed AI may send read content to its provider. Claims were checked against `../inkquation/mcp/README.md` and the bundled policy. The site does not run an AI client or configure the app itself.
+The hero announcement and AI section describe the implemented local MCP connection: reading an open page or lasso selection as an image, inserting PNG images or native shapes and strokes, inspecting the result, and undoing an insertion. Setup requires enabling AI connections (off by default), copying the configuration to a compatible external AI app on the Mac, and keeping Inkquation open. The copy explains that a cloud-backed AI may send read content to its provider. Claims were checked against `../inkquation/mcp/README.md` and the bundled policy. The site does not run an AI client or configure the app itself.
 
-`verify:pages` checks all 12 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.
+`verify:pages` checks all 14 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.
+
+## AI documentation
+
+The detailed guide is available at `/ai/` (Japanese) and `/en/ai/` (English). All six landing pages link to it; Chinese and Korean links identify the English destination. The guide covers the local connection, seven MCP tools, native stroke and shape insertion, coordinates, JSON examples, replay and Undo limits, and external AI privacy. It describes the implementation checked on 2026-09-09, without assigning it an unverified public release version. The connected server’s `tools/list` is the source for available capabilities.
+
+`app/ai-guide.json` is the shared content source for HTML and Markdown. Edit it, not the generated files. `scripts/export-ai-docs.mjs` runs before development and both builds, generating `/ai/index.md`, `/en/ai/index.md`, and an English `/llms.txt` in `public/`. These generated files are ignored by Git. Restart development or run the generator after editing guide content to refresh Markdown. HTML metadata also links to the corresponding Markdown alternative. `llms.txt` is a concise documentation index, not an MCP endpoint or a promise that AI services will discover the site.
+
+The existing `build:pages` and `verify:pages` commands include these documents. Verification checks every guide section and text block, JSON syntax, matching Markdown output, language and canonical metadata, local links and Markdown link fragments, and the absence of the contact address in public Markdown and text files. Both the production empty base path and `/site` deployment prefix must pass.
+
+Claims were checked against `../inkquation/inkquation/InkquationMCPService.swift`, `MCPStrokeInput.swift`, `MCPConnectionSettings.swift`, and `../inkquation/mcp/README.md`. Changes to those contracts require updating the guide. The standard bundled adapter accepts inline PNG data; the optional development Python adapter’s local-file extension is outside this public guide.

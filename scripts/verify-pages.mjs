@@ -3,6 +3,13 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import locales from '../app/locales.json' with { type: 'json' };
 import policy from '../app/privacy-policy.json' with { type: 'json' };
+import guides from '../app/ai-guide.json' with { type: 'json' };
+import {
+  guideLocales,
+  guideRoute,
+  guideMarkdown,
+  llmsText,
+} from '../lib/ai-docs.mjs';
 import { contactEmail } from '../lib/contact-email.mjs';
 
 const output = path.resolve('dist/client');
@@ -29,8 +36,17 @@ const routes = Object.entries(locales).flatMap(([locale, { path: root }]) => [
   },
 ]);
 
+routes.push(
+  ...guideLocales.map((locale) => ({
+    locale,
+    route: guideRoute(locale).slice(0, -1),
+    file: `${guideRoute(locale).slice(1)}index.html`,
+  })),
+);
+
 for (const { locale, route, file } of routes) {
   const isPrivacy = route.endsWith('/privacy');
+  const isGuide = route.endsWith('/ai');
   assert(
     manifest.routes.some(
       (entry) => entry.route === route && entry.status === 'rendered',
@@ -49,7 +65,7 @@ for (const { locale, route, file } of routes) {
         /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
       ),
     ].length,
-    isPrivacy ? 1 : 2,
+    isGuide ? 0 : isPrivacy ? 1 : 2,
     `${file}: contact actions must be buttons`,
   );
   const pageUrl = new URL(
@@ -103,10 +119,12 @@ for (const { locale, route, file } of routes) {
   }
 
   const expectedLanguages = new Map(
-    Object.entries(locales).map(([language, { path: root }]) => [
-      language,
-      `${basePath}${root}${isPrivacy ? 'privacy/' : ''}`,
-    ]),
+    Object.entries(locales)
+      .filter(([language]) => !isGuide || guideLocales.includes(language))
+      .map(([language, { path: root }]) => [
+        language,
+        `${basePath}${root}${isPrivacy ? 'privacy/' : isGuide ? 'ai/' : ''}`,
+      ]),
   );
   assert.deepEqual(
     languageLinks,
@@ -143,6 +161,51 @@ for (const { locale, route, file } of routes) {
           `${file}: missing translated policy paragraph`,
         );
     }
+  } else if (isGuide) {
+    const article = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/)?.[1];
+    assert(article, `${file}: missing guide content`);
+    const text = article
+      .replace(/<[^>]*>/g, '')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&#x27;', "'")
+      .replaceAll('&lt;', '<')
+      .replaceAll('&gt;', '>');
+    for (const section of guides[locale].sections) {
+      assert(
+        article.includes(`id="${section.id}"`),
+        `${file}: missing guide section ${section.id}`,
+      );
+      for (const block of section.blocks) {
+        const expectedText =
+          block.type === 'table'
+            ? [...block.headers, ...block.rows.flat()]
+            : block.type === 'list'
+              ? block.items
+              : block.type === 'links'
+                ? block.items.map((item) => item.label)
+                : [block.text];
+        for (const value of expectedText) {
+          assert(
+            text.includes(value.replaceAll('`', '')),
+            `${file}: missing guide text ${value.slice(0, 80)}`,
+          );
+        }
+        if (block.type === 'code') JSON.parse(block.text);
+      }
+    }
+    assert(
+      html.includes('type="text/markdown"'),
+      `${file}: missing Markdown alternate`,
+    );
+    assert(
+      html.includes(`${basePath}${guideRoute(locale)}index.md`),
+      `${file}: missing Markdown link`,
+    );
+    assert(
+      html.includes(`${basePath}/llms.txt`),
+      `${file}: missing llms.txt link`,
+    );
   } else {
     const shortcuts = html.match(
       /<section\b[^>]*id="shortcuts"[^>]*>([\s\S]*?)<\/section>/,
@@ -195,6 +258,10 @@ for (const { locale, route, file } of routes) {
       `${file}: wrong AI privacy link`,
     );
     assert(html.includes('MCP'), `${file}: missing AI connection explanation`);
+    assert(
+      html.includes(`href="${basePath}${guideRoute(locale)}"`),
+      `${file}: missing AI guide link`,
+    );
   }
   assert(checked > 0, `${file}: no local assets found`);
   console.log(
@@ -202,6 +269,40 @@ for (const { locale, route, file } of routes) {
   );
 }
 
+// Machine-readable documents are generated from the same source as HTML.
+for (const [file, expected] of [
+  ...guideLocales.map((locale) => [
+    `${guideRoute(locale).slice(1)}index.md`,
+    guideMarkdown(locale, origin, basePath),
+  ]),
+  ['llms.txt', llmsText(origin, basePath)],
+]) {
+  const content = await readFile(path.join(output, file), 'utf8');
+  assert.equal(content, expected, `${file}: stale generated document`);
+  for (const [, reference] of content.matchAll(/\]\((https?:[^)]+)\)/g)) {
+    const url = new URL(reference);
+    if (url.origin !== new URL(origin).origin) continue;
+    assert(
+      url.pathname.startsWith(prefix),
+      `${file}: URL escapes Pages prefix`,
+    );
+    const relative = decodeURIComponent(url.pathname.slice(prefix.length));
+    const target = path.join(
+      output,
+      !relative || relative.endsWith('/') ? `${relative}index.html` : relative,
+    );
+    assert(
+      (await stat(target)).isFile(),
+      `${file}: missing link target ${reference}`,
+    );
+    if (url.hash)
+      assert(
+        (await readFile(target, 'utf8')).includes(`id="${url.hash.slice(1)}"`),
+        `${file}: missing anchor ${reference}`,
+      );
+  }
+  console.log(`${file}: source content and local links OK`);
+}
 await stat(path.join(output, '.nojekyll'));
 
 // Check all public text, including RSC payloads and client bundles, so a future
@@ -211,7 +312,7 @@ async function checkPublicText(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     const filename = path.join(directory, entry.name);
     if (entry.isDirectory()) await checkPublicText(filename);
-    else if (/\.(html|rsc|js|json|css|map)$/.test(entry.name)) {
+    else if (/\.(html|rsc|js|json|css|map|md|txt)$/.test(entry.name)) {
       const content = (await readFile(filename, 'utf8')).toLowerCase();
       assert(
         !content.includes(address),
