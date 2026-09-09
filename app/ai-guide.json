@@ -50,9 +50,9 @@
             "type": "list",
             "ordered": false,
             "items": [
-              "「開いているInkquationのページを読んで、内容を説明して。ノートへの追加はまだしないで。」",
-              "「このページの空いている場所に青い円と矢印を追加して。既存の内容に重ならない位置を選び、追加後のページを見せて。」",
-              "「今追加した円と矢印を取り消して。」"
+              "「選択した数式の導出を読んで、途中式の抜けや符号の誤りを検討して。」",
+              "「このページから、仮定・結論・未解決の点を整理して、チャットで説明して。」",
+              "「この説明を補う模式図を作って、ノートの余白に追加して。」"
             ]
           }
         ]
@@ -316,9 +316,9 @@
             "type": "list",
             "ordered": false,
             "items": [
-              "“Read the open Inkquation page and explain its contents. Do not add anything to the note yet.”",
-              "“Add a blue circle and arrow in unused space on this page. Avoid existing content and show me the resulting page.”",
-              "“Undo the circle and arrow you just added.”"
+              "“Read the selected derivation and check for missing steps or possible sign errors.”",
+              "“Organize the assumptions, conclusions and unresolved questions on this page, and explain them in the chat.”",
+              "“Create a schematic diagram to support this explanation and add it to unused space in the note.”"
             ]
           }
         ]
