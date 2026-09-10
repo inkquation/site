@@ -25,6 +25,25 @@ export default function SiteLayout({
 }: Readonly<{ locale: Locale; children: React.ReactNode }>) {
   return (
     <html lang={locale}>
+      <head>
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-BJTQ23PPZN"
+            />
+            <script
+              id="google-analytics"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-BJTQ23PPZN');`,
+              }}
+            />
+          </>
+        )}
+      </head>
       <body>{children}</body>
     </html>
   );

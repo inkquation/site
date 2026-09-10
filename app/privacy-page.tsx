@@ -67,12 +67,28 @@ export default function PrivacyPage({ locale }: { locale: Locale }) {
               />
             )}
             {section.id === 'website' && (
-              <a
-                className="privacy-text-link"
-                href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
-              >
-                GitHub General Privacy Statement
-              </a>
+              <>
+                <a
+                  className="privacy-text-link"
+                  href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+                >
+                  GitHub General Privacy Statement
+                </a>
+                {' · '}
+                <a
+                  className="privacy-text-link"
+                  href="https://policies.google.com/technologies/partner-sites"
+                >
+                  Google Privacy &amp; Terms
+                </a>
+                {' · '}
+                <a
+                  className="privacy-text-link"
+                  href="https://tools.google.com/dlpage/gaoptout"
+                >
+                  Google Analytics Opt-out
+                </a>
+              </>
             )}
           </section>
         ))}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09",
+  "updated": "2026-09-11",
   "ja": {
     "title": "プライバシーポリシー",
     "updatedLabel": "最終更新日",
@@ -59,7 +59,7 @@
         "id": "website",
         "title": "公式サイトとポリシーの変更",
         "paragraphs": [
-          "公式サイトはGitHub Pagesで配信しています。サイトへのアクセス時には、IPアドレスなどの接続情報が配信事業者によって処理されます。サイト独自の広告やアクセス解析は設置していません。配信事業者による取り扱いはGitHubのプライバシーステートメントをご確認ください。",
+          "公式サイトはGitHub Pagesで配信しています。サイトへのアクセス時には、IPアドレスなどの接続情報が配信事業者によって処理されます。また、サイトの利用状況を把握して改善するため、Google アナリティクスを使用しています。Google アナリティクスはCookieを利用し、閲覧したページ、端末・ブラウザ情報などをGoogleに送信します。サイトに広告は掲載していません。データの取り扱いはGitHubとGoogleの各ポリシーをご確認ください。Googleが提供するオプトアウト用ブラウザアドオンで、Google アナリティクスによる収集を無効にできます。",
           "データの扱いや機能が変わる場合は、このページの内容と最終更新日を更新します。アプリ内のポリシーはそのバージョンに同梱された内容です。最新の内容は公式サイトで確認できます。"
         ]
       }
@@ -124,7 +124,7 @@
         "id": "website",
         "title": "Website and policy updates",
         "paragraphs": [
-          "The official website is hosted on GitHub Pages. When you visit it, the hosting provider processes connection information such as your IP address. The site has no advertising or analytics of its own. See GitHub’s Privacy Statement for the hosting provider’s practices.",
+          "The official website is hosted on GitHub Pages. When you visit it, the hosting provider processes connection information such as your IP address. We also use Google Analytics to understand and improve use of the website. Google Analytics uses cookies and sends information such as pages viewed and device and browser details to Google. The site does not display advertising. See the policies of GitHub and Google for their data-handling practices. You can disable collection by Google Analytics using Google’s opt-out browser add-on.",
           "Changes to data handling or features will be reflected on this page with an updated date. The in-app policy is the copy included with that app version. The current policy is available on the official website."
         ]
       }
@@ -189,7 +189,7 @@
         "id": "website",
         "title": "网站与政策更新",
         "paragraphs": [
-          "官方网站托管于 GitHub Pages。访问网站时，托管服务提供商会处理 IP 地址等连接信息。网站本身没有广告或分析功能。有关托管服务提供商的处理方式，请参阅 GitHub 隐私声明。",
+          "官方网站托管于 GitHub Pages。访问网站时，托管服务提供商会处理 IP 地址等连接信息。我们还使用 Google Analytics 了解网站的使用情况并改进网站。Google Analytics 使用 Cookie，并将浏览的页面、设备和浏览器信息等发送给 Google。网站不展示广告。有关数据处理方式，请参阅 GitHub 和 Google 的相关政策。您可以使用 Google 提供的停用浏览器插件，停用 Google Analytics 的数据收集。",
           "数据处理方式或功能发生变化时，我们会更新本页面的内容和日期。应用内的政策是该应用版本附带的副本。最新政策可在官方网站查阅。"
         ]
       }
@@ -254,7 +254,7 @@
         "id": "website",
         "title": "網站與政策更新",
         "paragraphs": [
-          "官方網站託管於 GitHub Pages。造訪網站時，託管服務供應商會處理 IP 位址等連線資訊。網站本身沒有廣告或分析功能。有關託管服務供應商的處理方式，請參閱 GitHub 隱私權聲明。",
+          "官方網站託管於 GitHub Pages。造訪網站時，託管服務供應商會處理 IP 位址等連線資訊。我們也使用 Google Analytics 瞭解網站的使用情況並改善網站。Google Analytics 使用 Cookie，並將瀏覽的頁面、裝置和瀏覽器資訊等傳送給 Google。網站不顯示廣告。有關資料處理方式，請參閱 GitHub 和 Google 的相關政策。您可以使用 Google 提供的停用瀏覽器外掛程式，停用 Google Analytics 的資料收集。",
           "資料處理方式或功能發生變更時，我們會更新本頁面的內容和日期。App 內的政策是該 App 版本內附的副本。最新政策可在官方網站查閱。"
         ]
       }
@@ -319,7 +319,7 @@
         "id": "website",
         "title": "網站與政策更新",
         "paragraphs": [
-          "官方網站託管於 GitHub Pages。造訪網站時，託管服務供應商會處理 IP 位址等連線資訊。網站本身沒有廣告或分析功能。有關託管服務供應商的處理方式，請參閱 GitHub 私隱聲明。",
+          "官方網站託管於 GitHub Pages。造訪網站時，託管服務供應商會處理 IP 位址等連線資訊。我們亦使用 Google Analytics 了解網站的使用情況並改善網站。Google Analytics 使用 Cookie，並將瀏覽的頁面、裝置和瀏覽器資料等傳送給 Google。網站不顯示廣告。有關資料處理方式，請參閱 GitHub 和 Google 的相關政策。您可以使用 Google 提供的停用瀏覽器外掛程式，停用 Google Analytics 的資料收集。",
           "資料處理方式或功能發生變更時，我們會更新本頁面的內容和日期。App 內的政策是該 App 版本內附的副本。最新政策可在官方網站查閱。"
         ]
       }
@@ -384,7 +384,7 @@
         "id": "website",
         "title": "웹사이트 및 방침 업데이트",
         "paragraphs": [
-          "공식 웹사이트는 GitHub Pages에서 호스팅됩니다. 웹사이트를 방문하면 호스팅 제공업체가 IP 주소 등의 연결 정보를 처리합니다. 사이트 자체에는 광고나 사용 분석 기능이 없습니다. 호스팅 제공업체의 처리 방식은 GitHub의 개인정보 처리방침을 확인하세요.",
+          "공식 웹사이트는 GitHub Pages에서 호스팅됩니다. 웹사이트를 방문하면 호스팅 제공업체가 IP 주소 등의 연결 정보를 처리합니다. 또한 웹사이트 이용 현황을 파악하고 개선하기 위해 Google Analytics를 사용합니다. Google Analytics는 쿠키를 사용하며 방문한 페이지, 기기 및 브라우저 정보 등을 Google에 전송합니다. 사이트에는 광고를 표시하지 않습니다. 데이터 처리 방식은 GitHub와 Google의 관련 정책을 확인하세요. Google에서 제공하는 수신 거부 브라우저 부가 기능으로 Google Analytics의 데이터 수집을 중지할 수 있습니다.",
           "데이터 처리나 기능이 변경되면 업데이트 날짜와 함께 이 페이지에 반영됩니다. 앱 내 방침은 해당 앱 버전에 포함된 사본입니다. 최신 방침은 공식 웹사이트에서 확인할 수 있습니다."
         ]
       }

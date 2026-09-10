@@ -18,7 +18,9 @@ npm run build
 npm start
 ```
 
-The default production build retains the Vinext / Cloudflare project structure. GitHub Pages uses the separate static export described below. The page needs no database, accounts, uploads, analytics, or remote fonts.
+The default production build retains the Vinext / Cloudflare project structure. GitHub Pages uses the separate static export described below. The page needs no database, accounts, uploads, or remote fonts.
+
+Production builds load Google Analytics 4 with measurement ID `G-BJTQ23PPZN` from the shared `app/site-layout.tsx`, covering every language, privacy page, and AI guide. Development previews do not load the tag. The website policy describes this use and links to Google's data-handling information and opt-out tool. After deployment, check the Google Analytics Realtime report or Tag Assistant to confirm receipt of visits. See [Google's tag setup guide](https://developers.google.com/tag-platform/gtagjs).
 
 ## GitHub Pages
 
@@ -106,7 +108,7 @@ Japanese product copy was edited using the `japanese-technical-writing` skill. C
 
 The site follows the app's six language choices, including regional written Chinese terminology and Korean. Localized copy covers the feature explanations, shortcut and paper tabs, AI setup steps, contact actions, image descriptions, and accessibility labels. The editor screenshot remains an unaltered Japanese UI capture, identified in every other language's caption. Native system font stacks support each writing system; no remote fonts or translation services are added.
 
-The policy translations are copied from `../inkquation/inkquation/PrivacyPolicy.json`; existing Japanese and English policy text is unchanged. The site uses these translations for each localized policy page and footer label. App-side links that currently open the English policy can be updated after these new public URLs are deployed.
+The policy translations were based on `../inkquation/inkquation/PrivacyPolicy.json`. The website section now also describes Google Analytics, while the bundled in-app policy remains the copy shipped with that app version. The site uses these translations for each localized policy page and footer label. App-side links that currently open the English policy can be updated after these new public URLs are deployed.
 
 The hero announcement and AI section describe the implemented local MCP connection: reading an open page or lasso selection as an image, inserting PNG images or native shapes and strokes, inspecting the result, and undoing an insertion. Setup requires enabling AI connections (off by default), copying the configuration to a compatible external AI app on the Mac, and keeping Inkquation open. The copy explains that a cloud-backed AI may send read content to its provider. Claims were checked against `../inkquation/mcp/README.md` and the bundled policy. The site does not run an AI client or configure the app itself.
 

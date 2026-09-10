@@ -112,6 +112,21 @@ for (const { locale, route, file } of routes) {
     `${route} was not prerendered`,
   );
   const html = await readFile(path.join(output, file), 'utf8');
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/)?.[1] ?? '';
+  assert.equal(
+    [
+      ...head.matchAll(
+        /<script\b[^>]*src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-BJTQ23PPZN"[^>]*>/g,
+      ),
+    ].length,
+    1,
+    `${file}: Google Analytics loader must appear once in the head`,
+  );
+  assert.equal(
+    [...head.matchAll(/gtag\('config', 'G-BJTQ23PPZN'\)/g)].length,
+    1,
+    `${file}: Google Analytics must be configured once`,
+  );
   assert(
     html.includes(`<html lang="${locale}"`),
     `${file}: wrong document language`,
