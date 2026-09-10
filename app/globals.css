@@ -382,11 +382,6 @@ h1 {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 13px;
-  box-shadow:
-    0 25px 65px -25px #24375450,
-    0 3px 12px #293b5412;
-  border: 1px solid #233f601a;
 }
 .actual-preview figcaption {
   display: flex;

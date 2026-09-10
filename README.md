@@ -59,7 +59,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/site-layout.tsx` and the route-group layouts: server-rendered HTML language, localized title/description, alternate-language links, and favicon metadata. Separate root layouts let each route render the correct language before JavaScript loads.
 - `app/text-lines.tsx`: shared line breaks with word separation when responsive styles hide breaks.
 - `public/assets/inkquation-icon.png`: copied from the current app's icon asset.
-- `public/assets/inkquation-editor.jpg`: a direct capture of the actual app using a synthetic demo notebook.
+- `public/assets/inkquation-editor.png`: the user-provided screenshot of the actual app displaying the demo notebook, copied unchanged from `demo.png` (2394 × 2640, with transparency).
 - `reference/site-demo.inkqbackup`: the synthetic notebook used for the screenshot, outside the public directory.
 
 ## Contact address handling
@@ -90,9 +90,9 @@ Features described in the proposal are grounded in:
 
 The English page translates the copy, tabs, image descriptions, accessibility labels, and contact subject. The screenshot itself retains the real Japanese app interface, identified in its English caption. Language selection is explicit through links; the site does not redirect based on browser language.
 
-The hero now uses an unaltered screenshot of the actual editor, replacing the initial HTML imitation after user feedback. It was captured from an isolated, in-memory app session with a synthetic notebook. No production notes were used. The notebook was assembled as ordinary vector stroke data; the app is not being advertised as offering handwriting recognition, typesetting, or graph generation.
+The hero uses the user-provided `demo.png` screenshot of the actual editor, copied without image processing on 2026-09-11. It shows the oscillation demo notebook in the Japanese interface. The app is not being advertised as offering handwriting recognition, typesetting, or graph generation.
 
-The website uses a light palette. The app screenshot keeps its actual navy chrome: `EditorVisualTheme.swift` currently fixes those colors, even with the OS set to light appearance. No app theme implementation or screenshot recoloring was introduced. The interactive paper sample lower on the page is clearly labelled as a paper illustration, not an app screenshot.
+The website uses a light palette. The screenshot retains the supplied light app chrome and transparency; no extra CSS border or rectangular shadow is added around the image. The interactive paper sample lower on the page is clearly labelled as a paper illustration, not an app screenshot.
 
 Before publication, replace the distribution contact section with a verified download URL and confirmed release/system information when available. Check that the public contact mailbox is operational. Neither release availability nor a working mailbox has been assumed.
 

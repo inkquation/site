@@ -26,7 +26,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
   return (
     <figure className="preview-figure actual-preview">
       <a
-        href={sitePath('/assets/inkquation-editor.jpg')}
+        href={sitePath('/assets/inkquation-editor.png')}
         target="_blank"
         rel="noopener noreferrer"
         className="screenshot-link"
@@ -34,9 +34,9 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
       >
         <img
           className="app-screenshot"
-          src={sitePath('/assets/inkquation-editor.jpg')}
-          width="768"
-          height="837"
+          src={sitePath('/assets/inkquation-editor.png')}
+          width="2394"
+          height="2640"
           fetchPriority="high"
           alt={copy.alt}
         />
@@ -45,7 +45,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
         <span className="caption-dot" />
         {copy.caption}
         <a
-          href={sitePath('/assets/inkquation-editor.jpg')}
+          href={sitePath('/assets/inkquation-editor.png')}
           target="_blank"
           rel="noopener noreferrer"
           className="screenshot-expand"
