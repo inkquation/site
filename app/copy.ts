@@ -24,8 +24,8 @@ const ja = {
     prefix: 'キーで',
     accent: '操る。',
     description: [
-      '片手で書いて、もう片手でツールを切り替える。',
-      '色や線幅の調整も、キーボードから。',
+      '数式も、途中の計算も、手で書き進める。',
+      'もう片手でツールを切り替え、色や線幅を調整。',
       'ノートからポインターを動かさずに。',
     ],
     primary: 'ショートカットを見る',
@@ -160,23 +160,22 @@ const ja = {
     privacyLink: 'AI接続とプライバシーについて',
   },
   workflow: {
-    title: ['自由に書いて、', 'あとから整える。'],
+    title: ['数式を書いて、', '考えを進める。'],
     description: [
-      '真っ白な一枚から、誰かに見せるノートへ。',
-      '自分のペースで、思考を育てていこう。',
+      '途中式も、図も、気づいたことも、同じページに。',
     ],
     steps: [
       {
-        title: '書きたいことに合う用紙を。',
-        description: '無地・方眼・横罫と、A判・B判の用紙サイズ。',
+        title: '途中式を、一行ずつ。',
+        description: '分数や積分、添字もペンでそのまま。計算の過程を残せます。',
       },
       {
-        title: '増えたノートも、見つけやすく。',
-        description: 'フォルダで整理して、ページは一覧から移動。',
+        title: '式のとなりに、図とメモを。',
+        description: '方眼を目安に式をそろえ、図や注釈を自由に書き添えられます。',
       },
       {
-        title: 'まとまったら、PDFに。',
-        description: '書き出して共有。バックアップで保存・復元も。',
+        title: '導出の流れを、そのまま共有。',
+        description: '数式と手書きの説明をまとめてPDFへ。途中の計算も一緒に伝えられます。',
       },
     ],
   },
@@ -251,8 +250,8 @@ const en: SiteCopy = {
     prefix: 'Switch with a ',
     accent: 'key.',
     description: [
-      'Write with one hand. Switch tools with the other.',
-      'Change colors and stroke width from your keyboard,',
+      'Work through equations and calculations by hand.',
+      'Switch tools, colors, and stroke width with your other hand,',
       'without moving the pointer away from your notes.',
     ],
     primary: 'Explore the shortcuts',
@@ -389,25 +388,24 @@ const en: SiteCopy = {
     privacyLink: 'About AI connections and privacy',
   },
   workflow: {
-    title: ['Write freely.', 'Organize as you go.'],
+    title: ['Write equations.', 'Think them through.'],
     description: [
-      'From a blank page to notes you can share.',
-      'Let your ideas take shape at your own pace.',
+      'Keep each step, diagram, and observation on the same page.',
     ],
     steps: [
       {
-        title: 'Choose a page that fits.',
-        description: 'Plain, grid, or ruled paper, in A- and B-series sizes.',
+        title: 'Work through each step.',
+        description: 'Write fractions, integrals, and subscripts directly with your pen. Keep the steps behind your result.',
       },
       {
-        title: 'Keep growing notebooks organized.',
+        title: 'Add diagrams and notes beside your equations.',
         description:
-          'Use folders for your notes and thumbnails to navigate pages.',
+          'Use the grid to line up equations, with room for sketches and annotations.',
       },
       {
-        title: 'Share your work as a PDF.',
+        title: 'Share the whole derivation.',
         description:
-          'Export your notes to share them. Save and restore backups, too.',
+          'Export equations and handwritten explanations together as a PDF, including the calculations along the way.',
       },
     ],
   },

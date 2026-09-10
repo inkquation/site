@@ -254,7 +254,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <div className="container workflow-inner">
             <div className="workflow-copy">
               <p className="eyebrow section-eyebrow">
-                04 / YOUR WAY OF THINKING
+                04 / THINK IN EQUATIONS
               </p>
               <h2 id="workflow-title">
                 <TextLines lines={copy.workflow.title} />
