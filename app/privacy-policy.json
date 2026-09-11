@@ -26,6 +26,13 @@
         ]
       },
       {
+        "id": "purchases",
+        "title": "任意の開発支援",
+        "paragraphs": [
+          "開発者への任意の支援には、Apple のアプリ内課金を利用します。支払い情報は Apple が処理し、Inkquation はカード番号などの決済情報を取得しません。アプリは購入の検証と取引の完了のために StoreKit の取引情報を端末上で処理します。この取引情報を開発者のサーバーへ送信したり、ノートと関連付けたりすることはありません。購入履歴や返金の取り扱いは、Apple の規約とプライバシーポリシーに従います。"
+        ]
+      },
+      {
         "id": "export",
         "title": "ファイルとクリップボードへの書き出し",
         "paragraphs": [
@@ -88,6 +95,13 @@
           "AI connections are off by default. Enabling AI Connection in Settings allows apps running as your macOS user to read open notes and selections and insert images through MCP (Model Context Protocol). Review this access before enabling the connection.",
           "If your chosen AI client uses a cloud service, it may send note content to that service. Transmission, retention, and use for model training depend on your chosen client and AI service, their settings, and their privacy policies. Check the recipient before working with confidential information.",
           "Disabling AI Connection stops subsequent connections and access. It does not delete data already received by a client or service. Follow that service’s instructions to delete any content it retains."
+        ]
+      },
+      {
+        "id": "purchases",
+        "title": "Optional developer support",
+        "paragraphs": [
+          "Optional developer support uses Apple in-app purchases. Apple processes payment information; Inkquation does not receive card numbers or other payment credentials. The app processes StoreKit transaction information on the device to verify purchases and finish transactions. It does not send that transaction information to a developer server or associate it with notes. Apple’s terms and privacy policy govern purchase history and refunds."
         ]
       },
       {
@@ -156,6 +170,13 @@
         ]
       },
       {
+        "id": "purchases",
+        "title": "自愿支持开发",
+        "paragraphs": [
+          "自愿支持开发者使用 Apple 的 App 内购买。付款信息由 Apple 处理；Inkquation 不会获取卡号或其他支付凭据。App 在设备上处理 StoreKit 交易信息，以验证购买并完成交易，不会将这些交易信息发送到开发者服务器或与笔记关联。购买记录和退款遵循 Apple 的条款及隐私政策。"
+        ]
+      },
+      {
         "id": "export",
         "title": "导出的文件与剪贴板",
         "paragraphs": [
@@ -218,6 +239,13 @@
           "AI 連線預設關閉。在「設定」中啟用「AI 連線」後，以同一 macOS 使用者身分執行的 App 可透過 MCP（Model Context Protocol，模型上下文協定）讀取已開啟的筆記和選取範圍，並插入影像。請在啟用連線前確認此存取範圍。",
           "如果你選擇的 AI 用戶端使用雲端服務，它可能會將筆記內容傳送至該服務。傳輸、保留以及用於模型訓練等處理，取決於你選擇的用戶端和 AI 服務、它們的設定及隱私權政策。處理機密資訊前，請先確認接收方。",
           "停用「AI 連線」會停止後續連線和存取，但不會刪除用戶端或服務已接收的資料。若要刪除該服務保留的內容，請按照其說明操作。"
+        ]
+      },
+      {
+        "id": "purchases",
+        "title": "自願支持開發",
+        "paragraphs": [
+          "自願支持開發者使用 Apple 的 App 內購買。付款資訊由 Apple 處理；Inkquation 不會取得卡號或其他付款憑證。App 在裝置上處理 StoreKit 交易資訊，以驗證購買並完成交易，不會將這些交易資訊傳送至開發者伺服器或與筆記關聯。購買記錄和退款遵循 Apple 的條款及隱私權政策。"
         ]
       },
       {
@@ -286,6 +314,13 @@
         ]
       },
       {
+        "id": "purchases",
+        "title": "自願支持開發",
+        "paragraphs": [
+          "自願支持開發者使用 Apple 的 App 內購買。付款資料由 Apple 處理；Inkquation 不會取得卡號或其他付款憑證。App 在裝置上處理 StoreKit 交易資料，以驗證購買並完成交易，不會將這些交易資料傳送至開發者伺服器或與筆記關聯。購買記錄和退款遵循 Apple 的條款及私隱政策。"
+        ]
+      },
+      {
         "id": "export",
         "title": "輸出的檔案與剪貼板",
         "paragraphs": [
@@ -348,6 +383,13 @@
           "AI 연결은 기본적으로 꺼져 있습니다. 설정에서 AI 연결을 활성화하면 동일한 macOS 사용자로 실행되는 앱이 MCP(Model Context Protocol)를 통해 열려 있는 노트와 선택 영역을 읽고 이미지를 삽입할 수 있습니다. 연결을 활성화하기 전에 이 접근 권한을 검토하세요.",
           "선택한 AI 클라이언트가 클라우드 서비스를 사용하는 경우 노트 콘텐츠를 해당 서비스로 전송할 수 있습니다. 전송, 보관 및 모델 학습에 대한 사용 여부는 선택한 클라이언트와 AI 서비스, 해당 설정 및 개인정보 처리방침에 따라 달라집니다. 기밀 정보를 다루기 전에 수신 대상을 확인하세요.",
           "AI 연결을 비활성화하면 이후의 연결과 접근이 중단됩니다. 클라이언트나 서비스가 이미 받은 데이터는 삭제되지 않습니다. 해당 서비스에 보관된 콘텐츠를 삭제하려면 서비스의 안내를 따르세요."
+        ]
+      },
+      {
+        "id": "purchases",
+        "title": "선택적 개발 지원",
+        "paragraphs": [
+          "개발자에 대한 선택적 지원에는 Apple의 앱 내 구입을 사용합니다. 결제 정보는 Apple이 처리하며, Inkquation은 카드 번호나 기타 결제 자격 증명을 받지 않습니다. 앱은 구매를 확인하고 거래를 완료하기 위해 기기에서 StoreKit 거래 정보를 처리합니다. 이 거래 정보를 개발자 서버로 전송하거나 노트와 연결하지 않습니다. 구입 내역과 환불에는 Apple의 약관과 개인정보 처리방침이 적용됩니다."
         ]
       },
       {
