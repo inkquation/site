@@ -126,6 +126,29 @@ const ja = {
       details: ['サムネイル', 'ブックマーク'],
     },
   },
+  pdf: {
+    title: 'PDFを取り込んで、書き込む。',
+    description:
+      '講義資料や論文のPDFを、全ページまとめて1冊のノートへ。元の文字の大きさを保ち、書き込み用の余白を加えられます。',
+    steps: [
+      {
+        title: 'PDFをノート一覧にドロップ',
+        description:
+          'FinderからPDFを1つドロップすると、ファイル名とプレビューが自動で表示されます。ツールバーや「ファイル」メニューからも取り込めます。',
+      },
+      {
+        title: '余白を選んで、ノートを作成',
+        description:
+          '余白なし・上下左右・右側・下側から選び、余白の幅を調整。ノート名と各ページを確認して取り込みます。',
+      },
+      {
+        title: '位置を固定して、手書きを重ねる',
+        description:
+          '取り込んだPDFは位置とサイズがロックされるため、投げ縄で上の手書きだけを選べます。右クリックで解除でき、画像にも同じロックを使えます。',
+      },
+    ],
+    note: '余白の設定は取り込み時に確定します。取り込み後に変更する機能はありません。',
+  },
   ai: {
     eyebrow: '03 / AI連携',
     title: ['手書きのノートを、', 'AIと一緒に。'],
@@ -353,6 +376,29 @@ const en: SiteCopy = {
         'See your notebook at a glance with page thumbnails. Filter to bookmarked pages to get straight to the parts you want to revisit.',
       details: ['Page thumbnails', 'Bookmarks'],
     },
+  },
+  pdf: {
+    title: 'Import a PDF. Write on its pages.',
+    description:
+      'Turn all pages of a lecture handout or paper into one note. Keep the original text size and add room for your own writing.',
+    steps: [
+      {
+        title: 'Drop a PDF onto the note list',
+        description:
+          'Drag one PDF from Finder to see its filename and preview automatically. You can also import from the toolbar or File menu.',
+      },
+      {
+        title: 'Choose margins and create the note',
+        description:
+          'Add no margins, or add space on all sides, the right, or the bottom. Adjust the width, check the note name and pages, then import.',
+      },
+      {
+        title: 'Keep the PDF in place as you write',
+        description:
+          'Imported PDF pages start with their position and size locked, so the lasso can select just your handwriting above them. Right-click to unlock. The same lock works for images.',
+      },
+    ],
+    note: 'Margin settings are fixed when importing. They cannot be changed after import.',
   },
   ai: {
     eyebrow: '03 / AI INTEGRATION',

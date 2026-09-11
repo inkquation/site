@@ -653,6 +653,62 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 43px;
 }
+.pdf-import-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 64px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid #cad4e6;
+  scroll-margin-top: 100px;
+}
+.pdf-import-intro > svg {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+.pdf-import-intro h3 {
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.pdf-import-feature p {
+  margin: 0;
+  color: #657186;
+  font-size: 1rem;
+  line-height: 2;
+}
+.pdf-import-intro .pdf-import-note {
+  margin-top: 20px;
+  font-size: 0.875rem;
+}
+.pdf-import-steps {
+  margin: 0;
+  padding-left: 1.5em;
+}
+.pdf-import-steps li {
+  padding-left: 8px;
+}
+.pdf-import-steps li + li {
+  margin-top: 24px;
+}
+.pdf-import-steps li::marker {
+  color: var(--primary);
+}
+.pdf-import-steps h4 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+@media (max-width: 820px) {
+  .pdf-import-feature {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 40px;
+    padding-top: 32px;
+  }
+}
 .feature-item {
   border-top: 1px solid #cad4e6;
   padding-top: 27px;

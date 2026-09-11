@@ -16,6 +16,7 @@ import {
   ArrowUpRight,
   Bookmark,
   Circle,
+  FileText,
   Monitor,
   PenLine,
   Square,
@@ -201,6 +202,26 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               </div>
             </article>
           </div>
+          <section
+            className="pdf-import-feature"
+            id="pdf-import"
+            aria-labelledby="pdf-import-title"
+          >
+            <div className="pdf-import-intro">
+              <FileText size={28} strokeWidth={1.5} aria-hidden="true" />
+              <h3 id="pdf-import-title">{copy.pdf.title}</h3>
+              <p>{copy.pdf.description}</p>
+              <p className="pdf-import-note">{copy.pdf.note}</p>
+            </div>
+            <ol className="pdf-import-steps">
+              {copy.pdf.steps.map((step) => (
+                <li key={step.title}>
+                  <h4>{step.title}</h4>
+                  <p>{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
         </section>
         <section
           className="ai-section container"

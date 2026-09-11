@@ -48,7 +48,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 
 ## Edit
 
-- `app/landing-page.tsx`: shared page structure, navigation, language switch, and actual editor screenshot.
+- `app/landing-page.tsx`: shared page structure, navigation, language switch, actual editor screenshot, and the PDF import guide at `#pdf-import`.
 - `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
 - `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves privacy and AI guide routes. The AI guide is available in all six languages.
@@ -87,6 +87,8 @@ Features described in the proposal are grounded in:
 - `../inkquation/inkquation/MiniMapView.swift`: page thumbnails and bookmarked-page filtering.
 - `../inkquation/ARCHITECTURE.md`: pen/highlighter/eraser/lasso, folders, PDF export, backup and shortcut customization.
 - `../inkquation/inkquation/AppPersistence.swift`: local document storage.
+
+The PDF import guide was checked against the app source on 2026-09-09. `LibraryView.swift` accepts one PDF dropped onto the note list and passes it to `PDFImportSheet.swift`, which displays the filename and preview before creating a note. `PDFImportService.swift` defines the four margin placements and expands the paper around the original PDF. Margins are fixed at import. `PicturePositionLock.swift` and `LassoSelectionGeometry.swift` implement position/size locking and exclude locked items from lasso selection. The guide describes importing all PDF pages as a new note; inserting a PDF into an existing editor page remains a separate operation that uses only its first page.
 
 The English page translates the copy, tabs, image descriptions, accessibility labels, and contact subject. The screenshot itself retains the real Japanese app interface, identified in its English caption. Language selection is explicit through links; the site does not redirect based on browser language.
 
