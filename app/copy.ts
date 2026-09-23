@@ -52,7 +52,7 @@ const ja = {
     zoomLabel: '縮小／拡大',
     customizeTitle: '自分の手になじむ割り当てに。',
     customizeDescription:
-      'プリセットを選んで、よく使う操作だけ自分好みに。設定画面でキーの組み合わせを変更できます。',
+      'プリセットを選んで、よく使う操作だけ自分好みに。設定画面でキーの組み合わせを変更できます。左利きの方も、ショートカットを右手で押しやすいキーに変更できます。',
     referenceTitle: 'ツールの切り替え',
     presetsLabel: 'ショートカットのプリセット例を切り替える',
     presets: {
@@ -279,7 +279,7 @@ const en: SiteCopy = {
     zoomLabel: 'Zoom out / in',
     customizeTitle: 'Make the keys feel like yours.',
     customizeDescription:
-      'Start with a preset, then change the shortcuts you use most. Edit individual key combinations in the app’s settings.',
+      'Start with a preset, then change the shortcuts you use most. Edit individual key combinations in the app’s settings. Left-handed users can customize shortcuts for their right hand.',
     referenceTitle: 'Switching tools',
     presetsLabel: 'Compare shortcut preset examples',
     presets: {

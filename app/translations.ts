@@ -49,7 +49,7 @@ export const zhHans: SiteCopy = {
     zoomLabel: '缩小／放大',
     customizeTitle: '让按键符合你的习惯。',
     customizeDescription:
-      '先选择预设，再按自己的习惯调整常用操作。你可以在应用设置中修改各项组合键。',
+      '先选择预设，再按自己的习惯调整常用操作。你可以在应用设置中修改各项组合键。左手书写时，也可以将快捷键改为右手容易按到的按键。',
     referenceTitle: '切换工具',
     presetsLabel: '切换快捷键预设示例',
     presets: {
@@ -249,7 +249,7 @@ export const zhHant: SiteCopy = {
     zoomLabel: '縮小／放大',
     customizeTitle: '讓按鍵配合你的習慣。',
     customizeDescription:
-      '先選擇預設組合，再依照習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。',
+      '先選擇預設組合，再依照習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。左手書寫時，也可以將快速鍵改為右手容易按到的按鍵。',
     referenceTitle: '切換工具',
     presetsLabel: '切換快速鍵預設範例',
     presets: {
@@ -449,7 +449,7 @@ export const zhHK: SiteCopy = {
     zoomLabel: '縮小／放大',
     customizeTitle: '讓按鍵配合你的習慣。',
     customizeDescription:
-      '先選擇預設組合，再按自己的習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。',
+      '先選擇預設組合，再按自己的習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。左手書寫時，也可以將快捷鍵改為右手容易按到的按鍵。',
     referenceTitle: '切換工具',
     presetsLabel: '切換快捷鍵預設範例',
     presets: {
@@ -650,7 +650,7 @@ export const ko: SiteCopy = {
     zoomLabel: '축소 / 확대',
     customizeTitle: '내 손에 맞는 키 조합으로.',
     customizeDescription:
-      '프리셋을 고른 뒤, 자주 쓰는 기능을 취향에 맞게 바꾸세요. 앱 설정에서 각 키 조합을 변경할 수 있습니다.',
+      '프리셋을 고른 뒤, 자주 쓰는 기능을 취향에 맞게 바꾸세요. 앱 설정에서 각 키 조합을 변경할 수 있습니다. 왼손잡이도 오른손으로 누르기 편한 키로 단축키를 바꿀 수 있습니다.',
     referenceTitle: '도구 전환',
     presetsLabel: '단축키 프리셋 예시 전환',
     presets: {
