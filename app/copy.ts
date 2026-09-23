@@ -94,7 +94,7 @@ const ja = {
     widthTitle: '線幅を調整する',
     widthDescription:
       'ペン・ハイライト・図形の線幅や、消しゴムの大きさを調整します。',
-    laserTitle: '押している間だけ、レーザーに',
+    laserTitle: '押している間だけ、レーザーポインタに',
     laserDescription:
       'Spaceキーを離すと元のツールへ。ノートを見せながら説明するときにも。',
     hintTitle: 'キーを確認したいときは、Commandを長押し。',
