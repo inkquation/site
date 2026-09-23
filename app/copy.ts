@@ -231,7 +231,7 @@ export type SiteCopy = typeof ja;
 
 const en: SiteCopy = {
   meta: {
-    title: 'Inkquation — Write with a pen. Switch with a key.',
+    title: 'Inkquation — Write by pen. Switch by key.',
     description:
       'Handwritten notes meet keyboard shortcuts on Mac. Switch tools, change colors, and adjust stroke width from your keyboard. Customize shortcuts and connect an external AI app through MCP to work with your notes.',
   },
@@ -246,8 +246,8 @@ const en: SiteCopy = {
     ai: 'AI integration',
   },
   hero: {
-    lead: 'Write with a pen.',
-    prefix: 'Switch with a ',
+    lead: 'Write by pen.',
+    prefix: 'Switch by ',
     accent: 'key.',
     description: [
       'Work through equations and calculations by hand.',
