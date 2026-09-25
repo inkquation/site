@@ -297,15 +297,13 @@ h1 {
   position: relative;
   color: var(--primary);
 }
-.ink-underline::after {
-  content: '';
+.ink-underline-mark {
   position: absolute;
   left: 1px;
-  right: 3px;
+  width: calc(100% - 4px);
   bottom: -8px;
   height: 7px;
-  border-top: 2px solid var(--primary);
-  border-radius: 50%;
+  pointer-events: none;
   transform: rotate(-2deg);
 }
 .hero-description {

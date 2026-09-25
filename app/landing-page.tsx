@@ -113,7 +113,18 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 {copy.hero.lead}
                 <br />
                 {copy.hero.prefix}
-                <span className="ink-underline">{copy.hero.accent}</span>
+                <span className="ink-underline">
+                  {copy.hero.accent}
+                  <svg
+                    className="ink-underline-mark"
+                    viewBox="0 0 100 7"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M0 4 Q50 -4 100 4 Q50 0 0 4Z" fill="currentColor" />
+                  </svg>
+                </span>
               </h1>
               <p className="hero-description">
                 <TextLines lines={copy.hero.description} />
