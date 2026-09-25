@@ -18,6 +18,7 @@ import {
   Bookmark,
   Circle,
   FileText,
+  Menu,
   Monitor,
   PenLine,
   Square,
@@ -167,10 +168,13 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <TextLines lines={tutorial.title} />
               </h2>
               <p className="tutorial-description">{tutorial.description}</p>
-              <p className="tutorial-entry">
-                <span>{tutorial.entryLabel}</span>
-                <strong>{tutorial.entry}</strong>
-              </p>
+              <div className="tutorial-entry">
+                <p className="tutorial-entry-label">
+                  <Menu size={16} aria-hidden="true" />
+                  <span>{tutorial.entryLabel}</span>
+                </p>
+                <q className="tutorial-entry-command">{tutorial.entry}</q>
+              </div>
             </div>
             <div>
               <ol className="tutorial-steps">
