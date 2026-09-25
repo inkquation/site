@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10",
+  "updated": "2026-09-25",
   "ja": {
     "title": "AI連携ガイド",
     "description": "Inkquationを外部AIアプリにつなぎ、ページの読み取りや画像・図形・ペンの線の追加を行うためのガイドです。",
@@ -14,11 +14,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Inkquationは、AIアプリがツールを呼び出すための共通の仕組みであるMCPに対応しています。AIは開いているページや投げ縄の選択範囲を画像として読み取り、PNG画像、図形、点列で表すペンの線を追加できます。追加後のページの確認と、条件を満たす操作の取り消しにも対応しています。"
+            "text": "Inkquationは、AIアプリがツールを呼び出すための共通の仕組みであるMCPに対応しています。AIは開いているページや投げなわの選択範囲を画像として読み取り、PNG画像、図形、点列で表すペンの線を追加できます。追加後のページの確認と、条件を満たす操作の取り消しにも対応しています。"
           },
           {
             "type": "paragraph",
-            "text": "図形は塗りつぶしのない通常のペンの線になります。消しゴムや投げ縄で編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
+            "text": "図形は塗りつぶしのない通常のペンの線になります。消しゴムや投げなわで編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
           }
         ]
       },
@@ -35,6 +35,10 @@
               "設定画面でJSONまたはTOMLの接続設定をコピーし、AIアプリの既存設定に追加します。アプリの実行ファイルと接続先のパスはMacごとに異なるため、設定画面の値を使ってください。",
               "AIアプリを再接続し、Inkquationを開いたまま使います。対象ページを画面に表示してください。AIアプリ側で編集ツールの許可が求められたら、依頼内容を確認して許可します。"
             ]
+          },
+          {
+            "type": "paragraph",
+            "text": "接続設定には一時アクセスキーが含まれます。第三者に渡さず、アプリの再起動や接続の再有効化後はコピーし直してください。"
           },
           {
             "type": "paragraph",
@@ -66,7 +70,7 @@
             "ordered": true,
             "items": [
               "`inkquation_list_open_notes`で対象の`note_id`と`page_id`を取得します。`available: true`のページを使います。対象が不明なときはユーザーに確認します。",
-              "`inkquation_get_page`でページ画像、`revision`、論理サイズを読みます。選択範囲を使う場合は、ユーザーが先に投げ縄で選択し、`inkquation_get_selection`を呼び出します。",
+              "`inkquation_get_page`でページ画像、`revision`、論理サイズを読みます。選択範囲を使う場合は、ユーザーが先に投げなわで選択し、`inkquation_get_selection`を呼び出します。",
               "既存の内容と重ならない位置を確認し、追加ツールを呼び出します。読み取った値を`expected_revision`に指定し、新しいUUIDを`operation_id`に使います。",
               "`inkquation_get_page`で結果を確認します。必要なら同じ`operation_id`を指定して`inkquation_undo`を呼び出します。"
             ]
@@ -83,11 +87,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "ツール",
-              "必須の引数",
-              "動作"
-            ],
+            "headers": ["ツール", "必須の引数", "動作"],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -102,7 +102,7 @@
               [
                 "`inkquation_get_selection`",
                 "`note_id`, `page_id`",
-                "ユーザーが投げ縄で選択した範囲のPNGを取得します。`revision`はページ全体の値です。"
+                "ユーザーが投げなわで選択した範囲のPNGを取得します。`revision`はページ全体の値です。"
               ],
               [
                 "`inkquation_insert_image`",
@@ -202,10 +202,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "状態",
-              "対処"
-            ],
+            "headers": ["状態", "対処"],
             "rows": [
               [
                 "`page_changed`",
@@ -213,7 +210,7 @@
               ],
               [
                 "`page_unavailable` / `empty_selection`",
-                "Inkquationで対象ページを表示するか、投げ縄で内容を選択してから読み直します。"
+                "Inkquationで対象ページを表示するか、投げなわで内容を選択してから読み直します。"
               ],
               [
                 "`busy`",
@@ -225,7 +222,7 @@
               ],
               [
                 "`read_limit`",
-                "一度に読む内容が上限を超えています。投げ縄で小さい範囲を選択し、選択範囲を読み取ってください。"
+                "一度に読む内容が上限を超えています。投げなわで小さい範囲を選択し、選択範囲を読み取ってください。"
               ],
               [
                 "`image_memory_limit`",
@@ -237,7 +234,7 @@
               ],
               [
                 "`disconnected`",
-                "AI接続が無効になっています。適用済みの編集の保存は続きます。アプリで結果を確認し、接続を再度許可した後にページを読み直してください。"
+                "AI接続が無効になっています。適用済みの編集の保存は続きます。アプリで結果を確認し、接続を再度許可して新しい接続設定をAIアプリにコピーし直します。再接続後にページを読み直してください。"
               ],
               [
                 "`operation_id_reused`",
@@ -253,7 +250,7 @@
               ],
               [
                 "`session_limit`",
-                "追加操作128回の上限に達しています。結果を確認してから設定でAI接続を無効・有効にし、AIアプリを再接続してページを読み直します。以前の操作を新しいIDで繰り返さないでください。"
+                "追加操作128回の上限に達しています。結果を確認してから設定でAI接続を無効・有効にし、新しい接続設定をAIアプリにコピーし直します。再接続後にページを読み直してください。以前の操作を新しいIDで繰り返さないでください。"
               ]
             ]
           },
@@ -270,6 +267,10 @@
           {
             "type": "paragraph",
             "text": "接続は同じMac上のローカルプロセスとの通信です。このWebサイトは接続方法を案内するもので、ノートを操作するMCPサーバーではありません。接続を許可すると、AIアプリはInkquationで開いている利用可能なページを読み取れます。クラウド型AIを使う場合、読み取った画像が接続先のサービスに送信されることがあります。"
+          },
+          {
+            "type": "paragraph",
+            "text": "AI接続は初期状態では無効です。「設定」の「AI接続」で有効にすると、非公開の一時アクセスキーと正規の内蔵アダプタを使うクライアントが、MCP（Model Context Protocol）経由で開いているノートや選択範囲を読み取り、画像を追加できます。設定を第三者に渡さず、再起動または再有効化後にコピーし直してください。"
           },
           {
             "type": "paragraph",
@@ -292,7 +293,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "このガイドは2026年9月9日時点の実装をもとにしています。アプリの配布状況とは別に、接続先が返す`tools/list`を確認してください。図形や線の追加ツールが表示されない場合は、使用中のInkquationがその機能に対応しているか確認し、アプリの更新後にAIアプリを再接続します。"
+            "text": "このガイドは2026年9月25日時点の実装をもとにしています。アプリの配布状況とは別に、接続先が返す`tools/list`を確認してください。図形や線の追加ツールが表示されない場合は、使用中のInkquationがその機能に対応しているか確認し、アプリの更新後にAIアプリを再接続します。"
           },
           {
             "type": "links",
@@ -349,6 +350,10 @@
           },
           {
             "type": "paragraph",
+            "text": "The configuration contains a temporary access key. Keep it private and copy it again after restarting Inkquation or re-enabling the connection."
+          },
+          {
+            "type": "paragraph",
             "text": "The standard connection needs no Python installation or source checkout. If you move or rename Inkquation, copy its configuration again. Entering this website’s URL into a web AI service’s connection field does not establish a connection."
           }
         ]
@@ -394,11 +399,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "Tool",
-              "Required arguments",
-              "Behavior"
-            ],
+            "headers": ["Tool", "Required arguments", "Behavior"],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -513,10 +514,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "Result",
-              "Next action"
-            ],
+            "headers": ["Result", "Next action"],
             "rows": [
               [
                 "`page_changed`",
@@ -548,7 +546,7 @@
               ],
               [
                 "`disconnected`",
-                "AI Connection is disabled. Saving an edit already applied continues. Inspect the result in the app, then read the page again after enabling the connection."
+                "AI Connection is disabled. Saving an edit already applied continues. Inspect the result in Inkquation, enable the connection, and copy the new configuration into the AI app. Reconnect and read the page again."
               ],
               [
                 "`operation_id_reused`",
@@ -564,7 +562,7 @@
               ],
               [
                 "`session_limit`",
-                "The limit of 128 insertions has been reached. Inspect the results, turn AI Connection off and on in Settings, reconnect the AI app, and read the page again. Do not repeat an earlier edit with a new ID."
+                "The limit of 128 insertions has been reached. Inspect the results, turn AI Connection off and on in Settings, and copy the new configuration into the AI app. Reconnect and read the page again. Do not repeat an earlier edit with a new ID."
               ]
             ]
           },
@@ -581,6 +579,10 @@
           {
             "type": "paragraph",
             "text": "The connection communicates with local processes on the same Mac. This website provides documentation; it is not an MCP server that controls notes. Once allowed, the AI app can read available pages in open Inkquation notes. If the AI uses a cloud model, those images may be sent to its provider."
+          },
+          {
+            "type": "paragraph",
+            "text": "AI connections are off by default. Enabling AI Connection in Settings allows clients using the private temporary access key and the authentic built-in adapter to read open notes and selections and insert images through MCP (Model Context Protocol). Keep the configuration private and copy it again after restarting or re-enabling Inkquation."
           },
           {
             "type": "paragraph",
@@ -603,7 +605,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "This guide reflects the implementation checked on September 9, 2026. Check the connected server’s `tools/list` separately from app distribution status. If shape or stroke insertion tools are absent, check that your Inkquation build supports them and reconnect the AI app after updating."
+            "text": "This guide reflects the implementation checked on September 25, 2026. Check the connected server’s `tools/list` separately from app distribution status. If shape or stroke insertion tools are absent, check that your Inkquation build supports them and reconnect the AI app after updating."
           },
           {
             "type": "links",
@@ -660,6 +662,10 @@
           },
           {
             "type": "paragraph",
+            "text": "连接配置含有临时访问密钥，请勿分享。重启 Inkquation 或重新启用连接后，请重新拷贝配置。"
+          },
+          {
+            "type": "paragraph",
             "text": "标准连接不需要安装 Python 或下载源代码。如果移动或重命名了 Inkquation，请重新拷贝连接配置。将本网站的 URL 填入网页版 AI 服务的连接地址栏，并不能建立连接。"
           }
         ]
@@ -705,11 +711,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "工具",
-              "必需参数",
-              "行为"
-            ],
+            "headers": ["工具", "必需参数", "行为"],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -824,10 +826,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "结果",
-              "处理方法"
-            ],
+            "headers": ["结果", "处理方法"],
             "rows": [
               [
                 "`page_changed`",
@@ -859,7 +858,7 @@
               ],
               [
                 "`disconnected`",
-                "AI 连接已关闭。已经生效的编辑仍会继续保存。请在应用中确认结果，重新启用连接后再读取页面。"
+                "AI 连接已关闭。已经生效的编辑仍会继续保存。请在 Inkquation 中确认结果，重新启用连接，并将新的连接配置拷贝到 AI 应用。重新连接后再读取页面。"
               ],
               [
                 "`operation_id_reused`",
@@ -875,7 +874,7 @@
               ],
               [
                 "`session_limit`",
-                "已达到 128 次添加操作的上限。请先确认结果，再在设置中关闭并重新启用 AI 连接，重新连接 AI 应用并读取页面。不要使用新 ID 重复先前的编辑。"
+                "已达到 128 次添加操作的上限。请先确认结果，在设置中关闭并重新启用 AI 连接，再将新的连接配置拷贝到 AI 应用。重新连接后再读取页面。不要使用新 ID 重复先前的编辑。"
               ]
             ]
           },
@@ -892,6 +891,10 @@
           {
             "type": "paragraph",
             "text": "连接通过同一台 Mac 上的本地进程通信。本网站提供使用说明，并不是控制笔记的 MCP 服务器。允许连接后，AI 应用可以读取 Inkquation 中已打开笔记内的可用页面。如果使用云端模型，读取的图像可能会发送给模型提供商。"
+          },
+          {
+            "type": "paragraph",
+            "text": "AI 连接默认关闭。在“设置”中启用后，使用私有临时访问密钥和正版内置适配器的客户端可通过 MCP 读取已打开的笔记和选区并插入图像。请妥善保管配置，并在重新启动或重新启用 Inkquation 后重新复制。"
           },
           {
             "type": "paragraph",
@@ -914,7 +917,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南基于 2026 年 9 月 9 日核对的实现。应用的发布情况与实际可用功能应分别确认；请查看所连接服务器的 `tools/list`。如果没有显示图形或笔画添加工具，请确认当前 Inkquation 版本是否支持这些功能，并在更新应用后重新连接 AI 应用。"
+            "text": "本指南基于 2026 年 9 月 25 日核对的实现。应用的发布情况与实际可用功能应分别确认；请查看所连接服务器的 `tools/list`。如果没有显示图形或笔画添加工具，请确认当前 Inkquation 版本是否支持这些功能，并在更新应用后重新连接 AI 应用。"
           },
           {
             "type": "links",
@@ -971,6 +974,10 @@
           },
           {
             "type": "paragraph",
+            "text": "連線設定含有暫時存取金鑰，請勿分享。重新啟動 Inkquation 或重新啟用連線後，請重新拷貝設定。"
+          },
+          {
+            "type": "paragraph",
             "text": "標準連線不需要安裝 Python 或下載原始碼。如果移動或重新命名了 Inkquation，請重新拷貝連線設定。將本網站的 URL 填入網頁版 AI 服務的連線位址欄，並不能建立連線。"
           }
         ]
@@ -1016,11 +1023,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "工具",
-              "必要參數",
-              "行為"
-            ],
+            "headers": ["工具", "必要參數", "行為"],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -1135,10 +1138,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "結果",
-              "處理方式"
-            ],
+            "headers": ["結果", "處理方式"],
             "rows": [
               [
                 "`page_changed`",
@@ -1170,7 +1170,7 @@
               ],
               [
                 "`disconnected`",
-                "AI 連線已關閉。已經生效的編輯仍會繼續儲存。請在應用程式中確認結果，重新啟用連線後再讀取頁面。"
+                "AI 連線已關閉。已經生效的編輯仍會繼續儲存。請在 Inkquation 中確認結果，重新啟用連線，並將新的連線設定拷貝到 AI App。重新連接後再讀取頁面。"
               ],
               [
                 "`operation_id_reused`",
@@ -1186,7 +1186,7 @@
               ],
               [
                 "`session_limit`",
-                "已達到 128 次新增操作的上限。請先確認結果，再於設定中關閉並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。不要使用新 ID 重複先前的編輯。"
+                "已達到 128 次新增操作的上限。請先確認結果，在設定中關閉並重新啟用 AI 連線，再將新的連線設定拷貝到 AI App。重新連接後再讀取頁面。不要使用新 ID 重複先前的編輯。"
               ]
             ]
           },
@@ -1203,6 +1203,10 @@
           {
             "type": "paragraph",
             "text": "連線透過同一台 Mac 上的本機程序通訊。本網站提供使用說明，並不是控制筆記的 MCP 伺服器。允許連線後，AI App 可以讀取 Inkquation 中已開啟筆記內的可用頁面。如果使用雲端模型，讀取的影像可能會傳送給模型供應商。"
+          },
+          {
+            "type": "paragraph",
+            "text": "AI 連線預設關閉。啟用後，使用私人暫時存取密鑰和正版內建轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入影像。請妥善保管設定，並在重新啟動或重新啟用 Inkquation 後重新複製。"
           },
           {
             "type": "paragraph",
@@ -1225,7 +1229,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南以 2026 年 9 月 9 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+            "text": "本指南以 2026 年 9 月 25 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
           },
           {
             "type": "links",
@@ -1282,6 +1286,10 @@
           },
           {
             "type": "paragraph",
+            "text": "連線設定含有臨時存取密鑰，請勿分享。重新啟動 Inkquation 或重新啟用連線後，請重新複製設定。"
+          },
+          {
+            "type": "paragraph",
             "text": "標準連線不需要安裝 Python 或下載原始碼。如果移動或重新命名了 Inkquation，請重新複製連線設定。將本網站的 URL 填入網頁版 AI 服務的連線位址欄，並不能建立連線。"
           }
         ]
@@ -1327,11 +1335,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "工具",
-              "必要參數",
-              "行為"
-            ],
+            "headers": ["工具", "必要參數", "行為"],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -1446,10 +1450,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "結果",
-              "處理方式"
-            ],
+            "headers": ["結果", "處理方式"],
             "rows": [
               [
                 "`page_changed`",
@@ -1481,7 +1482,7 @@
               ],
               [
                 "`disconnected`",
-                "AI 連線已停用。已經生效的編輯仍會繼續儲存。請在應用程式中確認結果，重新啟用連線後再讀取頁面。"
+                "AI 連線已停用。已經生效的編輯仍會繼續儲存。請在 Inkquation 中確認結果，重新啟用連線，並將新的連線設定複製到 AI App。重新連接後再讀取頁面。"
               ],
               [
                 "`operation_id_reused`",
@@ -1497,7 +1498,7 @@
               ],
               [
                 "`session_limit`",
-                "已達到 128 次新增操作的上限。請先確認結果，再於設定中停用並重新啟用 AI 連線，重新連接 AI 應用程式並讀取頁面。請勿使用新 ID 重複先前的編輯。"
+                "已達到 128 次新增操作的上限。請先確認結果，在設定中停用並重新啟用 AI 連線，再將新的連線設定複製到 AI App。重新連接後再讀取頁面。請勿使用新 ID 重複先前的編輯。"
               ]
             ]
           },
@@ -1514,6 +1515,10 @@
           {
             "type": "paragraph",
             "text": "連線透過同一台 Mac 上的本機程序通訊。本網站提供使用說明，並不是控制筆記的 MCP 伺服器。允許連線後，AI App 可以讀取 Inkquation 中已開啟筆記內的可用頁面。如果使用雲端模型，讀取的圖像可能會傳送給模型供應商。"
+          },
+          {
+            "type": "paragraph",
+            "text": "AI 連線預設關閉。啟用後，使用私人臨時存取密鑰和正版內置轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入圖像。請妥善保管設定，並在重新啟動或重新啟用 Inkquation 後重新複製。"
           },
           {
             "type": "paragraph",
@@ -1536,7 +1541,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南以 2026 年 9 月 9 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+            "text": "本指南以 2026 年 9 月 25 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
           },
           {
             "type": "links",
@@ -1593,6 +1598,10 @@
           },
           {
             "type": "paragraph",
+            "text": "연결 구성에는 임시 접근 키가 포함됩니다. 다른 사람에게 공유하지 말고, Inkquation을 재시작하거나 연결을 다시 활성화한 뒤에는 구성을 다시 복사하세요."
+          },
+          {
+            "type": "paragraph",
             "text": "기본 연결에는 Python 설치나 소스 코드 다운로드가 필요하지 않습니다. Inkquation을 이동하거나 이름을 바꿨다면 연결 구성을 다시 복사하세요. 웹 기반 AI 서비스의 연결 주소 입력란에 이 웹사이트 URL을 넣어도 연결되지 않습니다."
           }
         ]
@@ -1638,11 +1647,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "도구",
-              "필수 인수",
-              "동작"
-            ],
+            "headers": ["도구", "필수 인수", "동작"],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -1757,10 +1762,7 @@
           },
           {
             "type": "table",
-            "headers": [
-              "결과",
-              "대처 방법"
-            ],
+            "headers": ["결과", "대처 방법"],
             "rows": [
               [
                 "`page_changed`",
@@ -1792,7 +1794,7 @@
               ],
               [
                 "`disconnected`",
-                "AI 연결이 비활성화되었습니다. 이미 적용된 편집의 저장은 계속됩니다. 앱에서 결과를 확인하고 연결을 다시 활성화한 뒤 페이지를 다시 읽으세요."
+                "AI 연결이 비활성화되었습니다. 이미 적용된 편집의 저장은 계속됩니다. Inkquation에서 결과를 확인한 뒤 연결을 활성화하고 새 구성을 AI 앱에 복사하세요. 다시 연결한 뒤 페이지를 다시 읽으세요."
               ],
               [
                 "`operation_id_reused`",
@@ -1808,7 +1810,7 @@
               ],
               [
                 "`session_limit`",
-                "추가 작업 128회 한도에 도달했습니다. 결과를 확인한 뒤 설정에서 AI 연결을 껐다 켜고, AI 앱을 다시 연결한 다음 페이지를 다시 읽으세요. 새 ID로 이전 편집을 반복하지 마세요."
+                "추가 작업 128회 한도에 도달했습니다. 결과를 확인한 뒤 설정에서 AI 연결을 껐다 켜고 새 구성을 AI 앱에 복사하세요. 다시 연결한 뒤 페이지를 다시 읽으세요. 새 ID로 이전 편집을 반복하지 마세요."
               ]
             ]
           },
@@ -1825,6 +1827,10 @@
           {
             "type": "paragraph",
             "text": "연결은 같은 Mac에서 실행되는 로컬 프로세스와 통신합니다. 이 웹사이트는 사용 설명을 제공하며, 노트를 제어하는 MCP 서버가 아닙니다. 연결을 허용하면 AI 앱이 Inkquation에서 열려 있는 노트의 사용 가능한 페이지를 읽을 수 있습니다. 클라우드 모델을 사용하면 읽은 이미지가 모델 제공업체에 전송될 수 있습니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "AI 연결은 기본적으로 꺼져 있습니다. 활성화하면 비공개 임시 액세스 키와 정품 내장 어댑터를 사용하는 클라이언트가 MCP를 통해 열린 노트와 선택 영역을 읽고 이미지를 삽입할 수 있습니다. 구성을 비공개로 유지하고 Inkquation을 다시 시작하거나 다시 활성화한 후 새로 복사하세요."
           },
           {
             "type": "paragraph",
@@ -1847,7 +1853,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "이 가이드는 2026년 9월 9일에 확인한 구현을 기준으로 합니다. 앱 배포 현황과 실제 사용 가능한 기능은 별도로 확인해야 합니다. 연결된 서버의 `tools/list`를 확인하세요. 도형이나 펜 획 추가 도구가 없다면 사용 중인 Inkquation 버전이 해당 기능을 지원하는지 확인하고, 앱을 업데이트한 뒤 AI 앱을 다시 연결하세요."
+            "text": "이 가이드는 2026년 9월 25일에 확인한 구현을 기준으로 합니다. 앱 배포 현황과 실제 사용 가능한 기능은 별도로 확인해야 합니다. 연결된 서버의 `tools/list`를 확인하세요. 도형이나 펜 획 추가 도구가 없다면 사용 중인 Inkquation 버전이 해당 기능을 지원하는지 확인하고, 앱을 업데이트한 뒤 AI 앱을 다시 연결하세요."
           },
           {
             "type": "links",

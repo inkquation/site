@@ -29,7 +29,6 @@ const ja = {
       'ノートからポインターを動かさずに。',
     ],
     primary: 'ショートカットを見る',
-    secondary: '使い方を見る',
     platform: 'macOS のための手書きノートアプリ',
     aiLink: 'AI連携に対応しました',
   },
@@ -52,14 +51,14 @@ const ja = {
     zoomLabel: '縮小／拡大',
     customizeTitle: '自分の手になじむ割り当てに。',
     customizeDescription:
-      'プリセットを選んで、よく使う操作だけ自分好みに。設定画面でキーの組み合わせを変更できます。',
+      'プリセットを選んで、よく使う操作だけ自分好みに。設定画面でキーの組み合わせを変更できます。左利きの方も、ショートカットを右手で押しやすいキーに変更できます。',
     referenceTitle: 'ツールの切り替え',
     presetsLabel: 'ショートカットのプリセット例を切り替える',
     presets: {
       leftHanded: {
         label: '左手操作',
         description:
-          '左側のキーだけで操作。Q・W・E・Rでペン、消しゴム、ハイライト、投げ縄を切り替えます。',
+          '左側のキーだけで操作。Q・W・E・Rでペン、消しゴム、蛍光ペン、投げなわを切り替えます。',
       },
       standard: {
         label: '標準',
@@ -72,13 +71,13 @@ const ja = {
     },
     tools: {
       shape: '図形に切り替える',
-      selection: '選択ツールに切り替える',
+      selection: '画像ツールに切り替える',
       laser: 'レーザーに切り替える',
 
       pen: 'ペンに切り替える',
       eraser: '消しゴムに切り替える',
-      highlighter: 'ハイライトに切り替える',
-      lasso: '投げ縄に切り替える',
+      highlighter: '蛍光ペンに切り替える',
+      lasso: '投げなわに切り替える',
     },
     note: 'アプリのプリセット例です。ノートの編集画面で、テキスト入力欄に入力していないときに使えます。',
     optionsLabel: '選択したプリセットの操作',
@@ -90,11 +89,11 @@ const ja = {
       space: 'スペース',
     },
     colorTitle: '色を切り替える',
-    colorDescription: 'ペン・ハイライト・図形の色を、前後に切り替えます。',
+    colorDescription: 'ペン・蛍光ペン・図形の色を、前後に切り替えます。',
     widthTitle: '線幅を調整する',
     widthDescription:
-      'ペン・ハイライト・図形の線幅や、消しゴムの大きさを調整します。',
-    laserTitle: '押している間だけ、レーザーに',
+      'ペン・蛍光ペン・図形の線幅や、消しゴムの大きさを調整します。',
+    laserTitle: '押している間だけ、レーザーポインタに',
     laserDescription:
       'Spaceキーを離すと元のツールへ。ノートを見せながら説明するときにも。',
     hintTitle: 'キーを確認したいときは、Commandを長押し。',
@@ -110,8 +109,8 @@ const ja = {
     write: {
       title: '一筆から、考えが動き出す。',
       description:
-        'ペンで書き、ハイライトで目印を。消しゴムや投げ縄選択で、考えの変化に合わせて書き直せます。',
-      details: ['ペン', 'ハイライター', '投げ縄'],
+        'ペンで書き、蛍光ペンで目印を。消しゴムや投げなわ選択で、考えの変化に合わせて書き直せます。',
+      details: ['ペン', '蛍光ペン', '投げなわ'],
     },
     shape: {
       title: '図も、線も、思いどおりに。',
@@ -144,16 +143,16 @@ const ja = {
       {
         title: '位置を固定して、手書きを重ねる',
         description:
-          '取り込んだPDFは位置とサイズがロックされるため、投げ縄で上の手書きだけを選べます。右クリックで解除でき、画像にも同じロックを使えます。',
+          '取り込んだPDFは位置とサイズがロックされるため、投げなわで上の手書きだけを選べます。右クリックで解除でき、画像にも同じロックを使えます。',
       },
     ],
     note: '余白の設定は取り込み時に確定します。取り込み後に変更する機能はありません。',
   },
   ai: {
-    eyebrow: '03 / AI連携',
+    eyebrow: '04 / AI連携',
     title: ['手書きのノートを、', 'AIと一緒に。'],
     description:
-      'MCP（AIアプリとつなぐための仕組み）に対応。外部AIアプリから、開いているページや投げ縄で選んだ範囲を画像として読み取り、PNG画像や図形、ペンの線をノートに追加できます。',
+      'MCP（AIアプリとつなぐための仕組み）に対応。外部AIアプリから、開いているページや投げなわで選んだ範囲を画像として読み取り、PNG画像や図形、ペンの線をノートに追加できます。',
     capabilities: [
       'ページ・選択範囲の読み取り',
       'PNG画像・図形・ペンの線の追加',
@@ -169,7 +168,7 @@ const ja = {
       {
         title: '接続設定をコピーする',
         description:
-          '設定画面の接続設定を、Mac上のMCP対応AIアプリに登録します。',
+          '設定画面の接続設定を、Mac上のMCP対応AIアプリに登録します。接続設定には一時アクセスキーが含まれます。第三者に渡さず、アプリの再起動や接続の再有効化後はコピーし直してください。',
       },
       {
         title: 'ノートを開いて、AIに依頼する',
@@ -184,9 +183,7 @@ const ja = {
   },
   workflow: {
     title: ['数式を書いて、', '考えを進める。'],
-    description: [
-      '途中式も、図も、気づいたことも、同じページに。',
-    ],
+    description: ['途中式も、図も、気づいたことも、同じページに。'],
     steps: [
       {
         title: '途中式を、一行ずつ。',
@@ -194,11 +191,13 @@ const ja = {
       },
       {
         title: '式のとなりに、図とメモを。',
-        description: '方眼を目安に式をそろえ、図や注釈を自由に書き添えられます。',
+        description:
+          '方眼を目安に式をそろえ、図や注釈を自由に書き添えられます。',
       },
       {
         title: '導出の流れを、そのまま共有。',
-        description: '数式と手書きの説明をまとめてPDFへ。途中の計算も一緒に伝えられます。',
+        description:
+          '数式と手書きの説明をまとめてPDFへ。途中の計算も一緒に伝えられます。',
       },
     ],
   },
@@ -254,7 +253,7 @@ export type SiteCopy = typeof ja;
 
 const en: SiteCopy = {
   meta: {
-    title: 'Inkquation — Write with a pen. Switch with a key.',
+    title: 'Inkquation — Write by pen. Switch by key.',
     description:
       'Handwritten notes meet keyboard shortcuts on Mac. Switch tools, change colors, and adjust stroke width from your keyboard. Customize shortcuts and connect an external AI app through MCP to work with your notes.',
   },
@@ -269,8 +268,8 @@ const en: SiteCopy = {
     ai: 'AI integration',
   },
   hero: {
-    lead: 'Write with a pen.',
-    prefix: 'Switch with a ',
+    lead: 'Write by pen.',
+    prefix: 'Switch by ',
     accent: 'key.',
     description: [
       'Work through equations and calculations by hand.',
@@ -278,14 +277,13 @@ const en: SiteCopy = {
       'without moving the pointer away from your notes.',
     ],
     primary: 'Explore the shortcuts',
-    secondary: 'See how it works',
     platform: 'A handwriting notebook, made for macOS',
     aiLink: 'Now with AI integration',
   },
   screenshot: {
     open: 'Open the full-size Inkquation editor screenshot',
-    alt: 'The actual Inkquation editor with its Japanese interface: page thumbnails and a color and width palette on the left, drawing tools above, and equations on grid paper in the center.',
-    caption: 'Actual editor · Demo note · Japanese UI',
+    alt: 'The actual Inkquation editor with its English interface: page thumbnails and a color and width palette on the left, drawing tools above, and equations on grid paper in the center.',
+    caption: 'Actual editor · Demo note · English UI',
     expand: 'View full size',
   },
   shortcuts: {
@@ -302,7 +300,7 @@ const en: SiteCopy = {
     zoomLabel: 'Zoom out / in',
     customizeTitle: 'Make the keys feel like yours.',
     customizeDescription:
-      'Start with a preset, then change the shortcuts you use most. Edit individual key combinations in the app’s settings.',
+      'Start with a preset, then change the shortcuts you use most. Edit individual key combinations in the app’s settings. Left-handed users can customize shortcuts for their right hand.',
     referenceTitle: 'Switching tools',
     presetsLabel: 'Compare shortcut preset examples',
     presets: {
@@ -322,7 +320,7 @@ const en: SiteCopy = {
     },
     tools: {
       shape: 'Switch to shapes',
-      selection: 'Switch to selection tool',
+      selection: 'Switch to image tool',
       laser: 'Switch to laser pointer',
 
       pen: 'Switch to pen',
@@ -401,7 +399,7 @@ const en: SiteCopy = {
     note: 'Margin settings are fixed when importing. They cannot be changed after import.',
   },
   ai: {
-    eyebrow: '03 / AI INTEGRATION',
+    eyebrow: '04 / AI INTEGRATION',
     title: ['Bring your handwritten', 'notes into the conversation.'],
     description:
       'Connect an external AI app through MCP, a protocol for connecting AI apps to tools. It can read an open page or lasso selection as an image and add PNG images, shapes and pen strokes to your notes.',
@@ -420,7 +418,7 @@ const en: SiteCopy = {
       {
         title: 'Copy the connection configuration',
         description:
-          'Add the configuration from Settings to an MCP-compatible AI app running on your Mac.',
+          'Add the configuration from Settings to an MCP-compatible AI app running on your Mac. The configuration contains a temporary access key. Keep it private and copy it again after restarting Inkquation or re-enabling the connection.',
       },
       {
         title: 'Open a note and ask your AI app',
@@ -435,13 +433,12 @@ const en: SiteCopy = {
   },
   workflow: {
     title: ['Write equations.', 'Think them through.'],
-    description: [
-      'Keep each step, diagram, and observation on the same page.',
-    ],
+    description: ['Keep each step, diagram, and observation on the same page.'],
     steps: [
       {
         title: 'Work through each step.',
-        description: 'Write fractions, integrals, and subscripts directly with your pen. Keep the steps behind your result.',
+        description:
+          'Write fractions, integrals, and subscripts directly with your pen. Keep the steps behind your result.',
       },
       {
         title: 'Add diagrams and notes beside your equations.',

@@ -26,7 +26,6 @@ export const zhHans: SiteCopy = {
       '无需将指针移出笔记。',
     ],
     primary: '查看快捷键',
-    secondary: '了解使用方式',
     platform: '专为 macOS 设计的手写笔记应用',
     aiLink: '现已支持 AI 连接',
   },
@@ -38,8 +37,7 @@ export const zhHans: SiteCopy = {
   },
   shortcuts: {
     title: ['右手写画，', '左手操作。'],
-    description:
-      '右手继续书写，左手即可切换工具、调整颜色和线宽、翻页及缩放。',
+    description: '右手继续书写，左手即可切换工具、调整颜色和线宽、翻页及缩放。',
     setupTitle: '在设置中应用“左手操作”。',
     setupDescription:
       '在 Inkquation 的“设置”→“快捷键”中选择“左手操作”，然后在确认窗口中应用。',
@@ -49,7 +47,7 @@ export const zhHans: SiteCopy = {
     zoomLabel: '缩小／放大',
     customizeTitle: '让按键符合你的习惯。',
     customizeDescription:
-      '先选择预设，再按自己的习惯调整常用操作。你可以在应用设置中修改各项组合键。',
+      '先选择预设，再按自己的习惯调整常用操作。你可以在应用设置中修改各项组合键。左手书写时，也可以将快捷键改为右手容易按到的按键。',
     referenceTitle: '切换工具',
     presetsLabel: '切换快捷键预设示例',
     presets: {
@@ -66,7 +64,7 @@ export const zhHans: SiteCopy = {
     },
     tools: {
       shape: '切换到形状',
-      selection: '切换到选择工具',
+      selection: '切换到图像工具',
       laser: '切换到激光笔',
 
       pen: '切换到笔',
@@ -140,11 +138,15 @@ export const zhHans: SiteCopy = {
     note: '留白设置在导入时确定，导入后无法更改。',
   },
   ai: {
-    eyebrow: '03 / AI 连接',
+    eyebrow: '04 / AI 连接',
     title: ['手写笔记，', '也能与 AI 一起处理。'],
     description:
       '通过 MCP（连接 AI 应用与工具的协议），外部 AI 应用可以将打开的页面或套索选区读取为图像，并将 PNG 图像、图形和笔画添加到笔记中。',
-    capabilities: ['读取页面与选区', '插入 PNG 图像、图形和笔画', '查看并撤销插入结果'],
+    capabilities: [
+      '读取页面与选区',
+      '插入 PNG 图像、图形和笔画',
+      '查看并撤销插入结果',
+    ],
     setupTitle: '在设置中连接 AI 应用。',
     steps: [
       {
@@ -154,7 +156,8 @@ export const zhHans: SiteCopy = {
       },
       {
         title: '拷贝连接配置',
-        description: '将设置页面中的配置添加到 Mac 上支持 MCP 的 AI 应用。',
+        description:
+          '将设置页面中的配置添加到 Mac 上支持 MCP 的 AI 应用。连接配置含有临时访问密钥，请勿分享。重启 Inkquation 或重新启用连接后，请重新拷贝配置。',
       },
       {
         title: '打开笔记，向 AI 提出请求',
@@ -169,9 +172,7 @@ export const zhHans: SiteCopy = {
   },
   workflow: {
     title: ['写下公式，', '理清思路。'],
-    description: [
-      '把计算步骤、图示和想法留在同一页。',
-    ],
+    description: ['把计算步骤、图示和想法留在同一页。'],
     steps: [
       {
         title: '一步步写下计算过程。',
@@ -183,7 +184,8 @@ export const zhHans: SiteCopy = {
       },
       {
         title: '分享完整的推导过程。',
-        description: '将公式和手写说明一起导出为 PDF，连同中间的计算步骤一起分享。',
+        description:
+          '将公式和手写说明一起导出为 PDF，连同中间的计算步骤一起分享。',
       },
     ],
   },
@@ -249,7 +251,6 @@ export const zhHant: SiteCopy = {
       '無須將指標移出筆記。',
     ],
     primary: '查看快速鍵',
-    secondary: '了解使用方式',
     platform: '專為 macOS 設計的手寫筆記 App',
     aiLink: '現已支援 AI 連線',
   },
@@ -261,8 +262,7 @@ export const zhHant: SiteCopy = {
   },
   shortcuts: {
     title: ['右手書寫，', '左手操作。'],
-    description:
-      '右手持續書寫，左手即可切換工具、調整顏色與線寬、翻頁及縮放。',
+    description: '右手持續書寫，左手即可切換工具、調整顏色與線寬、翻頁及縮放。',
     setupTitle: '在設定中套用「左手操作」。',
     setupDescription:
       '在 Inkquation 的「設定」→「快速鍵」中選擇「左手操作」，再於確認視窗中套用。',
@@ -272,7 +272,7 @@ export const zhHant: SiteCopy = {
     zoomLabel: '縮小／放大',
     customizeTitle: '讓按鍵配合你的習慣。',
     customizeDescription:
-      '先選擇預設組合，再依照習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。',
+      '先選擇預設組合，再依照習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。左手書寫時，也可以將快速鍵改為右手容易按到的按鍵。',
     referenceTitle: '切換工具',
     presetsLabel: '切換快速鍵預設範例',
     presets: {
@@ -289,7 +289,7 @@ export const zhHant: SiteCopy = {
     },
     tools: {
       shape: '切換至形狀',
-      selection: '切換至選取工具',
+      selection: '切換至影像工具',
       laser: '切換至雷射筆',
 
       pen: '切換至筆',
@@ -363,11 +363,15 @@ export const zhHant: SiteCopy = {
     note: '留白設定在匯入時確定，匯入後無法更改。',
   },
   ai: {
-    eyebrow: '03 / AI 連線',
+    eyebrow: '04 / AI 連線',
     title: ['手寫筆記，', '也能與 AI 一起處理。'],
     description:
       '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為影像，並將 PNG 影像、圖形和筆畫加入筆記。',
-    capabilities: ['讀取頁面與選取範圍', '插入 PNG 影像、圖形和筆畫', '查看並復原插入結果'],
+    capabilities: [
+      '讀取頁面與選取範圍',
+      '插入 PNG 影像、圖形和筆畫',
+      '查看並復原插入結果',
+    ],
     setupTitle: '在設定中連接 AI App。',
     steps: [
       {
@@ -377,7 +381,8 @@ export const zhHant: SiteCopy = {
       },
       {
         title: '拷貝連線設定',
-        description: '將設定畫面中的組態加入 Mac 上支援 MCP 的 AI App。',
+        description:
+          '將設定畫面中的組態加入 Mac 上支援 MCP 的 AI App。連線設定含有暫時存取金鑰，請勿分享。重新啟動 Inkquation 或重新啟用連線後，請重新拷貝設定。',
       },
       {
         title: '開啟筆記，向 AI 提出要求',
@@ -392,9 +397,7 @@ export const zhHant: SiteCopy = {
   },
   workflow: {
     title: ['寫下公式，', '釐清思路。'],
-    description: [
-      '把計算步驟、圖示與想法留在同一頁。',
-    ],
+    description: ['把計算步驟、圖示與想法留在同一頁。'],
     steps: [
       {
         title: '一步步寫下計算過程。',
@@ -406,7 +409,8 @@ export const zhHant: SiteCopy = {
       },
       {
         title: '分享完整的推導過程。',
-        description: '將公式與手寫說明一起輸出為 PDF，連同中間的計算步驟一起分享。',
+        description:
+          '將公式與手寫說明一起輸出為 PDF，連同中間的計算步驟一起分享。',
       },
     ],
   },
@@ -472,7 +476,6 @@ export const zhHK: SiteCopy = {
       '毋須將指標移出筆記。',
     ],
     primary: '查看快捷鍵',
-    secondary: '了解使用方式',
     platform: '專為 macOS 設計的手寫筆記 App',
     aiLink: '現已支援 AI 連線',
   },
@@ -484,8 +487,7 @@ export const zhHK: SiteCopy = {
   },
   shortcuts: {
     title: ['右手書寫，', '左手操作。'],
-    description:
-      '右手繼續書寫，左手即可切換工具、調整顏色和線寬、翻頁及縮放。',
+    description: '右手繼續書寫，左手即可切換工具、調整顏色和線寬、翻頁及縮放。',
     setupTitle: '在設定中套用「左手操作」。',
     setupDescription:
       '在 Inkquation 的「設定」→「快捷鍵」中選擇「左手操作」，再於確認視窗中套用。',
@@ -495,7 +497,7 @@ export const zhHK: SiteCopy = {
     zoomLabel: '縮小／放大',
     customizeTitle: '讓按鍵配合你的習慣。',
     customizeDescription:
-      '先選擇預設組合，再按自己的習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。',
+      '先選擇預設組合，再按自己的習慣調整常用操作。你可以在 App 設定中修改各項按鍵組合。左手書寫時，也可以將快捷鍵改為右手容易按到的按鍵。',
     referenceTitle: '切換工具',
     presetsLabel: '切換快捷鍵預設範例',
     presets: {
@@ -512,7 +514,7 @@ export const zhHK: SiteCopy = {
     },
     tools: {
       shape: '切換至形狀',
-      selection: '切換至選取工具',
+      selection: '切換至圖像工具',
       laser: '切換至鐳射筆',
 
       pen: '切換至筆',
@@ -586,11 +588,15 @@ export const zhHK: SiteCopy = {
     note: '留白設定在匯入時確定，匯入後無法更改。',
   },
   ai: {
-    eyebrow: '03 / AI 連線',
+    eyebrow: '04 / AI 連線',
     title: ['手寫筆記，', '也能與 AI 一起處理。'],
     description:
       '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為圖像，並將 PNG 圖像、圖形和筆畫加入筆記。',
-    capabilities: ['讀取頁面與選取範圍', '插入 PNG 圖像、圖形和筆畫', '查看並還原插入結果'],
+    capabilities: [
+      '讀取頁面與選取範圍',
+      '插入 PNG 圖像、圖形和筆畫',
+      '查看並還原插入結果',
+    ],
     setupTitle: '在設定中連接 AI App。',
     steps: [
       {
@@ -600,7 +606,8 @@ export const zhHK: SiteCopy = {
       },
       {
         title: '複製連線設定',
-        description: '將設定畫面中的配置加入 Mac 上支援 MCP 的 AI App。',
+        description:
+          '將設定畫面中的配置加入 Mac 上支援 MCP 的 AI App。連線設定含有臨時存取密鑰，請勿分享。重新啟動 Inkquation 或重新啟用連線後，請重新複製設定。',
       },
       {
         title: '開啟筆記，向 AI 提出要求',
@@ -615,9 +622,7 @@ export const zhHK: SiteCopy = {
   },
   workflow: {
     title: ['寫下公式，', '理清思路。'],
-    description: [
-      '把計算步驟、圖示和想法留在同一頁。',
-    ],
+    description: ['把計算步驟、圖示和想法留在同一頁。'],
     steps: [
       {
         title: '一步步寫下計算過程。',
@@ -629,7 +634,8 @@ export const zhHK: SiteCopy = {
       },
       {
         title: '分享完整的推導過程。',
-        description: '將公式和手寫說明一起輸出為 PDF，連同中間的計算步驟一起分享。',
+        description:
+          '將公式和手寫說明一起輸出為 PDF，連同中間的計算步驟一起分享。',
       },
     ],
   },
@@ -695,7 +701,6 @@ export const ko: SiteCopy = {
       '포인터를 노트 밖으로 옮길 필요 없이요.',
     ],
     primary: '단축키 살펴보기',
-    secondary: '사용 방법 보기',
     platform: 'macOS를 위한 손글씨 노트 앱',
     aiLink: '이제 AI 연결도 지원합니다',
   },
@@ -719,7 +724,7 @@ export const ko: SiteCopy = {
     zoomLabel: '축소 / 확대',
     customizeTitle: '내 손에 맞는 키 조합으로.',
     customizeDescription:
-      '프리셋을 고른 뒤, 자주 쓰는 기능을 취향에 맞게 바꾸세요. 앱 설정에서 각 키 조합을 변경할 수 있습니다.',
+      '프리셋을 고른 뒤, 자주 쓰는 기능을 취향에 맞게 바꾸세요. 앱 설정에서 각 키 조합을 변경할 수 있습니다. 왼손잡이도 오른손으로 누르기 편한 키로 단축키를 바꿀 수 있습니다.',
     referenceTitle: '도구 전환',
     presetsLabel: '단축키 프리셋 예시 전환',
     presets: {
@@ -739,7 +744,7 @@ export const ko: SiteCopy = {
     },
     tools: {
       shape: '도형으로 전환',
-      selection: '선택 도구로 전환',
+      selection: '이미지 도구로 전환',
       laser: '레이저 포인터로 전환',
 
       pen: '펜으로 전환',
@@ -817,7 +822,7 @@ export const ko: SiteCopy = {
     note: '여백 설정은 가져올 때 확정되며, 가져온 뒤에는 변경할 수 없습니다.',
   },
   ai: {
-    eyebrow: '03 / AI 연결',
+    eyebrow: '04 / AI 연결',
     title: ['손으로 쓴 노트를', 'AI와 함께 활용하세요.'],
     description:
       'AI 앱과 도구를 연결하는 프로토콜인 MCP를 지원합니다. 외부 AI 앱에서 열린 페이지나 올가미 선택 영역을 이미지로 읽고, PNG 이미지, 도형, 펜 획을 노트에 추가할 수 있습니다.',
@@ -836,7 +841,7 @@ export const ko: SiteCopy = {
       {
         title: '연결 설정 복사하기',
         description:
-          '설정 화면의 구성을 Mac에서 실행되는 MCP 지원 AI 앱에 추가하세요.',
+          '설정 화면의 구성을 Mac에서 실행되는 MCP 지원 AI 앱에 추가하세요. 연결 구성에는 임시 접근 키가 포함됩니다. 다른 사람에게 공유하지 말고, Inkquation을 재시작하거나 연결을 다시 활성화한 뒤에는 구성을 다시 복사하세요.',
       },
       {
         title: '노트를 열고 AI에 요청하기',
@@ -851,17 +856,17 @@ export const ko: SiteCopy = {
   },
   workflow: {
     title: ['수식을 쓰며,', '생각을 이어 가세요.'],
-    description: [
-      '계산 과정, 그림, 떠오른 생각을 같은 페이지에.',
-    ],
+    description: ['계산 과정, 그림, 떠오른 생각을 같은 페이지에.'],
     steps: [
       {
         title: '계산 과정을 한 줄씩.',
-        description: '분수, 적분, 첨자도 펜으로 바로 쓰세요. 답에 이르는 계산 과정을 남길 수 있습니다.',
+        description:
+          '분수, 적분, 첨자도 펜으로 바로 쓰세요. 답에 이르는 계산 과정을 남길 수 있습니다.',
       },
       {
         title: '수식 옆에 그림과 메모를.',
-        description: '모눈에 맞춰 수식을 정렬하고, 그림과 주석을 자유롭게 덧붙이세요.',
+        description:
+          '모눈에 맞춰 수식을 정렬하고, 그림과 주석을 자유롭게 덧붙이세요.',
       },
       {
         title: '유도 과정 전체를 공유하세요.',

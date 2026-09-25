@@ -9,6 +9,7 @@ import PaperDemo from './paper-demo';
 import { siteCopy, type Locale, type SiteCopy } from './copy';
 import TextLines from './text-lines';
 import ShortcutGuide from './shortcut-guide';
+import firstSteps from './first-steps.json';
 import ContactButton from './contact-button';
 import { sitePath } from '../site.config';
 import {
@@ -23,11 +24,22 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
+function NotebookPreview({
+  copy,
+  locale,
+}: {
+  copy: SiteCopy['screenshot'];
+  locale: Locale;
+}) {
+  const screenshot = sitePath(
+    locale === 'en'
+      ? '/assets/inkquation-editor-en.png'
+      : '/assets/inkquation-editor.png',
+  );
   return (
     <figure className="preview-figure actual-preview">
       <a
-        href={sitePath('/assets/inkquation-editor.png')}
+        href={screenshot}
         target="_blank"
         rel="noopener noreferrer"
         className="screenshot-link"
@@ -35,9 +47,9 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
       >
         <img
           className="app-screenshot"
-          src={sitePath('/assets/inkquation-editor.png')}
-          width="2394"
-          height="2640"
+          src={screenshot}
+          width="3424"
+          height="1994"
           fetchPriority="high"
           alt={copy.alt}
         />
@@ -46,7 +58,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
         <span className="caption-dot" />
         {copy.caption}
         <a
-          href={sitePath('/assets/inkquation-editor.png')}
+          href={screenshot}
           target="_blank"
           rel="noopener noreferrer"
           className="screenshot-expand"
@@ -60,6 +72,7 @@ function NotebookPreview({ copy }: { copy: SiteCopy['screenshot'] }) {
 
 export default function LandingPage({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
+  const { tutorial, preferences } = firstSteps[locale];
   return (
     <>
       <a href="#main" className="skip-link">
@@ -109,8 +122,8 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <a className="button button-primary" href="#shortcuts">
                   {copy.hero.primary} <ArrowDown size={17} />
                 </a>
-                <a className="text-link" href="#workflow">
-                  {copy.hero.secondary} <ArrowUpRight size={16} />
+                <a className="text-link" href="#tutorial">
+                  {firstSteps[locale].link} <ArrowDown size={16} />
                 </a>
               </div>
               <p className="platform-line">
@@ -121,7 +134,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
-            <NotebookPreview copy={copy.screenshot} />
+            <NotebookPreview copy={copy.screenshot} locale={locale} />
           </div>
           <div className="hero-bottom container">
             <span>HANDWRITING MEETS KEYBOARD SHORTCUTS.</span>
@@ -132,13 +145,48 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </section>
         <ShortcutGuide copy={copy.shortcuts} />
         <section
+          className="tutorial-section"
+          id="tutorial"
+          aria-labelledby="tutorial-title"
+        >
+          <div className="container tutorial-inner">
+            <div className="tutorial-copy">
+              <p className="eyebrow section-eyebrow">{tutorial.eyebrow}</p>
+              <h2 id="tutorial-title">
+                <TextLines lines={tutorial.title} />
+              </h2>
+              <p className="tutorial-description">{tutorial.description}</p>
+              <p className="tutorial-entry">
+                <span>{tutorial.entryLabel}</span>
+                <strong>{tutorial.entry}</strong>
+              </p>
+            </div>
+            <div>
+              <ol className="tutorial-steps">
+                {tutorial.steps.map((step, index) => (
+                  <li key={step.title}>
+                    <span className="tutorial-step-number" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="tutorial-note">{tutorial.note}</p>
+            </div>
+          </div>
+        </section>
+        <section
           className="features-section container"
           id="features"
           aria-labelledby="features-title"
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow section-eyebrow">02 / THE TOOLS</p>
+              <p className="eyebrow section-eyebrow">03 / THE TOOLS</p>
               <h2 id="features-title">
                 <TextLines lines={copy.features.title} />
               </h2>
@@ -203,6 +251,20 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </article>
           </div>
           <section
+            className="preferences-feature"
+            aria-labelledby="preferences-title"
+          >
+            <h3 id="preferences-title">{preferences.title}</h3>
+            <div className="preferences-grid">
+              {preferences.items.map((item) => (
+                <div key={item.title}>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section
             className="pdf-import-feature"
             id="pdf-import"
             aria-labelledby="pdf-import-title"
@@ -239,7 +301,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <li key={capability}>{capability}</li>
               ))}
             </ul>
-            <a className="privacy-text-link mt-6 inline-flex items-center gap-2" href={aiGuidePath(locale)}>
+            <a
+              className="privacy-text-link mt-6 inline-flex items-center gap-2"
+              href={aiGuidePath(locale)}
+            >
               {copy.ai.guideLink} <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>
@@ -274,9 +339,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="container workflow-inner">
             <div className="workflow-copy">
-              <p className="eyebrow section-eyebrow">
-                04 / THINK IN EQUATIONS
-              </p>
+              <p className="eyebrow section-eyebrow">05 / THINK IN EQUATIONS</p>
               <h2 id="workflow-title">
                 <TextLines lines={copy.workflow.title} />
               </h2>

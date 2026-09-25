@@ -42,7 +42,7 @@ NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io
 NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io npm run verify:pages
 ```
 
-The export contains an `index.html` for every language home and privacy page, so all 12 URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places each localized HTML file at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
+The export contains an `index.html` for every language home, privacy page, and AI guide, so all 18 URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places each localized HTML file at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
 
 The workflow follows [GitHub's custom Pages workflow guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). It uses the built-in workflow token and pins official Actions to commit SHAs. The synthetic notebook in `reference/` and server build files are outside the deployed directory.
 
@@ -50,6 +50,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 
 - `app/landing-page.tsx`: shared page structure, navigation, language switch, actual editor screenshot, and the PDF import guide at `#pdf-import`.
 - `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
+- `app/first-steps.json`: the prominent writing tutorial at `#tutorial` and compact color, paper, and bookmark preferences, localized in all six languages. The hero links directly to the tutorial overview; its menu path starts the actual tutorial in the Mac app.
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
 - `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves privacy and AI guide routes. The AI guide is available in all six languages.
 - `app/(ja)`, `app/(en)`, `app/(zh-Hans)`, `app/(zh-Hant)`, `app/(zh-HK)`, and `app/(ko)`: language-specific home and privacy routes.
@@ -59,8 +60,8 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/site-layout.tsx` and the route-group layouts: server-rendered HTML language, localized title/description, alternate-language links, and favicon metadata. Separate root layouts let each route render the correct language before JavaScript loads.
 - `app/text-lines.tsx`: shared line breaks with word separation when responsive styles hide breaks.
 - `public/assets/inkquation-icon.png`: copied from the current app's icon asset.
-- `public/assets/inkquation-editor.png`: the user-provided screenshot of the actual app displaying the demo notebook, copied unchanged from `demo.png` (2394 × 2640, with transparency).
-- `reference/site-demo.inkqbackup`: the synthetic notebook used for the screenshot, outside the public directory.
+- `public/assets/inkquation-editor.png` and `inkquation-editor-en.png`: current Japanese and English editor screenshots, copied unchanged from the app repository’s September 25 screenshot sources (3424 × 1994, with transparency).
+- `reference/site-demo.inkqbackup`: the synthetic notebook used for the original September 11 screenshot, retained outside the public directory. Current screenshot sources are listed below.
 
 ## Contact address handling
 
@@ -76,7 +77,7 @@ This is obfuscation, not cryptographic protection. A bot that evaluates the Java
 
 ## Content and publication notes
 
-The copy was checked against the local app source on 2026-09-07. The existing site at https://inkquation.app/ supplied the public contact address. It advertised cloud sync and had a download link targeting `#`; this proposal does not claim cloud sync or invent a download URL. The contact buttons open a mail composer after a user clicks, without sending a message.
+The landing copy, tutorial, settings, and AI connection instructions were checked against the local app source on 2026-09-25. The existing site at https://inkquation.app/ supplied the public contact address. It advertised cloud sync and had a download link targeting `#`; this proposal does not claim cloud sync or invent a download URL. The contact buttons open a mail composer after a user clicks, without sending a message.
 
 Features described in the proposal are grounded in:
 
@@ -90,9 +91,9 @@ Features described in the proposal are grounded in:
 
 The PDF import guide was checked against the app source on 2026-09-09. `LibraryView.swift` accepts one PDF dropped onto the note list and passes it to `PDFImportSheet.swift`, which displays the filename and preview before creating a note. `PDFImportService.swift` defines the four margin placements and expands the paper around the original PDF. Margins are fixed at import. `PicturePositionLock.swift` and `LassoSelectionGeometry.swift` implement position/size locking and exclude locked items from lasso selection. The guide describes importing all PDF pages as a new note; inserting a PDF into an existing editor page remains a separate operation that uses only its first page.
 
-The English page translates the copy, tabs, image descriptions, accessibility labels, and contact subject. The screenshot itself retains the real Japanese app interface, identified in its English caption. Language selection is explicit through links; the site does not redirect based on browser language.
+The English page translates the copy, tabs, image descriptions, accessibility labels, and contact subject. The English page uses a real English app screenshot; the other pages use the Japanese screenshot, with its language identified in the Chinese and Korean captions. Language selection is explicit through links; the site does not redirect based on browser language.
 
-The hero uses the user-provided `demo.png` screenshot of the actual editor, copied without image processing on 2026-09-11. It shows the oscillation demo notebook in the Japanese interface. The app is not being advertised as offering handwriting recognition, typesetting, or graph generation.
+The hero uses current editor screenshots copied without image processing on 2026-09-25: `../inkquation/app-store/screenshots/ja/sources/04-research-note.png` and `../inkquation/app-store/screenshots/en/sources/スクリーンショット 2026-09-25 9.49.55.png`. They show handwritten decay notes and the compact toolbar in the corresponding app language. The app is not being advertised as offering handwriting recognition, typesetting, or graph generation.
 
 The website uses a light palette. The screenshot retains the supplied light app chrome and transparency; no extra CSS border or rectangular shadow is added around the image. The interactive paper sample lower on the page is clearly labelled as a paper illustration, not an app screenshot.
 
@@ -108,7 +109,7 @@ Japanese product copy was edited using the `japanese-technical-writing` skill. C
 
 ## Chinese, Korean, and AI integration (2026-09-09)
 
-The site follows the app's six language choices, including regional written Chinese terminology and Korean. Localized copy covers the feature explanations, shortcut and paper tabs, AI setup steps, contact actions, image descriptions, and accessibility labels. The editor screenshot remains an unaltered Japanese UI capture, identified in every other language's caption. Native system font stacks support each writing system; no remote fonts or translation services are added.
+The site follows the app's six language choices, including regional written Chinese terminology and Korean. Localized copy covers the feature explanations, shortcut and paper tabs, AI setup steps, contact actions, image descriptions, and accessibility labels. Editor screenshots remain unaltered: English uses an English UI capture, and Chinese and Korean use the Japanese capture with a localized caption. Native system font stacks support each writing system; no remote fonts or translation services are added.
 
 The policy translations were based on `../inkquation/inkquation/PrivacyPolicy.json`. The website section now also describes Google Analytics, while the bundled in-app policy remains the copy shipped with that app version. The site uses these translations for each localized policy page and footer label. App-side links that currently open the English policy can be updated after these new public URLs are deployed.
 
@@ -118,10 +119,18 @@ The hero announcement and AI section describe the implemented local MCP connecti
 
 ## AI documentation
 
-The detailed guide is available in all six languages at `/ai/`, `/en/ai/`, `/zh-Hans/ai/`, `/zh-Hant/ai/`, `/zh-HK/ai/`, and `/ko/ai/`. Each landing page links to its own language guide, and the guide language menu stays on the guide route. The guide covers the local connection, seven MCP tools, native stroke and shape insertion, coordinates, JSON examples, replay and Undo limits, and external AI privacy. It describes the implementation checked on 2026-09-09, without assigning it an unverified public release version. The connected server’s `tools/list` is the source for available capabilities.
+The detailed guide is available in all six languages at `/ai/`, `/en/ai/`, `/zh-Hans/ai/`, `/zh-Hant/ai/`, `/zh-HK/ai/`, and `/ko/ai/`. Each landing page links to its own language guide, and the guide language menu stays on the guide route. The guide covers the local connection, seven MCP tools, native stroke and shape insertion, coordinates, JSON examples, replay and Undo limits, and external AI privacy. It describes the implementation checked on 2026-09-25, without assigning it an unverified public release version. The connected server’s `tools/list` is the source for available capabilities.
 
 `app/ai-guide.json` is the shared content source for HTML and Markdown. Edit it, not the generated files. `scripts/export-ai-docs.mjs` runs before development and both builds, generating `index.md` under each of the six guide routes and an English `/llms.txt` in `public/`. The English index links to HTML and Markdown guides in every language. These generated files are ignored by Git. Restart development or run the generator after editing guide content to refresh Markdown. HTML metadata also links to the corresponding Markdown alternative. `llms.txt` is a concise documentation index, not an MCP endpoint or a promise that AI services will discover the site.
 
 The existing `build:pages` and `verify:pages` commands include these documents. Verification checks every guide section and text block, matching section structure and JSON examples across languages, JSON syntax, matching Markdown output, language and canonical metadata, local links and Markdown link fragments, and the absence of the contact address in public Markdown and text files. Both the production empty base path and `/site` deployment prefix must pass.
 
 Claims were checked against `../inkquation/inkquation/InkquationMCPService.swift`, `MCPStrokeInput.swift`, `MCPConnectionSettings.swift`, and `../inkquation/mcp/README.md`. Changes to those contracts require updating the guide. The standard bundled adapter accepts inline PNG data; the optional development Python adapter’s local-file extension is outside this public guide.
+
+## September 25 content refresh
+
+This refresh preserves the published tagline, left-handed customization note, and laser-pointer wording from `fce1197` and includes the PDF-import guide (`c75dfb4`) and optional-purchase disclosure (`4802ec9`). Both sets of changes are retained when integrating the publication history.
+
+The tutorial is the main new feature highlight. Color presets, default paper settings, and bookmarked-page deletion protection have a compact supporting section. General selection and library operations stay within the existing feature overview. Tutorial menu labels and steps were checked against `Tutorial.xcstrings`, `TutorialCoordinator.swift`, and `InkquationHelpView.swift`. Bookmark protection concerns page deletion, not deleting a whole note.
+
+AI setup and recovery instructions explain the private temporary access key and the need to copy fresh settings after app restart or connection re-enablement. The website policy uses the app’s current authentication wording while retaining its Google Analytics disclosure. The purchase disclosure remains included in every language. None of these checks verifies App Store distribution or third-party AI service behavior.

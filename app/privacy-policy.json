@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11",
+  "updated": "2026-09-25",
   "ja": {
     "title": "プライバシーポリシー",
     "updatedLabel": "最終更新日",
@@ -20,7 +20,7 @@
         "id": "ai",
         "title": "任意のAI接続",
         "paragraphs": [
-          "AI接続は初期状態では無効です。「設定」の「AI接続」で有効にすると、同じmacOSユーザーで動くアプリが、MCP（Model Context Protocol）経由で開いているノートや選択範囲を読み取り、画像を追加できます。接続を有効にする前に、このアクセス範囲を確認してください。",
+          "AI接続は初期状態では無効です。「設定」の「AI接続」で有効にすると、非公開の一時アクセスキーと正規の内蔵アダプタを使うクライアントが、MCP（Model Context Protocol）経由で開いているノートや選択範囲を読み取り、画像を追加できます。設定を第三者に渡さず、再起動または再有効化後にコピーし直してください。",
           "接続先のAIクライアントがクラウドサービスを使う場合、ノートの内容がそのサービスへ送信されることがあります。送信、保存、学習への利用などは、利用者が選んだクライアントとAIサービスの設定・プライバシーポリシーに従います。機密情報を扱う前に接続先を確認してください。",
           "「AI接続」を無効にすると以後の接続とアクセスを停止します。既に接続先へ渡ったデータは削除されません。接続先に保存された内容の削除は、そのサービスの手順に従ってください。"
         ]
@@ -92,7 +92,7 @@
         "id": "ai",
         "title": "Optional AI connections",
         "paragraphs": [
-          "AI connections are off by default. Enabling AI Connection in Settings allows apps running as your macOS user to read open notes and selections and insert images through MCP (Model Context Protocol). Review this access before enabling the connection.",
+          "AI connections are off by default. Enabling AI Connection in Settings allows clients using the private temporary access key and the authentic built-in adapter to read open notes and selections and insert images through MCP (Model Context Protocol). Keep the configuration private and copy it again after restarting or re-enabling Inkquation.",
           "If your chosen AI client uses a cloud service, it may send note content to that service. Transmission, retention, and use for model training depend on your chosen client and AI service, their settings, and their privacy policies. Check the recipient before working with confidential information.",
           "Disabling AI Connection stops subsequent connections and access. It does not delete data already received by a client or service. Follow that service’s instructions to delete any content it retains."
         ]
@@ -164,7 +164,7 @@
         "id": "ai",
         "title": "可选的 AI 连接",
         "paragraphs": [
-          "AI 连接默认关闭。在“设置”中启用“AI 连接”后，以同一 macOS 用户身份运行的应用可通过 MCP（Model Context Protocol，模型上下文协议）读取已打开的笔记和选区，并插入图像。请在启用连接前确认此访问范围。",
+          "AI 连接默认关闭。在“设置”中启用后，使用私有临时访问密钥和正版内置适配器的客户端可通过 MCP 读取已打开的笔记和选区并插入图像。请妥善保管配置，并在重新启动或重新启用 Inkquation 后重新复制。",
           "如果你选择的 AI 客户端使用云服务，它可能会将笔记内容发送到该服务。传输、保留以及用于模型训练等处理，取决于你选择的客户端和 AI 服务、它们的设置及隐私政策。处理机密信息前，请先确认接收方。",
           "禁用“AI 连接”会停止后续连接和访问，但不会删除客户端或服务已接收的数据。要删除该服务保留的内容，请按照其说明操作。"
         ]
@@ -236,7 +236,7 @@
         "id": "ai",
         "title": "選用的 AI 連線",
         "paragraphs": [
-          "AI 連線預設關閉。在「設定」中啟用「AI 連線」後，以同一 macOS 使用者身分執行的 App 可透過 MCP（Model Context Protocol，模型上下文協定）讀取已開啟的筆記和選取範圍，並插入影像。請在啟用連線前確認此存取範圍。",
+          "AI 連線預設關閉。啟用後，使用私人暫時存取密鑰和正版內建轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入影像。請妥善保管設定，並在重新啟動或重新啟用 Inkquation 後重新複製。",
           "如果你選擇的 AI 用戶端使用雲端服務，它可能會將筆記內容傳送至該服務。傳輸、保留以及用於模型訓練等處理，取決於你選擇的用戶端和 AI 服務、它們的設定及隱私權政策。處理機密資訊前，請先確認接收方。",
           "停用「AI 連線」會停止後續連線和存取，但不會刪除用戶端或服務已接收的資料。若要刪除該服務保留的內容，請按照其說明操作。"
         ]
@@ -308,7 +308,7 @@
         "id": "ai",
         "title": "選用的 AI 連線",
         "paragraphs": [
-          "AI 連線預設關閉。在「設定」中啟用「AI 連線」後，以同一 macOS 用戶身分執行的 App 可透過 MCP（Model Context Protocol，模型上下文協定）讀取已開啟的筆記和選取範圍，並插入圖像。請在啟用連線前確認此存取範圍。",
+          "AI 連線預設關閉。啟用後，使用私人臨時存取密鑰和正版內置轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入圖像。請妥善保管設定，並在重新啟動或重新啟用 Inkquation 後重新複製。",
           "如果你選擇的 AI 用戶端使用雲端服務，它可能會將筆記內容傳送至該服務。傳輸、保留以及用於模型訓練等處理，取決於你選擇的用戶端和 AI 服務、它們的設定及私隱政策。處理機密資訊前，請先確認接收方。",
           "停用「AI 連線」會停止後續連線和存取，但不會刪除用戶端或服務已接收的資料。若要刪除該服務保留的內容，請按照其說明操作。"
         ]
@@ -380,7 +380,7 @@
         "id": "ai",
         "title": "선택적 AI 연결",
         "paragraphs": [
-          "AI 연결은 기본적으로 꺼져 있습니다. 설정에서 AI 연결을 활성화하면 동일한 macOS 사용자로 실행되는 앱이 MCP(Model Context Protocol)를 통해 열려 있는 노트와 선택 영역을 읽고 이미지를 삽입할 수 있습니다. 연결을 활성화하기 전에 이 접근 권한을 검토하세요.",
+          "AI 연결은 기본적으로 꺼져 있습니다. 활성화하면 비공개 임시 액세스 키와 정품 내장 어댑터를 사용하는 클라이언트가 MCP를 통해 열린 노트와 선택 영역을 읽고 이미지를 삽입할 수 있습니다. 구성을 비공개로 유지하고 Inkquation을 다시 시작하거나 다시 활성화한 후 새로 복사하세요.",
           "선택한 AI 클라이언트가 클라우드 서비스를 사용하는 경우 노트 콘텐츠를 해당 서비스로 전송할 수 있습니다. 전송, 보관 및 모델 학습에 대한 사용 여부는 선택한 클라이언트와 AI 서비스, 해당 설정 및 개인정보 처리방침에 따라 달라집니다. 기밀 정보를 다루기 전에 수신 대상을 확인하세요.",
           "AI 연결을 비활성화하면 이후의 연결과 접근이 중단됩니다. 클라이언트나 서비스가 이미 받은 데이터는 삭제되지 않습니다. 해당 서비스에 보관된 콘텐츠를 삭제하려면 서비스의 안내를 따르세요."
         ]
