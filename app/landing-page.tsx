@@ -18,7 +18,6 @@ import {
   Bookmark,
   Circle,
   FileText,
-  Menu,
   Monitor,
   PenLine,
   Square,
@@ -74,6 +73,7 @@ function NotebookPreview({
 export default function LandingPage({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
   const { tutorial, preferences } = firstSteps[locale];
+  const tutorialScreenshot = sitePath(`/assets/tutorial-menu-${locale}.png`);
   return (
     <>
       <a href="#main" className="skip-link">
@@ -168,13 +168,28 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <TextLines lines={tutorial.title} />
               </h2>
               <p className="tutorial-description">{tutorial.description}</p>
-              <div className="tutorial-entry">
-                <p className="tutorial-entry-label">
-                  <Menu size={16} aria-hidden="true" />
-                  <span>{tutorial.entryLabel}</span>
-                </p>
-                <q className="tutorial-entry-command">{tutorial.entry}</q>
-              </div>
+              <figure className="tutorial-entry">
+                <figcaption>{tutorial.entryLabel}</figcaption>
+                <a
+                  className="tutorial-menu-preview"
+                  href={tutorialScreenshot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={tutorialScreenshot}
+                    width="812"
+                    height="418"
+                    loading="lazy"
+                    decoding="async"
+                    alt={tutorial.entry}
+                  />
+                  <span className="tutorial-menu-expand">
+                    {copy.screenshot.expand}
+                    <ArrowUpRight size={13} aria-hidden="true" />
+                  </span>
+                </a>
+              </figure>
             </div>
             <div>
               <ol className="tutorial-steps">

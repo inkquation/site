@@ -61,6 +61,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/text-lines.tsx`: shared line breaks with word separation when responsive styles hide breaks.
 - `public/assets/inkquation-icon.png`: copied from the current app's icon asset.
 - `public/assets/inkquation-editor.png` and `inkquation-editor-en.png`: current Japanese and English editor screenshots, copied unchanged from the app repository’s September 25 screenshot sources (3424 × 1994, with transparency).
+- `public/assets/tutorial-menu-{locale}.png`: the six original Help-menu screenshots supplied on September 25 (812 × 418, with transparency). Each language shows its own highlighted tutorial menu item and links to the full-size image.
 - `reference/site-demo.inkqbackup`: the synthetic notebook used for the original September 11 screenshot, retained outside the public directory. Current screenshot sources are listed below.
 
 ## Contact address handling

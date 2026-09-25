@@ -678,35 +678,34 @@ h1 {
   margin: 24px 0;
 }
 .tutorial-entry {
-  display: grid;
-  gap: 12px;
+  max-width: 480px;
   margin: 28px 0 0;
-  padding: 20px 22px;
-  background: #ffffffd9;
-  border: 1px solid #cedaee;
-  border-left: 3px solid var(--primary);
-  border-radius: 8px;
 }
-.tutorial-entry-label,
+.tutorial-entry figcaption,
 .tutorial-note {
   color: #58677e;
   font-size: 13px;
   line-height: 1.8;
 }
-.tutorial-entry-label {
+.tutorial-entry figcaption {
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.tutorial-menu-preview,
+.tutorial-menu-preview img {
+  display: block;
+}
+.tutorial-menu-preview img {
+  width: 100%;
+  height: auto;
+}
+.tutorial-menu-expand {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  gap: 8px;
-  margin: 0;
-}
-.tutorial-entry-label svg {
-  flex-shrink: 0;
-}
-.tutorial-entry-command {
+  gap: 5px;
   color: var(--primary);
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.8;
+  font-size: 12px;
 }
 .tutorial-steps {
   list-style: none;
