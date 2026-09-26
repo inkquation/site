@@ -168,7 +168,7 @@ const ja = {
       {
         title: '接続設定をコピーする',
         description:
-          '設定画面の接続設定を、Mac上のMCP対応AIアプリに登録します。接続設定には一時アクセスキーが含まれます。第三者に渡さず、アプリの再起動や接続の再有効化後はコピーし直してください。',
+          '設定画面の接続設定を、Mac上のMCP対応AIアプリに登録します。設定にはアクセスキーが含まれるため、第三者に渡さないでください。再起動後の扱いや再設定の手順はAI連携ガイドを確認してください。',
       },
       {
         title: 'ノートを開いて、AIに依頼する',
@@ -418,7 +418,7 @@ const en: SiteCopy = {
       {
         title: 'Copy the connection configuration',
         description:
-          'Add the configuration from Settings to an MCP-compatible AI app running on your Mac. The configuration contains a temporary access key. Keep it private and copy it again after restarting Inkquation or re-enabling the connection.',
+          'Add the configuration from Settings to an MCP-compatible AI app on your Mac. It contains an access key; keep it private. See the AI integration guide for restart behavior and reconfiguration steps.',
       },
       {
         title: 'Open a note and ask your AI app',

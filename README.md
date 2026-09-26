@@ -128,6 +128,39 @@ The existing `build:pages` and `verify:pages` commands include these documents. 
 
 Claims were checked against `../inkquation/inkquation/InkquationMCPService.swift`, `MCPStrokeInput.swift`, `MCPConnectionSettings.swift`, and `../inkquation/mcp/README.md`. Changes to those contracts require updating the guide. The standard bundled adapter accepts inline PNG data; the optional development Python adapter’s local-file extension is outside this public guide.
 
+### September 27 connection setup and restart behavior
+
+The guide now leads with setup, then the exact Codex/TOML and Claude Desktop/JSON
+configuration locations, a request for setup assistance, and a read-only
+connection-check prompt. Natural-language requests use `prompt` blocks, rendered
+as blockquotes in both HTML and Markdown; JSON tool examples remain unchanged.
+All six languages retain the same section structure and technical identifiers.
+Client setup references the linked official OpenAI and MCP documentation.
+
+The `#local-llm` section adds an LM Studio setup example and explains the separate
+roles of a model runtime and an MCP client, including Ollama-based setups. It
+distinguishes note-list access from reading PNG tool results, which requires
+both model vision support and client image forwarding. The example links to
+official MCP setup, system requirements, offline operation, and tool-calling
+documentation checked on September 27. It is explicitly unverified with
+Inkquation: before describing a combination as tested, record the client/model
+versions and confirm note listing, page-image interpretation, and editing on a
+disposable note. Model downloads and update traffic are distinguished from
+local inference. No particular model or hardware-independent compatibility is
+promised.
+
+The accompanying, undistributed app change retains its private credential
+through normal restarts and lets its signed adapter resolve the current local
+endpoint. Explicitly disabling and re-enabling AI Connection still revokes the
+old grant. The new app settings link targets the language guide at `#connect`.
+
+The website's setup guide is published independently of that app change. It
+explicitly instructs TestFlight 1.2.4 build 11 users to copy fresh settings after
+restarts and states that credential persistence has not yet been distributed.
+Landing and privacy copy do not promise persistence for installed versions.
+Update those instructions only after distributing and checking the new app
+behavior. The September 25 restart instructions below still apply to build 11.
+
 ## September 25 content refresh
 
 This refresh preserves the published tagline, left-handed customization note, and laser-pointer wording from `fce1197` and includes the PDF-import guide (`c75dfb4`) and optional-purchase disclosure (`4802ec9`). Both sets of changes are retained when integrating the publication history.

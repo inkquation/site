@@ -67,6 +67,12 @@
 .ai-guide-body p {
   margin: 16px 0;
 }
+.ai-guide-prompt {
+  margin: 20px 0;
+  padding: 4px 20px;
+  border-left: 3px solid var(--primary);
+  background: #edf1f8;
+}
 .ai-guide-body ul,
 .ai-guide-body ol {
   padding-left: 1.5em;

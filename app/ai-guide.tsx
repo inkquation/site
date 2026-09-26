@@ -100,6 +100,12 @@ export default function AIGuide({ locale }: { locale: AIGuideLocale }) {
               <section key={section.id} aria-labelledby={section.id}>
                 <h2 id={section.id}>{section.title}</h2>
                 {section.blocks.map((block, index) => {
+                  if (block.type === 'prompt' && 'text' in block && block.text !== undefined)
+                    return (
+                      <blockquote key={index} className="ai-guide-prompt">
+                        <p><InlineText text={block.text} /></p>
+                      </blockquote>
+                    );
                   if (
                     block.type === 'paragraph' &&
                     'text' in block &&
@@ -123,6 +129,7 @@ export default function AIGuide({ locale }: { locale: AIGuideLocale }) {
                   if (
                     block.type === 'list' &&
                     'ordered' in block &&
+                    block.ordered !== undefined &&
                     block.items !== undefined
                   ) {
                     const List = block.ordered ? 'ol' : 'ul';

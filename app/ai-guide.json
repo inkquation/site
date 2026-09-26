@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25",
+  "updated": "2026-09-27",
   "ja": {
     "title": "AI連携ガイド",
     "description": "Inkquationを外部AIアプリにつなぎ、ページの読み取りや画像・図形・ペンの線の追加を行うためのガイドです。",
@@ -8,20 +8,6 @@
     "contentsLabel": "このページの内容",
     "homeLabel": "Inkquationのホームへ",
     "sections": [
-      {
-        "id": "capabilities",
-        "title": "できることと制限",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Inkquationは、AIアプリがツールを呼び出すための共通の仕組みであるMCPに対応しています。AIは開いているページや投げなわの選択範囲を画像として読み取り、PNG画像、図形、点列で表すペンの線を追加できます。追加後のページの確認と、条件を満たす操作の取り消しにも対応しています。"
-          },
-          {
-            "type": "paragraph",
-            "text": "図形は塗りつぶしのない通常のペンの線になります。消しゴムや投げなわで編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
-          }
-        ]
-      },
       {
         "id": "connect",
         "title": "AIアプリにつなぐ",
@@ -38,7 +24,7 @@
           },
           {
             "type": "paragraph",
-            "text": "接続設定には一時アクセスキーが含まれます。第三者に渡さず、アプリの再起動や接続の再有効化後はコピーし直してください。"
+            "text": "TestFlight 1.2.4（ビルド11）では、Inkquationの再起動またはAI接続の再有効化後に、設定をコピーし直してAIクライアントを再接続してください。設定にはアクセスキーが含まれるため、第三者に渡さないでください。"
           },
           {
             "type": "paragraph",
@@ -47,9 +33,150 @@
         ]
       },
       {
+        "id": "codex",
+        "title": "Codexに接続する",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Inkquationの「設定」→「AI接続」で接続を許可し、「Codex / TOML」を選んで「設定をコピー」を押します。",
+              "Codexの設定ファイルをテキストエディタで開きます。標準の場所は`~/.codex/config.toml`です。Finderの「移動」→「フォルダへ移動」で`~/.codex/`を開けます。",
+              "コピーした`[mcp_servers.inkquation]`のブロックを追加して保存します。同じブロックがあれば、その設定だけを更新します。他のサーバーやCodexの設定は残し、同じ見出しを二重に追加しないでください。",
+              "Inkquationを開いたまま、CodexのMCP接続を再起動するか、作業を保存してCodexを再起動します。新しいチャットを開き、下の依頼文で接続を確認します。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "画面から登録する場合は、CodexのMCPサーバー設定でSTDIOを選びます。コマンド欄にはコピーした設定の`command`の値、引数欄には`args`の各要素を同じ順で指定します。URL欄にこのサイトのアドレスを入れる方式ではありません。画面名はクライアントのバージョンによって異なります。"
+          },
+          {
+            "type": "paragraph",
+            "text": "設定に迷ったら、同じMac上のCodexに次のように依頼できます。接続設定そのものにはアクセスキーが含まれるため、チャットに貼らず、ローカルの設定ファイルに入力してください。"
+          },
+          {
+            "type": "prompt",
+            "text": "このMacのInkquationとCodexをMCPで接続したいです。https://inkquation.app/ai/ の接続手順を読み、私が設定をコピーして保存する操作を案内してください。既存のCodex設定を保ち、inkquationの項目だけを追加・更新してください。アクセスキーや接続設定をチャットやログに表示しないでください。接続後は開いているノートの一覧だけを取得し、まだノートを編集しないでください。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "OpenAI公式：CodexのMCP設定",
+                "href": "https://developers.openai.com/codex/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "claude-desktop",
+        "title": "Claude Desktopに接続する",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Inkquationの「AI接続」で「Claude Desktop / JSON」を選び、設定をコピーします。",
+              "Claude Desktopの「Settings」→「Developer」→「Edit Config」から設定ファイルを開きます。Macでの標準の場所は`~/Library/Application Support/Claude/claude_desktop_config.json`です。",
+              "既存の`mcpServers`の中に、コピーした`inkquation`の項目を追加します。同名の項目があれば更新し、他の項目は残します。空のファイルならコピーしたJSON全体を保存できます。",
+              "Inkquationは開いたまま、Claude Desktopを完全に終了して起動し直します。新しいチャットで接続を確認します。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP公式：Claude Desktopのローカル接続手順",
+                "href": "https://modelcontextprotocol.io/docs/develop/connect-local-servers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "local-llm",
+        "title": "ローカルLLMを使う",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mac内でモデルを動かすには、ローカルLLMの実行環境と、InkquationのMCPツールを呼び出すAIクライアントが必要です。LM Studioは両方の役割を持つため、ここでは設定例に使います。以下は公式資料に基づく手順で、Inkquationとの実機での一連の動作はまだ未検証です。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "LM Studioの動作要件を確認し、Macのメモリに収まるモデルをダウンロードして読み込みます。現在のMac版はApple Siliconが対象です。ツール呼び出しに対応するモデルを選び、ページを読む場合は画像入力への対応も確認します。",
+              "Inkquationの「設定」→「AI接続」で接続を許可し、「Claude Desktop / JSON」の設定をコピーします。LM Studioの右側の「Program」タブで「Install」→「Edit mcp.json」を開きます。画面名はバージョンによって異なる場合があります。",
+              "既存の`mcpServers`内に、コピーした`inkquation`の項目を追加して保存します。同名の項目があれば更新し、他の設定は残します。設定にはアクセスキーが含まれるため、公開したりチャットに貼ったりしないでください。",
+              "Inkquationを開いたまま、LM Studioのチャットで`inkquation`のツールを有効にし、下の「接続を確認する依頼文」でノート一覧を取得します。一覧が返ったあと、次の文で画像の読み取りを確認します。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "InkquationはページをPNG画像として返します。MCPに接続できても、選んだモデルが画像を読めるとは限りません。AIクライアントがツール結果の画像をモデルへ渡せることも必要です。文字だけを扱うモデルでは、まずノート一覧の取得までを確認してください。"
+          },
+          {
+            "type": "prompt",
+            "text": "Inkquationで開いているノートの一覧を取得し、対象が複数ならどれを読むか私に確認してください。読み取れるページを1枚取得し、画像に見える内容を2点だけ説明してください。ノートは編集しないでください。画像がモデルに渡らない、または読み取れない場合は、内容を推測せず、その状態を教えてください。"
+          },
+          {
+            "type": "paragraph",
+            "text": "ノート内容をMac内で処理したい場合は、推論先をローカルモデルに設定し、クラウドモデルへの切り替えや外部へ送信するツールを使わない構成にします。モデルや実行環境の初回ダウンロード、更新時の通信とは分けて考えてください。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ollamaを使う場合も、モデルを起動するだけではInkquationとの接続設定は完了しません。Ollamaを推論先にでき、ローカルSTDIOのMCPサーバーを登録できるAIクライアントを組み合わせます。設定はそのクライアントへ追加し、ツール呼び出しと画像の受け渡しをそれぞれ確認してください。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "LM Studio公式：MCPサーバーの設定",
+                "href": "https://lmstudio.ai/docs/app/mcp"
+              },
+              {
+                "label": "LM Studio公式：動作要件",
+                "href": "https://lmstudio.ai/docs/app/system-requirements"
+              },
+              {
+                "label": "LM Studio公式：オフラインでの利用",
+                "href": "https://lmstudio.ai/docs/app/offline"
+              },
+              {
+                "label": "Ollama公式：ツール呼び出し",
+                "href": "https://docs.ollama.com/capabilities/tool-calling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "check-connection",
+        "title": "接続を確認する依頼文",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "最初に次の文をAIのチャットへコピーしてください。ノートが閉じている場合は、Inkquationで1冊開いておきます。"
+          },
+          {
+            "type": "prompt",
+            "text": "InkquationのMCPツール `inkquation_list_open_notes` を使って、現在開いているノートの名前と、読み取れるページを教えてください。今回は接続確認だけなので、ページの画像の取得や編集はしないでください。ツールが使えなければ、接続済みと推測せず、どこで止まったか教えてください。"
+          },
+          {
+            "type": "paragraph",
+            "text": "ツールから一覧が返れば接続を確認できます。空の一覧が返った場合は、ノートを開いてもう一度依頼します。「接続待機中」の表示はInkquation側の準備ができた状態で、AIとの接続成功を意味しません。接続数の表示とツールの実行結果を確認してください。"
+          }
+        ]
+      },
+      {
         "id": "prompts",
         "title": "最初の依頼例",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "接続できたら、次のように依頼できます。複数のノートを開いている場合は、対象のノート名とページを指定してください。"
+          },
           {
             "type": "list",
             "ordered": false,
@@ -58,6 +185,47 @@
               "「このページから、仮定・結論・未解決の点を整理して、チャットで説明して。」",
               "「この説明を補う模式図を作って、ノートの余白に追加して。」"
             ]
+          }
+        ]
+      },
+      {
+        "id": "connection-help",
+        "title": "接続できないとき",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "症状",
+              "確認すること"
+            ],
+            "rows": [
+              [
+                "ツールが見つからない／接続待ちのまま",
+                "InkquationとAIクライアントを同じMacで使い、AI接続が有効か確認します。設定を保存したあと、AIクライアントを再接続し、新しいチャットで確認してください。"
+              ],
+              [
+                "再起動や更新のあとにつながらなくなった",
+                "TestFlight 1.2.4（ビルド11）では、Inkquationの再起動またはAI接続の再有効化後に、設定をコピーし直してAIクライアントを再接続してください。設定にはアクセスキーが含まれるため、第三者に渡さないでください。"
+              ],
+              [
+                "一覧は返るが対象ページを読めない",
+                "対象のノートを開き、ページを画面に表示します。選択範囲を読むときは、先に投げなわで内容を選択してください。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capabilities",
+        "title": "できることと制限",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquationは、AIアプリがツールを呼び出すための共通の仕組みであるMCPに対応しています。AIは開いているページや投げなわの選択範囲を画像として読み取り、PNG画像、図形、点列で表すペンの線を追加できます。追加後のページの確認と、条件を満たす操作の取り消しにも対応しています。"
+          },
+          {
+            "type": "paragraph",
+            "text": "図形は塗りつぶしのない通常のペンの線になります。消しゴムや投げなわで編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
           }
         ]
       },
@@ -87,7 +255,11 @@
           },
           {
             "type": "table",
-            "headers": ["ツール", "必須の引数", "動作"],
+            "headers": [
+              "ツール",
+              "必須の引数",
+              "動作"
+            ],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -202,7 +374,10 @@
           },
           {
             "type": "table",
-            "headers": ["状態", "対処"],
+            "headers": [
+              "状態",
+              "対処"
+            ],
             "rows": [
               [
                 "`page_changed`",
@@ -270,7 +445,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI接続は初期状態では無効です。「設定」の「AI接続」で有効にすると、非公開の一時アクセスキーと正規の内蔵アダプタを使うクライアントが、MCP（Model Context Protocol）経由で開いているノートや選択範囲を読み取り、画像を追加できます。設定を第三者に渡さず、再起動または再有効化後にコピーし直してください。"
+            "text": "AI接続は初期状態では無効です。「設定」の「AI接続」で有効にすると、非公開のアクセスキーと正規の内蔵アダプタを使うクライアントが、MCP（Model Context Protocol）経由で開いているノートや選択範囲を読み取り、画像を追加できます。接続設定にはアクセスキーが含まれるため、第三者に渡さないでください。再起動後に設定を保持できるかはアプリのバージョンにより異なります。AI連携ガイドの接続・再設定手順を確認してください。"
           },
           {
             "type": "paragraph",
@@ -293,7 +468,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "このガイドは2026年9月25日時点の実装をもとにしています。アプリの配布状況とは別に、接続先が返す`tools/list`を確認してください。図形や線の追加ツールが表示されない場合は、使用中のInkquationがその機能に対応しているか確認し、アプリの更新後にAIアプリを再接続します。"
+            "text": "このガイドは2026年9月27日時点の実装をもとにしています。アプリの配布状況とは別に、接続先が返す`tools/list`を確認してください。図形や線の追加ツールが表示されない場合は、使用中のInkquationがその機能に対応しているか確認し、アプリの更新後にAIアプリを再接続します。"
+          },
+          {
+            "type": "paragraph",
+            "text": "再起動後も接続設定を保持する改善は、TestFlight 1.2.4（ビルド11）には含まれておらず、まだ配信されていません。対応版の配信後に、このガイドの再設定手順を更新します。"
           },
           {
             "type": "links",
@@ -321,20 +500,6 @@
     "homeLabel": "Back to Inkquation",
     "sections": [
       {
-        "id": "capabilities",
-        "title": "Capabilities and limits",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Inkquation supports MCP, a shared protocol that lets AI apps call tools. A connected AI can read open pages or lasso selections as images, insert PNG images, shapes and pen strokes defined by points, inspect the result, and undo an eligible insertion."
-          },
-          {
-            "type": "paragraph",
-            "text": "Shapes become ordinary pen strokes with outlines and no fill. You can edit them with the eraser and lasso, but there are no dedicated shape dimension controls. Letters and symbols can be drawn as strokes; editable text and LaTeX insertion or compilation are not supported. Page reads return images, not recognized text."
-          }
-        ]
-      },
-      {
         "id": "connect",
         "title": "Connect your AI app",
         "blocks": [
@@ -350,7 +515,7 @@
           },
           {
             "type": "paragraph",
-            "text": "The configuration contains a temporary access key. Keep it private and copy it again after restarting Inkquation or re-enabling the connection."
+            "text": "In TestFlight 1.2.4 (build 11), copy fresh configuration and reconnect the AI client after restarting Inkquation or re-enabling AI Connection. The configuration contains an access key; keep it private."
           },
           {
             "type": "paragraph",
@@ -359,9 +524,150 @@
         ]
       },
       {
+        "id": "codex",
+        "title": "Connect Codex",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "In Inkquation Settings → AI Connection, allow connections, select “Codex / TOML”, and copy the configuration.",
+              "Open the Codex configuration file in a text editor. The default is `~/.codex/config.toml`. In Finder, use Go → Go to Folder to open `~/.codex/`.",
+              "Add the copied `[mcp_servers.inkquation]` block and save. If that block already exists, update only its settings. Preserve other servers and Codex settings, and do not duplicate the table heading.",
+              "Keep Inkquation running. Restart Codex’s MCP connection, or save your work and restart Codex. Open a new chat and use the connection-check request below."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "To register it through the interface, choose STDIO in Codex’s MCP server settings. Use the copied `command` value as the command and each `args` item as an argument in the same order. This connection does not use the website address in a URL field. Screen labels vary by client version."
+          },
+          {
+            "type": "paragraph",
+            "text": "If you need help, send the following request to Codex on the same Mac. The connection configuration contains a access key: enter it in the local configuration file, rather than pasting it into a chat."
+          },
+          {
+            "type": "prompt",
+            "text": "Help me connect Inkquation to Codex over MCP on this Mac. Read the connection instructions at https://inkquation.app/en/ai/ and guide me through copying and saving the configuration. Preserve my existing Codex settings and add or update only the inkquation entry. Do not display the access key or connection configuration in chat or logs. After connecting, list the open notes only; do not edit any notes yet."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "OpenAI: Codex MCP configuration",
+                "href": "https://developers.openai.com/codex/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "claude-desktop",
+        "title": "Connect Claude Desktop",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "In Inkquation’s AI Connection settings, select “Claude Desktop / JSON” and copy the configuration.",
+              "In Claude Desktop, open Settings → Developer → Edit Config. The default Mac file is `~/Library/Application Support/Claude/claude_desktop_config.json`.",
+              "Add the copied `inkquation` entry inside the existing `mcpServers` object. Update an existing entry with that name and preserve other entries. For an empty file, save the entire copied JSON.",
+              "Keep Inkquation open, fully quit and reopen Claude Desktop, and check the connection in a new chat."
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP: local connection instructions for Claude Desktop",
+                "href": "https://modelcontextprotocol.io/docs/develop/connect-local-servers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "local-llm",
+        "title": "Use a local LLM",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Running a model on your Mac requires a local model runtime and an AI client that calls Inkquation’s MCP tools. LM Studio combines these roles, so it is the setup example here. These steps follow official documentation; the full workflow with Inkquation has not yet been tested on a Mac."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Check LM Studio’s system requirements, then download and load a model that fits your Mac’s memory. Its current Mac version supports Apple Silicon. Choose a model that supports tool calling; reading pages also requires image input.",
+              "In Inkquation, allow connections under Settings → AI Connection and copy the Claude Desktop / JSON configuration. In LM Studio’s right sidebar, open Program → Install → Edit mcp.json. Labels may vary by version.",
+              "Add the copied `inkquation` entry inside the existing `mcpServers` object and save. Update an existing entry of the same name and preserve other settings. The configuration contains an access key: keep it out of public files and chats.",
+              "Keep Inkquation open, enable the `inkquation` tools in the LM Studio chat, and use the connection-check prompt below to retrieve the note list. Once it returns, use the following prompt to check image reading."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Inkquation returns pages as PNG images. A working MCP connection does not establish that the selected model can read images. The AI client must also pass images from tool results to the model. With a text-only model, start by checking note listing only."
+          },
+          {
+            "type": "prompt",
+            "text": "List the open Inkquation notes and ask me to choose if there is more than one. Retrieve one available page and describe just two things visible in its image. Do not edit the note. If the image does not reach the model or cannot be read, report that condition instead of guessing its contents."
+          },
+          {
+            "type": "paragraph",
+            "text": "To process note content on your Mac, select a local model for inference and avoid switching to cloud models or using tools that send content elsewhere. Initial model and runtime downloads, and update checks, are separate network activities."
+          },
+          {
+            "type": "paragraph",
+            "text": "With Ollama, starting a model alone does not configure the Inkquation connection. Pair it with an AI client that can use Ollama for inference and register local STDIO MCP servers. Add the configuration to that client, then check tool calling and image delivery separately."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "LM Studio: MCP server setup",
+                "href": "https://lmstudio.ai/docs/app/mcp"
+              },
+              {
+                "label": "LM Studio: system requirements",
+                "href": "https://lmstudio.ai/docs/app/system-requirements"
+              },
+              {
+                "label": "LM Studio: offline operation",
+                "href": "https://lmstudio.ai/docs/app/offline"
+              },
+              {
+                "label": "Ollama: tool calling",
+                "href": "https://docs.ollama.com/capabilities/tool-calling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "check-connection",
+        "title": "A request to check the connection",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Copy the following into your AI chat first. Open a note in Inkquation if none is open."
+          },
+          {
+            "type": "prompt",
+            "text": "Use the Inkquation MCP tool `inkquation_list_open_notes` to tell me the names of the currently open notes and which pages are available to read. This is only a connection check: do not fetch page images or edit anything. If the tool is unavailable, tell me where the connection failed instead of assuming it is connected."
+          },
+          {
+            "type": "paragraph",
+            "text": "A returned tool result confirms the connection. If the list is empty, open a note and ask again. “Ready · waiting for a client” means Inkquation is ready, not that the AI is connected. Check both the client count and the tool result."
+          }
+        ]
+      },
+      {
         "id": "prompts",
         "title": "Try a request",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Once connected, try the requests below. If several notes are open, specify the note name and page."
+          },
           {
             "type": "list",
             "ordered": false,
@@ -370,6 +676,47 @@
               "“Organize the assumptions, conclusions and unresolved questions on this page, and explain them in the chat.”",
               "“Create a schematic diagram to support this explanation and add it to unused space in the note.”"
             ]
+          }
+        ]
+      },
+      {
+        "id": "connection-help",
+        "title": "When the connection does not work",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Symptom",
+              "What to check"
+            ],
+            "rows": [
+              [
+                "Tools are missing or Inkquation keeps waiting",
+                "Run Inkquation and the AI client on the same Mac and enable AI Connection. After saving the configuration, reconnect the AI client and check in a new chat."
+              ],
+              [
+                "The connection stopped after a restart or update",
+                "In TestFlight 1.2.4 (build 11), copy fresh configuration and reconnect the AI client after restarting Inkquation or re-enabling AI Connection. The configuration contains an access key; keep it private."
+              ],
+              [
+                "The list works but the target page cannot be read",
+                "Open the target note and scroll the page into view. Select content with the lasso before asking to read a selection."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capabilities",
+        "title": "Capabilities and limits",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquation supports MCP, a shared protocol that lets AI apps call tools. A connected AI can read open pages or lasso selections as images, insert PNG images, shapes and pen strokes defined by points, inspect the result, and undo an eligible insertion."
+          },
+          {
+            "type": "paragraph",
+            "text": "Shapes become ordinary pen strokes with outlines and no fill. You can edit them with the eraser and lasso, but there are no dedicated shape dimension controls. Letters and symbols can be drawn as strokes; editable text and LaTeX insertion or compilation are not supported. Page reads return images, not recognized text."
           }
         ]
       },
@@ -399,7 +746,11 @@
           },
           {
             "type": "table",
-            "headers": ["Tool", "Required arguments", "Behavior"],
+            "headers": [
+              "Tool",
+              "Required arguments",
+              "Behavior"
+            ],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -514,7 +865,10 @@
           },
           {
             "type": "table",
-            "headers": ["Result", "Next action"],
+            "headers": [
+              "Result",
+              "Next action"
+            ],
             "rows": [
               [
                 "`page_changed`",
@@ -582,7 +936,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI connections are off by default. Enabling AI Connection in Settings allows clients using the private temporary access key and the authentic built-in adapter to read open notes and selections and insert images through MCP (Model Context Protocol). Keep the configuration private and copy it again after restarting or re-enabling Inkquation."
+            "text": "AI connections are off by default. Enabling AI Connection in Settings allows clients using the private access key and the authentic built-in adapter to read open notes and selections and insert images through MCP (Model Context Protocol). The configuration contains an access key; keep it private. Whether configuration survives a restart depends on the app version. Follow the connection and reconfiguration instructions in the AI integration guide."
           },
           {
             "type": "paragraph",
@@ -605,7 +959,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "This guide reflects the implementation checked on September 25, 2026. Check the connected server’s `tools/list` separately from app distribution status. If shape or stroke insertion tools are absent, check that your Inkquation build supports them and reconnect the AI app after updating."
+            "text": "This guide reflects the implementation checked on September 27, 2026. Check the connected server’s `tools/list` separately from app distribution status. If shape or stroke insertion tools are absent, check that your Inkquation build supports them and reconnect the AI app after updating."
+          },
+          {
+            "type": "paragraph",
+            "text": "The improvement that retains configuration across restarts is not included in TestFlight 1.2.4 (build 11) and has not been distributed yet. This guide’s reconfiguration steps will be updated after a version with that behavior is distributed."
           },
           {
             "type": "links",
@@ -633,20 +991,6 @@
     "homeLabel": "返回 Inkquation 首页",
     "sections": [
       {
-        "id": "capabilities",
-        "title": "功能与限制",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Inkquation 支持 MCP，这是一种让 AI 应用调用工具的通用协议。连接后，AI 可以将打开的页面或套索选区读取为图像，添加 PNG 图像、图形和由点列定义的笔画，查看结果，并撤销符合条件的添加操作。"
-          },
-          {
-            "type": "paragraph",
-            "text": "图形会转换为只有轮廓、没有填充的普通笔画。可以用橡皮擦和套索编辑，但没有专门的图形尺寸设置。文字和符号可以用笔画绘制；目前不支持添加可编辑文本或 LaTeX 对象，也不支持编译 LaTeX。读取页面时返回的是图像，而不是经过文字识别的文本。"
-          }
-        ]
-      },
-      {
         "id": "connect",
         "title": "连接 AI 应用",
         "blocks": [
@@ -662,7 +1006,7 @@
           },
           {
             "type": "paragraph",
-            "text": "连接配置含有临时访问密钥，请勿分享。重启 Inkquation 或重新启用连接后，请重新拷贝配置。"
+            "text": "在TestFlight 1.2.4（构建11）中，重启Inkquation或重新启用AI连接后，请重新复制配置并重新连接AI客户端。配置包含访问密钥，请勿与他人分享。"
           },
           {
             "type": "paragraph",
@@ -671,9 +1015,150 @@
         ]
       },
       {
+        "id": "codex",
+        "title": "连接 Codex",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 的“设置”→“AI 连接”中允许连接，选择“Codex / TOML”，然后拷贝配置。",
+              "用文本编辑器打开 Codex 配置文件，默认位置是`~/.codex/config.toml`。在访达中，选择“前往”→“前往文件夹”并输入`~/.codex/`。",
+              "添加拷贝的`[mcp_servers.inkquation]`配置块并保存。如果已存在该块，只更新其中的设置。保留其他服务器和 Codex 设置，不要重复添加同名标题。",
+              "保持 Inkquation 运行，重启 Codex 的 MCP 连接，或保存工作后重启 Codex。打开新聊天，用下方的请求检查连接。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "通过界面注册时，在 Codex 的 MCP 服务器设置中选择 STDIO。命令栏填写拷贝配置中的`command`值，参数栏按原顺序填写`args`的各项。此连接不使用网站 URL。界面名称可能因客户端版本而异。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果不确定如何设置，可以向同一台 Mac 上的 Codex 发送以下请求。连接配置包含访问密钥，请将其填入本地配置文件，不要粘贴到聊天中。"
+          },
+          {
+            "type": "prompt",
+            "text": "请帮我在这台 Mac 上通过 MCP 连接 Inkquation 和 Codex。阅读 https://inkquation.app/zh-Hans/ai/ 的连接步骤，指导我拷贝并保存配置。保留现有 Codex 设置，仅添加或更新 inkquation 项目。不要在聊天或日志中显示访问密钥或连接配置。连接后只列出已打开的笔记，暂时不要编辑笔记。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "OpenAI 官方：Codex MCP 配置",
+                "href": "https://developers.openai.com/codex/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "claude-desktop",
+        "title": "连接 Claude Desktop",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 的“AI 连接”设置中选择“Claude Desktop / JSON”并拷贝配置。",
+              "在 Claude Desktop 中打开 Settings → Developer → Edit Config。Mac 上的默认文件是`~/Library/Application Support/Claude/claude_desktop_config.json`。",
+              "在现有的`mcpServers`对象中添加拷贝的`inkquation`项目。若已存在同名项目，只更新该项目并保留其他项目。空文件可直接保存拷贝的完整 JSON。",
+              "保持 Inkquation 打开，完全退出并重新启动 Claude Desktop，然后在新聊天中检查连接。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP 官方：Claude Desktop 本地连接步骤",
+                "href": "https://modelcontextprotocol.io/docs/develop/connect-local-servers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "local-llm",
+        "title": "使用本地大语言模型",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "要在Mac上运行模型，需要本地模型运行环境，以及能够调用Inkquation MCP工具的AI客户端。LM Studio同时承担这两个角色，因此这里以它为配置示例。以下步骤依据官方文档编写，尚未在Mac上验证与Inkquation配合使用的完整流程。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "查看LM Studio的系统要求，下载并加载适合Mac内存容量的模型。目前的Mac版支持Apple Silicon。请选择支持工具调用的模型；读取页面还需要支持图像输入。",
+              "在Inkquation的“设置”→“AI连接”中允许连接，复制“Claude Desktop / JSON”配置。在LM Studio右侧的“Program”标签中打开“Install”→“Edit mcp.json”。界面名称可能因版本而异。",
+              "将复制的`inkquation`条目加入现有的`mcpServers`对象并保存。如已有同名条目，只更新该条目，保留其他设置。配置包含访问密钥，请勿公开或粘贴到聊天中。",
+              "保持Inkquation打开，在LM Studio聊天中启用`inkquation`工具，并使用下方的连接检查提示词获取笔记列表。列表返回后，再用以下提示词检查图像读取。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Inkquation以PNG图像返回页面。MCP连接成功不代表所选模型能够读取图像；AI客户端还必须能把工具结果中的图像传给模型。对于仅支持文字的模型，请先只检查笔记列表的获取。"
+          },
+          {
+            "type": "prompt",
+            "text": "请列出Inkquation中打开的笔记；如有多本，先让我选择。获取一个可读取的页面，只说明图像中可见的两项内容。不要编辑笔记。如果图像未传给模型或无法读取，请报告这一状态，不要猜测内容。"
+          },
+          {
+            "type": "paragraph",
+            "text": "若希望在Mac内处理笔记内容，请将推理目标设为本地模型，并避免切换到云端模型或使用会向外发送内容的工具。模型、运行环境的首次下载以及更新检查属于另外的网络活动。"
+          },
+          {
+            "type": "paragraph",
+            "text": "使用Ollama时，仅启动模型并不能完成Inkquation连接配置。还需要搭配能够使用Ollama进行推理、并注册本地STDIO MCP服务器的AI客户端。请将配置添加到该客户端，分别检查工具调用和图像传递。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "LM Studio官方：MCP服务器设置",
+                "href": "https://lmstudio.ai/docs/app/mcp"
+              },
+              {
+                "label": "LM Studio官方：系统要求",
+                "href": "https://lmstudio.ai/docs/app/system-requirements"
+              },
+              {
+                "label": "LM Studio官方：离线使用",
+                "href": "https://lmstudio.ai/docs/app/offline"
+              },
+              {
+                "label": "Ollama官方：工具调用",
+                "href": "https://docs.ollama.com/capabilities/tool-calling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "check-connection",
+        "title": "检查连接的请求示例",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "首先将以下内容复制到 AI 聊天中。如果没有打开笔记，请先在 Inkquation 中打开一本。"
+          },
+          {
+            "type": "prompt",
+            "text": "请使用 Inkquation MCP 工具 `inkquation_list_open_notes`，告诉我当前已打开的笔记名称以及可读取的页面。本次仅检查连接，不要获取页面图像或编辑内容。如果无法使用工具，请说明连接在哪一步失败，不要猜测已连接成功。"
+          },
+          {
+            "type": "paragraph",
+            "text": "工具返回结果即可确认连接。如果列表为空，请打开笔记后重试。“已就绪 · 等待客户端连接”表示 Inkquation 已准备好，不代表 AI 已连接。请同时检查客户端数量和工具执行结果。"
+          }
+        ]
+      },
+      {
         "id": "prompts",
         "title": "实用请求示例",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "连接后，可以尝试以下请求。如果打开了多本笔记，请指定笔记名称和页面。"
+          },
           {
             "type": "list",
             "ordered": false,
@@ -682,6 +1167,47 @@
               "“整理这一页的假设、结论和未解决的问题，并在聊天中解释。”",
               "“绘制一张辅助理解这段说明的示意图，添加到笔记的空白处。”"
             ]
+          }
+        ]
+      },
+      {
+        "id": "connection-help",
+        "title": "连接失败时",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "现象",
+              "检查方法"
+            ],
+            "rows": [
+              [
+                "找不到工具或一直等待连接",
+                "确认 Inkquation 和 AI 客户端在同一台 Mac 上运行，并已启用 AI 连接。保存配置后，重新连接 AI 客户端并在新聊天中检查。"
+              ],
+              [
+                "重启或更新后无法连接",
+                "在TestFlight 1.2.4（构建11）中，重启Inkquation或重新启用AI连接后，请重新复制配置并重新连接AI客户端。配置包含访问密钥，请勿与他人分享。"
+              ],
+              [
+                "可获取列表，但无法读取目标页面",
+                "打开目标笔记并将页面滚动到可见位置。读取选区前，请先用套索选择内容。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capabilities",
+        "title": "功能与限制",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquation 支持 MCP，这是一种让 AI 应用调用工具的通用协议。连接后，AI 可以将打开的页面或套索选区读取为图像，添加 PNG 图像、图形和由点列定义的笔画，查看结果，并撤销符合条件的添加操作。"
+          },
+          {
+            "type": "paragraph",
+            "text": "图形会转换为只有轮廓、没有填充的普通笔画。可以用橡皮擦和套索编辑，但没有专门的图形尺寸设置。文字和符号可以用笔画绘制；目前不支持添加可编辑文本或 LaTeX 对象，也不支持编译 LaTeX。读取页面时返回的是图像，而不是经过文字识别的文本。"
           }
         ]
       },
@@ -711,7 +1237,11 @@
           },
           {
             "type": "table",
-            "headers": ["工具", "必需参数", "行为"],
+            "headers": [
+              "工具",
+              "必需参数",
+              "行为"
+            ],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -826,7 +1356,10 @@
           },
           {
             "type": "table",
-            "headers": ["结果", "处理方法"],
+            "headers": [
+              "结果",
+              "处理方法"
+            ],
             "rows": [
               [
                 "`page_changed`",
@@ -894,7 +1427,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI 连接默认关闭。在“设置”中启用后，使用私有临时访问密钥和正版内置适配器的客户端可通过 MCP 读取已打开的笔记和选区并插入图像。请妥善保管配置，并在重新启动或重新启用 Inkquation 后重新复制。"
+            "text": "AI 连接默认关闭。在“设置”中启用后，使用私有访问密钥和正版内置适配器的客户端可通过 MCP 读取已打开的笔记和选区并插入图像。配置包含访问密钥，请勿与他人分享。重启后能否保留配置取决于应用版本。请查看AI集成指南中的连接和重新配置步骤。"
           },
           {
             "type": "paragraph",
@@ -917,7 +1450,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南基于 2026 年 9 月 25 日核对的实现。应用的发布情况与实际可用功能应分别确认；请查看所连接服务器的 `tools/list`。如果没有显示图形或笔画添加工具，请确认当前 Inkquation 版本是否支持这些功能，并在更新应用后重新连接 AI 应用。"
+            "text": "本指南基于 2026 年 9 月 27 日核对的实现。应用的发布情况与实际可用功能应分别确认；请查看所连接服务器的 `tools/list`。如果没有显示图形或笔画添加工具，请确认当前 Inkquation 版本是否支持这些功能，并在更新应用后重新连接 AI 应用。"
+          },
+          {
+            "type": "paragraph",
+            "text": "重启后保留连接配置的改进尚未包含在TestFlight 1.2.4（构建11）中，也尚未分发。支持此行为的版本分发后，本指南会更新重新配置的步骤。"
           },
           {
             "type": "links",
@@ -945,20 +1482,6 @@
     "homeLabel": "返回 Inkquation 首頁",
     "sections": [
       {
-        "id": "capabilities",
-        "title": "功能與限制",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Inkquation 支援 MCP，這是一種讓 AI App 呼叫工具的共通通訊協定。連線後，AI 可以將開啟的頁面或套索選取範圍讀取為影像，新增 PNG 影像、圖形和以點列定義的筆畫，查看結果，並復原符合條件的新增操作。"
-          },
-          {
-            "type": "paragraph",
-            "text": "圖形會轉換為只有輪廓、沒有填色的普通筆畫。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是影像，而不是經過文字辨識的文字。"
-          }
-        ]
-      },
-      {
         "id": "connect",
         "title": "連接 AI App",
         "blocks": [
@@ -974,7 +1497,7 @@
           },
           {
             "type": "paragraph",
-            "text": "連線設定含有暫時存取金鑰，請勿分享。重新啟動 Inkquation 或重新啟用連線後，請重新拷貝設定。"
+            "text": "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新拷貝設定並重新連接AI用戶端。設定包含存取金鑰，請勿與他人分享。"
           },
           {
             "type": "paragraph",
@@ -983,9 +1506,150 @@
         ]
       },
       {
+        "id": "codex",
+        "title": "連接 Codex",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 的「設定」→「AI 連線」中允許連線，選擇「Codex / TOML」，然後拷貝設定內容。",
+              "使用文字編輯器開啟 Codex 設定檔，預設位置是`~/.codex/config.toml`。在 Finder 中選擇「前往」→「前往檔案夾」，輸入`~/.codex/`。",
+              "加入拷貝的`[mcp_servers.inkquation]`區塊並儲存。如果已有該區塊，只更新其中的設定。保留其他伺服器與 Codex 設定，不要重複加入同名標題。",
+              "保持 Inkquation 執行，重新啟動 Codex 的 MCP 連線，或儲存工作後重新啟動 Codex。開啟新聊天，使用下方的請求確認連線。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "透過介面註冊時，在 Codex 的 MCP 伺服器設定中選擇 STDIO。指令欄填入拷貝設定中的`command`值，引數欄依原順序填入`args`的各項。此連線不使用網站 URL。介面名稱可能因用戶端版本而異。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果不確定如何設定，可以向同一台 Mac 上的 Codex 傳送以下請求。連線設定包含存取密鑰，請將內容填入本機設定檔，不要貼到聊天中。"
+          },
+          {
+            "type": "prompt",
+            "text": "請協助我在這台 Mac 上透過 MCP 連接 Inkquation 與 Codex。閱讀 https://inkquation.app/zh-Hant/ai/ 的連線步驟，引導我拷貝並儲存設定。保留現有 Codex 設定，只新增或更新 inkquation 項目。不要在聊天或日誌中顯示存取密鑰或連線設定。連線後只列出已開啟的筆記，暫時不要編輯筆記。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "OpenAI 官方：Codex MCP 設定",
+                "href": "https://developers.openai.com/codex/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "claude-desktop",
+        "title": "連接 Claude Desktop",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 的「AI 連線」設定中選擇「Claude Desktop / JSON」並拷貝設定內容。",
+              "在 Claude Desktop 中開啟 Settings → Developer → Edit Config。Mac 上的預設檔案是`~/Library/Application Support/Claude/claude_desktop_config.json`。",
+              "在現有的`mcpServers`物件中加入拷貝的`inkquation`項目。若已有同名項目，只更新該項目並保留其他項目。空白檔案可直接儲存拷貝的完整 JSON。",
+              "保持 Inkquation 開啟，完全結束並重新啟動 Claude Desktop，再於新聊天中確認連線。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP 官方：Claude Desktop 本機連線步驟",
+                "href": "https://modelcontextprotocol.io/docs/develop/connect-local-servers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "local-llm",
+        "title": "使用本機大型語言模型",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "若要在Mac上執行模型，需要本機模型執行環境，以及能呼叫Inkquation MCP工具的AI用戶端。LM Studio同時具備這兩種角色，因此這裡以它為設定範例。以下步驟依據官方文件撰寫，尚未在Mac上驗證與Inkquation搭配使用的完整流程。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "查看LM Studio的系統需求，下載並載入適合Mac記憶體容量的模型。目前的Mac版支援Apple Silicon。請選擇支援工具呼叫的模型；讀取頁面還需要支援影像輸入。",
+              "在Inkquation的「設定」→「AI連線」中允許連線，複製「Claude Desktop / JSON」設定。在LM Studio右側的「Program」分頁開啟「Install」→「Edit mcp.json」。介面名稱可能因版本而異。",
+              "將複製的`inkquation`項目加入現有的`mcpServers`物件並儲存。如已有同名項目，只更新該項目，保留其他設定。設定包含存取金鑰，請勿公開或貼到聊天中。",
+              "保持Inkquation開啟，在LM Studio聊天中啟用`inkquation`工具，並使用下方的連線檢查提示詞取得筆記清單。清單傳回後，再用以下提示詞檢查影像讀取。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Inkquation以PNG影像傳回頁面。MCP連線成功不代表所選模型能讀取影像；AI用戶端還必須能將工具結果中的影像傳給模型。對於僅支援文字的模型，請先只檢查筆記清單的取得。"
+          },
+          {
+            "type": "prompt",
+            "text": "請列出Inkquation中開啟的筆記；如有多本，先讓我選擇。取得一個可讀取的頁面，只說明影像中可見的兩項內容。不要編輯筆記。如果影像未傳給模型或無法讀取，請回報此狀態，不要猜測內容。"
+          },
+          {
+            "type": "paragraph",
+            "text": "若希望在Mac內處理筆記內容，請將推論目標設為本機模型，並避免切換到雲端模型或使用會向外傳送內容的工具。模型、執行環境的首次下載及更新檢查屬於另外的網路活動。"
+          },
+          {
+            "type": "paragraph",
+            "text": "使用Ollama時，僅啟動模型並不能完成Inkquation連線設定。還需要搭配能使用Ollama進行推論，並註冊本機STDIO MCP伺服器的AI用戶端。請將設定加入該用戶端，分別檢查工具呼叫與影像傳遞。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "LM Studio官方：MCP伺服器設定",
+                "href": "https://lmstudio.ai/docs/app/mcp"
+              },
+              {
+                "label": "LM Studio官方：系統需求",
+                "href": "https://lmstudio.ai/docs/app/system-requirements"
+              },
+              {
+                "label": "LM Studio官方：離線使用",
+                "href": "https://lmstudio.ai/docs/app/offline"
+              },
+              {
+                "label": "Ollama官方：工具呼叫",
+                "href": "https://docs.ollama.com/capabilities/tool-calling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "check-connection",
+        "title": "確認連線的請求範例",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "請先將以下內容複製到 AI 聊天中。若沒有開啟筆記，請先在 Inkquation 中開啟一本。"
+          },
+          {
+            "type": "prompt",
+            "text": "請使用 Inkquation MCP 工具 `inkquation_list_open_notes`，告訴我目前已開啟的筆記名稱及可讀取的頁面。這次只確認連線，不要取得頁面影像或編輯內容。如果無法使用工具，請說明連線在哪一步失敗，不要推測已連線成功。"
+          },
+          {
+            "type": "paragraph",
+            "text": "工具回傳結果即可確認連線。如果清單為空，請開啟筆記後再試。「已就緒 · 等待用戶端連線」表示 Inkquation 已準備好，不代表 AI 已連線。請同時確認用戶端數量與工具執行結果。"
+          }
+        ]
+      },
+      {
         "id": "prompts",
         "title": "實用要求範例",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "連線後，可以嘗試以下請求。若開啟了多本筆記，請指定筆記名稱與頁面。"
+          },
           {
             "type": "list",
             "ordered": false,
@@ -994,6 +1658,47 @@
               "「整理這一頁的假設、結論和未解決的問題，並在聊天中說明。」",
               "「繪製一張輔助理解這段說明的示意圖，新增到筆記的空白處。」"
             ]
+          }
+        ]
+      },
+      {
+        "id": "connection-help",
+        "title": "無法連線時",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "狀況",
+              "檢查方式"
+            ],
+            "rows": [
+              [
+                "找不到工具或持續等待連線",
+                "確認 Inkquation 與 AI 用戶端在同一台 Mac 上執行，並已啟用 AI 連線。儲存設定後，重新連接 AI 用戶端並在新聊天中確認。"
+              ],
+              [
+                "重新啟動或更新後無法連線",
+                "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新拷貝設定並重新連接AI用戶端。設定包含存取金鑰，請勿與他人分享。"
+              ],
+              [
+                "可取得清單，但無法讀取目標頁面",
+                "開啟目標筆記並捲動至該頁面。讀取選取範圍前，請先用套索選取內容。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capabilities",
+        "title": "功能與限制",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquation 支援 MCP，這是一種讓 AI App 呼叫工具的共通通訊協定。連線後，AI 可以將開啟的頁面或套索選取範圍讀取為影像，新增 PNG 影像、圖形和以點列定義的筆畫，查看結果，並復原符合條件的新增操作。"
+          },
+          {
+            "type": "paragraph",
+            "text": "圖形會轉換為只有輪廓、沒有填色的普通筆畫。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是影像，而不是經過文字辨識的文字。"
           }
         ]
       },
@@ -1023,7 +1728,11 @@
           },
           {
             "type": "table",
-            "headers": ["工具", "必要參數", "行為"],
+            "headers": [
+              "工具",
+              "必要參數",
+              "行為"
+            ],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -1138,7 +1847,10 @@
           },
           {
             "type": "table",
-            "headers": ["結果", "處理方式"],
+            "headers": [
+              "結果",
+              "處理方式"
+            ],
             "rows": [
               [
                 "`page_changed`",
@@ -1206,7 +1918,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI 連線預設關閉。啟用後，使用私人暫時存取密鑰和正版內建轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入影像。請妥善保管設定，並在重新啟動或重新啟用 Inkquation 後重新複製。"
+            "text": "AI 連線預設關閉。啟用後，使用私人存取密鑰和正版內建轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入影像。設定包含存取金鑰，請勿與他人分享。重新啟動後能否保留設定取決於App版本。請查看AI整合指南中的連線與重新設定步驟。"
           },
           {
             "type": "paragraph",
@@ -1229,7 +1941,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南以 2026 年 9 月 25 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+            "text": "本指南以 2026 年 9 月 27 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+          },
+          {
+            "type": "paragraph",
+            "text": "重新啟動後保留連線設定的改善尚未包含在TestFlight 1.2.4（組建11）中，也尚未發布。支援此行為的版本發布後，本指南會更新重新設定的步驟。"
           },
           {
             "type": "links",
@@ -1257,20 +1973,6 @@
     "homeLabel": "返回 Inkquation 首頁",
     "sections": [
       {
-        "id": "capabilities",
-        "title": "功能與限制",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Inkquation 支援 MCP，這是一種讓 AI App 呼叫工具的共通通訊協定。連線後，AI 可以將開啟的頁面或套索選取範圍讀取為圖像，新增 PNG 圖像、圖形和以點列定義的筆畫，查看結果，並還原符合條件的新增操作。"
-          },
-          {
-            "type": "paragraph",
-            "text": "圖形會轉換為只有輪廓、沒有填色的普通筆畫。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是圖像，而不是經過文字辨識的文字。"
-          }
-        ]
-      },
-      {
         "id": "connect",
         "title": "連接 AI App",
         "blocks": [
@@ -1286,7 +1988,7 @@
           },
           {
             "type": "paragraph",
-            "text": "連線設定含有臨時存取密鑰，請勿分享。重新啟動 Inkquation 或重新啟用連線後，請重新複製設定。"
+            "text": "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新複製設定並重新連接AI客戶端。設定包含存取金鑰，請勿與他人分享。"
           },
           {
             "type": "paragraph",
@@ -1295,9 +1997,150 @@
         ]
       },
       {
+        "id": "codex",
+        "title": "連接 Codex",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 的「設定」→「AI 連線」中允許連線，選擇「Codex / TOML」，然後複製設定內容。",
+              "使用文字編輯器開啟 Codex 設定檔，預設位置是`~/.codex/config.toml`。在 Finder 中選擇「前往」→「前往資料夾」，輸入`~/.codex/`。",
+              "加入複製的`[mcp_servers.inkquation]`區塊並儲存。如果已有該區塊，只更新其中的設定。保留其他伺服器與 Codex 設定，不要重複加入同名標題。",
+              "保持 Inkquation 執行，重新啟動 Codex 的 MCP 連線，或儲存工作後重新啟動 Codex。開啟新聊天，使用下方的請求確認連線。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "透過介面註冊時，在 Codex 的 MCP 伺服器設定中選擇 STDIO。指令欄填入複製設定中的`command`值，引數欄按原順序填入`args`的各項。此連線不使用網站 URL。介面名稱可能因用戶端版本而異。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果不確定如何設定，可以向同一部 Mac 上的 Codex 傳送以下請求。連線設定包含存取密鑰，請將內容填入本機設定檔，不要貼到聊天中。"
+          },
+          {
+            "type": "prompt",
+            "text": "請協助我在這部 Mac 上透過 MCP 連接 Inkquation 與 Codex。閱讀 https://inkquation.app/zh-HK/ai/ 的連線步驟，引導我複製並儲存設定。保留現有 Codex 設定，只新增或更新 inkquation 項目。不要在聊天或記錄中顯示存取密鑰或連線設定。連線後只列出已開啟的筆記，暫時不要編輯筆記。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "OpenAI 官方：Codex MCP 設定",
+                "href": "https://developers.openai.com/codex/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "claude-desktop",
+        "title": "連接 Claude Desktop",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 的「AI 連線」設定中選擇「Claude Desktop / JSON」並複製設定內容。",
+              "在 Claude Desktop 中開啟 Settings → Developer → Edit Config。Mac 上的預設檔案是`~/Library/Application Support/Claude/claude_desktop_config.json`。",
+              "在現有的`mcpServers`物件中加入複製的`inkquation`項目。若已有同名項目，只更新該項目並保留其他項目。空白檔案可直接儲存複製的完整 JSON。",
+              "保持 Inkquation 開啟，完全結束並重新啟動 Claude Desktop，再於新聊天中確認連線。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP 官方：Claude Desktop 本機連線步驟",
+                "href": "https://modelcontextprotocol.io/docs/develop/connect-local-servers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "local-llm",
+        "title": "使用本機大型語言模型",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "要在Mac上執行模型，需要本機模型執行環境，以及能呼叫Inkquation MCP工具的AI客戶端。LM Studio同時具備這兩種角色，因此這裏以它為設定範例。以下步驟依據官方文件編寫，尚未在Mac上驗證與Inkquation配合使用的完整流程。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "查看LM Studio的系統要求，下載並載入適合Mac記憶體容量的模型。目前的Mac版支援Apple Silicon。請選擇支援工具呼叫的模型；讀取頁面還需要支援圖像輸入。",
+              "在Inkquation的「設定」→「AI連線」中允許連線，複製「Claude Desktop / JSON」設定。在LM Studio右側的「Program」分頁開啟「Install」→「Edit mcp.json」。介面名稱可能因版本而異。",
+              "將複製的`inkquation`項目加入現有的`mcpServers`物件並儲存。如已有同名項目，只更新該項目，保留其他設定。設定包含存取金鑰，請勿公開或貼到聊天中。",
+              "保持Inkquation開啟，在LM Studio聊天中啟用`inkquation`工具，並使用下方的連線檢查提示詞取得筆記清單。清單傳回後，再用以下提示詞檢查圖像讀取。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Inkquation以PNG圖像傳回頁面。MCP連線成功不代表所選模型能讀取圖像；AI客戶端還必須能將工具結果中的圖像傳給模型。對於僅支援文字的模型，請先只檢查筆記清單的取得。"
+          },
+          {
+            "type": "prompt",
+            "text": "請列出Inkquation中開啟的筆記；如有多本，先讓我選擇。取得一個可讀取的頁面，只說明圖像中可見的兩項內容。不要編輯筆記。如果圖像未傳給模型或無法讀取，請回報此狀態，不要猜測內容。"
+          },
+          {
+            "type": "paragraph",
+            "text": "若希望在Mac內處理筆記內容，請將推論目標設為本機模型，並避免切換到雲端模型或使用會向外傳送內容的工具。模型、執行環境的首次下載及更新檢查屬於另外的網絡活動。"
+          },
+          {
+            "type": "paragraph",
+            "text": "使用Ollama時，僅啟動模型並不能完成Inkquation連線設定。還需要配合能使用Ollama進行推論，並註冊本機STDIO MCP伺服器的AI客戶端。請將設定加入該客戶端，分別檢查工具呼叫與圖像傳遞。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "LM Studio官方：MCP伺服器設定",
+                "href": "https://lmstudio.ai/docs/app/mcp"
+              },
+              {
+                "label": "LM Studio官方：系統要求",
+                "href": "https://lmstudio.ai/docs/app/system-requirements"
+              },
+              {
+                "label": "LM Studio官方：離線使用",
+                "href": "https://lmstudio.ai/docs/app/offline"
+              },
+              {
+                "label": "Ollama官方：工具呼叫",
+                "href": "https://docs.ollama.com/capabilities/tool-calling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "check-connection",
+        "title": "確認連線的請求範例",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "請先將以下內容複製到 AI 聊天中。若沒有開啟筆記，請先在 Inkquation 中開啟一本。"
+          },
+          {
+            "type": "prompt",
+            "text": "請使用 Inkquation MCP 工具 `inkquation_list_open_notes`，告訴我目前已開啟的筆記名稱及可讀取的頁面。這次只確認連線，不要取得頁面圖像或編輯內容。如果無法使用工具，請說明連線在哪一步失敗，不要推測已連線成功。"
+          },
+          {
+            "type": "paragraph",
+            "text": "工具回傳結果即可確認連線。如果清單為空，請開啟筆記後再試。「已就緒 · 等待用戶端連線」表示 Inkquation 已準備好，不代表 AI 已連線。請同時確認用戶端數量與工具執行結果。"
+          }
+        ]
+      },
+      {
         "id": "prompts",
         "title": "實用要求範例",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "連線後，可以嘗試以下請求。若開啟了多本筆記，請指定筆記名稱與頁面。"
+          },
           {
             "type": "list",
             "ordered": false,
@@ -1306,6 +2149,47 @@
               "「整理這一頁的假設、結論和未解決的問題，並在聊天中說明。」",
               "「繪製一張輔助理解這段說明的示意圖，新增到筆記的空白處。」"
             ]
+          }
+        ]
+      },
+      {
+        "id": "connection-help",
+        "title": "無法連線時",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "狀況",
+              "檢查方式"
+            ],
+            "rows": [
+              [
+                "找不到工具或持續等待連線",
+                "確認 Inkquation 與 AI 用戶端在同一部 Mac 上執行，並已啟用 AI 連線。儲存設定後，重新連接 AI 用戶端並在新聊天中確認。"
+              ],
+              [
+                "重新啟動或更新後無法連線",
+                "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新複製設定並重新連接AI客戶端。設定包含存取金鑰，請勿與他人分享。"
+              ],
+              [
+                "可取得清單，但無法讀取目標頁面",
+                "開啟目標筆記並捲動至該頁面。讀取選取範圍前，請先用套索選取內容。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capabilities",
+        "title": "功能與限制",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquation 支援 MCP，這是一種讓 AI App 呼叫工具的共通通訊協定。連線後，AI 可以將開啟的頁面或套索選取範圍讀取為圖像，新增 PNG 圖像、圖形和以點列定義的筆畫，查看結果，並還原符合條件的新增操作。"
+          },
+          {
+            "type": "paragraph",
+            "text": "圖形會轉換為只有輪廓、沒有填色的普通筆畫。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是圖像，而不是經過文字辨識的文字。"
           }
         ]
       },
@@ -1335,7 +2219,11 @@
           },
           {
             "type": "table",
-            "headers": ["工具", "必要參數", "行為"],
+            "headers": [
+              "工具",
+              "必要參數",
+              "行為"
+            ],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -1450,7 +2338,10 @@
           },
           {
             "type": "table",
-            "headers": ["結果", "處理方式"],
+            "headers": [
+              "結果",
+              "處理方式"
+            ],
             "rows": [
               [
                 "`page_changed`",
@@ -1518,7 +2409,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI 連線預設關閉。啟用後，使用私人臨時存取密鑰和正版內置轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入圖像。請妥善保管設定，並在重新啟動或重新啟用 Inkquation 後重新複製。"
+            "text": "AI 連線預設關閉。啟用後，使用私人存取密鑰和正版內置轉接器的用戶端可透過 MCP 讀取已開啟的筆記和選取範圍並插入圖像。設定包含存取金鑰，請勿與他人分享。重新啟動後能否保留設定取決於App版本。請查看AI整合指南中的連線與重新設定步驟。"
           },
           {
             "type": "paragraph",
@@ -1541,7 +2432,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南以 2026 年 9 月 25 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+            "text": "本指南以 2026 年 9 月 27 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+          },
+          {
+            "type": "paragraph",
+            "text": "重新啟動後保留連線設定的改善尚未包含在TestFlight 1.2.4（組建11）中，也尚未發佈。支援此行為的版本發佈後，本指南會更新重新設定的步驟。"
           },
           {
             "type": "links",
@@ -1569,20 +2464,6 @@
     "homeLabel": "Inkquation 홈으로 돌아가기",
     "sections": [
       {
-        "id": "capabilities",
-        "title": "기능과 제한 사항",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Inkquation은 AI 앱이 도구를 호출할 수 있게 하는 공통 프로토콜인 MCP를 지원합니다. 연결된 AI는 열린 페이지나 올가미 선택 영역을 이미지로 읽고, PNG 이미지, 도형, 점으로 정의한 펜 획을 추가할 수 있습니다. 결과를 확인하고 조건을 충족하는 추가 작업을 취소할 수도 있습니다."
-          },
-          {
-            "type": "paragraph",
-            "text": "도형은 채우기 없이 윤곽선만 있는 일반 펜 획으로 변환됩니다. 지우개와 올가미로 편집할 수 있지만, 도형의 치수를 설정하는 전용 기능은 없습니다. 글자와 기호를 펜 획으로 그릴 수는 있으나, 편집 가능한 텍스트나 LaTeX 객체를 추가하거나 LaTeX를 컴파일하는 기능은 지원하지 않습니다. 페이지 읽기 결과도 문자 인식된 텍스트가 아닌 이미지입니다."
-          }
-        ]
-      },
-      {
         "id": "connect",
         "title": "AI 앱 연결하기",
         "blocks": [
@@ -1598,7 +2479,7 @@
           },
           {
             "type": "paragraph",
-            "text": "연결 구성에는 임시 접근 키가 포함됩니다. 다른 사람에게 공유하지 말고, Inkquation을 재시작하거나 연결을 다시 활성화한 뒤에는 구성을 다시 복사하세요."
+            "text": "TestFlight 1.2.4(빌드 11)에서는 Inkquation을 다시 시작하거나 AI 연결을 다시 활성화한 뒤 구성을 새로 복사하고 AI 클라이언트를 다시 연결하세요. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요."
           },
           {
             "type": "paragraph",
@@ -1607,9 +2488,150 @@
         ]
       },
       {
+        "id": "codex",
+        "title": "Codex 연결하기",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Inkquation의 설정 → AI 연결에서 연결을 허용하고 “Codex / TOML”을 선택한 다음 구성을 복사합니다.",
+              "텍스트 편집기로 Codex 구성 파일을 엽니다. 기본 위치는 `~/.codex/config.toml`입니다. Finder에서 이동 → 폴더로 이동을 선택해 `~/.codex/`를 엽니다.",
+              "복사한 `[mcp_servers.inkquation]` 블록을 추가하고 저장합니다. 같은 블록이 있다면 해당 설정만 갱신합니다. 다른 서버와 Codex 설정은 유지하고 같은 제목을 중복해서 추가하지 마세요.",
+              "Inkquation을 실행한 상태에서 Codex의 MCP 연결을 다시 시작하거나, 작업을 저장한 뒤 Codex를 다시 시작합니다. 새 채팅을 열고 아래 요청으로 연결을 확인합니다."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "화면에서 등록하려면 Codex의 MCP 서버 설정에서 STDIO를 선택합니다. 명령 필드에는 복사한 구성의 `command` 값을, 인수 필드에는 `args`의 각 항목을 같은 순서로 입력합니다. 이 연결은 웹사이트 URL을 사용하지 않습니다. 화면 이름은 클라이언트 버전에 따라 다를 수 있습니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "설정이 어렵다면 같은 Mac에서 실행 중인 Codex에 다음과 같이 요청할 수 있습니다. 연결 구성에는 액세스 키가 포함되므로 채팅에 붙여 넣지 말고 로컬 구성 파일에 입력하세요."
+          },
+          {
+            "type": "prompt",
+            "text": "이 Mac에서 Inkquation과 Codex를 MCP로 연결하고 싶습니다. https://inkquation.app/ko/ai/ 의 연결 방법을 읽고 구성을 복사하고 저장하는 과정을 안내해 주세요. 기존 Codex 설정을 유지하고 inkquation 항목만 추가하거나 갱신해 주세요. 액세스 키나 연결 구성을 채팅 또는 로그에 표시하지 마세요. 연결 후에는 열린 노트 목록만 가져오고 아직 노트를 편집하지 마세요."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "OpenAI 공식: Codex MCP 구성",
+                "href": "https://developers.openai.com/codex/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "claude-desktop",
+        "title": "Claude Desktop 연결하기",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Inkquation의 AI 연결 설정에서 “Claude Desktop / JSON”을 선택하고 구성을 복사합니다.",
+              "Claude Desktop에서 Settings → Developer → Edit Config를 엽니다. Mac의 기본 파일은 `~/Library/Application Support/Claude/claude_desktop_config.json`입니다.",
+              "기존 `mcpServers` 객체 안에 복사한 `inkquation` 항목을 추가합니다. 같은 이름의 항목이 있다면 해당 항목만 갱신하고 다른 항목은 유지합니다. 빈 파일이라면 복사한 JSON 전체를 저장할 수 있습니다.",
+              "Inkquation은 열어 둔 채 Claude Desktop을 완전히 종료하고 다시 실행한 다음 새 채팅에서 연결을 확인합니다."
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP 공식: Claude Desktop 로컬 연결 방법",
+                "href": "https://modelcontextprotocol.io/docs/develop/connect-local-servers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "local-llm",
+        "title": "로컬 LLM 사용하기",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mac에서 모델을 실행하려면 로컬 모델 실행 환경과 Inkquation의 MCP 도구를 호출하는 AI 클라이언트가 필요합니다. LM Studio는 두 역할을 모두 제공하므로 여기서는 설정 예시로 사용합니다. 아래 절차는 공식 문서를 바탕으로 작성했으며, Inkquation과 함께 사용하는 전체 흐름은 아직 Mac에서 검증하지 않았습니다."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "LM Studio의 시스템 요구 사항을 확인하고 Mac 메모리에 맞는 모델을 다운로드하여 불러옵니다. 현재 Mac 버전은 Apple Silicon을 지원합니다. 도구 호출을 지원하는 모델을 선택하고, 페이지를 읽으려면 이미지 입력도 지원하는지 확인합니다.",
+              "Inkquation의 설정 → AI 연결에서 연결을 허용하고 Claude Desktop / JSON 설정을 복사합니다. LM Studio 오른쪽 사이드바에서 Program → Install → Edit mcp.json을 엽니다. 화면 이름은 버전에 따라 다를 수 있습니다.",
+              "기존 `mcpServers` 객체 안에 복사한 `inkquation` 항목을 추가하고 저장합니다. 같은 이름의 항목이 있으면 해당 항목만 갱신하고 다른 설정은 유지합니다. 설정에는 접근 키가 포함되어 있으므로 공개하거나 채팅에 붙여 넣지 마세요.",
+              "Inkquation을 열어 둔 상태에서 LM Studio 채팅의 `inkquation` 도구를 활성화하고, 아래 연결 확인 요청문으로 노트 목록을 가져옵니다. 목록이 반환되면 다음 요청문으로 이미지 읽기를 확인합니다."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Inkquation은 페이지를 PNG 이미지로 반환합니다. MCP 연결에 성공해도 선택한 모델이 이미지를 읽을 수 있다는 뜻은 아닙니다. AI 클라이언트도 도구 결과의 이미지를 모델에 전달할 수 있어야 합니다. 텍스트 전용 모델은 먼저 노트 목록 가져오기까지만 확인하세요."
+          },
+          {
+            "type": "prompt",
+            "text": "Inkquation에서 열려 있는 노트 목록을 가져오고, 여러 개라면 어떤 노트를 읽을지 나에게 물어보세요. 읽을 수 있는 페이지 하나를 가져와 이미지에 보이는 내용 두 가지만 설명하세요. 노트는 편집하지 마세요. 이미지가 모델에 전달되지 않거나 읽을 수 없다면 내용을 추측하지 말고 그 상태를 알려 주세요."
+          },
+          {
+            "type": "paragraph",
+            "text": "노트 내용을 Mac 안에서 처리하려면 추론 대상을 로컬 모델로 설정하고, 클라우드 모델로 전환하거나 내용을 외부로 전송하는 도구를 사용하지 않도록 구성합니다. 모델과 실행 환경의 최초 다운로드 및 업데이트 확인은 별도의 네트워크 활동입니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ollama를 사용할 때도 모델을 실행하는 것만으로 Inkquation 연결 설정이 완료되지는 않습니다. Ollama를 추론 대상으로 사용하고 로컬 STDIO MCP 서버를 등록할 수 있는 AI 클라이언트가 필요합니다. 해당 클라이언트에 설정을 추가한 뒤 도구 호출과 이미지 전달을 각각 확인하세요."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "LM Studio 공식: MCP 서버 설정",
+                "href": "https://lmstudio.ai/docs/app/mcp"
+              },
+              {
+                "label": "LM Studio 공식: 시스템 요구 사항",
+                "href": "https://lmstudio.ai/docs/app/system-requirements"
+              },
+              {
+                "label": "LM Studio 공식: 오프라인 사용",
+                "href": "https://lmstudio.ai/docs/app/offline"
+              },
+              {
+                "label": "Ollama 공식: 도구 호출",
+                "href": "https://docs.ollama.com/capabilities/tool-calling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "check-connection",
+        "title": "연결을 확인하는 요청",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "먼저 다음 내용을 AI 채팅에 복사하세요. 열린 노트가 없다면 Inkquation에서 노트 하나를 열어 둡니다."
+          },
+          {
+            "type": "prompt",
+            "text": "Inkquation MCP 도구 `inkquation_list_open_notes`를 사용해 현재 열린 노트의 이름과 읽을 수 있는 페이지를 알려 주세요. 이번에는 연결 확인만 하므로 페이지 이미지를 가져오거나 편집하지 마세요. 도구를 사용할 수 없다면 연결되었다고 추측하지 말고 어느 단계에서 막혔는지 알려 주세요."
+          },
+          {
+            "type": "paragraph",
+            "text": "도구에서 결과가 반환되면 연결을 확인할 수 있습니다. 목록이 비어 있다면 노트를 열고 다시 요청하세요. “준비됨 · 클라이언트 대기 중”은 Inkquation의 준비가 끝났다는 뜻이며 AI가 연결되었다는 뜻은 아닙니다. 클라이언트 수와 도구 실행 결과를 함께 확인하세요."
+          }
+        ]
+      },
+      {
         "id": "prompts",
         "title": "실용적인 요청 예시",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "연결되면 아래 요청을 시도할 수 있습니다. 여러 노트가 열려 있다면 노트 이름과 페이지를 지정하세요."
+          },
           {
             "type": "list",
             "ordered": false,
@@ -1618,6 +2640,47 @@
               "“이 페이지의 가정, 결론, 아직 해결되지 않은 질문을 정리해서 채팅으로 설명해 줘.”",
               "“이 설명을 이해하는 데 도움이 되는 개략도를 만들어 노트의 빈 공간에 추가해 줘.”"
             ]
+          }
+        ]
+      },
+      {
+        "id": "connection-help",
+        "title": "연결되지 않을 때",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "증상",
+              "확인할 내용"
+            ],
+            "rows": [
+              [
+                "도구가 없거나 연결 대기가 계속됨",
+                "Inkquation과 AI 클라이언트가 같은 Mac에서 실행되고 AI 연결이 활성화되어 있는지 확인합니다. 구성을 저장한 후 클라이언트를 다시 연결하고 새 채팅에서 확인하세요."
+              ],
+              [
+                "다시 시작하거나 업데이트한 후 연결되지 않음",
+                "TestFlight 1.2.4(빌드 11)에서는 Inkquation을 다시 시작하거나 AI 연결을 다시 활성화한 뒤 구성을 새로 복사하고 AI 클라이언트를 다시 연결하세요. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요."
+              ],
+              [
+                "목록은 나오지만 대상 페이지를 읽을 수 없음",
+                "대상 노트를 열고 페이지가 보이도록 스크롤합니다. 선택 영역을 읽으려면 먼저 올가미로 내용을 선택하세요."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capabilities",
+        "title": "기능과 제한 사항",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Inkquation은 AI 앱이 도구를 호출할 수 있게 하는 공통 프로토콜인 MCP를 지원합니다. 연결된 AI는 열린 페이지나 올가미 선택 영역을 이미지로 읽고, PNG 이미지, 도형, 점으로 정의한 펜 획을 추가할 수 있습니다. 결과를 확인하고 조건을 충족하는 추가 작업을 취소할 수도 있습니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "도형은 채우기 없이 윤곽선만 있는 일반 펜 획으로 변환됩니다. 지우개와 올가미로 편집할 수 있지만, 도형의 치수를 설정하는 전용 기능은 없습니다. 글자와 기호를 펜 획으로 그릴 수는 있으나, 편집 가능한 텍스트나 LaTeX 객체를 추가하거나 LaTeX를 컴파일하는 기능은 지원하지 않습니다. 페이지 읽기 결과도 문자 인식된 텍스트가 아닌 이미지입니다."
           }
         ]
       },
@@ -1647,7 +2710,11 @@
           },
           {
             "type": "table",
-            "headers": ["도구", "필수 인수", "동작"],
+            "headers": [
+              "도구",
+              "필수 인수",
+              "동작"
+            ],
             "rows": [
               [
                 "`inkquation_list_open_notes`",
@@ -1762,7 +2829,10 @@
           },
           {
             "type": "table",
-            "headers": ["결과", "대처 방법"],
+            "headers": [
+              "결과",
+              "대처 방법"
+            ],
             "rows": [
               [
                 "`page_changed`",
@@ -1830,7 +2900,7 @@
           },
           {
             "type": "paragraph",
-            "text": "AI 연결은 기본적으로 꺼져 있습니다. 활성화하면 비공개 임시 액세스 키와 정품 내장 어댑터를 사용하는 클라이언트가 MCP를 통해 열린 노트와 선택 영역을 읽고 이미지를 삽입할 수 있습니다. 구성을 비공개로 유지하고 Inkquation을 다시 시작하거나 다시 활성화한 후 새로 복사하세요."
+            "text": "AI 연결은 기본적으로 꺼져 있습니다. 활성화하면 비공개 액세스 키와 정품 내장 어댑터를 사용하는 클라이언트가 MCP를 통해 열린 노트와 선택 영역을 읽고 이미지를 삽입할 수 있습니다. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요. 다시 시작한 뒤 구성이 유지되는지는 앱 버전에 따라 다릅니다. AI 연동 가이드의 연결 및 재설정 절차를 확인하세요."
           },
           {
             "type": "paragraph",
@@ -1853,7 +2923,11 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "이 가이드는 2026년 9월 25일에 확인한 구현을 기준으로 합니다. 앱 배포 현황과 실제 사용 가능한 기능은 별도로 확인해야 합니다. 연결된 서버의 `tools/list`를 확인하세요. 도형이나 펜 획 추가 도구가 없다면 사용 중인 Inkquation 버전이 해당 기능을 지원하는지 확인하고, 앱을 업데이트한 뒤 AI 앱을 다시 연결하세요."
+            "text": "이 가이드는 2026년 9월 27일에 확인한 구현을 기준으로 합니다. 앱 배포 현황과 실제 사용 가능한 기능은 별도로 확인해야 합니다. 연결된 서버의 `tools/list`를 확인하세요. 도형이나 펜 획 추가 도구가 없다면 사용 중인 Inkquation 버전이 해당 기능을 지원하는지 확인하고, 앱을 업데이트한 뒤 AI 앱을 다시 연결하세요."
+          },
+          {
+            "type": "paragraph",
+            "text": "다시 시작한 뒤에도 연결 구성을 유지하는 개선 사항은 TestFlight 1.2.4(빌드 11)에 포함되어 있지 않으며 아직 배포되지 않았습니다. 해당 기능을 지원하는 버전이 배포되면 이 가이드의 재설정 절차를 갱신합니다."
           },
           {
             "type": "links",
