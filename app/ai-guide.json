@@ -24,7 +24,7 @@
           },
           {
             "type": "paragraph",
-            "text": "TestFlight 1.2.4（ビルド11）では、Inkquationの再起動またはAI接続の再有効化後に、設定をコピーし直してAIクライアントを再接続してください。設定にはアクセスキーが含まれるため、第三者に渡さないでください。"
+            "text": "TestFlight 1.2.4（ビルド12）は、通常の再起動後も同じAI接続設定を使うための変更を含みます。ビルド11以前から更新したら、最初の1回だけ新しい設定をコピーしてください。その後、接続が切れた場合はAIクライアントを再接続します。AI接続を無効→再有効にした場合は、新しい設定が必要です。アクセスキーを含む設定は第三者に渡さないでください。"
           },
           {
             "type": "paragraph",
@@ -205,7 +205,7 @@
               ],
               [
                 "再起動や更新のあとにつながらなくなった",
-                "TestFlight 1.2.4（ビルド11）では、Inkquationの再起動またはAI接続の再有効化後に、設定をコピーし直してAIクライアントを再接続してください。設定にはアクセスキーが含まれるため、第三者に渡さないでください。"
+                "TestFlight 1.2.4（ビルド12）は、通常の再起動後も同じAI接続設定を使うための変更を含みます。ビルド11以前から更新したら、最初の1回だけ新しい設定をコピーしてください。その後、接続が切れた場合はAIクライアントを再接続します。AI接続を無効→再有効にした場合は、新しい設定が必要です。アクセスキーを含む設定は第三者に渡さないでください。"
               ],
               [
                 "一覧は返るが対象ページを読めない",
@@ -472,7 +472,7 @@
           },
           {
             "type": "paragraph",
-            "text": "再起動後も接続設定を保持する改善は、TestFlight 1.2.4（ビルド11）には含まれておらず、まだ配信されていません。対応版の配信後に、このガイドの再設定手順を更新します。"
+            "text": "ビルド11以前では、再起動のたびに接続設定をコピーし直す必要があります。ビルド12では設定保持の変更を内部TestFlightへ配信していますが、接続先のAIクライアントでの実動作確認は継続中です。設定を一度更新したあと、ノートを保存してInkquationを終了・再起動し、同じ設定で再接続できるか確認してください。"
           },
           {
             "type": "links",
@@ -515,7 +515,7 @@
           },
           {
             "type": "paragraph",
-            "text": "In TestFlight 1.2.4 (build 11), copy fresh configuration and reconnect the AI client after restarting Inkquation or re-enabling AI Connection. The configuration contains an access key; keep it private."
+            "text": "TestFlight 1.2.4 (build 12) includes the change to reuse AI connection configuration after normal restarts. When updating from build 11 or earlier, copy the new configuration once. Reconnect the AI client if it disconnects afterward. Disabling and re-enabling AI Connection requires fresh configuration. Keep the configuration private because it contains an access key."
           },
           {
             "type": "paragraph",
@@ -696,7 +696,7 @@
               ],
               [
                 "The connection stopped after a restart or update",
-                "In TestFlight 1.2.4 (build 11), copy fresh configuration and reconnect the AI client after restarting Inkquation or re-enabling AI Connection. The configuration contains an access key; keep it private."
+                "TestFlight 1.2.4 (build 12) includes the change to reuse AI connection configuration after normal restarts. When updating from build 11 or earlier, copy the new configuration once. Reconnect the AI client if it disconnects afterward. Disabling and re-enabling AI Connection requires fresh configuration. Keep the configuration private because it contains an access key."
               ],
               [
                 "The list works but the target page cannot be read",
@@ -963,7 +963,7 @@
           },
           {
             "type": "paragraph",
-            "text": "The improvement that retains configuration across restarts is not included in TestFlight 1.2.4 (build 11) and has not been distributed yet. This guide’s reconfiguration steps will be updated after a version with that behavior is distributed."
+            "text": "Build 11 and earlier require fresh configuration after every restart. The persistence change is distributed in internal TestFlight build 12, while checks with individual AI clients are still ongoing. After updating the configuration once, save your notes, quit and relaunch Inkquation, and verify reconnection with the same configuration."
           },
           {
             "type": "links",
@@ -1006,7 +1006,7 @@
           },
           {
             "type": "paragraph",
-            "text": "在TestFlight 1.2.4（构建11）中，重启Inkquation或重新启用AI连接后，请重新复制配置并重新连接AI客户端。配置包含访问密钥，请勿与他人分享。"
+            "text": "TestFlight 1.2.4（构建12）包含正常重启后继续使用相同AI连接配置的改进。从构建11或更早版本更新后，请先重新复制一次配置。此后如果连接断开，请重新连接AI客户端。禁用并重新启用AI连接后仍需要新配置。配置包含访问密钥，请勿与他人分享。"
           },
           {
             "type": "paragraph",
@@ -1187,7 +1187,7 @@
               ],
               [
                 "重启或更新后无法连接",
-                "在TestFlight 1.2.4（构建11）中，重启Inkquation或重新启用AI连接后，请重新复制配置并重新连接AI客户端。配置包含访问密钥，请勿与他人分享。"
+                "TestFlight 1.2.4（构建12）包含正常重启后继续使用相同AI连接配置的改进。从构建11或更早版本更新后，请先重新复制一次配置。此后如果连接断开，请重新连接AI客户端。禁用并重新启用AI连接后仍需要新配置。配置包含访问密钥，请勿与他人分享。"
               ],
               [
                 "可获取列表，但无法读取目标页面",
@@ -1454,7 +1454,7 @@
           },
           {
             "type": "paragraph",
-            "text": "重启后保留连接配置的改进尚未包含在TestFlight 1.2.4（构建11）中，也尚未分发。支持此行为的版本分发后，本指南会更新重新配置的步骤。"
+            "text": "构建11及更早版本需要在每次重启后重新复制配置。保留配置的改进已通过内部TestFlight构建12分发，各AI客户端的实际使用验证仍在进行。更新一次配置后，请保存笔记，退出并重新启动Inkquation，确认能否使用相同配置重新连接。"
           },
           {
             "type": "links",
@@ -1497,7 +1497,7 @@
           },
           {
             "type": "paragraph",
-            "text": "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新拷貝設定並重新連接AI用戶端。設定包含存取金鑰，請勿與他人分享。"
+            "text": "TestFlight 1.2.4（組建12）包含一般重新啟動後繼續使用相同AI連線設定的改善。從組建11或更早版本更新後，請先重新拷貝一次設定。之後如果連線中斷，請重新連接AI用戶端。停用並重新啟用AI連線後仍需要新設定。設定包含存取金鑰，請勿與他人分享。"
           },
           {
             "type": "paragraph",
@@ -1678,7 +1678,7 @@
               ],
               [
                 "重新啟動或更新後無法連線",
-                "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新拷貝設定並重新連接AI用戶端。設定包含存取金鑰，請勿與他人分享。"
+                "TestFlight 1.2.4（組建12）包含一般重新啟動後繼續使用相同AI連線設定的改善。從組建11或更早版本更新後，請先重新拷貝一次設定。之後如果連線中斷，請重新連接AI用戶端。停用並重新啟用AI連線後仍需要新設定。設定包含存取金鑰，請勿與他人分享。"
               ],
               [
                 "可取得清單，但無法讀取目標頁面",
@@ -1945,7 +1945,7 @@
           },
           {
             "type": "paragraph",
-            "text": "重新啟動後保留連線設定的改善尚未包含在TestFlight 1.2.4（組建11）中，也尚未發布。支援此行為的版本發布後，本指南會更新重新設定的步驟。"
+            "text": "組建11及更早版本需要在每次重新啟動後重新拷貝設定。保留設定的改善已透過內部TestFlight組建12發布，各AI用戶端的實際使用驗證仍在進行。更新一次設定後，請儲存筆記，結束並重新啟動Inkquation，確認能否使用相同設定重新連線。"
           },
           {
             "type": "links",
@@ -1988,7 +1988,7 @@
           },
           {
             "type": "paragraph",
-            "text": "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新複製設定並重新連接AI客戶端。設定包含存取金鑰，請勿與他人分享。"
+            "text": "TestFlight 1.2.4（組建12）包含一般重新啟動後繼續使用相同AI連線設定的改善。從組建11或更早版本更新後，請先重新複製一次設定。之後如果連線中斷，請重新連接AI客戶端。停用並重新啟用AI連線後仍需要新設定。設定包含存取金鑰，請勿與他人分享。"
           },
           {
             "type": "paragraph",
@@ -2169,7 +2169,7 @@
               ],
               [
                 "重新啟動或更新後無法連線",
-                "在TestFlight 1.2.4（組建11）中，重新啟動Inkquation或重新啟用AI連線後，請重新複製設定並重新連接AI客戶端。設定包含存取金鑰，請勿與他人分享。"
+                "TestFlight 1.2.4（組建12）包含一般重新啟動後繼續使用相同AI連線設定的改善。從組建11或更早版本更新後，請先重新複製一次設定。之後如果連線中斷，請重新連接AI客戶端。停用並重新啟用AI連線後仍需要新設定。設定包含存取金鑰，請勿與他人分享。"
               ],
               [
                 "可取得清單，但無法讀取目標頁面",
@@ -2436,7 +2436,7 @@
           },
           {
             "type": "paragraph",
-            "text": "重新啟動後保留連線設定的改善尚未包含在TestFlight 1.2.4（組建11）中，也尚未發佈。支援此行為的版本發佈後，本指南會更新重新設定的步驟。"
+            "text": "組建11及更早版本需要在每次重新啟動後重新複製設定。保留設定的改善已透過內部TestFlight組建12發佈，各AI客戶端的實際使用驗證仍在進行。更新一次設定後，請儲存筆記，結束並重新啟動Inkquation，確認能否使用相同設定重新連線。"
           },
           {
             "type": "links",
@@ -2479,7 +2479,7 @@
           },
           {
             "type": "paragraph",
-            "text": "TestFlight 1.2.4(빌드 11)에서는 Inkquation을 다시 시작하거나 AI 연결을 다시 활성화한 뒤 구성을 새로 복사하고 AI 클라이언트를 다시 연결하세요. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요."
+            "text": "TestFlight 1.2.4(빌드 12)에는 일반적인 재시작 후에도 같은 AI 연결 구성을 사용하도록 하는 변경 사항이 포함되어 있습니다. 빌드 11 이하에서 업데이트한 경우 새 구성을 한 번 복사하세요. 이후 연결이 끊기면 AI 클라이언트를 다시 연결합니다. AI 연결을 껐다 켜면 새 구성이 필요합니다. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요."
           },
           {
             "type": "paragraph",
@@ -2660,7 +2660,7 @@
               ],
               [
                 "다시 시작하거나 업데이트한 후 연결되지 않음",
-                "TestFlight 1.2.4(빌드 11)에서는 Inkquation을 다시 시작하거나 AI 연결을 다시 활성화한 뒤 구성을 새로 복사하고 AI 클라이언트를 다시 연결하세요. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요."
+                "TestFlight 1.2.4(빌드 12)에는 일반적인 재시작 후에도 같은 AI 연결 구성을 사용하도록 하는 변경 사항이 포함되어 있습니다. 빌드 11 이하에서 업데이트한 경우 새 구성을 한 번 복사하세요. 이후 연결이 끊기면 AI 클라이언트를 다시 연결합니다. AI 연결을 껐다 켜면 새 구성이 필요합니다. 구성에는 액세스 키가 포함되므로 비공개로 유지하세요."
               ],
               [
                 "목록은 나오지만 대상 페이지를 읽을 수 없음",
@@ -2927,7 +2927,7 @@
           },
           {
             "type": "paragraph",
-            "text": "다시 시작한 뒤에도 연결 구성을 유지하는 개선 사항은 TestFlight 1.2.4(빌드 11)에 포함되어 있지 않으며 아직 배포되지 않았습니다. 해당 기능을 지원하는 버전이 배포되면 이 가이드의 재설정 절차를 갱신합니다."
+            "text": "빌드 11 이하는 재시작할 때마다 구성을 새로 복사해야 합니다. 구성 유지 변경 사항은 내부 TestFlight 빌드 12로 배포되었으며, 각 AI 클라이언트에서의 실제 동작 확인은 계속 진행 중입니다. 구성을 한 번 갱신한 뒤 노트를 저장하고 Inkquation을 종료한 후 다시 실행하여 같은 구성으로 재연결되는지 확인하세요."
           },
           {
             "type": "links",

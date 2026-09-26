@@ -149,17 +149,18 @@ disposable note. Model downloads and update traffic are distinguished from
 local inference. No particular model or hardware-independent compatibility is
 promised.
 
-The accompanying, undistributed app change retains its private credential
+The accompanying app change retains its private credential
 through normal restarts and lets its signed adapter resolve the current local
 endpoint. Explicitly disabling and re-enabling AI Connection still revokes the
 old grant. The new app settings link targets the language guide at `#connect`.
 
-The website's setup guide is published independently of that app change. It
-explicitly instructs TestFlight 1.2.4 build 11 users to copy fresh settings after
-restarts and states that credential persistence has not yet been distributed.
-Landing and privacy copy do not promise persistence for installed versions.
-Update those instructions only after distributing and checking the new app
-behavior. The September 25 restart instructions below still apply to build 11.
+The guide distinguishes internal TestFlight 1.2.4 build 12, which includes the
+persistence change, from build 11 and earlier, which require fresh settings
+after restarts. Build 12 requires one configuration update on migration, then
+client-specific restart checks; those manual checks remain pending. Build 12 is
+available to the Internal QA group as of September 27, 2026. Landing and
+privacy copy do not promise persistence for every installed version. The
+September 25 restart instructions below still apply to build 11.
 
 ## September 25 content refresh
 
