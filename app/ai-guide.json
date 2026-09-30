@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-10-01",
   "ja": {
     "title": "AI連携ガイド",
     "description": "Inkquationを外部AIアプリにつなぎ、ページの読み取りや画像・図形・ペンの線の追加を行うためのガイドです。",
@@ -189,6 +189,98 @@
         ]
       },
       {
+        "id": "workspaces",
+        "title": "作業フォルダをAIに渡す",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "作業フォルダには、AIと扱うコード、資料、生成した画像などを置けます。初回の保存先設定を済ませると、ノートの新規作成・複製・PDF読み込み後、ノートの保存に続いて空の作業フォルダが自動で用意されます。複製元の作業ファイルはコピーされません。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Inkquationで対象のノートを作成し、ノート一覧で右クリックします。",
+              "「作業フォルダを開く」で場所を確認し、「作業フォルダのパスをコピー」で実フォルダのパスをコピーします。",
+              "CodexなどのAIアプリで、そのパスのフォルダを作業先に指定し、必要なファイルアクセスを許可します。その後、「この作業フォルダに資料用のフォルダを作って」などと依頼できます。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "MCPから調べる場合は、対象ノートを開き、`inkquation_list_open_notes`で得た`note_id`を使って`inkquation_get_workspace`を呼び出します。次は引数の例です。"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\"\n}"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "状態",
+              "結果と対処"
+            ],
+            "rows": [
+              [
+                "`status: available`",
+                "`workspace_id`と実フォルダの`path`が返ります。"
+              ],
+              [
+                "`status: unconfigured`",
+                "ノートの作業フォルダが未設定です。初回の保存先設定を済ませ、準備に失敗した場合は「設定」→「一般」に表示される「作業フォルダの準備を再試行」を使います。"
+              ],
+              [
+                "`status: missing`",
+                "紐づけ済みのフォルダを利用できません。元のディスクを接続するか、ノートのメニューから既存フォルダを指定し直します。空のフォルダは自動で作り直されません。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "このツールは読み取り専用で、フォルダを作らず、AIアプリの作業先やアクセス権も変更しません。移行中などには`workspace_unavailable`エラーが返るため、Inkquation側の処理や設定を確認してから再試行してください。"
+          },
+          {
+            "type": "paragraph",
+            "text": "既存のプロジェクトフォルダをノートに紐づけることもできます。作業ファイルの内容はInkquationのノートバックアップに含まれないため、Gitや別のバックアップで管理してください。"
+          }
+        ]
+      },
+      {
+        "id": "workspace-layout",
+        "title": "WorkspacesとLibraryの違い",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "以下は保存先に作られる構成の例です。`Library/`のノート名の項目は、実フォルダを指すシンボリックリンクです。リンク経由でファイルを編集すると、実ファイルも変更されます。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "パスの例",
+              "役割"
+            ],
+            "rows": [
+              [
+                "`Workspaces/ws-<UUID>/`",
+                "実ファイルを置く場所です。ノート名やノートライブラリ内の配置を変えても、このパスは変わりません。"
+              ],
+              [
+                "`Library/Research/Experiment`",
+                "ノートライブラリの階層と名前で探すためのリンクです。通常はフォルダ名・ノート名だけを使います。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "同じ階層で名前が衝突するときだけ、`Experiment--1a2b3c4d`のように短いIDを付けます。大文字・小文字やファイル名に使えない文字の置換による衝突も対象です。短いIDも重なる場合は、区別できるまで長くします。"
+          },
+          {
+            "type": "paragraph",
+            "text": "ノートの改名・移動で`Library/`のパスは変わるため、AIの作業先にはコピーした実フォルダのパスを使ってください。ディスク上にフォルダを作ったり、リンクを改名したりしても、ノートライブラリのノートやフォルダは作成・改名されません。"
+          }
+        ]
+      },
+      {
         "id": "connection-help",
         "title": "接続できないとき",
         "blocks": [
@@ -265,6 +357,11 @@
                 "`inkquation_list_open_notes`",
                 "なし",
                 "開いているノートとページのID、利用可否を取得します。"
+              ],
+              [
+                "`inkquation_get_workspace`",
+                "`note_id`",
+                "開いているノートの作業フォルダの状態と、利用可能なら実フォルダのパスを取得します。フォルダの作成やアクセス権の付与は行いません。"
               ],
               [
                 "`inkquation_get_page`",
@@ -468,7 +565,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "このガイドは2026年9月27日時点の実装をもとにしています。アプリの配布状況とは別に、接続先が返す`tools/list`を確認してください。図形や線の追加ツールが表示されない場合は、使用中のInkquationがその機能に対応しているか確認し、アプリの更新後にAIアプリを再接続します。"
+            "text": "接続手順は2026年9月27日、作業フォルダとLibraryの説明は2026年10月1日時点の実装をもとにしています。配布中の全バージョンで使えることを意味しません。接続先の`tools/list`を確認し、必要なツールや作業フォルダのメニューがない場合は、対応版への更新後にAIアプリを再接続してください。ツールやメニューが表示されても、旧版では作業フォルダの自動生成やLibraryの命名ルールがここでの説明と異なる場合があります。"
           },
           {
             "type": "paragraph",
@@ -680,6 +777,98 @@
         ]
       },
       {
+        "id": "workspaces",
+        "title": "Give an AI app a workspace",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Use a workspace for code, reference material and generated images you work on with AI. Once you have chosen a storage location, creating, duplicating or importing a note from PDF automatically prepares an empty workspace after the note is saved. Duplicating a note does not copy its workspace files."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Create the target note in Inkquation and right-click it in the note list.",
+              "Use “Open Workspace” to inspect the folder and “Copy Workspace Path” to copy its real path.",
+              "In an AI app such as Codex, select that folder as the working directory and allow the required file access. You can then ask it to create a reference-material folder there, for example."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "To look up the folder through MCP, open the note and call `inkquation_get_workspace` with the `note_id` returned by `inkquation_list_open_notes`. Example arguments:"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\"\n}"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Status",
+              "Result and next step"
+            ],
+            "rows": [
+              [
+                "`status: available`",
+                "Returns the `workspace_id` and real folder `path`."
+              ],
+              [
+                "`status: unconfigured`",
+                "The note has no workspace association. Complete the initial storage-location setup. If preparation failed, use “Retry Workspace Preparation” when shown in Settings → General."
+              ],
+              [
+                "`status: missing`",
+                "The associated folder is unavailable. Reconnect its disk or select an existing folder again from the note menu. Inkquation does not automatically replace it with an empty folder."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This read-only tool does not create folders, change the AI app’s working directory or grant file access. A migration in progress or another workspace problem can return a `workspace_unavailable` error; check Inkquation’s operation and settings before retrying."
+          },
+          {
+            "type": "paragraph",
+            "text": "You can also associate an existing project folder with a note. Workspace file contents are excluded from Inkquation’s note backups; manage them with Git or a separate backup."
+          }
+        ]
+      },
+      {
+        "id": "workspace-layout",
+        "title": "Workspaces and Library",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The paths below illustrate the structure inside your chosen storage location. A note entry under `Library/` is a symbolic link to the real folder. Editing a file through the link changes the real file."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Example path",
+              "Purpose"
+            ],
+            "rows": [
+              [
+                "`Workspaces/ws-<UUID>/`",
+                "Stores the actual files. Renaming a note or moving it within the note library does not change this path."
+              ],
+              [
+                "`Library/Research/Experiment`",
+                "Lets you find a workspace by the note library’s hierarchy and names. Normally, only folder and note names are used."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Only names that collide within the same parent receive a short ID, such as `Experiment--1a2b3c4d`. This includes collisions caused by letter case or replacing characters unsuitable for filenames. If short IDs also collide, the suffix grows until the names are distinct."
+          },
+          {
+            "type": "paragraph",
+            "text": "Renaming or moving notes changes their `Library/` paths, so use the copied real folder path as the AI app’s working directory. Creating folders on disk or renaming links does not create or rename notes or folders in the note library."
+          }
+        ]
+      },
+      {
         "id": "connection-help",
         "title": "When the connection does not work",
         "blocks": [
@@ -756,6 +945,11 @@
                 "`inkquation_list_open_notes`",
                 "None",
                 "List open notes, page IDs and availability."
+              ],
+              [
+                "`inkquation_get_workspace`",
+                "`note_id`",
+                "Gets the workspace status for an open note and its real folder path when available. Does not create folders or grant file access."
               ],
               [
                 "`inkquation_get_page`",
@@ -959,7 +1153,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "This guide reflects the implementation checked on September 27, 2026. Check the connected server’s `tools/list` separately from app distribution status. If shape or stroke insertion tools are absent, check that your Inkquation build supports them and reconnect the AI app after updating."
+            "text": "Connection instructions reflect the implementation checked on September 27, 2026; workspace and Library documentation reflects October 1, 2026. This does not mean every distributed version supports these features. Check the connected server’s `tools/list`. If a required tool or workspace menu item is absent, update to a supporting build and reconnect the AI app. Even when the tool or menu is present, older builds may differ in automatic workspace preparation and Library naming."
           },
           {
             "type": "paragraph",
@@ -1171,6 +1365,98 @@
         ]
       },
       {
+        "id": "workspaces",
+        "title": "将工作文件夹交给 AI 应用",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "工作文件夹可以存放与 AI 一起处理的代码、参考资料和生成的图片。选择保存位置后，新建、复制笔记或从 PDF 导入笔记时，应用会在笔记保存后自动准备一个空的工作文件夹。复制笔记不会复制原笔记的工作文件。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 中创建目标笔记，然后在笔记列表中右键点击它。",
+              "用“打开工作文件夹”查看位置，再用“拷贝工作文件夹路径”复制实际文件夹的路径。",
+              "在 Codex 等 AI 应用中，将该路径的文件夹设为工作目录，并授予所需的文件访问权限。之后即可请 AI 在其中创建存放参考资料的文件夹等。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "通过 MCP 查询时，请先打开目标笔记，再使用 `inkquation_list_open_notes` 返回的 `note_id` 调用 `inkquation_get_workspace`。参数示例："
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\"\n}"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "状态",
+              "结果与处理方法"
+            ],
+            "rows": [
+              [
+                "`status: available`",
+                "返回 `workspace_id` 和实际文件夹的 `path`。"
+              ],
+              [
+                "`status: unconfigured`",
+                "笔记尚未关联工作文件夹。请完成首次保存位置设置。准备失败时，请使用“设置”→“通用”中显示的“重试准备工作文件夹”。"
+              ],
+              [
+                "`status: missing`",
+                "关联的文件夹不可用。请重新连接原磁盘，或从笔记菜单重新选择现有文件夹。Inkquation 不会自动用空文件夹替代它。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "此工具仅用于读取，不会创建文件夹、改变 AI 应用的工作目录或授予文件访问权限。迁移过程中或工作文件夹出现其他问题时，可能返回 `workspace_unavailable` 错误；请检查 Inkquation 的处理状态和设置后再重试。"
+          },
+          {
+            "type": "paragraph",
+            "text": "也可以将现有项目文件夹关联到笔记。工作文件的内容不包含在 Inkquation 的笔记备份中，请使用 Git 或其他备份方式管理。"
+          }
+        ]
+      },
+      {
+        "id": "workspace-layout",
+        "title": "Workspaces 与 Library 的区别",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "以下路径展示所选保存位置中的目录结构。`Library/` 下的笔记条目是指向实际文件夹的符号链接。通过链接编辑文件也会改变实际文件。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "路径示例",
+              "用途"
+            ],
+            "rows": [
+              [
+                "`Workspaces/ws-<UUID>/`",
+                "存放实际文件。重命名笔记或在笔记库内移动笔记不会改变此路径。"
+              ],
+              [
+                "`Library/Research/Experiment`",
+                "按笔记库的层级和名称查找工作文件夹。通常只使用文件夹名和笔记名。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "只有同一层级中发生名称冲突时，才会附加短 ID，例如 `Experiment--1a2b3c4d`。大小写或替换文件名不适用字符引起的冲突也包括在内。如果短 ID 仍然冲突，会延长后缀直到名称可以区分。"
+          },
+          {
+            "type": "paragraph",
+            "text": "重命名或移动笔记会改变其 `Library/` 路径，因此请将复制的实际文件夹路径用作 AI 的工作目录。在磁盘上创建文件夹或重命名链接，不会创建或重命名笔记库中的笔记和文件夹。"
+          }
+        ]
+      },
+      {
         "id": "connection-help",
         "title": "连接失败时",
         "blocks": [
@@ -1247,6 +1533,11 @@
                 "`inkquation_list_open_notes`",
                 "无",
                 "列出已打开的笔记、页面 ID 和可用状态。"
+              ],
+              [
+                "`inkquation_get_workspace`",
+                "`note_id`",
+                "获取已打开笔记的工作文件夹状态，可用时返回实际文件夹路径。不会创建文件夹或授予文件访问权限。"
               ],
               [
                 "`inkquation_get_page`",
@@ -1450,7 +1741,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南基于 2026 年 9 月 27 日核对的实现。应用的发布情况与实际可用功能应分别确认；请查看所连接服务器的 `tools/list`。如果没有显示图形或笔画添加工具，请确认当前 Inkquation 版本是否支持这些功能，并在更新应用后重新连接 AI 应用。"
+            "text": "连接步骤基于 2026 年 9 月 27 日核对的实现；工作文件夹和 Library 的说明基于 2026 年 10 月 1 日的实现。这不代表所有已发布版本都支持这些功能。请查看所连接服务器的 `tools/list`。如果缺少所需工具或工作文件夹菜单，请更新到支持该功能的版本并重新连接 AI 应用。即使工具或菜单已经显示，旧版本的工作文件夹自动准备方式和 Library 命名规则也可能与此处的说明不同。"
           },
           {
             "type": "paragraph",
@@ -1662,6 +1953,98 @@
         ]
       },
       {
+        "id": "workspaces",
+        "title": "將工作資料夾交給 AI App",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "工作資料夾可存放與 AI 一起處理的程式碼、參考資料和產生的圖片。選擇儲存位置後，新增、複製筆記或從 PDF 匯入筆記時，App 會在筆記儲存後自動準備一個空的工作資料夾。複製筆記不會複製原筆記的工作檔案。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 中建立目標筆記，然後在筆記列表中按右鍵。",
+              "用「打開工作資料夾」查看位置，再用「拷貝工作資料夾路徑」拷貝實際資料夾的路徑。",
+              "在 Codex 等 AI App 中，將該路徑的資料夾設為工作目錄，並授予所需的檔案存取權限。之後即可請 AI 在其中建立存放參考資料的資料夾等。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "透過 MCP 查詢時，請先開啟目標筆記，再使用 `inkquation_list_open_notes` 傳回的 `note_id` 呼叫 `inkquation_get_workspace`。引數範例："
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\"\n}"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "狀態",
+              "結果與處理方式"
+            ],
+            "rows": [
+              [
+                "`status: available`",
+                "傳回 `workspace_id` 和實際資料夾的 `path`。"
+              ],
+              [
+                "`status: unconfigured`",
+                "筆記尚未關聯工作資料夾。請完成首次儲存位置設定。準備失敗時，請使用「設定」→「一般」中顯示的「重試準備工作資料夾」。"
+              ],
+              [
+                "`status: missing`",
+                "關聯的資料夾無法使用。請重新連接原磁碟，或從筆記選單重新選擇現有資料夾。Inkquation 不會自動用空資料夾取代它。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "此工具僅供讀取，不會建立資料夾、改變 AI App 的工作目錄或授予檔案存取權限。移轉過程中或工作資料夾發生其他問題時，可能傳回 `workspace_unavailable` 錯誤；請檢查 Inkquation 的處理狀態和設定後再重試。"
+          },
+          {
+            "type": "paragraph",
+            "text": "也可以將現有專案資料夾關聯到筆記。工作檔案的內容不包含在 Inkquation 的筆記備份中，請使用 Git 或其他備份方式管理。"
+          }
+        ]
+      },
+      {
+        "id": "workspace-layout",
+        "title": "Workspaces 與 Library 的差異",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "以下路徑展示所選儲存位置中的目錄結構。`Library/` 下的筆記項目是指向實際資料夾的符號連結。透過連結編輯檔案也會改變實際檔案。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "路徑範例",
+              "用途"
+            ],
+            "rows": [
+              [
+                "`Workspaces/ws-<UUID>/`",
+                "存放實際檔案。重新命名筆記或在筆記資料庫內移動筆記不會改變此路徑。"
+              ],
+              [
+                "`Library/Research/Experiment`",
+                "依筆記資料庫的階層和名稱尋找工作資料夾。通常只使用資料夾名稱和筆記名稱。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "只有同一階層中發生名稱衝突時，才會附加短 ID，例如 `Experiment--1a2b3c4d`。大小寫或替換不適合檔案名稱的字元所造成的衝突也包括在內。如果短 ID 仍然衝突，會延長後綴直到名稱可以區分。"
+          },
+          {
+            "type": "paragraph",
+            "text": "重新命名或移動筆記會改變其 `Library/` 路徑，因此請將拷貝的實際資料夾路徑用作 AI 的工作目錄。在磁碟上建立資料夾或重新命名連結，不會建立或重新命名筆記資料庫中的筆記和資料夾。"
+          }
+        ]
+      },
+      {
         "id": "connection-help",
         "title": "無法連線時",
         "blocks": [
@@ -1738,6 +2121,11 @@
                 "`inkquation_list_open_notes`",
                 "無",
                 "列出已開啟的筆記、頁面 ID 和可用狀態。"
+              ],
+              [
+                "`inkquation_get_workspace`",
+                "`note_id`",
+                "取得已開啟筆記的工作資料夾狀態，可用時傳回實際資料夾路徑。不會建立資料夾或授予檔案存取權限。"
               ],
               [
                 "`inkquation_get_page`",
@@ -1941,7 +2329,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南以 2026 年 9 月 27 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+            "text": "連接步驟以 2026 年 9 月 27 日核對的實作為基礎；工作資料夾和 Library 的說明以 2026 年 10 月 1 日的實作為基礎。這不代表所有已發布版本都支援這些功能。請查看所連接伺服器的 `tools/list`。如果缺少所需工具或工作資料夾選單，請更新到支援該功能的版本並重新連接 AI App。即使工具或選單已經顯示，舊版本的工作資料夾自動準備方式和 Library 命名規則也可能與此處的說明不同。"
           },
           {
             "type": "paragraph",
@@ -2153,6 +2541,98 @@
         ]
       },
       {
+        "id": "workspaces",
+        "title": "將工作資料夾交給 AI App",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "工作資料夾可存放與 AI 一起處理的程式碼、參考資料和產生的圖片。選擇儲存位置後，新增、複製筆記或從 PDF 匯入筆記時，App 會在筆記儲存後自動準備一個空的工作資料夾。複製筆記不會複製原筆記的工作檔案。"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在 Inkquation 中建立目標筆記，然後在筆記列表中按右鍵。",
+              "用「開啟工作資料夾」查看位置，再用「複製工作資料夾路徑」複製實際資料夾的路徑。",
+              "在 Codex 等 AI App 中，將該路徑的資料夾設為工作目錄，並授予所需的檔案存取權限。之後即可請 AI 在其中建立存放參考資料的資料夾等。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "透過 MCP 查詢時，請先開啟目標筆記，再使用 `inkquation_list_open_notes` 傳回的 `note_id` 呼叫 `inkquation_get_workspace`。參數範例："
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\"\n}"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "狀態",
+              "結果與處理方法"
+            ],
+            "rows": [
+              [
+                "`status: available`",
+                "傳回 `workspace_id` 和實際資料夾的 `path`。"
+              ],
+              [
+                "`status: unconfigured`",
+                "筆記尚未關聯工作資料夾。請完成首次儲存位置設定。準備失敗時，請使用「設定」→「一般」中顯示的「重試準備工作資料夾」。"
+              ],
+              [
+                "`status: missing`",
+                "關聯的資料夾無法使用。請重新連接原磁碟，或從筆記選單重新選擇現有資料夾。Inkquation 不會自動用空資料夾取代它。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "此工具僅供讀取，不會建立資料夾、改變 AI App 的工作目錄或授予檔案存取權限。遷移過程中或工作資料夾發生其他問題時，可能傳回 `workspace_unavailable` 錯誤；請檢查 Inkquation 的處理狀態和設定後再重試。"
+          },
+          {
+            "type": "paragraph",
+            "text": "也可以將現有專案資料夾關聯到筆記。工作檔案的內容不包含在 Inkquation 的筆記備份中，請使用 Git 或其他備份方式管理。"
+          }
+        ]
+      },
+      {
+        "id": "workspace-layout",
+        "title": "Workspaces 與 Library 的分別",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "以下路徑展示所選儲存位置中的目錄結構。`Library/` 下的筆記項目是指向實際資料夾的符號連結。透過連結編輯檔案也會改變實際檔案。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "路徑範例",
+              "用途"
+            ],
+            "rows": [
+              [
+                "`Workspaces/ws-<UUID>/`",
+                "存放實際檔案。重新命名筆記或在筆記資料庫內移動筆記不會改變此路徑。"
+              ],
+              [
+                "`Library/Research/Experiment`",
+                "按筆記資料庫的階層和名稱尋找工作資料夾。通常只使用資料夾名稱和筆記名稱。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "只有同一階層中發生名稱衝突時，才會附加短 ID，例如 `Experiment--1a2b3c4d`。大小寫或替換不適合檔案名稱的字元所造成的衝突也包括在內。如果短 ID 仍然衝突，會延長後綴直到名稱可以區分。"
+          },
+          {
+            "type": "paragraph",
+            "text": "重新命名或移動筆記會改變其 `Library/` 路徑，因此請將複製的實際資料夾路徑用作 AI 的工作目錄。在磁碟上建立資料夾或重新命名連結，不會建立或重新命名筆記資料庫中的筆記和資料夾。"
+          }
+        ]
+      },
+      {
         "id": "connection-help",
         "title": "無法連線時",
         "blocks": [
@@ -2229,6 +2709,11 @@
                 "`inkquation_list_open_notes`",
                 "無",
                 "列出已開啟的筆記、頁面 ID 和可用狀態。"
+              ],
+              [
+                "`inkquation_get_workspace`",
+                "`note_id`",
+                "取得已開啟筆記的工作資料夾狀態，可用時傳回實際資料夾路徑。不會建立資料夾或授予檔案存取權限。"
               ],
               [
                 "`inkquation_get_page`",
@@ -2432,7 +2917,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "本指南以 2026 年 9 月 27 日核對的實作為基礎。App 的發布情況與實際可用功能應分別確認；請查看所連接伺服器的 `tools/list`。如果沒有顯示圖形或筆畫新增工具，請確認目前 Inkquation 版本是否支援這些功能，並在更新 App 後重新連接 AI App。"
+            "text": "連接步驟以 2026 年 9 月 27 日核對的實作為基礎；工作資料夾和 Library 的說明以 2026 年 10 月 1 日的實作為基礎。這不代表所有已發佈版本都支援這些功能。請查看所連接伺服器的 `tools/list`。如果缺少所需工具或工作資料夾選單，請更新到支援該功能的版本並重新連接 AI App。即使工具或選單已經顯示，舊版本的工作資料夾自動準備方式和 Library 命名規則也可能與此處的說明不同。"
           },
           {
             "type": "paragraph",
@@ -2644,6 +3129,98 @@
         ]
       },
       {
+        "id": "workspaces",
+        "title": "AI 앱에 작업 폴더 지정하기",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "작업 폴더에는 AI와 함께 다룰 코드, 참고 자료, 생성한 이미지 등을 저장할 수 있습니다. 저장 위치를 선택한 뒤 노트를 새로 만들거나 복제하거나 PDF에서 가져오면, 노트가 저장된 후 빈 작업 폴더가 자동으로 준비됩니다. 노트를 복제해도 원본의 작업 파일은 복사되지 않습니다."
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Inkquation에서 대상 노트를 만들고 노트 목록에서 마우스 오른쪽 버튼으로 클릭하세요.",
+              "“작업 폴더 열기”로 위치를 확인하고 “작업 폴더 경로 복사”로 실제 폴더 경로를 복사하세요.",
+              "Codex 등의 AI 앱에서 해당 폴더를 작업 디렉터리로 지정하고 필요한 파일 접근을 허용하세요. 그다음 이 위치에 참고 자료용 폴더를 만들어 달라고 요청할 수 있습니다."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "MCP로 경로를 확인하려면 대상 노트를 열고 `inkquation_list_open_notes`가 반환한 `note_id`로 `inkquation_get_workspace`를 호출하세요. 인수 예시:"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "text": "{\n  \"note_id\": \"<note UUID>\"\n}"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "상태",
+              "결과와 대처 방법"
+            ],
+            "rows": [
+              [
+                "`status: available`",
+                "`workspace_id`와 실제 폴더의 `path`를 반환합니다."
+              ],
+              [
+                "`status: unconfigured`",
+                "노트에 연결된 작업 폴더가 없습니다. 최초 저장 위치 설정을 완료하세요. 준비에 실패했다면 설정 → 일반에 표시되는 “작업 폴더 준비 재시도”를 사용하세요."
+              ],
+              [
+                "`status: missing`",
+                "연결된 폴더를 사용할 수 없습니다. 원래 디스크를 연결하거나 노트 메뉴에서 기존 폴더를 다시 지정하세요. Inkquation은 이를 빈 폴더로 자동 대체하지 않습니다."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "이 읽기 전용 도구는 폴더를 만들거나 AI 앱의 작업 디렉터리 또는 파일 접근 권한을 변경하지 않습니다. 마이그레이션 중이거나 작업 폴더에 다른 문제가 있으면 `workspace_unavailable` 오류가 반환될 수 있습니다. Inkquation의 처리 상태와 설정을 확인한 뒤 재시도하세요."
+          },
+          {
+            "type": "paragraph",
+            "text": "기존 프로젝트 폴더를 노트에 연결할 수도 있습니다. 작업 파일 내용은 Inkquation의 노트 백업에 포함되지 않으므로 Git이나 별도의 백업으로 관리하세요."
+          }
+        ]
+      },
+      {
+        "id": "workspace-layout",
+        "title": "Workspaces와 Library의 차이",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "아래 경로는 선택한 저장 위치 안의 구조를 보여 주는 예시입니다. `Library/`의 노트 항목은 실제 폴더를 가리키는 심볼릭 링크입니다. 링크를 통해 파일을 편집하면 실제 파일도 변경됩니다."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "경로 예시",
+              "용도"
+            ],
+            "rows": [
+              [
+                "`Workspaces/ws-<UUID>/`",
+                "실제 파일을 저장합니다. 노트 이름을 바꾸거나 노트 라이브러리 안에서 이동해도 이 경로는 바뀌지 않습니다."
+              ],
+              [
+                "`Library/Research/Experiment`",
+                "노트 라이브러리의 계층과 이름으로 작업 폴더를 찾을 수 있습니다. 보통 폴더 이름과 노트 이름만 사용합니다."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "같은 상위 폴더에서 이름이 충돌할 때만 `Experiment--1a2b3c4d`처럼 짧은 ID를 붙입니다. 대소문자나 파일 이름에 적합하지 않은 문자를 바꾸면서 생기는 충돌도 포함됩니다. 짧은 ID도 겹치면 이름을 구분할 수 있을 때까지 접미사를 늘립니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "노트 이름을 바꾸거나 이동하면 `Library/` 경로가 바뀌므로, AI의 작업 디렉터리에는 복사한 실제 폴더 경로를 사용하세요. 디스크에 폴더를 만들거나 링크 이름을 바꿔도 노트 라이브러리의 노트나 폴더가 생성되거나 이름이 변경되지는 않습니다."
+          }
+        ]
+      },
+      {
         "id": "connection-help",
         "title": "연결되지 않을 때",
         "blocks": [
@@ -2720,6 +3297,11 @@
                 "`inkquation_list_open_notes`",
                 "없음",
                 "열린 노트, 페이지 ID, 사용 가능 여부를 나열합니다."
+              ],
+              [
+                "`inkquation_get_workspace`",
+                "`note_id`",
+                "열린 노트의 작업 폴더 상태를 확인하고 사용 가능하면 실제 폴더 경로를 반환합니다. 폴더를 만들거나 파일 접근 권한을 부여하지 않습니다."
               ],
               [
                 "`inkquation_get_page`",
@@ -2923,7 +3505,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "이 가이드는 2026년 9월 27일에 확인한 구현을 기준으로 합니다. 앱 배포 현황과 실제 사용 가능한 기능은 별도로 확인해야 합니다. 연결된 서버의 `tools/list`를 확인하세요. 도형이나 펜 획 추가 도구가 없다면 사용 중인 Inkquation 버전이 해당 기능을 지원하는지 확인하고, 앱을 업데이트한 뒤 AI 앱을 다시 연결하세요."
+            "text": "연결 절차는 2026년 9월 27일에 확인한 구현을, 작업 폴더와 Library 설명은 2026년 10월 1일의 구현을 기준으로 합니다. 배포된 모든 버전에서 이 기능을 지원한다는 뜻은 아닙니다. 연결된 서버의 `tools/list`를 확인하세요. 필요한 도구나 작업 폴더 메뉴가 없다면 지원하는 버전으로 업데이트한 뒤 AI 앱을 다시 연결하세요. 도구나 메뉴가 있더라도 이전 버전의 작업 폴더 자동 준비 방식과 Library 이름 규칙은 이 설명과 다를 수 있습니다."
           },
           {
             "type": "paragraph",

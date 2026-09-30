@@ -120,13 +120,37 @@ The hero announcement and AI section describe the implemented local MCP connecti
 
 ## AI documentation
 
-The detailed guide is available in all six languages at `/ai/`, `/en/ai/`, `/zh-Hans/ai/`, `/zh-Hant/ai/`, `/zh-HK/ai/`, and `/ko/ai/`. Each landing page links to its own language guide, and the guide language menu stays on the guide route. The guide covers the local connection, seven MCP tools, native stroke and shape insertion, coordinates, JSON examples, replay and Undo limits, and external AI privacy. It describes the implementation checked on 2026-09-25, without assigning it an unverified public release version. The connected server’s `tools/list` is the source for available capabilities.
+The detailed guide is available in all six languages at `/ai/`, `/en/ai/`, `/zh-Hans/ai/`, `/zh-Hant/ai/`, `/zh-HK/ai/`, and `/ko/ai/`. Each landing page links to its own language guide, and the guide language menu stays on the guide route. The guide covers the local connection, note workspaces and Library links, eight MCP tools, native stroke and shape insertion, coordinates, JSON examples, replay and Undo limits, and external AI privacy. Its compatibility section records the implementation-check dates without assigning an unverified public release version. The connected server’s `tools/list` is the source for available capabilities.
 
 `app/ai-guide.json` is the shared content source for HTML and Markdown. Edit it, not the generated files. `scripts/export-ai-docs.mjs` runs before development and both builds, generating `index.md` under each of the six guide routes and an English `/llms.txt` in `public/`. The English index links to HTML and Markdown guides in every language. These generated files are ignored by Git. Restart development or run the generator after editing guide content to refresh Markdown. HTML metadata also links to the corresponding Markdown alternative. `llms.txt` is a concise documentation index, not an MCP endpoint or a promise that AI services will discover the site.
 
 The existing `build:pages` and `verify:pages` commands include these documents. Verification checks every guide section and text block, matching section structure and JSON examples across languages, JSON syntax, matching Markdown output, language and canonical metadata, local links and Markdown link fragments, and the absence of the contact address in public Markdown and text files. Both the production empty base path and `/site` deployment prefix must pass.
 
 Claims were checked against `../inkquation/inkquation/InkquationMCPService.swift`, `MCPStrokeInput.swift`, `MCPConnectionSettings.swift`, and `../inkquation/mcp/README.md`. Changes to those contracts require updating the guide. The standard bundled adapter accepts inline PNG data; the optional development Python adapter’s local-file extension is outside this public guide.
+
+### October 1 workspaces and readable Library links
+
+All six guides now explain automatic workspace preparation after saving a new,
+duplicated or PDF-imported note, copying the real workspace path into an AI
+client, and looking it up with `inkquation_get_workspace`. The examples distinguish
+stable real paths from the generated `Library/` links: ordinary names have no
+ID suffix, and sibling collisions receive a short ID that grows if necessary.
+The guide also records that filesystem changes do not create library entries,
+workspace contents require separate backups, and obtaining a path does not
+grant an AI client filesystem access. The same content feeds HTML, Markdown
+and the concise `llms.txt` index.
+
+These additions were checked against `../inkquation/WORKSPACES.md`,
+`WorkspaceController.swift`, `WorkspaceLibraryNames.swift`,
+`InkquationMCPService.swift`, and the menu labels in `Workspaces.xcstrings` under
+`../inkquation/inkquation/`. The guide distinguishes this implementation from
+the capabilities of a user's installed build; no new public release version or
+third-party AI client compatibility is asserted.
+
+Validation passed for TypeScript, the two existing contact tests, lint on
+`lib/ai-docs.mjs`, and `build:pages` / `verify:pages` with both the custom-domain
+base path and `/site`. Repository-wide lint still reports 20 existing errors
+in untouched UI components, `app/site-layout.tsx`, and `hooks/use-mobile.ts`.
 
 ### September 27 connection setup and restart behavior
 
