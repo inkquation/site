@@ -1,6 +1,7 @@
 /* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import LanguageSwitch from './language-switch';
+import MobileNavigation from './mobile-navigation';
 import BrandWordmark from './brand-wordmark';
 import { aiGuidePath } from './ai-guide-paths';
 import { localePath } from './locale-paths';
@@ -81,7 +82,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
       <a href="#main" className="skip-link">
         {copy.nav.skip}
       </a>
-      <header className="site-header">
+      <header className="site-header landing-header">
         <div className="container header-inner">
           <a className="brand" href="#top" aria-label={copy.nav.home}>
             <img
@@ -107,6 +108,20 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               </a>
             </nav>
             <LanguageSwitch locale={locale} label={copy.nav.language} />
+            <MobileNavigation
+              label={copy.nav.main}
+              links={[
+                { href: '#shortcuts', label: copy.nav.shortcuts },
+                { href: '#tutorial', label: firstSteps[locale].link },
+                {
+                  href: localePath(locale, 'sidecar/'),
+                  label: sidecarGuides[locale].nav,
+                },
+                { href: '#features', label: copy.nav.features },
+                { href: '#ai', label: copy.nav.ai },
+                { href: '#get-app', label: copy.nav.distribution },
+              ]}
+            />
           </div>
         </div>
       </header>
@@ -144,7 +159,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <a className="button button-primary" href="#shortcuts">
                   {copy.hero.primary} <ArrowDown size={17} />
                 </a>
-                <a className="text-link" href="#tutorial">
+                <a className="text-link hero-secondary" href="#tutorial">
                   {firstSteps[locale].link} <ArrowDown size={16} />
                 </a>
               </div>

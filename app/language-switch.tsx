@@ -14,7 +14,7 @@ export default function LanguageSwitch({
   page?: LocalizedPage;
 }) {
   return (
-    <details className="language-picker">
+    <details className="language-picker" name="header-menu">
       <summary aria-label={`${label}: ${locales[locale].label}`}>
         <Globe size={16} aria-hidden="true" />
         <span lang={locale}>{locales[locale].label}</span>

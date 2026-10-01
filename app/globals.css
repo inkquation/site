@@ -142,6 +142,56 @@ button {
   align-items: center;
   gap: 28px;
 }
+.mobile-navigation {
+  display: none;
+  position: relative;
+  flex-shrink: 0;
+}
+.mobile-navigation summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  list-style: none;
+}
+.mobile-navigation summary::-webkit-details-marker {
+  display: none;
+}
+.mobile-navigation summary:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+.mobile-navigation[open] summary {
+  color: var(--primary);
+}
+.mobile-navigation nav {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(280px, calc(100vw - 36px));
+  padding: 8px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  box-shadow: 0 8px 24px #202b3e18;
+}
+.mobile-navigation nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  color: #52627c;
+  font-size: 0.875rem;
+}
+.mobile-navigation nav a:hover {
+  color: var(--primary);
+  background: var(--muted);
+}
 .language-picker {
   position: relative;
   flex-shrink: 0;
@@ -2322,5 +2372,32 @@ html:lang(ko) .paper-demo-controls > span {
   }
   .shortcut-more {
     margin-top: 0;
+  }
+}
+
+/* Keep one primary action in the phone hero; the header menu holds the other routes. */
+@media (max-width: 600px) {
+  .landing-header .header-inner {
+    height: 70px;
+    min-height: 70px;
+    padding-block: 0;
+    flex-wrap: nowrap;
+  }
+  .landing-header .header-controls {
+    flex-wrap: nowrap;
+  }
+  .landing-header .language-picker summary > span,
+  .hero-secondary,
+  .hero .sidecar-overview,
+  .hero .ai-announcement {
+    display: none;
+  }
+  .mobile-navigation {
+    display: block;
+  }
+}
+@media (max-width: 360px) {
+  .landing-header .brand img {
+    display: none;
   }
 }
