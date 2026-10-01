@@ -11,7 +11,6 @@ import TextLines from './text-lines';
 import ShortcutGuide from './shortcut-guide';
 import firstSteps from './first-steps.json';
 import ContactButton from './contact-button';
-import SidecarGuide from './sidecar-guide';
 import sidecarGuides from './sidecar-guide.json';
 import { sitePath } from '../site.config';
 import {
@@ -96,7 +95,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <div className="header-controls">
             <nav className="main-navigation" aria-label={copy.nav.main}>
               <a href="#shortcuts">{copy.nav.shortcuts}</a>
-              <a href="#sidecar">{sidecarGuides[locale].nav}</a>
+              <a href={localePath(locale, 'sidecar/')}>
+                {sidecarGuides[locale].nav}
+              </a>
               <a className="nav-features" href="#features">
                 {copy.nav.features}
               </a>
@@ -150,10 +151,17 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <p className="platform-line">
                 <Monitor size={15} /> {copy.hero.platform}
               </p>
-              <a className="sidecar-entry" href="#sidecar">
-                <Tablet size={16} aria-hidden="true" />{' '}
-                {sidecarGuides[locale].heroLink}
-              </a>
+              <div className="sidecar-overview" id="sidecar">
+                <p>{sidecarGuides[locale].overview}</p>
+                <a
+                  className="sidecar-entry"
+                  href={localePath(locale, 'sidecar/')}
+                >
+                  <Tablet size={16} aria-hidden="true" />{' '}
+                  {sidecarGuides[locale].heroLink}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
               <a className="ai-announcement" href="#ai">
                 <Sparkles size={16} aria-hidden="true" /> {copy.hero.aiLink}
                 <ArrowUpRight size={15} aria-hidden="true" />
@@ -168,7 +176,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </span>
           </div>
         </section>
-        <SidecarGuide locale={locale} />
         <ShortcutGuide copy={copy.shortcuts} />
         <section
           className="tutorial-section"

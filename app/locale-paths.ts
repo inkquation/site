@@ -7,11 +7,13 @@ export const localeEntries = Object.entries(locales) as [
   { label: string; path: `/${string}` },
 ][];
 
-export function localePath(locale: Locale, page: '' | 'privacy/' | 'ai/' = '') {
+export type LocalizedPage = '' | 'privacy/' | 'ai/' | 'sidecar/';
+
+export function localePath(locale: Locale, page: LocalizedPage = '') {
   return sitePath(`${locales[locale].path}${page}` as `/${string}`);
 }
 
-export function languageAlternates(page: '' | 'privacy/' = '') {
+export function languageAlternates(page: LocalizedPage = '') {
   return Object.fromEntries([
     ...localeEntries.map(([locale]) => [locale, localePath(locale, page)]),
     ['x-default', localePath('ja', page)],

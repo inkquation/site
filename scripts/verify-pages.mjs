@@ -112,6 +112,11 @@ const routes = Object.entries(locales).flatMap(([locale, { path: root }]) => [
     route: `${root}privacy`,
     file: `${root.slice(1)}privacy/index.html`,
   },
+  {
+    locale,
+    route: `${root}sidecar`,
+    file: `${root.slice(1)}sidecar/index.html`,
+  },
 ]);
 
 routes.push(
@@ -125,6 +130,7 @@ routes.push(
 for (const { locale, route, file } of routes) {
   const isPrivacy = route.endsWith('/privacy');
   const isGuide = route.endsWith('/ai');
+  const isSidecar = route.endsWith('/sidecar');
   assert(
     manifest.routes.some(
       (entry) => entry.route === route && entry.status === 'rendered',
@@ -158,7 +164,7 @@ for (const { locale, route, file } of routes) {
         /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
       ),
     ].length,
-    isGuide ? 0 : isPrivacy ? 1 : 2,
+    isGuide || isSidecar ? 0 : isPrivacy ? 1 : 2,
     `${file}: contact actions must be buttons`,
   );
   const pageUrl = new URL(
@@ -216,7 +222,7 @@ for (const { locale, route, file } of routes) {
       .filter(([language]) => !isGuide || guideLocales.includes(language))
       .map(([language, { path: root }]) => [
         language,
-        `${basePath}${root}${isPrivacy ? 'privacy/' : isGuide ? 'ai/' : ''}`,
+        `${basePath}${root}${isPrivacy ? 'privacy/' : isGuide ? 'ai/' : isSidecar ? 'sidecar/' : ''}`,
       ]),
   );
   assert.deepEqual(
@@ -299,15 +305,9 @@ for (const { locale, route, file } of routes) {
       html.includes(`${basePath}/llms.txt`),
       `${file}: missing llms.txt link`,
     );
-  } else {
-    const sidecar = html.match(
-      /<section\b[^>]*id="sidecar"[^>]*>([\s\S]*?)<\/section>/,
-    )?.[1];
+  } else if (isSidecar) {
+    const sidecar = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/)?.[1];
     assert(sidecar, `${file}: missing Sidecar setup guide`);
-    assert(
-      [...html.matchAll(/href="#sidecar"/g)].length >= 2,
-      `${file}: Sidecar guide must be linked from the header and hero`,
-    );
     const sidecarText = sidecar
       .replace(/<[^>]*>/g, '')
       .replaceAll('&amp;', '&')
@@ -316,6 +316,10 @@ for (const { locale, route, file } of routes) {
       .replaceAll('<!-- -->', '');
     const sidecarCopy = sidecarGuides[locale];
     for (const entry of [
+      sidecarCopy.requirementsTitle,
+      sidecarCopy.stepsTitle,
+      sidecarCopy.settingsTitle,
+      sidecarCopy.troubleshootingTitle,
       ...sidecarCopy.requirements,
       ...[
         ...sidecarCopy.steps,
@@ -339,14 +343,53 @@ for (const { locale, route, file } of routes) {
     for (const reference of [
       sidecarCopy.appleURL,
       sidecarCopy.pencilURL,
-      '#tutorial',
-      '#get-app',
+      `${basePath}${locales[locale].path}#tutorial`,
+      `${basePath}${locales[locale].path}#get-app`,
     ]) {
       assert(
         sidecar.includes(`href="${reference}"`),
         `${file}: missing Sidecar reference ${reference}`,
       );
     }
+    for (const id of [
+      'requirements',
+      'setup',
+      'apple-pencil',
+      'troubleshooting',
+    ]) {
+      assert(
+        sidecar.includes(`id="${id}"`),
+        `${file}: missing Sidecar section ${id}`,
+      );
+      assert(
+        html.includes(`href="#${id}"`),
+        `${file}: missing Sidecar contents link ${id}`,
+      );
+    }
+    const home = await readFile(
+      path.join(output, `${locales[locale].path.slice(1)}index.html`),
+      'utf8',
+    );
+    for (const id of ['tutorial', 'get-app']) {
+      assert(
+        home.includes(`id="${id}"`),
+        `${file}: missing home link target ${id}`,
+      );
+    }
+  } else {
+    const sidecarPath = `${basePath}${locales[locale].path}sidecar/`;
+    assert(
+      html.split(`href="${sidecarPath}"`).length - 1 >= 2,
+      `${file}: Sidecar guide must be linked from the header and hero`,
+    );
+    assert(
+      html.includes(sidecarGuides[locale].overview),
+      `${file}: missing short Sidecar introduction`,
+    );
+    assert(
+      !html.includes('class="sidecar-questions"'),
+      `${file}: detailed Sidecar help belongs on the guide page`,
+    );
     const shortcuts = html.match(
       /<section\b[^>]*id="shortcuts"[^>]*>([\s\S]*?)<\/section>/,
     )?.[1];

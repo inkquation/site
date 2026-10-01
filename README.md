@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, English at `/en/`, Simplified Chinese at `/zh-Hans/`, Traditional Chinese (Taiwan) at `/zh-Hant/`, Traditional Chinese (Hong Kong) at `/zh-HK/`, and Korean at `/ko/`. Each language includes its own `privacy/` page. The header links switch languages; each URL can be opened or shared directly.
+Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, English at `/en/`, Simplified Chinese at `/zh-Hans/`, Traditional Chinese (Taiwan) at `/zh-Hant/`, Traditional Chinese (Hong Kong) at `/zh-HK/`, and Korean at `/ko/`. Each language includes its own `privacy/`, `sidecar/`, and `ai/` pages. The header links switch languages; each URL can be opened or shared directly.
 
 ```sh
 npm run build
@@ -20,11 +20,11 @@ npm start
 
 The default production build retains the Vinext / Cloudflare project structure. GitHub Pages uses the separate static export described below. The page needs no database, accounts, uploads, or remote fonts.
 
-Production builds load Google Analytics 4 with measurement ID `G-BJTQ23PPZN` from the shared `app/site-layout.tsx`, covering every language, privacy page, and AI guide. Development previews do not load the tag. The website policy describes this use and links to Google's data-handling information and opt-out tool. After deployment, check the Google Analytics Realtime report or Tag Assistant to confirm receipt of visits. See [Google's tag setup guide](https://developers.google.com/tag-platform/gtagjs).
+Production builds load Google Analytics 4 with measurement ID `G-BJTQ23PPZN` from the shared `app/site-layout.tsx`, covering every language, privacy page, Sidecar guide, and AI guide. Development previews do not load the tag. The website policy describes this use and links to Google's data-handling information and opt-out tool. After deployment, check the Google Analytics Realtime report or Tag Assistant to confirm receipt of visits. See [Google's tag setup guide](https://developers.google.com/tag-platform/gtagjs).
 
 ## GitHub Pages
 
-The [Pages workflow](.github/workflows/pages.yml) publishes `main` through GitHub Actions. It also supports manual runs. Pages must use **GitHub Actions** as its publishing source. The workflow obtains the site path and origin from `actions/configure-pages`, builds all six languages and their privacy pages, checks their links and assets, and deploys only `dist/client`.
+The [Pages workflow](.github/workflows/pages.yml) publishes `main` through GitHub Actions. It also supports manual runs. Pages must use **GitHub Actions** as its publishing source. The workflow obtains the site path and origin from `actions/configure-pages`, builds all six languages and their privacy and guide pages, checks their links and assets, and deploys only `dist/client`.
 
 The production site uses the custom domain [inkquation.app](https://inkquation.app/), with the same six language paths listed above. Its base path is empty. For a matching local export and verification:
 
@@ -103,15 +103,15 @@ Before publication, replace the distribution contact section with a verified dow
 
 ## Mac + iPad setup guide (2026-10-01)
 
-The header and hero link to `#sidecar`, placed before the shortcut guide. All six languages explain the Mac-hosted editor, required devices, Sidecar setup, window placement, the left-hand shortcut preset, smoothing, and Pencil gesture activation in Settings. Troubleshooting uses native `details` elements and works without JavaScript. It includes the existing slow-stroke quality issue and does not promise that smoothing or USB resolves it.
+The home page keeps a one-sentence Sidecar introduction and links from the header and hero to a dedicated `sidecar/` page. The full guide is available at `/sidecar/`, `/en/sidecar/`, `/zh-Hans/sidecar/`, `/zh-Hant/sidecar/`, `/zh-HK/sidecar/`, and `/ko/sidecar/`. Its language menu stays on the guide route, and the contents links jump to requirements, setup, Pencil settings, and troubleshooting. All six languages explain the Mac-hosted editor, required devices, Sidecar setup, window placement, the left-hand shortcut preset, smoothing, and Pencil gesture activation in Settings. Troubleshooting uses native `details` elements and works without JavaScript. It includes the existing slow-stroke quality issue and does not promise that smoothing or USB resolves it.
 
 Connection instructions were checked against [Apple's Sidecar requirements](https://support.apple.com/en-us/102597), [the macOS 26 setup guide](https://support.apple.com/ja-jp/guide/mac-help/mchlf3c6f7ae/26/mac/26), and [Apple Pencil compatibility](https://support.apple.com/en-us/108937). Each language links to its regional Apple support articles. App settings were checked against `ApplePencilSettings.swift`, `ApplePencilSettingsView.swift`, `EditorTabletIdentityTracker.swift`, `SidecarStrokeSmoother.swift`, the string catalogs, and `BACKLOG.md`. This content change does not constitute new Sidecar hardware verification.
 
-`verify:pages` checks the guide's language coverage, rendered setup/settings/troubleshooting content, entry links, Apple references, and tutorial/contact links in every exported home page.
+`verify:pages` checks the guide's language coverage, rendered setup/settings/troubleshooting content, home-page entry links, Apple references, and links back to the matching home-page tutorial and contact sections. The detailed steps and FAQ appear only on the guide pages.
 
 ## Shortcut presentation
 
-The main message is “ペンで書く。キーで操る。” The Mac + iPad setup guide follows the hero, then the keyboard section appears before the general feature list. Its tabs compare all seven tool bindings in Left-Hand Operation, Standard, and Single-key tool switching, with Left-Hand Operation selected initially. Selecting a tab also changes the color and size key examples: C/V and Z/X for Left-Hand Operation, arrow keys and −/+ for the other two. Holding Space for a temporary laser pointer is shared by all three. The selected preset is named above these examples. These tabs only change the website's reference display; they do not configure the app or capture keyboard shortcuts.
+The main message is “ペンで書く。キーで操る。” The keyboard section follows the hero and appears before the general feature list. Its tabs compare all seven tool bindings in Left-Hand Operation, Standard, and Single-key tool switching, with Left-Hand Operation selected initially. Selecting a tab also changes the color and size key examples: C/V and Z/X for Left-Hand Operation, arrow keys and −/+ for the other two. Holding Space for a temporary laser pointer is shared by all three. The selected preset is named above these examples. These tabs only change the website's reference display; they do not configure the app or capture keyboard shortcuts.
 
 All six languages explain how to apply Left-Hand Operation in Settings → Shortcuts and note the shared left-side letters and numbers on US/JIS layouts. A separately labelled Left-Hand Operation guide shows previous/next page (⌘1/⌘2) and zoom out/in (⌘3/⌘4). Individual customization, text-field exclusions, and the one-second Command hint remain documented. Bindings and preset names were checked against `../inkquation/inkquation/KeyboardShortcutSettings.swift`, the app's string catalogs, and `../inkquation/LEFT_HAND_SHORTCUTS.md`.
 
@@ -125,7 +125,7 @@ The policy translations were based on `../inkquation/inkquation/PrivacyPolicy.js
 
 The hero announcement and AI section describe the implemented local MCP connection: reading an open page or lasso selection as an image, inserting PNG images or native shapes and strokes, inspecting the result, and undoing an insertion. Setup requires enabling AI connections (off by default), copying the configuration to a compatible external AI app on the Mac, and keeping Inkquation open. The copy explains that a cloud-backed AI may send read content to its provider. Claims were checked against `../inkquation/mcp/README.md` and the bundled policy. The site does not run an AI client or configure the app itself.
 
-`verify:pages` checks all 18 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.
+`verify:pages` checks all 24 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.
 
 ## AI documentation
 

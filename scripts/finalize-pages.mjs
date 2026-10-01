@@ -22,6 +22,7 @@ const routes = [
   ...Object.values(locales).flatMap(({ path: route }) => [
     route,
     `${route}privacy/`,
+    `${route}sidecar/`,
   ]),
   ...guideLocales.map(guideRoute),
 ]

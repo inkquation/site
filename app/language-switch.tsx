@@ -2,7 +2,7 @@
 import { ChevronDown, Globe } from 'lucide-react';
 import type { Locale } from './copy';
 import locales from './locales.json';
-import { localeEntries, localePath } from './locale-paths';
+import { localeEntries, localePath, type LocalizedPage } from './locale-paths';
 
 export default function LanguageSwitch({
   locale,
@@ -11,7 +11,7 @@ export default function LanguageSwitch({
 }: {
   locale: Locale;
   label: string;
-  page?: '' | 'privacy/' | 'ai/';
+  page?: LocalizedPage;
 }) {
   return (
     <details className="language-picker">

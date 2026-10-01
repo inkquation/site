@@ -2,7 +2,6 @@
   "ja": {
     "nav": "Mac＋iPad",
     "heroLink": "Mac＋iPadで使うには",
-    "title": ["MacとiPadで、", "書きはじめる。"],
     "description": "MacでInkquationを開き、Sidecarで編集画面をiPadへ。Apple Pencilで書きながら、もう片手でMacのキーボードを操作できます。",
     "requirementsTitle": "用意するもの",
     "requirements": [
@@ -66,12 +65,15 @@
       }
     ],
     "supportNote": "解消しない場合は、Mac・iPad・Pencilの機種、macOS・iPadOS・Inkquationのバージョン、USBかワイヤレスか、困っている操作を添えてお問い合わせください。",
-    "supportLink": "利用環境について問い合わせる"
+    "supportLink": "利用環境について問い合わせる",
+    "pageTitle": "Mac＋iPadで使う",
+    "overview": "SidecarでiPadに編集画面を映し、Apple Pencilで書けます。",
+    "stepsTitle": "使いはじめる手順",
+    "contentsLabel": "このページの内容"
   },
   "en": {
     "nav": "Mac + iPad",
     "heroLink": "Use Inkquation with Mac + iPad",
-    "title": ["Your Mac and iPad.", "Ready to write."],
     "description": "Open Inkquation on your Mac and move the editor to your iPad with Sidecar. Write with Apple Pencil while your other hand uses the Mac keyboard.",
     "requirementsTitle": "What you need",
     "requirements": [
@@ -135,12 +137,15 @@
       }
     ],
     "supportNote": "If the problem continues, include your Mac, iPad, and Pencil models; macOS, iPadOS, and Inkquation versions; USB or wireless connection; and the action that causes the problem when contacting us.",
-    "supportLink": "Ask about your setup"
+    "supportLink": "Ask about your setup",
+    "pageTitle": "Use Inkquation with Mac + iPad",
+    "overview": "Use Sidecar to write with Apple Pencil on your iPad.",
+    "stepsTitle": "Getting started",
+    "contentsLabel": "On this page"
   },
   "zh-Hans": {
     "nav": "Mac＋iPad",
     "heroLink": "如何搭配 Mac＋iPad 使用",
-    "title": ["用 Mac 和 iPad，", "开始书写。"],
     "description": "在 Mac 上打开 Inkquation，通过随航将编辑窗口移到 iPad。一只手用 Apple Pencil 书写，另一只手操作 Mac 的键盘。",
     "requirementsTitle": "需要准备什么",
     "requirements": [
@@ -204,12 +209,15 @@
       }
     ],
     "supportNote": "如果问题仍然存在，请在联系我们时附上 Mac、iPad、Pencil 的机型，macOS、iPadOS、Inkquation 版本，USB 或无线连接方式，以及出现问题的操作。",
-    "supportLink": "咨询使用环境"
+    "supportLink": "咨询使用环境",
+    "pageTitle": "在Mac＋iPad上使用",
+    "overview": "通过“随航”在iPad上显示编辑窗口，用Apple Pencil书写。",
+    "stepsTitle": "开始使用",
+    "contentsLabel": "本页内容"
   },
   "zh-Hant": {
     "nav": "Mac＋iPad",
     "heroLink": "如何搭配 Mac＋iPad 使用",
-    "title": ["用 Mac 和 iPad，", "開始書寫。"],
     "description": "在 Mac 上開啟 Inkquation，透過「並行」將編輯視窗移到 iPad。一隻手用 Apple Pencil 書寫，另一隻手操作 Mac 的鍵盤。",
     "requirementsTitle": "需要準備什麼",
     "requirements": [
@@ -273,12 +281,15 @@
       }
     ],
     "supportNote": "如果問題仍然存在，請在聯絡我們時附上 Mac、iPad、Pencil 的機型，macOS、iPadOS、Inkquation 版本，USB 或無線連線方式，以及出現問題的操作。",
-    "supportLink": "詢問使用環境"
+    "supportLink": "詢問使用環境",
+    "pageTitle": "搭配Mac＋iPad使用",
+    "overview": "透過「並行」在iPad上顯示編輯視窗，用Apple Pencil書寫。",
+    "stepsTitle": "開始使用",
+    "contentsLabel": "本頁內容"
   },
   "zh-HK": {
     "nav": "Mac＋iPad",
     "heroLink": "如何配合 Mac＋iPad 使用",
-    "title": ["用 Mac 和 iPad，", "開始書寫。"],
     "description": "在 Mac 上開啟 Inkquation，透過「並行」將編輯視窗移到 iPad。一隻手用 Apple Pencil 書寫，另一隻手操作 Mac 的鍵盤。",
     "requirementsTitle": "需要準備甚麼",
     "requirements": [
@@ -342,12 +353,15 @@
       }
     ],
     "supportNote": "如果問題仍然存在，請在聯絡我們時附上 Mac、iPad、Pencil 的型號，macOS、iPadOS、Inkquation 版本，USB 或無線連線方式，以及出現問題的操作。",
-    "supportLink": "查詢使用環境"
+    "supportLink": "查詢使用環境",
+    "pageTitle": "配合Mac＋iPad使用",
+    "overview": "透過「並行」在iPad上顯示編輯視窗，用Apple Pencil書寫。",
+    "stepsTitle": "開始使用",
+    "contentsLabel": "本頁內容"
   },
   "ko": {
     "nav": "Mac + iPad",
     "heroLink": "Mac + iPad로 사용하는 방법",
-    "title": ["Mac과 iPad로", "필기를 시작하세요."],
     "description": "Mac에서 Inkquation을 열고 Sidecar로 편집 창을 iPad에 옮기세요. Apple Pencil로 쓰면서 다른 손으로 Mac 키보드를 조작할 수 있습니다.",
     "requirementsTitle": "준비할 것",
     "requirements": [
@@ -411,6 +425,10 @@
       }
     ],
     "supportNote": "문제가 계속되면 Mac, iPad, Pencil 모델, macOS·iPadOS·Inkquation 버전, USB 또는 무선 연결 여부, 문제가 발생하는 조작을 함께 알려 주세요.",
-    "supportLink": "사용 환경 문의하기"
+    "supportLink": "사용 환경 문의하기",
+    "pageTitle": "Mac + iPad에서 사용하기",
+    "overview": "Sidecar로 iPad에 편집 화면을 띄우고 Apple Pencil로 쓸 수 있습니다.",
+    "stepsTitle": "시작하기",
+    "contentsLabel": "이 페이지의 내용"
   }
 }
