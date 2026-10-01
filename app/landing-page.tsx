@@ -1,7 +1,7 @@
 /* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import LanguageSwitch from './language-switch';
-import MobileNavigation from './mobile-navigation';
+import SiteNavigation from './site-navigation';
 import BrandWordmark from './brand-wordmark';
 import { aiGuidePath } from './ai-guide-paths';
 import { localePath } from './locale-paths';
@@ -23,8 +23,6 @@ import {
   Monitor,
   PenLine,
   Square,
-  Sparkles,
-  Tablet,
 } from 'lucide-react';
 
 function NotebookPreview({
@@ -94,21 +92,8 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             <BrandWordmark />
           </a>
           <div className="header-controls">
-            <nav className="main-navigation" aria-label={copy.nav.main}>
-              <a href="#shortcuts">{copy.nav.shortcuts}</a>
-              <a href={localePath(locale, 'sidecar/')}>
-                {sidecarGuides[locale].nav}
-              </a>
-              <a className="nav-features" href="#features">
-                {copy.nav.features}
-              </a>
-              <a href="#ai">{copy.nav.ai}</a>
-              <a className="nav-contact" href="#get-app">
-                {copy.nav.distribution} <ArrowUpRight size={15} />
-              </a>
-            </nav>
             <LanguageSwitch locale={locale} label={copy.nav.language} />
-            <MobileNavigation
+            <SiteNavigation
               label={copy.nav.main}
               links={[
                 { href: '#shortcuts', label: copy.nav.shortcuts },
@@ -159,28 +144,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 <a className="button button-primary" href="#shortcuts">
                   {copy.hero.primary} <ArrowDown size={17} />
                 </a>
-                <a className="text-link hero-secondary" href="#tutorial">
-                  {firstSteps[locale].link} <ArrowDown size={16} />
-                </a>
               </div>
               <p className="platform-line">
                 <Monitor size={15} /> {copy.hero.platform}
               </p>
-              <div className="sidecar-overview" id="sidecar">
-                <p>{sidecarGuides[locale].overview}</p>
-                <a
-                  className="sidecar-entry"
-                  href={localePath(locale, 'sidecar/')}
-                >
-                  <Tablet size={16} aria-hidden="true" />{' '}
-                  {sidecarGuides[locale].heroLink}
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              </div>
-              <a className="ai-announcement" href="#ai">
-                <Sparkles size={16} aria-hidden="true" /> {copy.hero.aiLink}
-                <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
             </div>
             <NotebookPreview copy={copy.screenshot} locale={locale} />
           </div>

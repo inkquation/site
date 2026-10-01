@@ -379,12 +379,8 @@ for (const { locale, route, file } of routes) {
   } else {
     const sidecarPath = `${basePath}${locales[locale].path}sidecar/`;
     assert(
-      html.split(`href="${sidecarPath}"`).length - 1 >= 2,
-      `${file}: Sidecar guide must be linked from the header and hero`,
-    );
-    assert(
-      html.includes(sidecarGuides[locale].overview),
-      `${file}: missing short Sidecar introduction`,
+      html.includes(`href="${sidecarPath}"`),
+      `${file}: Sidecar guide must be linked from the header menu`,
     );
     assert(
       !html.includes('class="sidecar-questions"'),

@@ -4,7 +4,7 @@
 import { useRef } from 'react';
 import { Menu } from 'lucide-react';
 
-export default function MobileNavigation({
+export default function SiteNavigation({
   label,
   links,
 }: {
@@ -16,7 +16,7 @@ export default function MobileNavigation({
     if (menu.current) menu.current.open = false;
   }
   return (
-    <details className="mobile-navigation" name="header-menu" ref={menu}>
+    <details className="site-navigation" name="header-menu" ref={menu}>
       <summary aria-label={label}>
         <Menu size={20} aria-hidden="true" />
       </summary>
