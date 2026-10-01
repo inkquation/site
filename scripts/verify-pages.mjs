@@ -90,6 +90,11 @@ for (const [locale, guide] of Object.entries(sidecarGuides)) {
       `${locale}: missing Sidecar ${key}`,
     );
   }
+  assert.equal(
+    guide.landing.steps.length,
+    3,
+    `${locale}: the home Sidecar overview needs three setup steps`,
+  );
 }
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
   /\/+$/,
@@ -378,10 +383,48 @@ for (const { locale, route, file } of routes) {
     }
   } else {
     const sidecarPath = `${basePath}${locales[locale].path}sidecar/`;
+    const overview = html.match(
+      /<section\b[^>]*id="sidecar"[^>]*>([\s\S]*?)<\/section>/,
+    )?.[1];
+    assert(overview, `${file}: missing home Sidecar overview`);
     assert(
-      html.includes(`href="${sidecarPath}"`),
-      `${file}: Sidecar guide must be linked from the header menu`,
+      overview.includes(`href="${sidecarPath}"`),
+      `${file}: the Sidecar overview must link to the translated guide`,
     );
+    assert(
+      html.includes('href="#sidecar"'),
+      `${file}: the header menu must link to the Sidecar overview`,
+    );
+    assert(
+      html.indexOf('id="ai"') < html.indexOf('id="sidecar"') &&
+        html.indexOf('id="sidecar"') < html.indexOf('id="workflow"'),
+      `${file}: Sidecar belongs after AI and before the writing workflow`,
+    );
+    assert(
+      overview.includes('05 / MAC + IPAD') &&
+        html.includes('06 / THINK IN EQUATIONS'),
+      `${file}: home sections must remain sequentially numbered`,
+    );
+    const overviewText = overview
+      .replace(/<[^>]*>/g, '')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&#x27;', "'");
+    const sidecarCopy = sidecarGuides[locale];
+    for (const entry of [
+      ...sidecarCopy.landing.title,
+      sidecarCopy.description,
+      sidecarCopy.landing.guideLink,
+      ...sidecarCopy.landing.steps.flatMap(({ title, description }) => [
+        title,
+        description,
+      ]),
+    ]) {
+      assert(
+        overviewText.includes(entry),
+        `${file}: missing translated Sidecar overview: ${entry}`,
+      );
+    }
     assert(
       !html.includes('class="sidecar-questions"'),
       `${file}: detailed Sidecar help belongs on the guide page`,

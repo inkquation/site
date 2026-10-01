@@ -2,6 +2,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import LanguageSwitch from './language-switch';
 import SiteNavigation from './site-navigation';
+import SidecarOverview from './sidecar-overview';
 import BrandWordmark from './brand-wordmark';
 import { aiGuidePath } from './ai-guide-paths';
 import { localePath } from './locale-paths';
@@ -99,7 +100,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 { href: '#shortcuts', label: copy.nav.shortcuts },
                 { href: '#tutorial', label: firstSteps[locale].link },
                 {
-                  href: localePath(locale, 'sidecar/'),
+                  href: '#sidecar',
                   label: sidecarGuides[locale].nav,
                 },
                 { href: '#features', label: copy.nav.features },
@@ -365,6 +366,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </a>
           </div>
         </section>
+        <SidecarOverview locale={locale} />
         <section
           className="workflow-section"
           id="workflow"
@@ -372,7 +374,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="container workflow-inner">
             <div className="workflow-copy">
-              <p className="eyebrow section-eyebrow">05 / THINK IN EQUATIONS</p>
+              <p className="eyebrow section-eyebrow">06 / THINK IN EQUATIONS</p>
               <h2 id="workflow-title">
                 <TextLines lines={copy.workflow.title} />
               </h2>

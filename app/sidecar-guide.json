@@ -69,7 +69,25 @@
     "pageTitle": "Mac＋iPadで使う",
     "overview": "SidecarでiPadに編集画面を映し、Apple Pencilで書けます。",
     "stepsTitle": "使いはじめる手順",
-    "contentsLabel": "このページの内容"
+    "contentsLabel": "このページの内容",
+    "landing": {
+      "title": ["iPadで書く。", "Macのキーで操る。"],
+      "steps": [
+        {
+          "title": "Sidecarでつなぐ",
+          "description": "Macのディスプレイ設定でiPadを選び、拡張ディスプレイとして接続します。"
+        },
+        {
+          "title": "ノートの編集画面をiPadへ",
+          "description": "MacでInkquationのノートを開き、編集ウインドウをiPad側へ移します。"
+        },
+        {
+          "title": "Apple Pencilで書く",
+          "description": "iPadのノートに書き込みながら、Macのキーでツール・色・線幅を操作します。"
+        }
+      ],
+      "guideLink": "接続手順とApple Pencilの設定を見る"
+    }
   },
   "en": {
     "nav": "Mac + iPad",
@@ -141,7 +159,25 @@
     "pageTitle": "Use Inkquation with Mac + iPad",
     "overview": "Use Sidecar to write with Apple Pencil on your iPad.",
     "stepsTitle": "Getting started",
-    "contentsLabel": "On this page"
+    "contentsLabel": "On this page",
+    "landing": {
+      "title": ["Write on iPad.", "Use your Mac keyboard."],
+      "steps": [
+        {
+          "title": "Connect with Sidecar",
+          "description": "Select your iPad in your Mac’s display settings and connect it as an extended display."
+        },
+        {
+          "title": "Move the note editor to iPad",
+          "description": "Open a note in Inkquation on your Mac, then move its editor window to the iPad display."
+        },
+        {
+          "title": "Write with Apple Pencil",
+          "description": "Write in the note on iPad while using your Mac keyboard to switch tools, colors, and stroke widths."
+        }
+      ],
+      "guideLink": "Sidecar setup and Apple Pencil settings"
+    }
   },
   "zh-Hans": {
     "nav": "Mac＋iPad",
@@ -213,7 +249,25 @@
     "pageTitle": "在Mac＋iPad上使用",
     "overview": "通过“随航”在iPad上显示编辑窗口，用Apple Pencil书写。",
     "stepsTitle": "开始使用",
-    "contentsLabel": "本页内容"
+    "contentsLabel": "本页内容",
+    "landing": {
+      "title": ["在 iPad 上书写，", "用 Mac 键盘操作。"],
+      "steps": [
+        {
+          "title": "通过随航连接",
+          "description": "在 Mac 的显示器设置中选择 iPad，将它连接为扩展显示器。"
+        },
+        {
+          "title": "把笔记编辑窗口移到 iPad",
+          "description": "在 Mac 上打开 Inkquation 笔记，把编辑窗口移到 iPad。"
+        },
+        {
+          "title": "用 Apple Pencil 书写",
+          "description": "在 iPad 上用 Apple Pencil 书写，同时用 Mac 键盘切换工具、颜色和线宽。"
+        }
+      ],
+      "guideLink": "查看连接步骤与 Apple Pencil 设置"
+    }
   },
   "zh-Hant": {
     "nav": "Mac＋iPad",
@@ -285,7 +339,25 @@
     "pageTitle": "搭配Mac＋iPad使用",
     "overview": "透過「並行」在iPad上顯示編輯視窗，用Apple Pencil書寫。",
     "stepsTitle": "開始使用",
-    "contentsLabel": "本頁內容"
+    "contentsLabel": "本頁內容",
+    "landing": {
+      "title": ["在 iPad 上書寫，", "用 Mac 鍵盤操作。"],
+      "steps": [
+        {
+          "title": "透過「並行」連線",
+          "description": "在 Mac 的顯示器設定中選擇 iPad，將它連接為延伸顯示器。"
+        },
+        {
+          "title": "把筆記編輯視窗移到 iPad",
+          "description": "在 Mac 上開啟 Inkquation 筆記，把編輯視窗移到 iPad。"
+        },
+        {
+          "title": "用 Apple Pencil 書寫",
+          "description": "在 iPad 上用 Apple Pencil 書寫，同時用 Mac 鍵盤切換工具、顏色和線寬。"
+        }
+      ],
+      "guideLink": "查看連線步驟與 Apple Pencil 設定"
+    }
   },
   "zh-HK": {
     "nav": "Mac＋iPad",
@@ -357,7 +429,25 @@
     "pageTitle": "配合Mac＋iPad使用",
     "overview": "透過「並行」在iPad上顯示編輯視窗，用Apple Pencil書寫。",
     "stepsTitle": "開始使用",
-    "contentsLabel": "本頁內容"
+    "contentsLabel": "本頁內容",
+    "landing": {
+      "title": ["在 iPad 上書寫，", "用 Mac 鍵盤操作。"],
+      "steps": [
+        {
+          "title": "透過「並行」連接",
+          "description": "在 Mac 的顯示器設定中選擇 iPad，將它連接為延伸顯示器。"
+        },
+        {
+          "title": "把筆記編輯視窗移到 iPad",
+          "description": "在 Mac 上開啟 Inkquation 筆記，把編輯視窗移到 iPad。"
+        },
+        {
+          "title": "用 Apple Pencil 書寫",
+          "description": "在 iPad 上用 Apple Pencil 書寫，同時用 Mac 鍵盤切換工具、顏色和線寬。"
+        }
+      ],
+      "guideLink": "查看連接步驟與 Apple Pencil 設定"
+    }
   },
   "ko": {
     "nav": "Mac + iPad",
@@ -429,6 +519,24 @@
     "pageTitle": "Mac + iPad에서 사용하기",
     "overview": "Sidecar로 iPad에 편집 화면을 띄우고 Apple Pencil로 쓸 수 있습니다.",
     "stepsTitle": "시작하기",
-    "contentsLabel": "이 페이지의 내용"
+    "contentsLabel": "이 페이지의 내용",
+    "landing": {
+      "title": ["iPad로 쓰고,", "Mac 키보드로 조작하세요."],
+      "steps": [
+        {
+          "title": "Sidecar로 연결하기",
+          "description": "Mac의 디스플레이 설정에서 iPad를 선택하고 확장 디스플레이로 연결하세요."
+        },
+        {
+          "title": "노트 편집 창을 iPad로 옮기기",
+          "description": "Mac의 Inkquation에서 노트를 열고 편집 창을 iPad 화면으로 옮기세요."
+        },
+        {
+          "title": "Apple Pencil로 쓰기",
+          "description": "iPad에서 필기하면서 Mac 키보드로 도구, 색상, 선 너비를 바꿀 수 있습니다."
+        }
+      ],
+      "guideLink": "Sidecar 연결과 Apple Pencil 설정 보기"
+    }
   }
 }
