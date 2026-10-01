@@ -4,6 +4,7 @@ import path from 'node:path';
 import locales from '../app/locales.json' with { type: 'json' };
 import policy from '../app/privacy-policy.json' with { type: 'json' };
 import guides from '../app/ai-guide.json' with { type: 'json' };
+import sidecarGuides from '../app/sidecar-guide.json' with { type: 'json' };
 import {
   guideLocales,
   guideRoute,
@@ -71,6 +72,25 @@ for (const locale of guideLocales) {
 }
 
 const output = path.resolve('dist/client');
+assert.deepEqual(
+  Object.keys(sidecarGuides).sort(),
+  Object.keys(locales).sort(),
+  'Every site language must have a Sidecar guide',
+);
+for (const [locale, guide] of Object.entries(sidecarGuides)) {
+  assert.deepEqual(
+    Object.keys(guide).sort(),
+    Object.keys(sidecarGuides.en).sort(),
+    `${locale}: Sidecar guide fields`,
+  );
+  for (const key of ['requirements', 'steps', 'settings', 'questions']) {
+    assert.equal(
+      guide[key].length,
+      sidecarGuides.en[key].length,
+      `${locale}: missing Sidecar ${key}`,
+    );
+  }
+}
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
   /\/+$/,
   '',
@@ -280,6 +300,53 @@ for (const { locale, route, file } of routes) {
       `${file}: missing llms.txt link`,
     );
   } else {
+    const sidecar = html.match(
+      /<section\b[^>]*id="sidecar"[^>]*>([\s\S]*?)<\/section>/,
+    )?.[1];
+    assert(sidecar, `${file}: missing Sidecar setup guide`);
+    assert(
+      [...html.matchAll(/href="#sidecar"/g)].length >= 2,
+      `${file}: Sidecar guide must be linked from the header and hero`,
+    );
+    const sidecarText = sidecar
+      .replace(/<[^>]*>/g, '')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&#x27;', "'")
+      .replaceAll('<!-- -->', '');
+    const sidecarCopy = sidecarGuides[locale];
+    for (const entry of [
+      ...sidecarCopy.requirements,
+      ...[
+        ...sidecarCopy.steps,
+        ...sidecarCopy.settings,
+        ...sidecarCopy.questions,
+      ].flatMap(({ title, description }) => [title, description]),
+      sidecarCopy.requirementsNote,
+      sidecarCopy.settingsIntro,
+      sidecarCopy.supportNote,
+    ]) {
+      assert(
+        sidecarText.includes(entry),
+        `${file}: missing translated Sidecar content: ${entry}`,
+      );
+    }
+    assert.equal(
+      [...sidecar.matchAll(/<details\b/g)].length,
+      sidecarCopy.questions.length,
+      `${file}: Sidecar troubleshooting must work without JavaScript`,
+    );
+    for (const reference of [
+      sidecarCopy.appleURL,
+      sidecarCopy.pencilURL,
+      '#tutorial',
+      '#get-app',
+    ]) {
+      assert(
+        sidecar.includes(`href="${reference}"`),
+        `${file}: missing Sidecar reference ${reference}`,
+      );
+    }
     const shortcuts = html.match(
       /<section\b[^>]*id="shortcuts"[^>]*>([\s\S]*?)<\/section>/,
     )?.[1];

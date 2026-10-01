@@ -11,6 +11,8 @@ import TextLines from './text-lines';
 import ShortcutGuide from './shortcut-guide';
 import firstSteps from './first-steps.json';
 import ContactButton from './contact-button';
+import SidecarGuide from './sidecar-guide';
+import sidecarGuides from './sidecar-guide.json';
 import { sitePath } from '../site.config';
 import {
   ArrowDown,
@@ -22,6 +24,7 @@ import {
   PenLine,
   Square,
   Sparkles,
+  Tablet,
 } from 'lucide-react';
 
 function NotebookPreview({
@@ -93,7 +96,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <div className="header-controls">
             <nav className="main-navigation" aria-label={copy.nav.main}>
               <a href="#shortcuts">{copy.nav.shortcuts}</a>
-              <a href="#features">{copy.nav.features}</a>
+              <a href="#sidecar">{sidecarGuides[locale].nav}</a>
+              <a className="nav-features" href="#features">
+                {copy.nav.features}
+              </a>
               <a href="#ai">{copy.nav.ai}</a>
               <a className="nav-contact" href="#get-app">
                 {copy.nav.distribution} <ArrowUpRight size={15} />
@@ -123,7 +129,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                     aria-hidden="true"
                     focusable="false"
                   >
-                    <path d="M0 4 Q50 -4 100 4 Q50 0 0 4Z" fill="currentColor" />
+                    <path
+                      d="M0 4 Q50 -4 100 4 Q50 0 0 4Z"
+                      fill="currentColor"
+                    />
                   </svg>
                 </span>
               </h1>
@@ -141,6 +150,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <p className="platform-line">
                 <Monitor size={15} /> {copy.hero.platform}
               </p>
+              <a className="sidecar-entry" href="#sidecar">
+                <Tablet size={16} aria-hidden="true" />{' '}
+                {sidecarGuides[locale].heroLink}
+              </a>
               <a className="ai-announcement" href="#ai">
                 <Sparkles size={16} aria-hidden="true" /> {copy.hero.aiLink}
                 <ArrowUpRight size={15} aria-hidden="true" />
@@ -155,6 +168,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </span>
           </div>
         </section>
+        <SidecarGuide locale={locale} />
         <ShortcutGuide copy={copy.shortcuts} />
         <section
           className="tutorial-section"

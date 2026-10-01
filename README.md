@@ -51,6 +51,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/landing-page.tsx`: shared page structure, navigation, language switch, actual editor screenshot, and the PDF import guide at `#pdf-import`.
 - `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
 - `app/first-steps.json`: the prominent writing tutorial at `#tutorial` and compact color, paper, and bookmark preferences, localized in all six languages. The hero links directly to the tutorial overview; its menu path starts the actual tutorial in the Mac app.
+- `app/sidecar-guide.json` and `app/sidecar-guide.tsx`: the six-language Mac + iPad setup guide at `#sidecar`, linked from the header and hero. It covers equipment, connection, moving the editor, Pencil controls, troubleshooting, and the next step into the existing tutorial.
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
 - `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves privacy and AI guide routes. The AI guide is available in all six languages.
 - `app/(ja)`, `app/(en)`, `app/(zh-Hans)`, `app/(zh-Hant)`, `app/(zh-HK)`, and `app/(ko)`: language-specific home and privacy routes.
@@ -100,9 +101,17 @@ The website uses a light palette. The screenshot retains the supplied light app 
 
 Before publication, replace the distribution contact section with a verified download URL and confirmed release/system information when available. Check that the public contact mailbox is operational. Neither release availability nor a working mailbox has been assumed.
 
+## Mac + iPad setup guide (2026-10-01)
+
+The header and hero link to `#sidecar`, placed before the shortcut guide. All six languages explain the Mac-hosted editor, required devices, Sidecar setup, window placement, the left-hand shortcut preset, smoothing, and Pencil gesture activation in Settings. Troubleshooting uses native `details` elements and works without JavaScript. It includes the existing slow-stroke quality issue and does not promise that smoothing or USB resolves it.
+
+Connection instructions were checked against [Apple's Sidecar requirements](https://support.apple.com/en-us/102597), [the macOS 26 setup guide](https://support.apple.com/ja-jp/guide/mac-help/mchlf3c6f7ae/26/mac/26), and [Apple Pencil compatibility](https://support.apple.com/en-us/108937). Each language links to its regional Apple support articles. App settings were checked against `ApplePencilSettings.swift`, `ApplePencilSettingsView.swift`, `EditorTabletIdentityTracker.swift`, `SidecarStrokeSmoother.swift`, the string catalogs, and `BACKLOG.md`. This content change does not constitute new Sidecar hardware verification.
+
+`verify:pages` checks the guide's language coverage, rendered setup/settings/troubleshooting content, entry links, Apple references, and tutorial/contact links in every exported home page.
+
 ## Shortcut presentation
 
-The main message is “ペンで書く。キーで操る。” The keyboard section follows the hero, before the general feature list. Its tabs compare all seven tool bindings in Left-Hand Operation, Standard, and Single-key tool switching, with Left-Hand Operation selected initially. Selecting a tab also changes the color and size key examples: C/V and Z/X for Left-Hand Operation, arrow keys and −/+ for the other two. Holding Space for a temporary laser pointer is shared by all three. The selected preset is named above these examples. These tabs only change the website's reference display; they do not configure the app or capture keyboard shortcuts.
+The main message is “ペンで書く。キーで操る。” The Mac + iPad setup guide follows the hero, then the keyboard section appears before the general feature list. Its tabs compare all seven tool bindings in Left-Hand Operation, Standard, and Single-key tool switching, with Left-Hand Operation selected initially. Selecting a tab also changes the color and size key examples: C/V and Z/X for Left-Hand Operation, arrow keys and −/+ for the other two. Holding Space for a temporary laser pointer is shared by all three. The selected preset is named above these examples. These tabs only change the website's reference display; they do not configure the app or capture keyboard shortcuts.
 
 All six languages explain how to apply Left-Hand Operation in Settings → Shortcuts and note the shared left-side letters and numbers on US/JIS layouts. A separately labelled Left-Hand Operation guide shows previous/next page (⌘1/⌘2) and zoom out/in (⌘3/⌘4). Individual customization, text-field exclusions, and the one-second Command hint remain documented. Bindings and preset names were checked against `../inkquation/inkquation/KeyboardShortcutSettings.swift`, the app's string catalogs, and `../inkquation/LEFT_HAND_SHORTCUTS.md`.
 

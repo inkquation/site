@@ -1,0 +1,416 @@
+{
+  "ja": {
+    "nav": "Mac＋iPad",
+    "heroLink": "Mac＋iPadで使うには",
+    "title": ["MacとiPadで、", "書きはじめる。"],
+    "description": "MacでInkquationを開き、Sidecarで編集画面をiPadへ。Apple Pencilで書きながら、もう片手でMacのキーボードを操作できます。",
+    "requirementsTitle": "用意するもの",
+    "requirements": [
+      "Inkquationを使うMacと、Sidecarに対応したiPad。",
+      "そのiPadに対応し、ペアリング済みのApple Pencil。",
+      "両方の端末で、2ファクタ認証を使った同じApple Accountへのサインイン。"
+    ],
+    "requirementsNote": "InkquationはMacで動作します。iPadには、SidecarでMacの編集画面を表示します。",
+    "appleLink": "Apple公式の対応機種・接続条件",
+    "appleURL": "https://support.apple.com/ja-jp/102597",
+    "pencilLink": "Apple PencilとiPadの対応を確認",
+    "pencilURL": "https://support.apple.com/ja-jp/108937",
+    "steps": [
+      {
+        "title": "Sidecarでつなぐ",
+        "description": "Macの「システム設定」→「ディスプレイ」で、ディスプレイを追加するメニューからiPadを選びます。使用形態を拡張ディスプレイにすると、Macに資料を残しながらiPadで書けます。USB接続でもワイヤレスでも使えます。"
+      },
+      {
+        "title": "ノートの編集画面をiPadへ",
+        "description": "MacでInkquationを起動してノートを開き、編集ウインドウをiPad側へドラッグします。移動先の方向は、Macのディスプレイ設定にある「配置」で確認・変更できます。"
+      },
+      {
+        "title": "Pencilで書き、キーで操作",
+        "description": "iPadに表示したノートへApple Pencilで書き込みます。Inkquationの「設定」→「ショートカット」で「左手操作」を適用すると、Q・W・E・Rでツールを切り替えられます。左利きの方は、右手で押しやすいキーに変更できます。"
+      }
+    ],
+    "tutorialLink": "接続できたら、書いて覚えるチュートリアルへ",
+    "settingsTitle": "Apple Pencilの使い方を整える",
+    "settingsIntro": "Inkquationの「設定」→「Apple Pencil」で変更できます。",
+    "settings": [
+      {
+        "title": "線の細かなガタつきを抑える",
+        "description": "「Sidecarで線をなめらかにする」は初期設定でオン。ペンと蛍光ペンの線に適用されます。オン・オフを試して、書きやすい方を選べます。変更は新しく描く線から反映されます。"
+      },
+      {
+        "title": "ダブルタップでツール切り替え",
+        "description": "対応するPencilでは、消しゴムへの切り替えやカラーパレットの表示などを割り当てられます。Macのディスプレイ設定でダブルタップを有効にし、InkquationのApple Pencil設定画面を開いた状態でPencilの側面をダブルタップすると、設定を変更できます。"
+      },
+      {
+        "title": "Pencil Proのスクイーズ",
+        "description": "初期設定では、ペン先付近にツール・色・太さを選ぶパレットを表示します。設定を変更するには、InkquationのApple Pencil設定画面を開いた状態でPencil Proを握って離します。スクイーズはApple Pencil Proのみで使えます。"
+      }
+    ],
+    "troubleshootingTitle": "うまく使えないときは",
+    "questions": [
+      {
+        "title": "接続先にiPadが出てこない",
+        "description": "まずApple公式のSidecar条件を確認します。ワイヤレスでは両端末のWi-Fi・Bluetooth・Handoffをオンにし、近くに置きます。USB接続では、iPadに確認が表示されたらMacを信頼してください。"
+      },
+      {
+        "title": "iPadに画面は出るけれど、書けない",
+        "description": "Apple PencilがiPadにペアリングされているか確認します。Inkquationでノートの編集画面を開き、ペンツールを選んで書いてみてください。iPadのホーム画面が表示されている場合は、Sidecarの画面に戻ります。"
+      },
+      {
+        "title": "ゆっくり書くと、線がガタつく",
+        "description": "Sidecarでは、ゆっくりした線や小さな波形の書き味に課題が残っています。線をなめらかにする設定のオン・オフで、新しい線を比較してください。接続環境の切り分けにはUSB接続も試せますが、接続変更や補正だけで改善するとは限りません。"
+      },
+      {
+        "title": "手を置くと、画面が動いてしまう",
+        "description": "InkquationのApple Pencil設定で、パームリジェクションのモードと、ペン接触中のスクロール・拡大縮小の抑制を確認します。ペンを離した直後に誤操作が出る場合は、入力の抑制時間も調整できます。"
+      }
+    ],
+    "supportNote": "解消しない場合は、Mac・iPad・Pencilの機種、macOS・iPadOS・Inkquationのバージョン、USBかワイヤレスか、困っている操作を添えてお問い合わせください。",
+    "supportLink": "利用環境について問い合わせる"
+  },
+  "en": {
+    "nav": "Mac + iPad",
+    "heroLink": "Use Inkquation with Mac + iPad",
+    "title": ["Your Mac and iPad.", "Ready to write."],
+    "description": "Open Inkquation on your Mac and move the editor to your iPad with Sidecar. Write with Apple Pencil while your other hand uses the Mac keyboard.",
+    "requirementsTitle": "What you need",
+    "requirements": [
+      "A Mac running Inkquation and an iPad that supports Sidecar.",
+      "An Apple Pencil compatible with, and paired to, that iPad.",
+      "The same Apple Account on both devices, with two-factor authentication."
+    ],
+    "requirementsNote": "Inkquation runs on your Mac. Sidecar displays its Mac editor on your iPad.",
+    "appleLink": "Apple’s supported devices and connection requirements",
+    "appleURL": "https://support.apple.com/en-us/102597",
+    "pencilLink": "Check Apple Pencil and iPad compatibility",
+    "pencilURL": "https://support.apple.com/en-us/108937",
+    "steps": [
+      {
+        "title": "Connect with Sidecar",
+        "description": "On your Mac, open System Settings → Displays and select your iPad from the menu for adding a display. Use it as an extended display to keep reference material on the Mac while writing on the iPad. USB and wireless connections are available."
+      },
+      {
+        "title": "Move the note editor to your iPad",
+        "description": "Launch Inkquation on your Mac, open a note, and drag its editor window onto the iPad display. Check or change the direction in Arrange under your Mac’s display settings."
+      },
+      {
+        "title": "Write with Pencil. Use the keys.",
+        "description": "Write in the note on your iPad with Apple Pencil. In Inkquation’s Settings → Shortcuts, apply Left-Hand Operation to switch tools with Q, W, E, and R. If you write with your left hand, customize the keys for your right hand."
+      }
+    ],
+    "tutorialLink": "Connected? Try the writing tutorial",
+    "settingsTitle": "Set up your Apple Pencil controls",
+    "settingsIntro": "Open Settings → Apple Pencil in Inkquation.",
+    "settings": [
+      {
+        "title": "Reduce small wobbles in strokes",
+        "description": "Smooth strokes in Sidecar is on by default and applies to pen and highlighter strokes. Try it on and off to choose the feel you prefer. Changes apply to new strokes."
+      },
+      {
+        "title": "Switch tools with a double-tap",
+        "description": "On a compatible Pencil, assign actions such as switching to the eraser or opening the color palette. Enable double-tap in your Mac’s display settings, then double-tap the Pencil’s side while Inkquation’s Apple Pencil settings are open to unlock the controls."
+      },
+      {
+        "title": "Squeeze with Pencil Pro",
+        "description": "The default action opens a palette near the pen tip for tools, colors, and sizes. To unlock its settings, squeeze and release Pencil Pro while Inkquation’s Apple Pencil settings are open. Squeeze is available only with Apple Pencil Pro."
+      }
+    ],
+    "troubleshootingTitle": "If something gets in the way",
+    "questions": [
+      {
+        "title": "My iPad is missing from the display menu",
+        "description": "Check Apple’s Sidecar requirements first. For wireless use, enable Wi-Fi, Bluetooth, and Handoff on both devices and keep them nearby. Over USB, trust the Mac when your iPad asks."
+      },
+      {
+        "title": "I see the editor but cannot write",
+        "description": "Check that Apple Pencil is paired to the iPad. Open the note editor in Inkquation, select the pen, and try writing. If the iPad is showing its Home Screen, return to the Sidecar screen."
+      },
+      {
+        "title": "Slow handwriting looks jagged",
+        "description": "Slow lines and small waves remain a handwriting-quality issue over Sidecar. Compare new strokes with smoothing on and off. Trying USB can help isolate connection conditions, but a connection change or smoothing may not resolve the issue."
+      },
+      {
+        "title": "Resting my hand moves the page",
+        "description": "In Inkquation’s Apple Pencil settings, check the palm-rejection mode and the option to suppress scrolling and zooming while the pen is touching. Adjust the rejection delay if unintended input happens just after lifting the pen."
+      }
+    ],
+    "supportNote": "If the problem continues, include your Mac, iPad, and Pencil models; macOS, iPadOS, and Inkquation versions; USB or wireless connection; and the action that causes the problem when contacting us.",
+    "supportLink": "Ask about your setup"
+  },
+  "zh-Hans": {
+    "nav": "Mac＋iPad",
+    "heroLink": "如何搭配 Mac＋iPad 使用",
+    "title": ["用 Mac 和 iPad，", "开始书写。"],
+    "description": "在 Mac 上打开 Inkquation，通过随航将编辑窗口移到 iPad。一只手用 Apple Pencil 书写，另一只手操作 Mac 的键盘。",
+    "requirementsTitle": "需要准备什么",
+    "requirements": [
+      "运行 Inkquation 的 Mac，以及支持随航的 iPad。",
+      "与该 iPad 兼容且已配对的 Apple Pencil。",
+      "两台设备使用同一 Apple 账户登录，并启用双重认证。"
+    ],
+    "requirementsNote": "Inkquation 在 Mac 上运行。iPad 通过随航显示 Mac 上的编辑窗口。",
+    "appleLink": "Apple 官方支持的机型与连接条件",
+    "appleURL": "https://support.apple.com/zh-cn/102597",
+    "pencilLink": "确认 Apple Pencil 与 iPad 的兼容性",
+    "pencilURL": "https://support.apple.com/zh-cn/108937",
+    "steps": [
+      {
+        "title": "通过随航连接",
+        "description": "在 Mac 的“系统设置”→“显示器”中，从添加显示器的菜单选择 iPad。设为扩展显示器后，可在 Mac 上保留参考资料，同时在 iPad 上书写。可以使用 USB 或无线连接。"
+      },
+      {
+        "title": "将笔记编辑窗口移到 iPad",
+        "description": "在 Mac 上启动 Inkquation 并打开笔记，将编辑窗口拖到 iPad 显示屏。移动方向可在 Mac 显示器设置的“排列”中查看和调整。"
+      },
+      {
+        "title": "用 Pencil 书写，用键盘操作",
+        "description": "用 Apple Pencil 在 iPad 上显示的笔记中书写。在 Inkquation 的“设置”→“快捷键”中应用“左手操作”，即可用 Q、W、E、R 切换工具。左撇子也可以将快捷键改为方便右手按下的按键。"
+      }
+    ],
+    "tutorialLink": "连接完成后，试用书写教程",
+    "settingsTitle": "设置 Apple Pencil 操作",
+    "settingsIntro": "在 Inkquation 中打开“设置”→“Apple Pencil”。",
+    "settings": [
+      {
+        "title": "减少线条的细微抖动",
+        "description": "“使随航中的笔画更平滑”默认开启，适用于画笔和荧光笔。可以比较开启和关闭时的手感，选择适合自己的设置。更改从新绘制的线条开始生效。"
+      },
+      {
+        "title": "轻点两下切换工具",
+        "description": "支持此操作的 Pencil 可设置为切换橡皮擦、打开调色板等。在 Mac 显示器设置中启用轻点两下，然后保持 Inkquation 的 Apple Pencil 设置窗口打开，轻点 Pencil 侧面两下，即可解锁设置。"
+      },
+      {
+        "title": "使用 Pencil Pro 轻捏",
+        "description": "默认在笔尖附近显示可选择工具、颜色和粗细的面板。要解锁设置，请打开 Inkquation 的 Apple Pencil 设置，轻捏并松开 Pencil Pro。轻捏仅适用于 Apple Pencil Pro。"
+      }
+    ],
+    "troubleshootingTitle": "遇到问题时",
+    "questions": [
+      {
+        "title": "显示器菜单中找不到 iPad",
+        "description": "先检查 Apple 官方的随航条件。无线连接时，请开启两台设备的 Wi-Fi、蓝牙和接力，并将设备放在附近。USB 连接时，如 iPad 弹出提示，请选择信任 Mac。"
+      },
+      {
+        "title": "看到了编辑窗口，但无法书写",
+        "description": "确认 Apple Pencil 已与 iPad 配对。在 Inkquation 中打开笔记编辑窗口，选择画笔后尝试书写。如果 iPad 显示的是主屏幕，请返回随航画面。"
+      },
+      {
+        "title": "慢慢写时，线条有锯齿",
+        "description": "随航下缓慢的线条和小波形仍存在书写质量问题。可以比较平滑笔画设置开启和关闭时的新线条。也可以尝试 USB 连接以排查连接环境，但更改连接或开启平滑不一定能解决问题。"
+      },
+      {
+        "title": "手放上去时，页面会移动",
+        "description": "在 Inkquation 的 Apple Pencil 设置中，检查防误触模式，以及笔尖接触时抑制滚动和缩放的选项。如果抬笔后仍出现误操作，可以调整输入抑制的延迟时间。"
+      }
+    ],
+    "supportNote": "如果问题仍然存在，请在联系我们时附上 Mac、iPad、Pencil 的机型，macOS、iPadOS、Inkquation 版本，USB 或无线连接方式，以及出现问题的操作。",
+    "supportLink": "咨询使用环境"
+  },
+  "zh-Hant": {
+    "nav": "Mac＋iPad",
+    "heroLink": "如何搭配 Mac＋iPad 使用",
+    "title": ["用 Mac 和 iPad，", "開始書寫。"],
+    "description": "在 Mac 上開啟 Inkquation，透過「並行」將編輯視窗移到 iPad。一隻手用 Apple Pencil 書寫，另一隻手操作 Mac 的鍵盤。",
+    "requirementsTitle": "需要準備什麼",
+    "requirements": [
+      "執行 Inkquation 的 Mac，以及支援「並行」的 iPad。",
+      "與該 iPad 相容且已配對的 Apple Pencil。",
+      "兩部裝置使用同一 Apple 帳號登入，並啟用雙重認證。"
+    ],
+    "requirementsNote": "Inkquation 在 Mac 上執行。iPad 透過「並行」顯示 Mac 上的編輯視窗。",
+    "appleLink": "Apple 官方支援的機型與連線條件",
+    "appleURL": "https://support.apple.com/zh-tw/102597",
+    "pencilLink": "確認 Apple Pencil 與 iPad 的相容性",
+    "pencilURL": "https://support.apple.com/zh-tw/108937",
+    "steps": [
+      {
+        "title": "透過「並行」連線",
+        "description": "在 Mac 的「系統設定」→「顯示器」中，從加入顯示器的選單選擇 iPad。設為延伸顯示器後，可在 Mac 上保留參考資料，同時在 iPad 上書寫。可以使用 USB 或無線連線。"
+      },
+      {
+        "title": "將筆記編輯視窗移到 iPad",
+        "description": "在 Mac 上啟動 Inkquation 並開啟筆記，將編輯視窗拖到 iPad 顯示器。移動方向可在 Mac 顯示器設定的「排列」中查看及調整。"
+      },
+      {
+        "title": "用 Pencil 書寫，用鍵盤操作",
+        "description": "用 Apple Pencil 在 iPad 上顯示的筆記中書寫。在 Inkquation 的「設定」→「快速鍵」中套用「左手操作」，即可用 Q、W、E、R 切換工具。左撇子也可以將快速鍵改為方便右手按下的按鍵。"
+      }
+    ],
+    "tutorialLink": "連線完成後，試用書寫教學",
+    "settingsTitle": "設定 Apple Pencil 操作",
+    "settingsIntro": "在 Inkquation 中開啟「設定」→「Apple Pencil」。",
+    "settings": [
+      {
+        "title": "減少線條的細微抖動",
+        "description": "「讓「並行」中的筆畫更平滑」預設開啟，適用於畫筆和螢光筆。可以比較開啟和關閉時的手感，選擇適合自己的設定。更改從新繪製的線條開始生效。"
+      },
+      {
+        "title": "點兩下切換工具",
+        "description": "支援此操作的 Pencil 可設定為切換橡皮擦、開啟調色盤等。在 Mac 顯示器設定中啟用點兩下，然後保持 Inkquation 的 Apple Pencil 設定視窗開啟，點兩下 Pencil 側面，即可解鎖設定。"
+      },
+      {
+        "title": "使用 Pencil Pro 擠壓",
+        "description": "預設在筆尖附近顯示可選擇工具、顏色和粗細的面板。要解鎖設定，請開啟 Inkquation 的 Apple Pencil 設定，擠壓並放開 Pencil Pro。擠壓僅適用於 Apple Pencil Pro。"
+      }
+    ],
+    "troubleshootingTitle": "遇到問題時",
+    "questions": [
+      {
+        "title": "顯示器選單中找不到 iPad",
+        "description": "先檢查 Apple 官方的「並行」條件。無線連線時，請開啟兩部裝置的 Wi-Fi、藍牙和接力，並將裝置放在附近。USB 連線時，如 iPad 顯示提示，請選擇信任 Mac。"
+      },
+      {
+        "title": "看到了編輯視窗，但無法書寫",
+        "description": "確認 Apple Pencil 已與 iPad 配對。在 Inkquation 中開啟筆記編輯視窗，選擇畫筆後嘗試書寫。如果 iPad 顯示的是主畫面，請返回「並行」畫面。"
+      },
+      {
+        "title": "慢慢寫時，線條有鋸齒",
+        "description": "「並行」下緩慢的線條和小波形仍有書寫品質問題。可以比較平滑筆畫設定開啟和關閉時的新線條。也可以嘗試 USB 連線以排查連線環境，但更改連線或開啟平滑不一定能解決問題。"
+      },
+      {
+        "title": "手放上去時，頁面會移動",
+        "description": "在 Inkquation 的 Apple Pencil 設定中，檢查防誤觸模式，以及筆尖接觸時抑制捲動和縮放的選項。如果抬筆後仍出現誤操作，可以調整輸入抑制的延遲時間。"
+      }
+    ],
+    "supportNote": "如果問題仍然存在，請在聯絡我們時附上 Mac、iPad、Pencil 的機型，macOS、iPadOS、Inkquation 版本，USB 或無線連線方式，以及出現問題的操作。",
+    "supportLink": "詢問使用環境"
+  },
+  "zh-HK": {
+    "nav": "Mac＋iPad",
+    "heroLink": "如何配合 Mac＋iPad 使用",
+    "title": ["用 Mac 和 iPad，", "開始書寫。"],
+    "description": "在 Mac 上開啟 Inkquation，透過「並行」將編輯視窗移到 iPad。一隻手用 Apple Pencil 書寫，另一隻手操作 Mac 的鍵盤。",
+    "requirementsTitle": "需要準備甚麼",
+    "requirements": [
+      "執行 Inkquation 的 Mac，以及支援「並行」的 iPad。",
+      "與該 iPad 相容且已配對的 Apple Pencil。",
+      "兩部裝置使用同一 Apple 帳户登入，並啟用雙重認證。"
+    ],
+    "requirementsNote": "Inkquation 在 Mac 上執行。iPad 透過「並行」顯示 Mac 上的編輯視窗。",
+    "appleLink": "Apple 官方支援的型號及連線條件",
+    "appleURL": "https://support.apple.com/zh-hk/102597",
+    "pencilLink": "確認 Apple Pencil 與 iPad 的相容性",
+    "pencilURL": "https://support.apple.com/zh-hk/108937",
+    "steps": [
+      {
+        "title": "透過「並行」連線",
+        "description": "在 Mac 的「系統設定」→「顯示器」中，從加入顯示器的選單選擇 iPad。設為延伸顯示器後，可在 Mac 上保留參考資料，同時在 iPad 上書寫。可以使用 USB 或無線連線。"
+      },
+      {
+        "title": "將筆記編輯視窗移到 iPad",
+        "description": "在 Mac 上啟動 Inkquation 並開啟筆記，將編輯視窗拖到 iPad 顯示器。移動方向可在 Mac 顯示器設定的「排列」中查看及調整。"
+      },
+      {
+        "title": "用 Pencil 書寫，用鍵盤操作",
+        "description": "用 Apple Pencil 在 iPad 上顯示的筆記中書寫。在 Inkquation 的「設定」→「快速鍵」中套用「左手操作」，即可用 Q、W、E、R 切換工具。左撇子也可以將快速鍵改為方便右手按下的按鍵。"
+      }
+    ],
+    "tutorialLink": "連線完成後，試用書寫教學",
+    "settingsTitle": "設定 Apple Pencil 操作",
+    "settingsIntro": "在 Inkquation 中開啟「設定」→「Apple Pencil」。",
+    "settings": [
+      {
+        "title": "減少線條的細微抖動",
+        "description": "「讓「並行」中的筆畫更平滑」預設開啟，適用於畫筆和螢光筆。可以比較開啟和關閉時的手感，選擇適合自己的設定。更改從新繪製的線條開始生效。"
+      },
+      {
+        "title": "點兩下切換工具",
+        "description": "支援此操作的 Pencil 可設定為切換擦膠、開啟調色盤等。在 Mac 顯示器設定中啟用點兩下，然後保持 Inkquation 的 Apple Pencil 設定視窗開啟，點兩下 Pencil 側面，即可解鎖設定。"
+      },
+      {
+        "title": "使用 Pencil Pro 輕捏",
+        "description": "預設在筆尖附近顯示可選擇工具、顏色及粗細的面板。要解鎖設定，請開啟 Inkquation 的 Apple Pencil 設定，輕捏並放開 Pencil Pro。輕捏僅適用於 Apple Pencil Pro。"
+      }
+    ],
+    "troubleshootingTitle": "遇到問題時",
+    "questions": [
+      {
+        "title": "顯示器選單中找不到 iPad",
+        "description": "先檢查 Apple 官方的「並行」條件。無線連線時，請開啟兩部裝置的 Wi-Fi、藍牙及接力，並將裝置放在附近。USB 連線時，如 iPad 顯示提示，請選擇信任 Mac。"
+      },
+      {
+        "title": "看到了編輯視窗，但無法書寫",
+        "description": "確認 Apple Pencil 已與 iPad 配對。在 Inkquation 中開啟筆記編輯視窗，選擇畫筆後嘗試書寫。如果 iPad 顯示的是主畫面，請返回「並行」畫面。"
+      },
+      {
+        "title": "慢慢寫時，線條有鋸齒",
+        "description": "「並行」下緩慢的線條及小波形仍有書寫品質問題。可以比較平滑筆畫設定開啟和關閉時的新線條。也可以嘗試 USB 連線以排查連線環境，但更改連線或開啟平滑不一定能解決問題。"
+      },
+      {
+        "title": "手放上去時，頁面會移動",
+        "description": "在 Inkquation 的 Apple Pencil 設定中，檢查防誤觸模式，以及筆尖接觸時抑制捲動和縮放的選項。如果抬筆後仍出現誤操作，可以調整輸入抑制的延遲時間。"
+      }
+    ],
+    "supportNote": "如果問題仍然存在，請在聯絡我們時附上 Mac、iPad、Pencil 的型號，macOS、iPadOS、Inkquation 版本，USB 或無線連線方式，以及出現問題的操作。",
+    "supportLink": "查詢使用環境"
+  },
+  "ko": {
+    "nav": "Mac + iPad",
+    "heroLink": "Mac + iPad로 사용하는 방법",
+    "title": ["Mac과 iPad로", "필기를 시작하세요."],
+    "description": "Mac에서 Inkquation을 열고 Sidecar로 편집 창을 iPad에 옮기세요. Apple Pencil로 쓰면서 다른 손으로 Mac 키보드를 조작할 수 있습니다.",
+    "requirementsTitle": "준비할 것",
+    "requirements": [
+      "Inkquation을 실행하는 Mac과 Sidecar를 지원하는 iPad.",
+      "해당 iPad와 호환되며 페어링된 Apple Pencil.",
+      "두 기기에서 이중 인증을 사용하는 동일한 Apple 계정으로 로그인."
+    ],
+    "requirementsNote": "Inkquation은 Mac에서 실행됩니다. iPad에는 Sidecar를 통해 Mac의 편집 창이 표시됩니다.",
+    "appleLink": "Apple 공식 지원 기기 및 연결 조건",
+    "appleURL": "https://support.apple.com/ko-kr/102597",
+    "pencilLink": "Apple Pencil과 iPad 호환성 확인",
+    "pencilURL": "https://support.apple.com/ko-kr/108937",
+    "steps": [
+      {
+        "title": "Sidecar로 연결하기",
+        "description": "Mac의 시스템 설정 → 디스플레이에서 디스플레이 추가 메뉴를 열고 iPad를 선택하세요. 확장 디스플레이로 사용하면 Mac에 참고 자료를 띄워 둔 채 iPad에서 쓸 수 있습니다. USB와 무선 연결을 모두 사용할 수 있습니다."
+      },
+      {
+        "title": "노트 편집 창을 iPad로 옮기기",
+        "description": "Mac에서 Inkquation을 실행하고 노트를 연 다음, 편집 창을 iPad 디스플레이로 드래그하세요. 이동 방향은 Mac 디스플레이 설정의 정렬에서 확인하고 변경할 수 있습니다."
+      },
+      {
+        "title": "Pencil로 쓰고 키보드로 조작하기",
+        "description": "iPad에 표시된 노트에 Apple Pencil로 써 보세요. Inkquation의 설정 → 단축키에서 왼손 조작을 적용하면 Q, W, E, R로 도구를 바꿀 수 있습니다. 왼손으로 쓰는 경우 오른손으로 누르기 쉬운 키로 변경할 수 있습니다."
+      }
+    ],
+    "tutorialLink": "연결했다면 필기 튜토리얼을 시작하세요",
+    "settingsTitle": "Apple Pencil 조작 설정하기",
+    "settingsIntro": "Inkquation에서 설정 → Apple Pencil을 여세요.",
+    "settings": [
+      {
+        "title": "획의 미세한 떨림 줄이기",
+        "description": "Sidecar에서 획을 부드럽게 하기는 기본으로 켜져 있으며 펜과 형광펜에 적용됩니다. 켜고 끈 상태를 비교해 쓰기 편한 쪽을 선택하세요. 변경 사항은 새로 그리는 획부터 적용됩니다."
+      },
+      {
+        "title": "두 번 탭하여 도구 전환하기",
+        "description": "지원하는 Pencil에서는 지우개 전환이나 색상 팔레트 열기 등을 지정할 수 있습니다. Mac 디스플레이 설정에서 두 번 탭을 활성화한 후, Inkquation의 Apple Pencil 설정을 연 상태에서 Pencil 옆면을 두 번 탭하면 설정을 변경할 수 있습니다."
+      },
+      {
+        "title": "Pencil Pro 스퀴즈",
+        "description": "기본 동작은 펜 끝 근처에 도구, 색상, 두께를 선택하는 팔레트를 표시합니다. 설정을 변경하려면 Inkquation의 Apple Pencil 설정을 연 상태에서 Pencil Pro를 꾹 눌러 쥐었다 놓으세요. 이 동작은 Apple Pencil Pro에서만 사용할 수 있습니다."
+      }
+    ],
+    "troubleshootingTitle": "잘되지 않을 때",
+    "questions": [
+      {
+        "title": "디스플레이 메뉴에 iPad가 보이지 않아요",
+        "description": "먼저 Apple의 Sidecar 조건을 확인하세요. 무선으로 연결할 때는 두 기기의 Wi-Fi, Bluetooth, Handoff를 켜고 가까이 두세요. USB로 연결할 때 iPad에 확인 메시지가 나타나면 Mac을 신뢰하도록 설정하세요."
+      },
+      {
+        "title": "편집 창은 보이는데 쓸 수 없어요",
+        "description": "Apple Pencil이 iPad와 페어링되어 있는지 확인하세요. Inkquation에서 노트 편집 창을 열고 펜을 선택한 뒤 써 보세요. iPad 홈 화면이 보인다면 Sidecar 화면으로 돌아가세요."
+      },
+      {
+        "title": "천천히 쓰면 선이 울퉁불퉁해요",
+        "description": "Sidecar에서 천천히 그린 선과 작은 물결 모양의 필기 품질에는 아직 과제가 있습니다. 획 보정 설정을 켜고 끈 상태에서 새 획을 비교하세요. USB 연결을 시도하면 연결 환경을 비교할 수 있지만, 연결 변경이나 획 보정만으로 해결되지 않을 수 있습니다."
+      },
+      {
+        "title": "손을 올려놓으면 페이지가 움직여요",
+        "description": "Inkquation의 Apple Pencil 설정에서 팜 리젝션 모드와 펜 접촉 중 스크롤·확대 축소를 억제하는 옵션을 확인하세요. 펜을 뗀 직후 오입력이 발생하면 입력 억제 지연 시간도 조정할 수 있습니다."
+      }
+    ],
+    "supportNote": "문제가 계속되면 Mac, iPad, Pencil 모델, macOS·iPadOS·Inkquation 버전, USB 또는 무선 연결 여부, 문제가 발생하는 조작을 함께 알려 주세요.",
+    "supportLink": "사용 환경 문의하기"
+  }
+}
