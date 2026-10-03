@@ -88,18 +88,11 @@ export default function FAQPage({ locale }: { locale: Locale }) {
                     </code>
                   )}
                   {index === 2 && (
-                    <>
-                      <div className="faq-rename">
-                        <code>Inkquation.app</code>
-                        <span>→</span>
-                        <code>Inkquation.app.before-reset</code>
-                      </div>
-                      <div className="faq-rename">
-                        <code>Inkqation.app</code>
-                        <span>→</span>
-                        <code>Inkqation.app.before-reset</code>
-                      </div>
-                    </>
+                    <div className="faq-rename">
+                      <code>Inkquation.app</code>
+                      <span>→</span>
+                      <code>Inkquation.app.before-reset</code>
+                    </div>
                   )}
                   {index === 3 && (
                     <div className="faq-rename">

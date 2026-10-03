@@ -442,7 +442,6 @@ for (const { locale, route, file } of routes) {
       faqCopy.resetUndo,
       '~/Library/Containers/app.inkquation/Data/Library/Application Support/',
       'Inkquation.app.before-reset',
-      'Inkqation.app.before-reset',
       'InkquationStorage.before-reset',
     ]) {
       assert(
@@ -450,6 +449,10 @@ for (const { locale, route, file } of routes) {
         `${file}: missing translated FAQ content: ${entry}`,
       );
     }
+    assert(
+      !html.includes('Inkqation.app'),
+      `${file}: FAQ must document only the current library folder name`,
+    );
   } else {
     assert(
       !html.includes('id="faq-startup"'),
