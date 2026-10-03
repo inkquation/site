@@ -23,6 +23,7 @@ const routes = [
     route,
     `${route}privacy/`,
     `${route}sidecar/`,
+    `${route}faq/`,
   ]),
   ...guideLocales.map(guideRoute),
 ]

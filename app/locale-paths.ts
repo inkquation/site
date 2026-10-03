@@ -7,7 +7,7 @@ export const localeEntries = Object.entries(locales) as [
   { label: string; path: `/${string}` },
 ][];
 
-export type LocalizedPage = '' | 'privacy/' | 'ai/' | 'sidecar/';
+export type LocalizedPage = '' | 'privacy/' | 'ai/' | 'sidecar/' | 'faq/';
 
 export function localePath(locale: Locale, page: LocalizedPage = '') {
   return sitePath(`${locales[locale].path}${page}` as `/${string}`);

@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, English at `/en/`, Simplified Chinese at `/zh-Hans/`, Traditional Chinese (Taiwan) at `/zh-Hant/`, Traditional Chinese (Hong Kong) at `/zh-HK/`, and Korean at `/ko/`. Each language includes its own `privacy/`, `sidecar/`, and `ai/` pages. The header links switch languages; each URL can be opened or shared directly.
+Open the local URL printed by the server (normally http://localhost:3000). Japanese is available at `/`, English at `/en/`, Simplified Chinese at `/zh-Hans/`, Traditional Chinese (Taiwan) at `/zh-Hant/`, Traditional Chinese (Hong Kong) at `/zh-HK/`, and Korean at `/ko/`. Each language includes its own `privacy/`, `sidecar/`, `ai/`, and `faq/` pages. The header links switch languages; each URL can be opened or shared directly.
 
 ```sh
 npm run build
@@ -42,7 +42,7 @@ NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io
 NEXT_PUBLIC_BASE_PATH=/site NEXT_PUBLIC_SITE_ORIGIN=https://inkquation.github.io npm run verify:pages
 ```
 
-The export contains an `index.html` for every language home, privacy page, and AI guide, so all 18 URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places each localized HTML file at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
+The export contains an `index.html` for every language home, privacy page, Sidecar guide, AI guide, and FAQ page, so all 30 URLs work on a static file host. `site.config.ts` prefixes image URLs and language links. Vinext's `assetPrefix` prefixes JavaScript and CSS. The export keeps framework routes unprefixed because Vinext 1.0.0-beta.5 prerenders unprefixed URLs; `scripts/finalize-pages.mjs` removes the extra on-disk prefix from the bundles, places each localized HTML file at its directory URL, and adds `.nojekyll`. `scripts/verify-pages.mjs` rejects missing or skipped pages and broken local references before upload.
 
 The workflow follows [GitHub's custom Pages workflow guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). It uses the built-in workflow token and pins official Actions to commit SHAs. The synthetic notebook in `reference/` and server build files are outside the deployed directory.
 
@@ -51,7 +51,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/landing-page.tsx`: shared page structure, navigation, language switch, actual editor screenshot, and the PDF import guide at `#pdf-import`.
 - `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
 - `app/first-steps.json`: the prominent writing tutorial at `#tutorial` and compact color, paper, and bookmark preferences, localized in all six languages. The hero links directly to the tutorial overview; its menu path starts the actual tutorial in the Mac app.
-- `app/faq.json` and `app/faq-section.tsx`: the six-language startup FAQ at `#faq`, with checks for multiple app copies, build changes, and library locations; data-preserving support guidance; and the distinction between resetting a library and recovering notes.
+- `app/faq.json` and `app/faq-page.tsx`: the dedicated six-language FAQ pages at `/faq/`, `/en/faq/`, `/zh-Hans/faq/`, `/zh-Hant/faq/`, `/zh-HK/faq/`, and `/ko/faq/`. The home-page navigation links to the matching FAQ page. The FAQ covers multiple app copies, build changes, library locations, data-preserving support guidance, and the distinction between resetting a library and recovering notes.
 - `app/sidecar-guide.json` and `app/sidecar-guide.tsx`: the six-language Mac + iPad setup guide at `#sidecar`, linked from the header and hero. It covers equipment, connection, moving the editor, Pencil controls, troubleshooting, and the next step into the existing tutorial.
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
 - `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves privacy and AI guide routes. The AI guide is available in all six languages.
@@ -78,7 +78,7 @@ This is obfuscation, not cryptographic protection. A bot that evaluates the Java
 
 The startup FAQ was checked against `PersistenceStartupFailureView.swift`, `ApplicationStartupCoordinator.swift`, `LibraryStorageManager.swift`, `AppBackupController.swift`, and the app's localized labels on 2026-10-03. A development-build incident confirmed that a store from an incompatible model version can produce SwiftData error 1, while a second app process can prevent opening a locked library. The FAQ does not identify either cause from the error number alone or claim that every startup failure is recoverable by the user. It describes the existing-library picker conditionally because availability depends on the app build.
 
-The guidance preserves the complete original library, including SQLite companion files and hidden external-storage folders. It avoids file-deletion commands, distinguishes reset from recovery, and directs unresolved cases to support with version information and the error message. `verify:pages` checks translated FAQ text, navigation, native disclosure controls, and contact actions on all six home pages.
+The guidance preserves the complete original library, including SQLite companion files and hidden external-storage folders. It avoids file-deletion commands, distinguishes reset from recovery, and directs unresolved cases to support with version information and the error message. `verify:pages` checks translated FAQ text, language navigation and metadata, native disclosure controls, and contact actions on all six FAQ pages. It also requires home-page links to the matching FAQ and rejects FAQ answers on the home pages.
 
 ## Follow-up work
 
@@ -134,7 +134,7 @@ The policy translations were based on `../inkquation/inkquation/PrivacyPolicy.js
 
 The hero announcement and AI section describe the implemented local MCP connection: reading an open page or lasso selection as an image, inserting PNG images or native shapes and strokes, inspecting the result, and undoing an insertion. Setup requires enabling AI connections (off by default), copying the configuration to a compatible external AI app on the Mac, and keeping Inkquation open. The copy explains that a cloud-backed AI may send read content to its provider. Claims were checked against `../inkquation/mcp/README.md` and the bundled policy. The site does not run an AI client or configure the app itself.
 
-`verify:pages` checks all 24 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.
+`verify:pages` checks all 30 prerendered documents, language navigation, active language, canonical and alternate metadata, localized policy paragraphs, AI section links, local assets, and contact-address handling. Run the same custom-domain build and verification commands above before publishing.
 
 ## AI documentation
 

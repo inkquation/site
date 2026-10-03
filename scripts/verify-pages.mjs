@@ -136,6 +136,11 @@ const routes = Object.entries(locales).flatMap(([locale, { path: root }]) => [
     route: `${root}sidecar`,
     file: `${root.slice(1)}sidecar/index.html`,
   },
+  {
+    locale,
+    route: `${root}faq`,
+    file: `${root.slice(1)}faq/index.html`,
+  },
 ]);
 
 routes.push(
@@ -150,6 +155,7 @@ for (const { locale, route, file } of routes) {
   const isPrivacy = route.endsWith('/privacy');
   const isGuide = route.endsWith('/ai');
   const isSidecar = route.endsWith('/sidecar');
+  const isFAQ = route.endsWith('/faq');
   assert(
     manifest.routes.some(
       (entry) => entry.route === route && entry.status === 'rendered',
@@ -183,7 +189,7 @@ for (const { locale, route, file } of routes) {
         /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
       ),
     ].length,
-    isGuide || isSidecar ? 0 : isPrivacy ? 1 : 3,
+    isGuide || isSidecar ? 0 : isPrivacy || isFAQ ? 1 : 2,
     `${file}: contact actions must be buttons`,
   );
   const pageUrl = new URL(
@@ -241,7 +247,7 @@ for (const { locale, route, file } of routes) {
       .filter(([language]) => !isGuide || guideLocales.includes(language))
       .map(([language, { path: root }]) => [
         language,
-        `${basePath}${root}${isPrivacy ? 'privacy/' : isGuide ? 'ai/' : isSidecar ? 'sidecar/' : ''}`,
+        `${basePath}${root}${isPrivacy ? 'privacy/' : isGuide ? 'ai/' : isSidecar ? 'sidecar/' : isFAQ ? 'faq/' : ''}`,
       ]),
   );
   assert.deepEqual(
@@ -395,12 +401,15 @@ for (const { locale, route, file } of routes) {
         `${file}: missing home link target ${id}`,
       );
     }
-  } else {
+  } else if (isFAQ) {
     const faq = html.match(
-      /<section\b[^>]*id="faq"[^>]*>([\s\S]*?)<\/section>/,
+      /<main\b[^>]*class="faq-page container"[^>]*>([\s\S]*?)<\/main>/,
     )?.[1];
     assert(faq, `${file}: missing startup FAQ`);
-    assert(html.includes('href="#faq"'), `${file}: missing FAQ navigation`);
+    assert(
+      faq.includes(`href="${basePath}${locales[locale].path}"`),
+      `${file}: missing home link`,
+    );
     assert.equal(
       [...faq.matchAll(/<details\b/g)].length,
       2,
@@ -433,6 +442,15 @@ for (const { locale, route, file } of routes) {
         `${file}: missing translated FAQ content: ${entry}`,
       );
     }
+  } else {
+    assert(
+      !html.includes('id="faq-startup"'),
+      `${file}: FAQ answers must not appear on the home page`,
+    );
+    assert(
+      html.includes(`href="${basePath}${locales[locale].path}faq/"`),
+      `${file}: missing FAQ page navigation`,
+    );
     const sidecarPath = `${basePath}${locales[locale].path}sidecar/`;
     const overview = html.match(
       /<section\b[^>]*id="sidecar"[^>]*>([\s\S]*?)<\/section>/,

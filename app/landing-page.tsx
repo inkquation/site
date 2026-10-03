@@ -14,7 +14,6 @@ import ShortcutGuide from './shortcut-guide';
 import firstSteps from './first-steps.json';
 import ContactButton from './contact-button';
 import sidecarGuides from './sidecar-guide.json';
-import FAQSection from './faq-section';
 import questions from './faq.json';
 import { sitePath } from '../site.config';
 import {
@@ -107,7 +106,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                 },
                 { href: '#features', label: copy.nav.features },
                 { href: '#ai', label: copy.nav.ai },
-                { href: '#faq', label: questions[locale].nav },
+                {
+                  href: localePath(locale, 'faq/'),
+                  label: questions[locale].nav,
+                },
                 { href: '#get-app', label: copy.nav.distribution },
               ]}
             />
@@ -424,7 +426,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </div>
           </div>
         </section>
-        <FAQSection locale={locale} />
         <section
           className="get-app-section"
           id="get-app"
