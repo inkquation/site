@@ -51,6 +51,7 @@ The workflow follows [GitHub's custom Pages workflow guidance](https://docs.gith
 - `app/landing-page.tsx`: shared page structure, navigation, language switch, actual editor screenshot, and the PDF import guide at `#pdf-import`.
 - `app/copy.ts` and `app/translations.ts`: all six languages with a shared TypeScript shape.
 - `app/first-steps.json`: the prominent writing tutorial at `#tutorial` and compact color, paper, and bookmark preferences, localized in all six languages. The hero links directly to the tutorial overview; its menu path starts the actual tutorial in the Mac app.
+- `app/faq.json` and `app/faq-section.tsx`: the six-language startup FAQ at `#faq`, with checks for multiple app copies, build changes, and library locations; data-preserving support guidance; and the distinction between resetting a library and recovering notes.
 - `app/sidecar-guide.json` and `app/sidecar-guide.tsx`: the six-language Mac + iPad setup guide at `#sidecar`, linked from the header and hero. It covers equipment, connection, moving the editor, Pencil controls, troubleshooting, and the next step into the existing tutorial.
 - `app/locales.json` and `app/locale-paths.ts`: shared language names, routes, and metadata used by the pages and export checks.
 - `app/language-switch.tsx`: native language menu with full document links; it works without JavaScript and preserves privacy and AI guide routes. The AI guide is available in all six languages.
@@ -72,6 +73,12 @@ Both contact buttons decode the Base64 address only inside their click handler. 
 This is obfuscation, not cryptographic protection. A bot that evaluates the JavaScript can recover the address. The address may also remain available from previously published pages or repository history. See [MDN's Base64 decoding reference](https://developer.mozilla.org/en-US/docs/Web/API/Window/atob).
 
 `npm run test:contact` checks the mailbox and subject handling. `npm run verify:pages` also checks every public HTML, RSC, JavaScript, JSON, and CSS file for the literal address before deployment.
+
+## Startup FAQ
+
+The startup FAQ was checked against `PersistenceStartupFailureView.swift`, `ApplicationStartupCoordinator.swift`, `LibraryStorageManager.swift`, `AppBackupController.swift`, and the app's localized labels on 2026-10-03. A development-build incident confirmed that a store from an incompatible model version can produce SwiftData error 1, while a second app process can prevent opening a locked library. The FAQ does not identify either cause from the error number alone or claim that every startup failure is recoverable by the user. It describes the existing-library picker conditionally because availability depends on the app build.
+
+The guidance preserves the complete original library, including SQLite companion files and hidden external-storage folders. It avoids file-deletion commands, distinguishes reset from recovery, and directs unresolved cases to support with version information and the error message. `verify:pages` checks translated FAQ text, navigation, native disclosure controls, and contact actions on all six home pages.
 
 ## Follow-up work
 

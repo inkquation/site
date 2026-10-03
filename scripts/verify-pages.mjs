@@ -5,6 +5,7 @@ import locales from '../app/locales.json' with { type: 'json' };
 import policy from '../app/privacy-policy.json' with { type: 'json' };
 import guides from '../app/ai-guide.json' with { type: 'json' };
 import sidecarGuides from '../app/sidecar-guide.json' with { type: 'json' };
+import questions from '../app/faq.json' with { type: 'json' };
 import {
   guideLocales,
   guideRoute,
@@ -72,6 +73,19 @@ for (const locale of guideLocales) {
 }
 
 const output = path.resolve('dist/client');
+assert.deepEqual(
+  Object.keys(questions).sort(),
+  Object.keys(locales).sort(),
+  'Every site language must have the startup FAQ',
+);
+for (const [locale, copy] of Object.entries(questions)) {
+  assert.deepEqual(
+    Object.keys(copy).sort(),
+    Object.keys(questions.en).sort(),
+    `${locale}: FAQ fields`,
+  );
+  assert.equal(copy.steps.length, 3, `${locale}: startup checks`);
+}
 assert.deepEqual(
   Object.keys(sidecarGuides).sort(),
   Object.keys(locales).sort(),
@@ -169,7 +183,7 @@ for (const { locale, route, file } of routes) {
         /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
       ),
     ].length,
-    isGuide || isSidecar ? 0 : isPrivacy ? 1 : 2,
+    isGuide || isSidecar ? 0 : isPrivacy ? 1 : 3,
     `${file}: contact actions must be buttons`,
   );
   const pageUrl = new URL(
@@ -382,6 +396,43 @@ for (const { locale, route, file } of routes) {
       );
     }
   } else {
+    const faq = html.match(
+      /<section\b[^>]*id="faq"[^>]*>([\s\S]*?)<\/section>/,
+    )?.[1];
+    assert(faq, `${file}: missing startup FAQ`);
+    assert(html.includes('href="#faq"'), `${file}: missing FAQ navigation`);
+    assert.equal(
+      [...faq.matchAll(/<details\b/g)].length,
+      2,
+      `${file}: FAQ must work without JavaScript`,
+    );
+    const faqText = faq
+      .replace(/<[^>]*>/g, '')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&#x27;', "'");
+    const faqCopy = questions[locale];
+    for (const entry of [
+      faqCopy.title,
+      faqCopy.startupQuestion,
+      faqCopy.intro,
+      ...faqCopy.steps.flatMap(({ title, description }) => [
+        title,
+        description,
+      ]),
+      faqCopy.limitsTitle,
+      faqCopy.limits,
+      faqCopy.backup,
+      faqCopy.support,
+      faqCopy.contact,
+      faqCopy.resetQuestion,
+      faqCopy.reset,
+    ]) {
+      assert(
+        faqText.includes(entry),
+        `${file}: missing translated FAQ content: ${entry}`,
+      );
+    }
     const sidecarPath = `${basePath}${locales[locale].path}sidecar/`;
     const overview = html.match(
       /<section\b[^>]*id="sidecar"[^>]*>([\s\S]*?)<\/section>/,

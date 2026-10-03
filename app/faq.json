@@ -1,0 +1,170 @@
+{
+  "ja": {
+    "nav": "FAQ",
+    "title": "よくある質問",
+    "startupQuestion": "「ノートデータを開けませんでした」やSwiftDataのエラーが出たら？",
+    "intro": "「SwiftData.SwiftDataErrorエラー1」などの表示は、ノートの保存データを開けなかったことを示します。エラー番号だけでは原因を特定できません。ライブラリを初期化したり、ファイルを削除したりせず、次の順に確認してください。",
+    "steps": [
+      {
+        "title": "Inkquationをすべて終了する",
+        "description": "ウインドウを閉じるだけでなく、アプリのメニューから終了します。旧版やテスト版も起動している場合はすべて終了し、使う版を1つだけ開き直してください。同じライブラリを複数のInkquationで同時に開くことはできません。"
+      },
+      {
+        "title": "使っている版と、エラーが出始めた時期を確認する",
+        "description": "アプリのバージョンとビルド番号を確認します。更新やテスト版への切り替え直後に起きた場合は、その経緯を控えてください。データ形式が異なる可能性があるため、別の古い版を順に試すのは避けてください。"
+      },
+      {
+        "title": "ライブラリの保存先を確認する",
+        "description": "保存先が外付けドライブなら、ドライブを接続して開き直します。フォルダを移動・改名した場合は、画面に「既存のライブラリを選択…」があれば、元のライブラリのフォルダを選び直せます。この操作は保存先を指定するもので、データ形式の不一致を修復するものではありません。"
+      }
+    ],
+    "limitsTitle": "自分で解決できない場合",
+    "limits": "データ形式の不一致や破損は、再起動や保存先の選び直しだけでは直せない場合があります。データを読み込める対応版や、個別の復旧対応が必要です。解決しなければ、元のライブラリをそのまま保持してお問い合わせください。",
+    "backup": "保存先が分かる場合は、Inkquationをすべて終了したまま、ライブラリのフォルダ全体を別の場所にコピーして保管します。note.sqliteだけでなく、隠しファイルや付属フォルダも含めてください。起動できない間はアプリ内のバックアップを書き出せません。保存先が分からない場合は、ファイルを操作せずにお問い合わせください。",
+    "support": "お問い合わせには、エラー全文または画面のスクリーンショット、アプリのバージョンとビルド番号、macOSのバージョン、直前の更新や保存先の変更を添えてください。ノートの内容やライブラリ本体を、最初から送る必要はありません。",
+    "contact": "起動エラーについて問い合わせる",
+    "subject": "Inkquationの起動エラーについて",
+    "resetQuestion": "ライブラリを初期化すれば直りますか？",
+    "reset": "初期化はノートを復旧する操作ではなく、既存のノート・フォルダ・タグを使わず、空のライブラリから始める操作です。ノートを残したい場合には行わないでください。初期化が必要な場合も、元のライブラリのフォルダ全体を退避してから、使うアプリの版に合わせて進める必要があります。ファイルを削除する前にお問い合わせください。"
+  },
+  "en": {
+    "nav": "FAQ",
+    "title": "Frequently asked questions",
+    "startupQuestion": "What if I see “Couldn’t Open Note Data” or a SwiftData error?",
+    "intro": "Messages such as “SwiftData.SwiftDataError error 1” mean the app could not open its saved note data. The error number alone does not identify the cause. Follow these checks before resetting the library or deleting any files.",
+    "steps": [
+      {
+        "title": "Quit every copy of Inkquation",
+        "description": "Quit from the app menu; closing a window is not enough. If older or test builds are also running, quit them all, then reopen only the build you intend to use. Multiple Inkquation processes cannot open the same library at once."
+      },
+      {
+        "title": "Check the build and when the error started",
+        "description": "Note the app’s version and build number. If the error began after an update or a switch to a test build, record that change. Avoid trying a succession of older builds: their data formats may differ."
+      },
+      {
+        "title": "Check the library location",
+        "description": "If the library is on an external drive, reconnect it and reopen the app. If you moved or renamed its folder and the screen offers “Locate Existing Library…”, select the original library folder again. This reconnects the location; it does not repair an incompatible data format."
+      }
+    ],
+    "limitsTitle": "When these checks are not enough",
+    "limits": "An incompatible data format or damaged data may require a build that can read the library or help with recovery. Restarting or selecting the folder again may not resolve it. If the error persists, keep the original library intact and contact support.",
+    "backup": "If you know the location, keep every copy of Inkquation closed and copy the entire library folder somewhere else for safekeeping. Include hidden files and companion folders, not just note.sqlite. In-app backup export is unavailable while the library cannot open. If you do not know the location, leave the files alone and contact support.",
+    "support": "Include the full error text or a screenshot, the app version and build number, your macOS version, and any recent update or library-location change. You do not need to send your notes or the library itself with your initial inquiry.",
+    "contact": "Contact support about a startup error",
+    "subject": "Inkquation startup error",
+    "resetQuestion": "Will resetting the library fix it?",
+    "reset": "A reset starts an empty library without your existing notes, folders, and tags; it does not recover them. Do not reset if you want to keep using your notes. Even when a reset is appropriate, preserve the entire original library folder first and use a procedure matched to your app build. Contact support before deleting files."
+  },
+  "zh-Hans": {
+    "nav": "常见问题",
+    "title": "常见问题",
+    "startupQuestion": "出现“无法打开笔记数据”或SwiftData错误时该怎么办？",
+    "intro": "“SwiftData.SwiftDataError错误1”等提示表示应用无法打开已保存的笔记数据。仅凭错误编号无法确定原因。请先按以下顺序检查，不要初始化资料库或删除文件。",
+    "steps": [
+      {
+        "title": "退出所有Inkquation应用",
+        "description": "请从应用菜单退出，仅关闭窗口是不够的。如果同时运行了旧版或测试版，请全部退出，然后只重新打开准备使用的一个版本。多个Inkquation进程无法同时打开同一资料库。"
+      },
+      {
+        "title": "确认应用版本及错误出现的时间",
+        "description": "记录应用版本和构建编号。如果错误在更新或切换到测试版后出现，请记录这一经过。不同版本的数据格式可能不同，请避免依次尝试多个旧版。"
+      },
+      {
+        "title": "确认资料库的保存位置",
+        "description": "如果资料库保存在外接硬盘上，请连接硬盘后重新打开应用。如果移动或重命名过文件夹，且画面上有“查找现有资料库…”，可以重新选择原资料库文件夹。此操作用于重新指定保存位置，不能修复数据格式不兼容的问题。"
+      }
+    ],
+    "limitsTitle": "无法自行解决的情况",
+    "limits": "数据格式不兼容或数据损坏可能需要能够读取该资料库的版本，或专门的恢复处理。重启或重新选择保存位置不一定能解决。如果错误仍然存在，请保持原资料库完整并联系支持。",
+    "backup": "如果知道保存位置，请在所有Inkquation应用均已退出的状态下，将整个资料库文件夹复制到其他位置保存。除了note.sqlite，还应包含隐藏文件和附属文件夹。资料库无法打开时，不能在应用内导出备份。如果不清楚保存位置，请不要操作文件，直接联系支持。",
+    "support": "联系时请附上完整错误文本或截图、应用版本和构建编号、macOS版本，以及近期的更新或保存位置变更。首次联系时无需发送笔记内容或资料库本体。",
+    "contact": "咨询启动错误",
+    "subject": "Inkquation启动错误",
+    "resetQuestion": "初始化资料库能解决吗？",
+    "reset": "初始化是从空资料库重新开始，不再使用现有笔记、文件夹和标签，并不是恢复笔记的操作。如果想保留并继续使用笔记，请不要初始化。即使确实需要初始化，也应先保留整个原资料库文件夹，再按照所用应用版本进行处理。删除文件前请联系支持。"
+  },
+  "zh-Hant": {
+    "nav": "常見問題",
+    "title": "常見問題",
+    "startupQuestion": "出現「無法開啟筆記資料」或SwiftData錯誤時該怎麼辦？",
+    "intro": "「SwiftData.SwiftDataError錯誤1」等提示表示App無法開啟已儲存的筆記資料。僅憑錯誤編號無法判斷原因。請先依照以下順序檢查，不要初始化資料庫或刪除檔案。",
+    "steps": [
+      {
+        "title": "結束所有Inkquation App",
+        "description": "請從App選單結束App，只關閉視窗並不足夠。如果同時執行舊版或測試版，請全部結束，再只重新開啟準備使用的一個版本。多個Inkquation程序無法同時開啟同一資料庫。"
+      },
+      {
+        "title": "確認App版本及錯誤開始出現的時間",
+        "description": "記錄App版本與組建編號。如果錯誤在更新或切換至測試版後出現，請記下這個經過。不同版本的資料格式可能不同，請避免依序嘗試多個舊版。"
+      },
+      {
+        "title": "確認資料庫的儲存位置",
+        "description": "如果資料庫儲存在外接磁碟上，請連接磁碟後重新開啟App。如果移動或重新命名過資料夾，且畫面上有「尋找現有資料庫…」，可以重新選擇原資料庫資料夾。此操作用於重新指定儲存位置，不能修復資料格式不相容的問題。"
+      }
+    ],
+    "limitsTitle": "無法自行解決的情況",
+    "limits": "資料格式不相容或資料損毀可能需要能讀取該資料庫的版本，或個別的復原處理。重新啟動或重新選擇儲存位置不一定能解決。如果錯誤持續，請保持原資料庫完整並聯絡支援。",
+    "backup": "如果知道儲存位置，請在所有Inkquation App均已結束的狀態下，將整個資料庫資料夾拷貝至其他位置保管。除了note.sqlite，還應包含隱藏檔案和附屬資料夾。資料庫無法開啟時，不能在App內匯出備份。如果不清楚儲存位置，請不要操作檔案，直接聯絡支援。",
+    "support": "聯絡時請附上完整錯誤文字或螢幕截圖、App版本與組建編號、macOS版本，以及近期的更新或儲存位置變更。首次聯絡時不必傳送筆記內容或資料庫本體。",
+    "contact": "詢問啟動錯誤",
+    "subject": "Inkquation啟動錯誤",
+    "resetQuestion": "初始化資料庫能解決嗎？",
+    "reset": "初始化是從空白資料庫重新開始，不再使用現有筆記、資料夾和標籤，並不是復原筆記的操作。如果想保留並繼續使用筆記，請不要初始化。即使確實需要初始化，也應先保留整個原資料庫資料夾，再依所用App版本進行處理。刪除檔案前請聯絡支援。"
+  },
+  "zh-HK": {
+    "nav": "常見問題",
+    "title": "常見問題",
+    "startupQuestion": "出現「無法開啟筆記資料」或SwiftData錯誤時應該怎樣處理？",
+    "intro": "「SwiftData.SwiftDataError錯誤1」等提示表示App無法開啟已儲存的筆記資料。單憑錯誤編號無法確定原因。請先按以下順序檢查，不要初始化資料庫或刪除檔案。",
+    "steps": [
+      {
+        "title": "結束所有Inkquation App",
+        "description": "請從App選單結束App，只關閉視窗並不足夠。如果同時執行舊版或測試版，請全部結束，再只重新開啟準備使用的一個版本。多個Inkquation程序無法同時開啟同一資料庫。"
+      },
+      {
+        "title": "確認App版本及錯誤開始出現的時間",
+        "description": "記錄App版本及建置編號。如果錯誤在更新或轉用測試版後出現，請記下這個經過。不同版本的資料格式可能不同，請避免逐一嘗試多個舊版。"
+      },
+      {
+        "title": "確認資料庫的儲存位置",
+        "description": "如果資料庫儲存在外置磁碟上，請連接磁碟後重新開啟App。如果移動或重新命名過資料夾，而畫面上有「尋找現有資料庫…」，可以重新選擇原有資料庫資料夾。此操作用於重新指定儲存位置，不能修復資料格式不相容的問題。"
+      }
+    ],
+    "limitsTitle": "無法自行解決的情況",
+    "limits": "資料格式不相容或資料損壞可能需要能讀取該資料庫的版本，或個別的復原處理。重新啟動或重新選擇儲存位置不一定能解決。如果錯誤持續，請保持原有資料庫完整並聯絡支援。",
+    "backup": "如果知道儲存位置，請在所有Inkquation App均已結束的狀態下，將整個資料庫資料夾複製到其他位置保管。除了note.sqlite，還應包括隱藏檔案和附屬資料夾。資料庫無法開啟時，不能在App內匯出備份。如果不清楚儲存位置，請不要操作檔案，直接聯絡支援。",
+    "support": "聯絡時請附上完整錯誤文字或螢幕截圖、App版本及建置編號、macOS版本，以及近期的更新或儲存位置變更。首次聯絡時不必傳送筆記內容或資料庫本身。",
+    "contact": "查詢啟動錯誤",
+    "subject": "Inkquation啟動錯誤",
+    "resetQuestion": "初始化資料庫能解決嗎？",
+    "reset": "初始化是從空白資料庫重新開始，不再使用現有筆記、資料夾和標籤，並不是復原筆記的操作。如果想保留並繼續使用筆記，請不要初始化。即使確實需要初始化，也應先保留整個原有資料庫資料夾，再按所用App版本進行處理。刪除檔案前請聯絡支援。"
+  },
+  "ko": {
+    "nav": "FAQ",
+    "title": "자주 묻는 질문",
+    "startupQuestion": "‘노트 데이터를 열 수 없습니다’ 또는 SwiftData 오류가 나타나면 어떻게 하나요?",
+    "intro": "‘SwiftData.SwiftDataError 오류 1’ 같은 메시지는 저장된 노트 데이터를 열지 못했다는 뜻입니다. 오류 번호만으로는 원인을 알 수 없습니다. 라이브러리를 초기화하거나 파일을 삭제하지 말고 다음 순서로 확인하세요.",
+    "steps": [
+      {
+        "title": "실행 중인 Inkquation을 모두 종료하세요",
+        "description": "창만 닫지 말고 앱 메뉴에서 종료하세요. 이전 버전이나 테스트 버전도 실행 중이라면 모두 종료한 뒤 사용할 버전 하나만 다시 여세요. 여러 Inkquation 프로세스가 같은 라이브러리를 동시에 열 수는 없습니다."
+      },
+      {
+        "title": "사용 중인 버전과 오류가 시작된 시점을 확인하세요",
+        "description": "앱 버전과 빌드 번호를 기록하세요. 업데이트하거나 테스트 버전으로 바꾼 직후 오류가 시작됐다면 그 과정을 적어 두세요. 데이터 형식이 다를 수 있으므로 여러 이전 버전을 차례로 시도하지 마세요."
+      },
+      {
+        "title": "라이브러리 저장 위치를 확인하세요",
+        "description": "외장 드라이브에 저장했다면 드라이브를 연결하고 앱을 다시 여세요. 폴더를 이동하거나 이름을 바꿨고 화면에 ‘기존 라이브러리 찾기…’가 있다면 원래 라이브러리 폴더를 다시 선택할 수 있습니다. 이 기능은 저장 위치를 다시 지정할 뿐, 호환되지 않는 데이터 형식을 복구하지는 않습니다."
+      }
+    ],
+    "limitsTitle": "직접 해결할 수 없는 경우",
+    "limits": "호환되지 않는 데이터 형식이나 손상된 데이터는 라이브러리를 읽을 수 있는 버전 또는 개별 복구 지원이 필요할 수 있습니다. 다시 시작하거나 저장 위치를 선택하는 것만으로는 해결되지 않을 수 있습니다. 오류가 계속되면 원래 라이브러리를 그대로 보존하고 지원팀에 문의하세요.",
+    "backup": "저장 위치를 알고 있다면 모든 Inkquation을 종료한 상태에서 라이브러리 폴더 전체를 다른 위치에 복사해 보관하세요. note.sqlite뿐 아니라 숨김 파일과 부속 폴더도 포함해야 합니다. 라이브러리를 열 수 없는 동안에는 앱 안에서 백업을 내보낼 수 없습니다. 저장 위치를 모른다면 파일을 조작하지 말고 지원팀에 문의하세요.",
+    "support": "문의할 때 오류 전문이나 스크린샷, 앱 버전과 빌드 번호, macOS 버전, 최근 업데이트 또는 저장 위치 변경 내용을 첨부하세요. 처음 문의할 때 노트 내용이나 라이브러리 자체를 보낼 필요는 없습니다.",
+    "contact": "시작 오류 문의하기",
+    "subject": "Inkquation 시작 오류",
+    "resetQuestion": "라이브러리를 초기화하면 해결되나요?",
+    "reset": "초기화는 기존 노트·폴더·태그를 사용하지 않고 빈 라이브러리로 시작하는 작업이며, 노트를 복구하는 기능이 아닙니다. 노트를 계속 사용하려면 초기화하지 마세요. 초기화가 필요한 경우에도 먼저 원래 라이브러리 폴더 전체를 보존한 뒤 사용 중인 앱 버전에 맞게 진행해야 합니다. 파일을 삭제하기 전에 지원팀에 문의하세요."
+  }
+}
