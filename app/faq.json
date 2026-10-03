@@ -34,7 +34,7 @@
       },
       {
         "title": "元のライブラリの名前を変える",
-        "description": "保存データのフォルダ名は、実装上の誤字でInkqation.app（uが抜けています）になっています。既存のノートを開くため、この名前を引き続き使っています。このフォルダを選び、Returnキーで次の名前に変更します。フォルダの中身は操作しません。見つからない場合はこの手順を飛ばします。同名の退避先がある場合は、末尾に「-2」などを付けて別名にしてください。"
+        "description": "Inkquation.appまたはInkqation.appというフォルダを探します。旧版では、uが抜けたInkqation.appという名前になっています。見つかったフォルダを選び、Returnキーで下の対応する名前に変更してください。両方あれば、それぞれ変更します。フォルダの中身は操作しません。どちらもなければ、この手順を飛ばします。同名の退避先がある場合は、末尾に「-2」などを付けて別名にしてください。"
       },
       {
         "title": "保存先の設定も名前を変える",
@@ -82,7 +82,7 @@
       },
       {
         "title": "Rename the original library",
-        "description": "The implementation uses Inkqation.app for the data folder, a misspelling of Inkquation.app with the “u” missing. It retains that name so existing libraries remain accessible. Select this folder, press Return, and rename it as shown below. Leave its contents intact. Skip this step if the folder is absent. If the backup name already exists, add “-2” or another suffix to use a different name."
+        "description": "Look for a folder named Inkquation.app or Inkqation.app. Older builds use the misspelled name Inkqation.app, with the “u” missing. Select each folder you find, press Return, and rename it using the matching example below. If both exist, rename both. Leave their contents intact. Skip this step if neither exists. If a backup name already exists, add “-2” or another suffix to use a different name."
       },
       {
         "title": "Rename the location settings too",
@@ -130,7 +130,7 @@
       },
       {
         "title": "重命名原资料库",
-        "description": "数据文件夹名称Inkqation.app是实现中的拼写错误，少了字母u。为确保现有资料库仍可打开，应用继续使用此名称。选中此文件夹，按Return键，按下方所示重命名。不要改动文件夹内的内容。如果没有此文件夹，请跳过此步骤。如果备份名称已存在，请在末尾添加“-2”等后缀，使用其他名称。"
+        "description": "查找名为Inkquation.app或Inkqation.app的文件夹。旧版使用少了字母u的错误名称Inkqation.app。选中找到的文件夹，按Return键，按照下方对应名称重命名。如果两者都存在，请分别重命名。不要改动文件夹内的内容。如果两者都不存在，请跳过此步骤。如果备份名称已存在，请在末尾添加“-2”等后缀，使用其他名称。"
       },
       {
         "title": "同时重命名保存位置设置",
@@ -178,7 +178,7 @@
       },
       {
         "title": "重新命名原資料庫",
-        "description": "儲存筆記的資料夾名稱Inkqation.app是程式實作中的拼字錯誤，少了字母u。為確保現有資料庫仍可開啟，App繼續使用此名稱。選取此資料夾，按Return鍵，依下方所示重新命名。不要改動資料夾內的內容。如果沒有此資料夾，請略過此步驟。如果備份名稱已存在，請在結尾加上「-2」等後綴，使用其他名稱。"
+        "description": "尋找名為Inkquation.app或Inkqation.app的資料夾。舊版使用少了字母u的錯誤名稱Inkqation.app。選取找到的資料夾，按Return鍵，依下方對應名稱重新命名。如果兩者都存在，請分別重新命名。不要改動資料夾內的內容。如果兩者都不存在，請略過此步驟。如果備份名稱已存在，請在結尾加上「-2」等後綴，使用其他名稱。"
       },
       {
         "title": "同時重新命名儲存位置設定",
@@ -226,7 +226,7 @@
       },
       {
         "title": "重新命名原有資料庫",
-        "description": "儲存筆記的資料夾名稱Inkqation.app是程式實作中的拼寫錯誤，少了字母u。為確保現有資料庫仍可開啟，App繼續使用此名稱。選取此資料夾，按Return鍵，按下方所示重新命名。不要改動資料夾內的內容。如果沒有此資料夾，請略過此步驟。如果備份名稱已存在，請在結尾加上「-2」等後綴，使用其他名稱。"
+        "description": "尋找名為Inkquation.app或Inkqation.app的資料夾。舊版使用少了字母u的錯誤名稱Inkqation.app。選取找到的資料夾，按Return鍵，按下方對應名稱重新命名。如果兩者都存在，請分別重新命名。不要改動資料夾內的內容。如果兩者都不存在，請略過此步驟。如果備份名稱已存在，請在結尾加上「-2」等後綴，使用其他名稱。"
       },
       {
         "title": "同時重新命名儲存位置設定",
@@ -274,7 +274,7 @@
       },
       {
         "title": "원래 라이브러리의 이름을 변경하세요",
-        "description": "데이터 폴더 이름 Inkqation.app은 구현에서 u가 빠진 오타입니다. 기존 라이브러리를 계속 열 수 있도록 이 이름을 유지하고 있습니다. 이 폴더를 선택하고 Return 키를 눌러 아래 이름으로 변경하세요. 폴더 안의 내용은 변경하지 마세요. 폴더가 없으면 이 단계를 건너뛰세요. 보관할 이름이 이미 있으면 끝에 “-2” 등을 붙여 다른 이름을 사용하세요."
+        "description": "Inkquation.app 또는 Inkqation.app이라는 폴더를 찾으세요. 이전 버전은 u가 빠진 오타인 Inkqation.app을 사용합니다. 찾은 폴더를 선택하고 Return 키를 눌러 아래의 해당 이름으로 변경하세요. 둘 다 있으면 각각 이름을 변경하세요. 폴더 안의 내용은 변경하지 마세요. 둘 다 없으면 이 단계를 건너뛰세요. 보관할 이름이 이미 있으면 끝에 “-2” 등을 붙여 다른 이름을 사용하세요."
       },
       {
         "title": "저장 위치 설정의 이름도 변경하세요",

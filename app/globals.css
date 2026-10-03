@@ -726,6 +726,9 @@ h1 {
   background: var(--muted);
   border-radius: 4px;
 }
+.faq-rename + .faq-rename {
+  margin-top: 8px;
+}
 .hero-description {
   font-size: 16px;
 }

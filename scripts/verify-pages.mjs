@@ -441,6 +441,7 @@ for (const { locale, route, file } of routes) {
       ]),
       faqCopy.resetUndo,
       '~/Library/Containers/app.inkquation/Data/Library/Application Support/',
+      'Inkquation.app.before-reset',
       'Inkqation.app.before-reset',
       'InkquationStorage.before-reset',
     ]) {
