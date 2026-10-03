@@ -4,7 +4,6 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { siteOrigin } from '../site.config';
 import type { Locale } from './copy';
 import { siteCopy } from './copy';
-import ContactButton from './contact-button';
 import BrandWordmark from './brand-wordmark';
 import LanguageSwitch from './language-switch';
 import { languageAlternates, localePath } from './locale-paths';
@@ -26,7 +25,6 @@ export function faqMetadata(locale: Locale): Metadata {
 export default function FAQPage({ locale }: { locale: Locale }) {
   const copy = questions[locale];
   const nav = siteCopy[locale].nav;
-  const contact = siteCopy[locale].contact;
   return (
     <>
       <a className="skip-link" href="#main">
@@ -69,16 +67,6 @@ export default function FAQPage({ locale }: { locale: Locale }) {
               <p>{copy.limits}</p>
               <p>{copy.backup}</p>
             </div>
-            <p>{copy.support}</p>
-            <div className="faq-contact">
-              <ContactButton
-                variant="primary"
-                label={copy.contact}
-                subject={copy.subject}
-                hint={contact.hint}
-                noScriptMessage={contact.noScriptMessage}
-              />
-            </div>
           </div>
         </details>
         <details id="faq-reset">
@@ -88,6 +76,35 @@ export default function FAQPage({ locale }: { locale: Locale }) {
           </summary>
           <div className="faq-answer">
             <p>{copy.reset}</p>
+            <ol className="faq-steps">
+              {copy.resetSteps.map((step, index) => (
+                <li key={step.title}>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                  {index === 1 && (
+                    <code className="faq-file-path">
+                      ~/Library/Containers/app.inkquation/Data/Library/Application
+                      Support/
+                    </code>
+                  )}
+                  {index === 2 && (
+                    <div className="faq-rename">
+                      <code>Inkqation.app</code>
+                      <span>→</span>
+                      <code>Inkqation.app.before-reset</code>
+                    </div>
+                  )}
+                  {index === 3 && (
+                    <div className="faq-rename">
+                      <code>InkquationStorage</code>
+                      <span>→</span>
+                      <code>InkquationStorage.before-reset</code>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ol>
+            <p>{copy.resetUndo}</p>
           </div>
         </details>
       </main>

@@ -85,6 +85,7 @@ for (const [locale, copy] of Object.entries(questions)) {
     `${locale}: FAQ fields`,
   );
   assert.equal(copy.steps.length, 3, `${locale}: startup checks`);
+  assert.equal(copy.resetSteps.length, 5, `${locale}: library reset steps`);
 }
 assert.deepEqual(
   Object.keys(sidecarGuides).sort(),
@@ -189,7 +190,7 @@ for (const { locale, route, file } of routes) {
         /<button\b[^>]*class="[^"]*\bemail-contact\b[^"]*"[^>]*>/g,
       ),
     ].length,
-    isGuide || isSidecar ? 0 : isPrivacy || isFAQ ? 1 : 2,
+    isGuide || isSidecar || isFAQ ? 0 : isPrivacy ? 1 : 2,
     `${file}: contact actions must be buttons`,
   );
   const pageUrl = new URL(
@@ -432,10 +433,16 @@ for (const { locale, route, file } of routes) {
       faqCopy.limitsTitle,
       faqCopy.limits,
       faqCopy.backup,
-      faqCopy.support,
-      faqCopy.contact,
       faqCopy.resetQuestion,
       faqCopy.reset,
+      ...faqCopy.resetSteps.flatMap(({ title, description }) => [
+        title,
+        description,
+      ]),
+      faqCopy.resetUndo,
+      '~/Library/Containers/app.inkquation/Data/Library/Application Support/',
+      'Inkqation.app.before-reset',
+      'InkquationStorage.before-reset',
     ]) {
       assert(
         faqText.includes(entry),

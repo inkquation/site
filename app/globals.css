@@ -705,15 +705,26 @@ h1 {
 .faq-recovery p:last-child {
   margin-bottom: 0;
 }
-.faq-contact .button-light {
-  max-width: 100%;
-  height: auto;
-  white-space: normal;
-  background: var(--primary);
-  color: var(--primary-foreground);
+.faq-file-path {
+  display: block;
+  padding: 14px 16px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  user-select: all;
 }
-.faq-contact .contact-address {
-  overflow-wrap: anywhere;
+.faq-rename {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+.faq-rename code {
+  padding: 4px 8px;
+  background: var(--muted);
+  border-radius: 4px;
 }
 .hero-description {
   font-size: 16px;

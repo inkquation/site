@@ -18,14 +18,34 @@
         "description": "保存先が外付けドライブなら、ドライブを接続して開き直します。フォルダを移動・改名した場合は、画面に「既存のライブラリを選択…」があれば、元のライブラリのフォルダを選び直せます。この操作は保存先を指定するもので、データ形式の不一致を修復するものではありません。"
       }
     ],
-    "limitsTitle": "自分で解決できない場合",
-    "limits": "データ形式の不一致や破損は、再起動や保存先の選び直しだけでは直せない場合があります。データを読み込める対応版や、個別の復旧対応が必要です。解決しなければ、元のライブラリをそのまま保持してお問い合わせください。",
-    "backup": "保存先が分かる場合は、Inkquationをすべて終了したまま、ライブラリのフォルダ全体を別の場所にコピーして保管します。note.sqliteだけでなく、隠しファイルや付属フォルダも含めてください。起動できない間はアプリ内のバックアップを書き出せません。保存先が分からない場合は、ファイルを操作せずにお問い合わせください。",
-    "support": "お問い合わせには、エラー全文または画面のスクリーンショット、アプリのバージョンとビルド番号、macOSのバージョン、直前の更新や保存先の変更を添えてください。ノートの内容やライブラリ本体を、最初から送る必要はありません。",
-    "contact": "起動エラーについて問い合わせる",
-    "subject": "Inkquationの起動エラーについて",
-    "resetQuestion": "ライブラリを初期化すれば直りますか？",
-    "reset": "初期化はノートを復旧する操作ではなく、既存のノート・フォルダ・タグを使わず、空のライブラリから始める操作です。ノートを残したい場合には行わないでください。初期化が必要な場合も、元のライブラリのフォルダ全体を退避してから、使うアプリの版に合わせて進める必要があります。ファイルを削除する前にお問い合わせください。"
+    "limitsTitle": "ノートを残したい場合",
+    "limits": "データ形式の不一致や破損は、再起動や保存先の選び直しだけでは直せない場合があります。元のライブラリを保管してください。空のライブラリを作っても、読み込めないノートが復旧するわけではありません。",
+    "backup": "Inkquationをすべて終了してから、ライブラリのフォルダ全体を別の場所にコピーして保管します。note.sqliteだけでなく、隠しファイルや付属フォルダも含めてください。標準の保存先は下の手順に示しています。保存先を変更していた場合は、変更後のフォルダを保管してください。起動できない間は、新たにアプリ内のバックアップを書き出せません。",
+    "resetQuestion": "既存のノートを使わず、空のライブラリで起動するには？",
+    "reset": "Mac版Inkquationで、空のライブラリからやり直す手順です。これまでのノート・フォルダ・タグは新しいライブラリには表示されません。元のデータを削除せず、フォルダ名を変えて保管します。",
+    "resetSteps": [
+      {
+        "title": "Inkquationをすべて終了する",
+        "description": "アプリのメニューから終了します（⌘Q）。旧版やテスト版もすべて終了してください。ウインドウを閉じるだけでは終了しません。"
+      },
+      {
+        "title": "Finderで保存先を開く",
+        "description": "Finderで「移動」→「フォルダへ移動…」（⇧⌘G）を選び、次のパスを貼り付けてReturnキーを押します。"
+      },
+      {
+        "title": "元のライブラリの名前を変える",
+        "description": "Inkqation.appを選び、Returnキーで次の名前に変更します。Inkqation.appはこの綴りで正しい名前です。フォルダの中身は操作しません。見つからない場合はこの手順を飛ばします。同名の退避先がある場合は、末尾に「-2」などを付けて別名にしてください。"
+      },
+      {
+        "title": "保存先の設定も名前を変える",
+        "description": "同じ場所にInkquationStorageがあれば、次の名前に変更します。なければ飛ばします。これで保存先の変更や変更予約を解除し、標準の保存先から始められます。外付けドライブなどに移したライブラリのデータは、その場所に残ります。退避先と同名のフォルダがあれば、末尾に「-2」などを付けてください。"
+      },
+      {
+        "title": "使うInkquationを1つだけ起動する",
+        "description": "標準の保存先に新しい空のライブラリが作られます。ノート一覧が空なら初期化は完了です。ここで別の古い版も起動すると、同時使用やデータ形式の不一致で再びエラーになることがあります。エラーが続く場合は、空のライブラリを作るだけでは解決しない原因があります。"
+      }
+    ],
+    "resetUndo": "元に戻すには、Inkquationをすべて終了した後、新しく作られた同名フォルダを別名に変更し、退避したフォルダを元の名前に戻します。元のライブラリが読み込めない原因は、この操作では解消されません。"
   },
   "en": {
     "nav": "FAQ",
@@ -46,14 +66,34 @@
         "description": "If the library is on an external drive, reconnect it and reopen the app. If you moved or renamed its folder and the screen offers “Locate Existing Library…”, select the original library folder again. This reconnects the location; it does not repair an incompatible data format."
       }
     ],
-    "limitsTitle": "When these checks are not enough",
-    "limits": "An incompatible data format or damaged data may require a build that can read the library or help with recovery. Restarting or selecting the folder again may not resolve it. If the error persists, keep the original library intact and contact support.",
-    "backup": "If you know the location, keep every copy of Inkquation closed and copy the entire library folder somewhere else for safekeeping. Include hidden files and companion folders, not just note.sqlite. In-app backup export is unavailable while the library cannot open. If you do not know the location, leave the files alone and contact support.",
-    "support": "Include the full error text or a screenshot, the app version and build number, your macOS version, and any recent update or library-location change. You do not need to send your notes or the library itself with your initial inquiry.",
-    "contact": "Contact support about a startup error",
-    "subject": "Inkquation startup error",
-    "resetQuestion": "Will resetting the library fix it?",
-    "reset": "A reset starts an empty library without your existing notes, folders, and tags; it does not recover them. Do not reset if you want to keep using your notes. Even when a reset is appropriate, preserve the entire original library folder first and use a procedure matched to your app build. Contact support before deleting files."
+    "limitsTitle": "If you want to keep your notes",
+    "limits": "Restarting or selecting the location again may not fix an incompatible data format or damaged data. Preserve the original library. Creating an empty library does not recover notes that cannot be read.",
+    "backup": "Quit every copy of Inkquation, then copy the entire library folder elsewhere for safekeeping. Include hidden files and companion folders, not just note.sqlite. The steps below show the default location. If you changed the location, preserve the folder at that location instead. You cannot export a new in-app backup while the library cannot open.",
+    "resetQuestion": "How do I start with an empty library instead of my existing notes?",
+    "reset": "Use these steps to start fresh in Inkquation for Mac. Your existing notes, folders, and tags will not appear in the new library. Rename the folders to preserve the original data without deleting it.",
+    "resetSteps": [
+      {
+        "title": "Quit every copy of Inkquation",
+        "description": "Quit from the app menu (⌘Q), including any older or test builds. Closing a window does not quit the app."
+      },
+      {
+        "title": "Open the storage location in Finder",
+        "description": "In Finder, choose Go → Go to Folder… (⇧⌘G), paste the following path, and press Return."
+      },
+      {
+        "title": "Rename the original library",
+        "description": "Select Inkqation.app, press Return, and rename it as shown below. Inkqation.app is the correct spelling. Leave its contents intact. Skip this step if the folder is absent. If the backup name already exists, add “-2” or another suffix to use a different name."
+      },
+      {
+        "title": "Rename the location settings too",
+        "description": "If InkquationStorage exists in the same location, rename it as shown below; otherwise skip this step. This clears the selected location and any pending move so the app uses its default location. A library you moved to an external drive or another folder remains there. If the backup name already exists, add “-2” or another suffix."
+      },
+      {
+        "title": "Open only the Inkquation build you intend to use",
+        "description": "The app creates a new, empty library at the default location. An empty note list confirms the reset. Opening another, older build can cause another error through simultaneous access or incompatible data formats. If an error persists, creating an empty library does not address its cause."
+      }
+    ],
+    "resetUndo": "To undo this, quit every copy of Inkquation, give the newly created folders different names, and restore the preserved folders to their original names. This does not fix the reason the original library could not open."
   },
   "zh-Hans": {
     "nav": "常见问题",
@@ -74,14 +114,34 @@
         "description": "如果资料库保存在外接硬盘上，请连接硬盘后重新打开应用。如果移动或重命名过文件夹，且画面上有“查找现有资料库…”，可以重新选择原资料库文件夹。此操作用于重新指定保存位置，不能修复数据格式不兼容的问题。"
       }
     ],
-    "limitsTitle": "无法自行解决的情况",
-    "limits": "数据格式不兼容或数据损坏可能需要能够读取该资料库的版本，或专门的恢复处理。重启或重新选择保存位置不一定能解决。如果错误仍然存在，请保持原资料库完整并联系支持。",
-    "backup": "如果知道保存位置，请在所有Inkquation应用均已退出的状态下，将整个资料库文件夹复制到其他位置保存。除了note.sqlite，还应包含隐藏文件和附属文件夹。资料库无法打开时，不能在应用内导出备份。如果不清楚保存位置，请不要操作文件，直接联系支持。",
-    "support": "联系时请附上完整错误文本或截图、应用版本和构建编号、macOS版本，以及近期的更新或保存位置变更。首次联系时无需发送笔记内容或资料库本体。",
-    "contact": "咨询启动错误",
-    "subject": "Inkquation启动错误",
-    "resetQuestion": "初始化资料库能解决吗？",
-    "reset": "初始化是从空资料库重新开始，不再使用现有笔记、文件夹和标签，并不是恢复笔记的操作。如果想保留并继续使用笔记，请不要初始化。即使确实需要初始化，也应先保留整个原资料库文件夹，再按照所用应用版本进行处理。删除文件前请联系支持。"
+    "limitsTitle": "如果想保留笔记",
+    "limits": "重启或重新选择保存位置，不一定能解决数据格式不兼容或数据损坏的问题。请保留原资料库。创建空资料库并不能恢复无法读取的笔记。",
+    "backup": "退出所有Inkquation应用后，将整个资料库文件夹复制到其他位置保存。除了note.sqlite，还应包含隐藏文件和附属文件夹。下方步骤列出了默认保存位置。如果更改过保存位置，请保留更改后位置的资料库文件夹。资料库无法打开时，不能在应用内导出新的备份。",
+    "resetQuestion": "如何不使用现有笔记，从空资料库重新开始？",
+    "reset": "以下步骤适用于Mac版Inkquation。现有笔记、文件夹和标签不会显示在新资料库中。通过重命名文件夹保留原数据，无需删除数据。",
+    "resetSteps": [
+      {
+        "title": "退出所有Inkquation应用",
+        "description": "从应用菜单退出（⌘Q），旧版和测试版也要全部退出。仅关闭窗口不会退出应用。"
+      },
+      {
+        "title": "在Finder中打开保存位置",
+        "description": "在Finder中选择“前往”→“前往文件夹…”（⇧⌘G），粘贴以下路径，然后按Return键。"
+      },
+      {
+        "title": "重命名原资料库",
+        "description": "选中Inkqation.app，按Return键，按下方所示重命名。Inkqation.app的拼写是正确的。不要改动文件夹内的内容。如果没有此文件夹，请跳过此步骤。如果备份名称已存在，请在末尾添加“-2”等后缀，使用其他名称。"
+      },
+      {
+        "title": "同时重命名保存位置设置",
+        "description": "如果同一位置有InkquationStorage，请按下方所示重命名；如果没有，请跳过。这样可清除已选择的保存位置和待执行的移动，让应用使用默认位置。移至外接硬盘或其他位置的资料库数据仍保留在那里。如果备份名称已存在，请在末尾添加“-2”等后缀。"
+      },
+      {
+        "title": "只打开准备使用的一个Inkquation版本",
+        "description": "应用会在默认位置创建新的空资料库。笔记列表为空即表示初始化完成。此时再打开旧版，可能因同时访问或数据格式不兼容而再次出错。如果错误仍然存在，说明创建空资料库不能解决其原因。"
+      }
+    ],
+    "resetUndo": "要撤销此操作，请退出所有Inkquation应用，将新创建的同名文件夹改为其他名称，再将保留的文件夹恢复为原名称。这不会解决原资料库无法打开的原因。"
   },
   "zh-Hant": {
     "nav": "常見問題",
@@ -102,14 +162,34 @@
         "description": "如果資料庫儲存在外接磁碟上，請連接磁碟後重新開啟App。如果移動或重新命名過資料夾，且畫面上有「尋找現有資料庫…」，可以重新選擇原資料庫資料夾。此操作用於重新指定儲存位置，不能修復資料格式不相容的問題。"
       }
     ],
-    "limitsTitle": "無法自行解決的情況",
-    "limits": "資料格式不相容或資料損毀可能需要能讀取該資料庫的版本，或個別的復原處理。重新啟動或重新選擇儲存位置不一定能解決。如果錯誤持續，請保持原資料庫完整並聯絡支援。",
-    "backup": "如果知道儲存位置，請在所有Inkquation App均已結束的狀態下，將整個資料庫資料夾拷貝至其他位置保管。除了note.sqlite，還應包含隱藏檔案和附屬資料夾。資料庫無法開啟時，不能在App內匯出備份。如果不清楚儲存位置，請不要操作檔案，直接聯絡支援。",
-    "support": "聯絡時請附上完整錯誤文字或螢幕截圖、App版本與組建編號、macOS版本，以及近期的更新或儲存位置變更。首次聯絡時不必傳送筆記內容或資料庫本體。",
-    "contact": "詢問啟動錯誤",
-    "subject": "Inkquation啟動錯誤",
-    "resetQuestion": "初始化資料庫能解決嗎？",
-    "reset": "初始化是從空白資料庫重新開始，不再使用現有筆記、資料夾和標籤，並不是復原筆記的操作。如果想保留並繼續使用筆記，請不要初始化。即使確實需要初始化，也應先保留整個原資料庫資料夾，再依所用App版本進行處理。刪除檔案前請聯絡支援。"
+    "limitsTitle": "如果想保留筆記",
+    "limits": "重新啟動或重新選擇儲存位置，不一定能解決資料格式不相容或資料損毀的問題。請保留原資料庫。建立空白資料庫並不能復原無法讀取的筆記。",
+    "backup": "結束所有Inkquation App後，將整個資料庫資料夾拷貝至其他位置保管。除了note.sqlite，還應包含隱藏檔案和附屬資料夾。下方步驟列出了預設儲存位置。如果更改過儲存位置，請保留更改後位置的資料庫資料夾。資料庫無法開啟時，不能在App內匯出新的備份。",
+    "resetQuestion": "如何不使用現有筆記，從空白資料庫重新開始？",
+    "reset": "以下步驟適用於Mac版Inkquation。現有筆記、資料夾和標籤不會顯示在新資料庫中。透過重新命名資料夾保留原資料，無須刪除資料。",
+    "resetSteps": [
+      {
+        "title": "結束所有Inkquation App",
+        "description": "從App選單結束App（⌘Q），舊版和測試版也要全部結束。只關閉視窗不會結束App。"
+      },
+      {
+        "title": "在Finder中開啟儲存位置",
+        "description": "在Finder中選擇「前往」→「前往檔案夾…」（⇧⌘G），貼上以下路徑，然後按Return鍵。"
+      },
+      {
+        "title": "重新命名原資料庫",
+        "description": "選取Inkqation.app，按Return鍵，依下方所示重新命名。Inkqation.app的拼字是正確的。不要改動資料夾內的內容。如果沒有此資料夾，請略過此步驟。如果備份名稱已存在，請在結尾加上「-2」等後綴，使用其他名稱。"
+      },
+      {
+        "title": "同時重新命名儲存位置設定",
+        "description": "如果同一位置有InkquationStorage，請依下方所示重新命名；如果沒有，請略過。這樣可清除已選擇的儲存位置和待執行的搬移，讓App使用預設位置。移至外接磁碟或其他位置的資料庫資料仍保留在那裡。如果備份名稱已存在，請在結尾加上「-2」等後綴。"
+      },
+      {
+        "title": "只開啟準備使用的一個Inkquation版本",
+        "description": "App會在預設位置建立新的空白資料庫。筆記列表為空即表示初始化完成。此時再開啟舊版，可能因同時存取或資料格式不相容而再次出錯。如果錯誤仍然存在，表示建立空白資料庫無法解決其原因。"
+      }
+    ],
+    "resetUndo": "若要還原此操作，請結束所有Inkquation App，將新建立的同名資料夾改為其他名稱，再將保留的資料夾恢復為原名稱。這不會解決原資料庫無法開啟的原因。"
   },
   "zh-HK": {
     "nav": "常見問題",
@@ -130,14 +210,34 @@
         "description": "如果資料庫儲存在外置磁碟上，請連接磁碟後重新開啟App。如果移動或重新命名過資料夾，而畫面上有「尋找現有資料庫…」，可以重新選擇原有資料庫資料夾。此操作用於重新指定儲存位置，不能修復資料格式不相容的問題。"
       }
     ],
-    "limitsTitle": "無法自行解決的情況",
-    "limits": "資料格式不相容或資料損壞可能需要能讀取該資料庫的版本，或個別的復原處理。重新啟動或重新選擇儲存位置不一定能解決。如果錯誤持續，請保持原有資料庫完整並聯絡支援。",
-    "backup": "如果知道儲存位置，請在所有Inkquation App均已結束的狀態下，將整個資料庫資料夾複製到其他位置保管。除了note.sqlite，還應包括隱藏檔案和附屬資料夾。資料庫無法開啟時，不能在App內匯出備份。如果不清楚儲存位置，請不要操作檔案，直接聯絡支援。",
-    "support": "聯絡時請附上完整錯誤文字或螢幕截圖、App版本及建置編號、macOS版本，以及近期的更新或儲存位置變更。首次聯絡時不必傳送筆記內容或資料庫本身。",
-    "contact": "查詢啟動錯誤",
-    "subject": "Inkquation啟動錯誤",
-    "resetQuestion": "初始化資料庫能解決嗎？",
-    "reset": "初始化是從空白資料庫重新開始，不再使用現有筆記、資料夾和標籤，並不是復原筆記的操作。如果想保留並繼續使用筆記，請不要初始化。即使確實需要初始化，也應先保留整個原有資料庫資料夾，再按所用App版本進行處理。刪除檔案前請聯絡支援。"
+    "limitsTitle": "如果想保留筆記",
+    "limits": "重新啟動或重新選擇儲存位置，不一定能解決資料格式不相容或資料損壞的問題。請保留原有資料庫。建立空白資料庫並不能復原無法讀取的筆記。",
+    "backup": "結束所有Inkquation App後，將整個資料庫資料夾複製到其他位置保管。除了note.sqlite，還應包括隱藏檔案和附屬資料夾。下方步驟列出了預設儲存位置。如果更改過儲存位置，請保留更改後位置的資料庫資料夾。資料庫無法開啟時，不能在App內匯出新的備份。",
+    "resetQuestion": "如何不使用現有筆記，從空白資料庫重新開始？",
+    "reset": "以下步驟適用於Mac版Inkquation。現有筆記、資料夾及標籤不會顯示在新資料庫中。透過重新命名資料夾保留原有資料，毋須刪除資料。",
+    "resetSteps": [
+      {
+        "title": "結束所有Inkquation App",
+        "description": "從App選單結束App（⌘Q），舊版及測試版也要全部結束。只關閉視窗不會結束App。"
+      },
+      {
+        "title": "在Finder中開啟儲存位置",
+        "description": "在Finder中選擇「前往」→「前往資料夾⋯」（⇧⌘G），貼上以下路徑，然後按Return鍵。"
+      },
+      {
+        "title": "重新命名原有資料庫",
+        "description": "選取Inkqation.app，按Return鍵，按下方所示重新命名。Inkqation.app的拼寫是正確的。不要改動資料夾內的內容。如果沒有此資料夾，請略過此步驟。如果備份名稱已存在，請在結尾加上「-2」等後綴，使用其他名稱。"
+      },
+      {
+        "title": "同時重新命名儲存位置設定",
+        "description": "如果同一位置有InkquationStorage，請按下方所示重新命名；如果沒有，請略過。這樣可清除已選擇的儲存位置及待執行的搬移，讓App使用預設位置。移至外置磁碟或其他位置的資料庫資料仍保留在該處。如果備份名稱已存在，請在結尾加上「-2」等後綴。"
+      },
+      {
+        "title": "只開啟準備使用的一個Inkquation版本",
+        "description": "App會在預設位置建立新的空白資料庫。筆記列表為空即表示初始化完成。此時再開啟舊版，可能因同時存取或資料格式不相容而再次出錯。如果錯誤仍然存在，表示建立空白資料庫無法解決其原因。"
+      }
+    ],
+    "resetUndo": "如要還原此操作，請結束所有Inkquation App，將新建立的同名資料夾改為其他名稱，再將保留的資料夾恢復為原有名稱。這不會解決原有資料庫無法開啟的原因。"
   },
   "ko": {
     "nav": "FAQ",
@@ -158,13 +258,33 @@
         "description": "외장 드라이브에 저장했다면 드라이브를 연결하고 앱을 다시 여세요. 폴더를 이동하거나 이름을 바꿨고 화면에 ‘기존 라이브러리 찾기…’가 있다면 원래 라이브러리 폴더를 다시 선택할 수 있습니다. 이 기능은 저장 위치를 다시 지정할 뿐, 호환되지 않는 데이터 형식을 복구하지는 않습니다."
       }
     ],
-    "limitsTitle": "직접 해결할 수 없는 경우",
-    "limits": "호환되지 않는 데이터 형식이나 손상된 데이터는 라이브러리를 읽을 수 있는 버전 또는 개별 복구 지원이 필요할 수 있습니다. 다시 시작하거나 저장 위치를 선택하는 것만으로는 해결되지 않을 수 있습니다. 오류가 계속되면 원래 라이브러리를 그대로 보존하고 지원팀에 문의하세요.",
-    "backup": "저장 위치를 알고 있다면 모든 Inkquation을 종료한 상태에서 라이브러리 폴더 전체를 다른 위치에 복사해 보관하세요. note.sqlite뿐 아니라 숨김 파일과 부속 폴더도 포함해야 합니다. 라이브러리를 열 수 없는 동안에는 앱 안에서 백업을 내보낼 수 없습니다. 저장 위치를 모른다면 파일을 조작하지 말고 지원팀에 문의하세요.",
-    "support": "문의할 때 오류 전문이나 스크린샷, 앱 버전과 빌드 번호, macOS 버전, 최근 업데이트 또는 저장 위치 변경 내용을 첨부하세요. 처음 문의할 때 노트 내용이나 라이브러리 자체를 보낼 필요는 없습니다.",
-    "contact": "시작 오류 문의하기",
-    "subject": "Inkquation 시작 오류",
-    "resetQuestion": "라이브러리를 초기화하면 해결되나요?",
-    "reset": "초기화는 기존 노트·폴더·태그를 사용하지 않고 빈 라이브러리로 시작하는 작업이며, 노트를 복구하는 기능이 아닙니다. 노트를 계속 사용하려면 초기화하지 마세요. 초기화가 필요한 경우에도 먼저 원래 라이브러리 폴더 전체를 보존한 뒤 사용 중인 앱 버전에 맞게 진행해야 합니다. 파일을 삭제하기 전에 지원팀에 문의하세요."
+    "limitsTitle": "노트를 보존하려면",
+    "limits": "다시 시작하거나 저장 위치를 선택하는 것만으로는 호환되지 않는 데이터 형식이나 손상된 데이터가 복구되지 않을 수 있습니다. 원래 라이브러리를 보관하세요. 빈 라이브러리를 만들어도 읽을 수 없는 노트가 복구되지는 않습니다.",
+    "backup": "실행 중인 Inkquation을 모두 종료한 뒤 라이브러리 폴더 전체를 다른 위치에 복사해 보관하세요. note.sqlite뿐 아니라 숨김 파일과 부속 폴더도 포함해야 합니다. 기본 저장 위치는 아래 절차에 나와 있습니다. 저장 위치를 변경했다면 변경한 위치의 라이브러리 폴더를 보관하세요. 라이브러리를 열 수 없는 동안에는 앱 안에서 새 백업을 내보낼 수 없습니다.",
+    "resetQuestion": "기존 노트 대신 빈 라이브러리로 시작하려면 어떻게 하나요?",
+    "reset": "Mac용 Inkquation에서 새로 시작하는 절차입니다. 기존 노트, 폴더, 태그는 새 라이브러리에 표시되지 않습니다. 데이터를 삭제하지 않고 폴더 이름을 변경해 원래 데이터를 보관합니다.",
+    "resetSteps": [
+      {
+        "title": "실행 중인 Inkquation을 모두 종료하세요",
+        "description": "앱 메뉴에서 종료하세요(⌘Q). 이전 버전과 테스트 버전도 모두 종료해야 합니다. 창만 닫으면 앱은 종료되지 않습니다."
+      },
+      {
+        "title": "Finder에서 저장 위치를 여세요",
+        "description": "Finder에서 이동 → 폴더로 이동…(⇧⌘G)을 선택하고 다음 경로를 붙여 넣은 뒤 Return 키를 누르세요."
+      },
+      {
+        "title": "원래 라이브러리의 이름을 변경하세요",
+        "description": "Inkqation.app을 선택하고 Return 키를 눌러 아래 이름으로 변경하세요. Inkqation.app은 올바른 철자입니다. 폴더 안의 내용은 변경하지 마세요. 폴더가 없으면 이 단계를 건너뛰세요. 보관할 이름이 이미 있으면 끝에 “-2” 등을 붙여 다른 이름을 사용하세요."
+      },
+      {
+        "title": "저장 위치 설정의 이름도 변경하세요",
+        "description": "같은 위치에 InkquationStorage가 있으면 아래 이름으로 변경하고, 없으면 건너뛰세요. 선택한 저장 위치와 예정된 이동이 해제되어 앱이 기본 위치를 사용합니다. 외장 드라이브나 다른 위치로 옮긴 라이브러리 데이터는 그곳에 남습니다. 보관할 이름이 이미 있으면 끝에 “-2” 등을 붙이세요."
+      },
+      {
+        "title": "사용할 Inkquation 버전 하나만 여세요",
+        "description": "기본 위치에 새로운 빈 라이브러리가 만들어집니다. 노트 목록이 비어 있으면 초기화가 완료된 것입니다. 이때 다른 이전 버전도 열면 동시 접근이나 데이터 형식 불일치로 다시 오류가 발생할 수 있습니다. 오류가 계속된다면 빈 라이브러리를 만드는 것만으로는 그 원인이 해결되지 않는 것입니다."
+      }
+    ],
+    "resetUndo": "되돌리려면 실행 중인 Inkquation을 모두 종료한 뒤 새로 만들어진 같은 이름의 폴더들을 다른 이름으로 바꾸고, 보관한 폴더들을 원래 이름으로 되돌리세요. 원래 라이브러리를 열 수 없었던 원인은 이 작업으로 해결되지 않습니다."
   }
 }
