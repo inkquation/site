@@ -105,17 +105,18 @@ const ja = {
     description: [
       'すぐに書きはじめて、必要なときに整える。',
       'ひらめきとノートの間を、シンプルに。',
+      '図形の塗りと選択後の外観編集は、次のTestFlight更新向けの機能です。',
     ],
     write: {
       title: '一筆から、考えが動き出す。',
       description:
-        'ペンで書き、蛍光ペンで目印を。消しゴムや投げなわ選択で、考えの変化に合わせて書き直せます。',
+        'ペンで書き、蛍光ペンで目印を。投げなわで1本でも複数でも選び、赤くなった線を長押しすると近くに外観パネルが開きます。線は色・幅、蛍光ペンは色・幅・不透明度を種類ごとに変更できます。',
       details: ['ペン', '蛍光ペン', '投げなわ'],
     },
     shape: {
       title: '図も、線も、思いどおりに。',
       description:
-        '直線・四角形・楕円をすばやく描画。実線から破線、波線、二重線まで、図に合った線を選べます。',
+        '直線・四角形・楕円を描き、実線・破線・波線・二重線を選べます。四角形・楕円は枠線と塗りを設定し、選択後も変更できます。幅や不透明度はスライダーで即座に反映され、「適用」は不要です。',
       samples: '実線、破線、波線、二重線のサンプル',
     },
     organize: {
@@ -355,17 +356,18 @@ const en: SiteCopy = {
     description: [
       'Start writing. Make changes as you go.',
       'Keep the path from idea to page simple.',
+      'Shape fills and appearance editing after selection are planned for the next TestFlight update.',
     ],
     write: {
       title: 'Give an idea its first stroke.',
       description:
-        'Write with the pen and mark what matters with the highlighter. Use the eraser and lasso selection to revise your notes as your thinking changes.',
+        'Write with the pen and mark with the highlighter. Lasso one or several strokes, then press and hold a red selected stroke to open a nearby appearance panel. Controls are grouped by type: color and width for pen strokes; color, width and opacity for highlights.',
       details: ['Pen', 'Highlighter', 'Lasso'],
     },
     shape: {
       title: 'Bring structure to your sketches.',
       description:
-        'Draw lines, rectangles, and ellipses. Choose solid, dashed, wavy, or double lines to suit your diagrams.',
+        'Draw lines, rectangles and ellipses with solid, dashed, wavy or double lines. Set outlines and fills for rectangles and ellipses, and change them after selection. Width and opacity sliders update the drawing immediately, with no Apply button.',
       samples: 'Examples of solid, dashed, wavy, and double lines',
     },
     organize: {

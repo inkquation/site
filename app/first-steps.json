@@ -28,7 +28,7 @@
       "items": [
         {
           "title": "よく使う色を、自分のパレットに。",
-          "description": "設定でペンと蛍光ペンの色を変更。図形にはペンの色が使われ、キー操作やApple Pencilのパレットにも反映されます。"
+          "description": "設定でペンと蛍光ペンの色を変更。図形の枠線にはペンの色が使われ、キー操作やApple Pencilのパレットにも反映されます。図形の塗りの色は、描画時や選択後の外観パネルで設定できます。"
         },
         {
           "title": "新しいノートは、いつもの用紙で。",
@@ -70,7 +70,7 @@
       "items": [
         {
           "title": "Make the palette yours.",
-          "description": "Set your pen and highlighter colors. Shapes share the pen palette, and your choices also apply to color shortcuts and the Apple Pencil palette."
+          "description": "Set your pen and highlighter colors. Shape outlines share the pen palette, including color shortcuts and the Apple Pencil palette. Set fill colors in the appearance panel before drawing or after selecting a shape."
         },
         {
           "title": "Your usual paper, ready to go.",
@@ -112,7 +112,7 @@
       "items": [
         {
           "title": "把常用颜色放进调色板。",
-          "description": "在设置中修改笔和荧光笔的颜色。形状共用笔的颜色，颜色快捷键和 Apple Pencil 调色板也会同步应用。"
+          "description": "在设置中修改笔和荧光笔的颜色。图形轮廓共用笔的颜色，颜色快捷键和 Apple Pencil 调色板也会同步应用。图形填充颜色可在绘制前或选择后的外观面板中设置。"
         },
         {
           "title": "新笔记，沿用惯用纸张。",
@@ -154,7 +154,7 @@
       "items": [
         {
           "title": "把常用顏色放進調色盤。",
-          "description": "在設定中修改筆和螢光筆的顏色。形狀共用筆的顏色，顏色快速鍵和 Apple Pencil 調色盤也會同步套用。"
+          "description": "在設定中修改筆和螢光筆的顏色。圖形輪廓共用筆的顏色，顏色快速鍵和 Apple Pencil 調色盤也會同步套用。圖形填色可在繪製前或選取後的外觀面板中設定。"
         },
         {
           "title": "新筆記，沿用慣用紙張。",
@@ -196,7 +196,7 @@
       "items": [
         {
           "title": "把常用顏色放進調色盤。",
-          "description": "在設定中修改筆和螢光筆的顏色。形狀共用筆的顏色，顏色快捷鍵和 Apple Pencil 調色盤也會同步套用。"
+          "description": "在設定中修改筆和螢光筆的顏色。圖形輪廓共用筆的顏色，顏色快捷鍵和 Apple Pencil 調色盤也會同步套用。圖形填色可在繪製前或選取後的外觀面板中設定。"
         },
         {
           "title": "新筆記，沿用慣用紙張。",
@@ -238,7 +238,7 @@
       "items": [
         {
           "title": "자주 쓰는 색을 내 팔레트에.",
-          "description": "설정에서 펜과 형광펜 색을 바꿀 수 있습니다. 도형도 펜 색을 사용하며, 색상 단축키와 Apple Pencil 팔레트에도 적용됩니다."
+          "description": "설정에서 펜과 형광펜 색을 바꿀 수 있습니다. 도형 테두리는 펜 팔레트를 사용하며, 색상 단축키와 Apple Pencil 팔레트에도 적용됩니다. 채우기 색은 그리기 전이나 도형을 선택한 후 모양 패널에서 설정하세요."
         },
         {
           "title": "새 노트도 익숙한 용지로.",

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01",
+  "updated": "2026-10-10",
   "ja": {
     "title": "AI連携ガイド",
     "description": "Inkquationを外部AIアプリにつなぎ、ページの読み取りや画像・図形・ペンの線の追加を行うためのガイドです。",
@@ -317,7 +317,7 @@
           },
           {
             "type": "paragraph",
-            "text": "図形は塗りつぶしのない通常のペンの線になります。消しゴムや投げなわで編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
+            "text": "AIから追加した図形は、塗りつぶしのない通常のペンの線になります。アプリで描く四角形・楕円の塗りの設定には対応していません。消しゴムや投げなわで編集できますが、図形専用の寸法設定はありません。文字や記号を線で描くことはできますが、編集可能なテキストやLaTeXの追加・コンパイルには対応していません。ページの読み取り結果も、文字認識済みの文章ではなく画像です。"
           }
         ]
       },
@@ -901,7 +901,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Shapes become ordinary pen strokes with outlines and no fill. You can edit them with the eraser and lasso, but there are no dedicated shape dimension controls. Letters and symbols can be drawn as strokes; editable text and LaTeX insertion or compilation are not supported. Page reads return images, not recognized text."
+            "text": "Shapes inserted by AI become ordinary pen strokes with outlines and no fill. The tool does not provide the fill settings available for rectangles and ellipses drawn in the app. You can edit them with the eraser and lasso, but there are no dedicated shape dimension controls. Letters and symbols can be drawn as strokes; editable text and LaTeX insertion or compilation are not supported. Page reads return images, not recognized text."
           }
         ]
       },
@@ -1485,7 +1485,7 @@
           },
           {
             "type": "paragraph",
-            "text": "图形会转换为只有轮廓、没有填充的普通笔画。可以用橡皮擦和套索编辑，但没有专门的图形尺寸设置。文字和符号可以用笔画绘制；目前不支持添加可编辑文本或 LaTeX 对象，也不支持编译 LaTeX。读取页面时返回的是图像，而不是经过文字识别的文本。"
+            "text": "AI 添加的图形会转换为只有轮廓、没有填充的普通笔画。此工具不提供应用内绘制矩形和椭圆时的填充设置。可以用橡皮擦和套索编辑，但没有专门的图形尺寸设置。文字和符号可以用笔画绘制；目前不支持添加可编辑文本或 LaTeX 对象，也不支持编译 LaTeX。读取页面时返回的是图像，而不是经过文字识别的文本。"
           }
         ]
       },
@@ -2069,7 +2069,7 @@
           },
           {
             "type": "paragraph",
-            "text": "圖形會轉換為只有輪廓、沒有填色的普通筆畫。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是影像，而不是經過文字辨識的文字。"
+            "text": "AI 新增的圖形會轉換為只有輪廓、沒有填色的普通筆畫。此工具不提供 App 內繪製矩形與橢圓時的填色設定。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是影像，而不是經過文字辨識的文字。"
           }
         ]
       },
@@ -2653,7 +2653,7 @@
           },
           {
             "type": "paragraph",
-            "text": "圖形會轉換為只有輪廓、沒有填色的普通筆畫。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是圖像，而不是經過文字辨識的文字。"
+            "text": "AI 新增的圖形會轉換為只有輪廓、沒有填色的普通筆畫。此工具不提供 App 內繪製矩形和橢圓時的填色設定。可以用橡皮擦和套索編輯，但沒有專用的圖形尺寸設定。文字和符號可以用筆畫繪製；目前不支援新增可編輯文字或 LaTeX 物件，也不支援編譯 LaTeX。讀取頁面時傳回的是圖像，而不是經過文字辨識的文字。"
           }
         ]
       },
@@ -3237,7 +3237,7 @@
           },
           {
             "type": "paragraph",
-            "text": "도형은 채우기 없이 윤곽선만 있는 일반 펜 획으로 변환됩니다. 지우개와 올가미로 편집할 수 있지만, 도형의 치수를 설정하는 전용 기능은 없습니다. 글자와 기호를 펜 획으로 그릴 수는 있으나, 편집 가능한 텍스트나 LaTeX 객체를 추가하거나 LaTeX를 컴파일하는 기능은 지원하지 않습니다. 페이지 읽기 결과도 문자 인식된 텍스트가 아닌 이미지입니다."
+            "text": "AI가 추가한 도형은 채우기 없이 윤곽선만 있는 일반 펜 획으로 변환됩니다. 이 도구는 앱에서 그리는 사각형과 타원의 채우기 설정을 제공하지 않습니다. 지우개와 올가미로 편집할 수 있지만, 도형의 치수를 설정하는 전용 기능은 없습니다. 글자와 기호를 펜 획으로 그릴 수는 있으나, 편집 가능한 텍스트나 LaTeX 객체를 추가하거나 LaTeX를 컴파일하는 기능은 지원하지 않습니다. 페이지 읽기 결과도 문자 인식된 텍스트가 아닌 이미지입니다."
           }
         ]
       },
