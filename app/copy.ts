@@ -116,7 +116,7 @@ const ja = {
     shape: {
       title: '図も、線も、思いどおりに。',
       description:
-        '直線・四角形・楕円を描き、実線・破線・波線・二重線を選べます。四角形・楕円は枠線と塗りを設定し、選択後も変更できます。幅や不透明度はスライダーで即座に反映され、「適用」は不要です。',
+        '直線・四角形・楕円を描き、実線・破線・波線・二重線を選べます。四角形・楕円は枠線と塗りを設定し、選択後も変更できます。幅や不透明度はスライダーで変更でき、すぐに反映されます。',
       samples: '実線、破線、波線、二重線のサンプル',
     },
     organize: {
@@ -367,7 +367,7 @@ const en: SiteCopy = {
     shape: {
       title: 'Bring structure to your sketches.',
       description:
-        'Draw lines, rectangles and ellipses with solid, dashed, wavy or double lines. Set outlines and fills for rectangles and ellipses, and change them after selection. Width and opacity sliders update the drawing immediately, with no Apply button.',
+        'Draw lines, rectangles and ellipses with solid, dashed, wavy or double lines. Set outlines and fills for rectangles and ellipses, and change them after selection. Width and opacity sliders update the drawing immediately.',
       samples: 'Examples of solid, dashed, wavy, and double lines',
     },
     organize: {
