@@ -15,7 +15,7 @@ import firstSteps from './first-steps.json';
 import ContactButton from './contact-button';
 import sidecarGuides from './sidecar-guide.json';
 import questions from './faq.json';
-import { sitePath } from '../site.config';
+import { sitePath, testFlightUrl } from '../site.config';
 import {
   ArrowDown,
   ArrowUpRight,
@@ -149,6 +149,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <div className="hero-actions">
                 <a className="button button-primary" href="#shortcuts">
                   {copy.hero.primary} <ArrowDown size={17} />
+                </a>
+                <a className="text-link" href={testFlightUrl}>
+                  {copy.contact.testFlightAction} <ArrowUpRight size={17} />
                 </a>
               </div>
               <p className="platform-line">
@@ -442,13 +445,16 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <p>
                 <TextLines lines={copy.contact.description} />
               </p>
-              <ContactButton
-                variant="primary"
-                label={copy.contact.action}
-                subject={copy.contact.subject}
-                hint={copy.contact.hint}
-                noScriptMessage={copy.contact.noScriptMessage}
-              />
+              <a className="button button-light" href={testFlightUrl}>
+                {copy.contact.testFlightAction} <ArrowUpRight size={18} />
+              </a>
+              <div className="get-app-contact">
+                <ContactButton
+                  variant="footer"
+                  label={copy.contact.action}
+                  subject={copy.contact.subject}
+                />
+              </div>
             </div>
           </div>
         </section>

@@ -6,6 +6,8 @@ export const siteBasePath = (
 
 export const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN;
 
+export const testFlightUrl = 'https://testflight.apple.com/join/D5KzxYpB';
+
 export function sitePath(path: `/${string}`) {
   return `${siteBasePath}${path}`;
 }

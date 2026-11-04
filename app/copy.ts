@@ -236,9 +236,10 @@ const ja = {
   contact: {
     title: ['次のひらめきは、', 'この一筆から。'],
     description: [
-      'Inkquation の配布方法や対応環境については、',
-      'メールでお問い合わせください。',
+      'TestFlightでMac用ベータ版をお試しいただけます。',
+      '参加リンクを開き、TestFlightの案内に沿ってインストールしてください。',
     ],
+    testFlightAction: 'TestFlightで試す',
     action: '配布について問い合わせる',
     subject: 'Inkquation の配布について',
     hint: 'メールアプリが開きます。',
@@ -489,9 +490,10 @@ const en: SiteCopy = {
   contact: {
     title: ['Your next idea', 'starts with a stroke.'],
     description: [
-      'For information about getting Inkquation',
-      'and its system requirements, get in touch.',
+      'Try the Mac beta through TestFlight.',
+      'Open the invitation link and follow the TestFlight instructions to install.',
     ],
+    testFlightAction: 'Try on TestFlight',
     action: 'Ask about Inkquation',
     subject: 'Getting Inkquation',
     hint: 'Opens your email app.',

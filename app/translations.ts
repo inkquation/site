@@ -218,9 +218,10 @@ export const zhHans: SiteCopy = {
   contact: {
     title: ['下一个灵感，', '从这一笔开始。'],
     description: [
-      '如需了解 Inkquation 的获取方式',
-      '和系统要求，请通过电子邮件联系我们。',
+      '通过 TestFlight 试用 Mac 测试版。',
+      '打开邀请链接，按照 TestFlight 的说明安装。',
     ],
+    testFlightAction: '通过 TestFlight 试用',
     action: '咨询如何获取 Inkquation',
     subject: '关于获取 Inkquation',
     hint: '将打开你的邮件应用。',
@@ -447,9 +448,10 @@ export const zhHant: SiteCopy = {
   contact: {
     title: ['下一個靈感，', '從這一筆開始。'],
     description: [
-      '如需了解 Inkquation 的取得方式',
-      '與系統需求，請透過電子郵件聯絡我們。',
+      '透過 TestFlight 試用 Mac 測試版。',
+      '開啟邀請連結，依照 TestFlight 的指示安裝。',
     ],
+    testFlightAction: '透過 TestFlight 試用',
     action: '詢問如何取得 Inkquation',
     subject: '關於取得 Inkquation',
     hint: '將開啟你的郵件 App。',
@@ -676,9 +678,10 @@ export const zhHK: SiteCopy = {
   contact: {
     title: ['下一個靈感，', '從這一筆開始。'],
     description: [
-      '如需了解 Inkquation 的取得方式',
-      '和系統要求，請透過電郵聯絡我們。',
+      '透過 TestFlight 試用 Mac 測試版。',
+      '開啟邀請連結，按照 TestFlight 的指示安裝。',
     ],
+    testFlightAction: '透過 TestFlight 試用',
     action: '查詢如何取得 Inkquation',
     subject: '關於取得 Inkquation',
     hint: '將開啟你的郵件 App。',
@@ -923,9 +926,10 @@ export const ko: SiteCopy = {
   contact: {
     title: ['다음 아이디어는', '이 한 획에서 시작됩니다.'],
     description: [
-      'Inkquation의 이용 방법과',
-      '시스템 요구 사항은 이메일로 문의해 주세요.',
+      'TestFlight로 Mac 베타 버전을 사용해 보세요.',
+      '초대 링크를 열고 TestFlight 안내에 따라 설치하세요.',
     ],
+    testFlightAction: 'TestFlight로 사용해 보기',
     action: 'Inkquation 이용 문의',
     subject: 'Inkquation 이용 방법 문의',
     hint: '메일 앱이 열립니다.',

@@ -1288,6 +1288,10 @@ h1 {
   line-height: 2;
   margin: 0 0 23px;
 }
+.get-app-contact {
+  margin-top: 18px;
+  color: var(--muted-foreground);
+}
 .button-light {
   color: #2b477f;
   background: #fff;
