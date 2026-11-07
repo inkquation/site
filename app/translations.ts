@@ -1,3 +1,4 @@
+import heroCopy from './hero-copy.json';
 import type { SiteCopy } from './copy';
 
 export const zhHans: SiteCopy = {
@@ -17,16 +18,13 @@ export const zhHans: SiteCopy = {
     ai: 'AI 连接',
   },
   hero: {
-    lead: '用笔书写。',
-    prefix: '用键盘',
-    accent: '操作。',
+    ...heroCopy['zh-Hans'],
     description: [
       '亲手写下公式，一步步完成计算。',
       '另一只手切换工具，调整颜色和线宽。',
       '无需将指针移出笔记。',
     ],
     primary: '查看快捷键',
-    platform: '专为 macOS 设计的手写笔记应用',
     aiLink: '现已支持 AI 连接',
   },
   screenshot: {
@@ -94,10 +92,7 @@ export const zhHans: SiteCopy = {
   },
   features: {
     title: ['用手思考，', '工具恰到好处。'],
-    description: [
-      '随时开始书写，需要时再调整。',
-      '让灵感轻松落在纸上。',
-    ],
+    description: ['随时开始书写，需要时再调整。', '让灵感轻松落在纸上。'],
     write: {
       title: '落下第一笔，让想法展开。',
       description:
@@ -246,16 +241,13 @@ export const zhHant: SiteCopy = {
     ai: 'AI 連線',
   },
   hero: {
-    lead: '用筆書寫。',
-    prefix: '用鍵盤',
-    accent: '操作。',
+    ...heroCopy['zh-Hant'],
     description: [
       '親手寫下公式，一步步完成計算。',
       '另一隻手切換工具，調整顏色與線寬。',
       '無須將指標移出筆記。',
     ],
     primary: '查看快速鍵',
-    platform: '專為 macOS 設計的手寫筆記 App',
     aiLink: '現已支援 AI 連線',
   },
   screenshot: {
@@ -323,10 +315,7 @@ export const zhHant: SiteCopy = {
   },
   features: {
     title: ['用手思考，', '工具恰到好處。'],
-    description: [
-      '隨時開始書寫，需要時再調整。',
-      '讓靈感輕鬆落在紙上。',
-    ],
+    description: ['隨時開始書寫，需要時再調整。', '讓靈感輕鬆落在紙上。'],
     write: {
       title: '落下第一筆，讓想法展開。',
       description:
@@ -475,16 +464,13 @@ export const zhHK: SiteCopy = {
     ai: 'AI 連線',
   },
   hero: {
-    lead: '用筆書寫。',
-    prefix: '用鍵盤',
-    accent: '操作。',
+    ...heroCopy['zh-HK'],
     description: [
       '親手寫下公式，一步步完成計算。',
       '另一隻手切換工具，調整顏色和線寬。',
       '毋須將指標移出筆記。',
     ],
     primary: '查看快捷鍵',
-    platform: '專為 macOS 設計的手寫筆記 App',
     aiLink: '現已支援 AI 連線',
   },
   screenshot: {
@@ -552,10 +538,7 @@ export const zhHK: SiteCopy = {
   },
   features: {
     title: ['用手思考，', '工具恰到好處。'],
-    description: [
-      '隨時開始書寫，需要時再調整。',
-      '讓靈感輕鬆落在紙上。',
-    ],
+    description: ['隨時開始書寫，需要時再調整。', '讓靈感輕鬆落在紙上。'],
     write: {
       title: '落下第一筆，讓想法展開。',
       description:
@@ -704,16 +687,13 @@ export const ko: SiteCopy = {
     ai: 'AI 연결',
   },
   hero: {
-    lead: '펜으로 쓰고,',
-    prefix: '키보드로 ',
-    accent: '조작하세요.',
+    ...heroCopy.ko,
     description: [
       '수식과 계산 과정을 손으로 써 내려가세요.',
       '다른 손으로 도구, 색상, 선 굵기를 바꾸세요.',
       '포인터를 노트 밖으로 옮길 필요 없이요.',
     ],
     primary: '단축키 살펴보기',
-    platform: 'macOS를 위한 손글씨 노트 앱',
     aiLink: '이제 AI 연결도 지원합니다',
   },
   screenshot: {

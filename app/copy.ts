@@ -1,3 +1,4 @@
+import heroCopy from './hero-copy.json';
 import locales from './locales.json';
 import { zhHans, zhHant, zhHK, ko } from './translations';
 
@@ -20,16 +21,13 @@ const ja = {
     ai: 'AI連携',
   },
   hero: {
-    lead: 'ペンで書く。',
-    prefix: 'キーで',
-    accent: '操る。',
+    ...heroCopy.ja,
     description: [
       '数式も、途中の計算も、手で書き進める。',
       'もう片手でツールを切り替え、色や線幅を調整。',
       'ノートからポインターを動かさずに。',
     ],
     primary: 'ショートカットを見る',
-    platform: 'macOS のための手書きノートアプリ',
     aiLink: 'AI連携に対応しました',
   },
   screenshot: {
@@ -269,16 +267,13 @@ const en: SiteCopy = {
     ai: 'AI integration',
   },
   hero: {
-    lead: 'Write by pen.',
-    prefix: 'Switch by ',
-    accent: 'key.',
+    ...heroCopy.en,
     description: [
       'Work through equations and calculations by hand.',
       'Switch tools, colors, and stroke width with your other hand,',
       'without moving the pointer away from your notes.',
     ],
     primary: 'Explore the shortcuts',
-    platform: 'A handwriting notebook, made for macOS',
     aiLink: 'Now with AI integration',
   },
   screenshot: {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { siteOrigin, sitePath } from '../site.config';
-import type { Locale } from './copy';
+import { siteOrigin } from '../site.config';
+import { siteCopy, type Locale } from './copy';
 import {
   languageAlternates,
   localePath,
@@ -23,11 +23,12 @@ export function pageMetadata(
   description: string,
 ): Metadata {
   const metadataBase = new URL(siteOrigin ?? 'https://inkquation.app');
+  const { lead, prefix, accent } = siteCopy[locale].hero;
   const image = {
-    url: new URL(sitePath('/og.png'), metadataBase).href,
+    url: new URL(`${localePath(locale)}og.png`, metadataBase).href,
     width: 1200,
     height: 630,
-    alt: 'Inkquation — Write by pen. Switch by key.',
+    alt: `Inkquation — ${lead} ${prefix}${accent}`,
   };
   return {
     title,

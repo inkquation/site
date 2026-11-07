@@ -1,0 +1,38 @@
+{
+  "ja": {
+    "lead": "ペンで書く。",
+    "prefix": "キーで",
+    "accent": "操る。",
+    "platform": "macOS のための手書きノートアプリ"
+  },
+  "en": {
+    "lead": "Write by pen.",
+    "prefix": "Switch by ",
+    "accent": "key.",
+    "platform": "A handwriting notebook, made for macOS"
+  },
+  "zh-Hans": {
+    "lead": "用笔书写。",
+    "prefix": "用键盘",
+    "accent": "操作。",
+    "platform": "专为 macOS 设计的手写笔记应用"
+  },
+  "zh-Hant": {
+    "lead": "用筆書寫。",
+    "prefix": "用鍵盤",
+    "accent": "操作。",
+    "platform": "專為 macOS 設計的手寫筆記 App"
+  },
+  "zh-HK": {
+    "lead": "用筆書寫。",
+    "prefix": "用鍵盤",
+    "accent": "操作。",
+    "platform": "專為 macOS 設計的手寫筆記 App"
+  },
+  "ko": {
+    "lead": "펜으로 쓰고,",
+    "prefix": "키보드로 ",
+    "accent": "조작하세요.",
+    "platform": "macOS를 위한 손글씨 노트 앱"
+  }
+}

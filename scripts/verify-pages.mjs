@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import locales from '../app/locales.json' with { type: 'json' };
+import heroCopy from '../app/hero-copy.json' with { type: 'json' };
 import policy from '../app/privacy-policy.json' with { type: 'json' };
 import guides from '../app/ai-guide.json' with { type: 'json' };
 import sidecarGuides from '../app/sidecar-guide.json' with { type: 'json' };
@@ -118,14 +119,43 @@ const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
 const origin =
   process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://inkquation.github.io';
 const prefix = `${basePath}/`;
-const socialImage = await readFile(path.join(output, 'og.png'));
-assert.equal(
-  socialImage.toString('ascii', 1, 4),
-  'PNG',
-  'Social card must be a PNG',
+assert.deepEqual(
+  Object.keys(heroCopy),
+  Object.keys(locales),
+  'Social-card language coverage',
 );
-assert.equal(socialImage.readUInt32BE(16), 1200, 'Social card width');
-assert.equal(socialImage.readUInt32BE(20), 630, 'Social card height');
+for (const [locale, { path: root }] of Object.entries(locales)) {
+  const filename = `${root.slice(1)}og.png`;
+  const png = await readFile(path.join(output, filename));
+  assert.equal(png.toString('ascii', 1, 4), 'PNG', `${filename}: PNG format`);
+  assert.equal(png.readUInt32BE(16), 1200, `${filename}: width`);
+  assert.equal(png.readUInt32BE(20), 630, `${filename}: height`);
+  const text = new Map();
+  for (let offset = 8; offset + 12 <= png.length;) {
+    const length = png.readUInt32BE(offset);
+    if (png.toString('ascii', offset + 4, offset + 8) === 'iTXt') {
+      const [key, flag, method, language, , value] = png
+        .toString('utf8', offset + 8, offset + 8 + length)
+        .split('\0');
+      assert.equal(flag, '', `${filename}: text must be uncompressed`);
+      assert.equal(method, '', `${filename}: text compression method`);
+      assert.equal(language, locale, `${filename}: image text language`);
+      text.set(key, value);
+    }
+    offset += length + 12;
+  }
+  const { lead, prefix, accent, platform } = heroCopy[locale];
+  assert.equal(
+    text.get('Title'),
+    `Inkquation — ${lead} ${prefix}${accent}`,
+    `${filename}: regenerate image after changing the site tagline`,
+  );
+  assert.equal(
+    text.get('Description'),
+    platform,
+    `${filename}: localized platform label`,
+  );
+}
 const manifest = JSON.parse(
   await readFile('dist/server/vinext-prerender.json', 'utf8'),
 );
@@ -243,11 +273,22 @@ for (const { locale, route, file } of routes) {
   );
   assert.equal(
     meta('og:image'),
-    new URL(`${prefix}og.png`, origin).href,
+    new URL(`${prefix}${locales[locale].path.slice(1)}og.png`, origin).href,
     `${file}: absolute social image URL`,
   );
   assert.equal(meta('og:image:width'), '1200', `${file}: social image width`);
   assert.equal(meta('og:image:height'), '630', `${file}: social image height`);
+  const hero = heroCopy[locale];
+  assert.equal(
+    meta('og:image:alt'),
+    `Inkquation — ${hero.lead} ${hero.prefix}${hero.accent}`,
+    `${file}: localized image alternative`,
+  );
+  assert.equal(
+    meta('twitter:image:alt'),
+    meta('og:image:alt'),
+    `${file}: Twitter image alternative`,
+  );
   assert.equal(
     meta('twitter:card'),
     'summary_large_image',
@@ -525,6 +566,15 @@ for (const { locale, route, file } of routes) {
       `${file}: FAQ must document only the current library folder name`,
     );
   } else {
+    const headline = html
+      .match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1]
+      .replace(/<[^>]*>/g, '')
+      .replace(/\s/g, '');
+    assert.equal(
+      headline,
+      `${hero.lead}${hero.prefix}${hero.accent}`.replace(/\s/g, ''),
+      `${file}: social-card tagline must match the landing headline`,
+    );
     const applicationJson = html.match(
       /<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/,
     )?.[1];
