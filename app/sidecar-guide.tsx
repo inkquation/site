@@ -1,9 +1,9 @@
 /* oxlint-disable next/no-html-link-for-pages -- Full document navigation works on GitHub Pages without JavaScript. */
 import type { Metadata } from 'next';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
-import { siteOrigin } from '../site.config';
+import { pageMetadata } from './page-metadata';
 import { siteCopy, type Locale } from './copy';
-import { languageAlternates, localePath } from './locale-paths';
+import { localePath } from './locale-paths';
 import BrandWordmark from './brand-wordmark';
 import LanguageSwitch from './language-switch';
 import guides from './sidecar-guide.json';
@@ -11,15 +11,12 @@ import './sidecar-guide.css';
 
 export function sidecarGuideMetadata(locale: Locale): Metadata {
   const copy = guides[locale];
-  return {
-    title: `${copy.pageTitle} | Inkquation`,
-    description: copy.description,
-    metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
-    alternates: {
-      canonical: localePath(locale, 'sidecar/'),
-      languages: languageAlternates('sidecar/'),
-    },
-  };
+  return pageMetadata(
+    locale,
+    'sidecar/',
+    `${copy.pageTitle} | Inkquation`,
+    copy.description,
+  );
 }
 
 export default function SidecarGuide({ locale }: { locale: Locale }) {

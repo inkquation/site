@@ -118,6 +118,14 @@ const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '/site').replace(
 const origin =
   process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://inkquation.github.io';
 const prefix = `${basePath}/`;
+const socialImage = await readFile(path.join(output, 'og.png'));
+assert.equal(
+  socialImage.toString('ascii', 1, 4),
+  'PNG',
+  'Social card must be a PNG',
+);
+assert.equal(socialImage.readUInt32BE(16), 1200, 'Social card width');
+assert.equal(socialImage.readUInt32BE(20), 630, 'Social card height');
 const manifest = JSON.parse(
   await readFile('dist/server/vinext-prerender.json', 'utf8'),
 );
@@ -196,6 +204,69 @@ for (const { locale, route, file } of routes) {
   const pageUrl = new URL(
     `${prefix}${file.replace(/index\.html$/, '')}`,
     origin,
+  );
+  const metaTags = [...head.matchAll(/<meta\b[^>]*>/g)].map(([tag]) =>
+    Object.fromEntries(
+      [...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [
+        key,
+        value,
+      ]),
+    ),
+  );
+  const meta = (key) => {
+    const matches = metaTags.filter(
+      (tag) => (tag.property ?? tag.name) === key,
+    );
+    assert.equal(matches.length, 1, `${file}: expected one ${key} tag`);
+    return matches[0].content;
+  };
+  assert.equal(meta('og:type'), 'website', `${file}: Open Graph type`);
+  assert.equal(
+    meta('og:site_name'),
+    'Inkquation',
+    `${file}: Open Graph site name`,
+  );
+  assert.equal(
+    meta('og:title'),
+    head.match(/<title>(.*?)<\/title>/)?.[1],
+    `${file}: social title must match this page`,
+  );
+  assert.equal(
+    meta('og:description'),
+    meta('description'),
+    `${file}: social description must match this page`,
+  );
+  assert.equal(
+    new URL(meta('og:url')).href,
+    pageUrl.href,
+    `${file}: social URL must match this page`,
+  );
+  assert.equal(
+    meta('og:image'),
+    new URL(`${prefix}og.png`, origin).href,
+    `${file}: absolute social image URL`,
+  );
+  assert.equal(meta('og:image:width'), '1200', `${file}: social image width`);
+  assert.equal(meta('og:image:height'), '630', `${file}: social image height`);
+  assert.equal(
+    meta('twitter:card'),
+    'summary_large_image',
+    `${file}: Twitter card`,
+  );
+  assert.equal(
+    meta('twitter:title'),
+    meta('og:title'),
+    `${file}: Twitter title`,
+  );
+  assert.equal(
+    meta('twitter:description'),
+    meta('description'),
+    `${file}: Twitter description`,
+  );
+  assert.equal(
+    meta('twitter:image'),
+    meta('og:image'),
+    `${file}: Twitter image`,
   );
   const languageLinks = new Map();
   const alternates = new Map();
@@ -454,6 +525,55 @@ for (const { locale, route, file } of routes) {
       `${file}: FAQ must document only the current library folder name`,
     );
   } else {
+    const applicationJson = html.match(
+      /<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/,
+    )?.[1];
+    assert(applicationJson, `${file}: missing application structured data`);
+    const application = JSON.parse(applicationJson);
+    assert.equal(
+      application['@type'],
+      'SoftwareApplication',
+      `${file}: application schema type`,
+    );
+    assert.equal(application.url, pageUrl.href, `${file}: application URL`);
+    assert.equal(
+      application.inLanguage,
+      locale,
+      `${file}: application language`,
+    );
+    assert.equal(
+      application.operatingSystem,
+      'macOS',
+      `${file}: application platform`,
+    );
+    assert(
+      !application.offers && !application.aggregateRating,
+      `${file}: no unverified price or rating`,
+    );
+    const screenshot = html.match(
+      /<img\b[^>]*class="app-screenshot"[^>]*>/,
+    )?.[0];
+    assert(
+      screenshot?.includes('sizes='),
+      `${file}: missing responsive screenshot sizes`,
+    );
+    const imageName =
+      locale === 'en' ? 'inkquation-editor-en' : 'inkquation-editor';
+    assert(
+      screenshot.includes(`src="${prefix}assets/${imageName}-1440.webp"`),
+      `${file}: optimized screenshot fallback`,
+    );
+    for (const width of [480, 960, 1440, 1920]) {
+      const imageFile = `assets/${imageName}-${width}.webp`;
+      assert(
+        screenshot.includes(`${prefix}${imageFile} ${width}w`),
+        `${file}: missing screenshot size ${width}`,
+      );
+      assert(
+        (await stat(path.join(output, imageFile))).size < 350_000,
+        `${file}: screenshot variant exceeds transfer budget`,
+      );
+    }
     assert(
       !html.includes('id="faq-startup"'),
       `${file}: FAQ answers must not appear on the home page`,

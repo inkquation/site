@@ -97,7 +97,6 @@ export const zhHans: SiteCopy = {
     description: [
       '随时开始书写，需要时再调整。',
       '让灵感轻松落在纸上。',
-      '图形填充和选择后的外观编辑计划在下一次 TestFlight 更新中提供。',
     ],
     write: {
       title: '落下第一笔，让想法展开。',
@@ -327,7 +326,6 @@ export const zhHant: SiteCopy = {
     description: [
       '隨時開始書寫，需要時再調整。',
       '讓靈感輕鬆落在紙上。',
-      '圖形填色和選取後的外觀編輯預計於下一次 TestFlight 更新提供。',
     ],
     write: {
       title: '落下第一筆，讓想法展開。',
@@ -557,7 +555,6 @@ export const zhHK: SiteCopy = {
     description: [
       '隨時開始書寫，需要時再調整。',
       '讓靈感輕鬆落在紙上。',
-      '圖形填色和選取後的外觀編輯預計於下一次 TestFlight 更新提供。',
     ],
     write: {
       title: '落下第一筆，讓想法展開。',
@@ -793,7 +790,6 @@ export const ko: SiteCopy = {
     description: [
       '바로 쓰기 시작하고, 필요할 때 다듬으세요.',
       '아이디어가 노트로 이어지는 과정을 간단하게.',
-      '도형 채우기와 선택 후 모양 편집은 다음 TestFlight 업데이트에 제공할 예정입니다.',
     ],
     write: {
       title: '첫 획에서 시작되는 생각.',

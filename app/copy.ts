@@ -105,7 +105,6 @@ const ja = {
     description: [
       'すぐに書きはじめて、必要なときに整える。',
       'ひらめきとノートの間を、シンプルに。',
-      '図形の塗りと選択後の外観編集は、次のTestFlight更新向けの機能です。',
     ],
     write: {
       title: '一筆から、考えが動き出す。',
@@ -357,7 +356,6 @@ const en: SiteCopy = {
     description: [
       'Start writing. Make changes as you go.',
       'Keep the path from idea to page simple.',
-      'Shape fills and appearance editing after selection are planned for the next TestFlight update.',
     ],
     write: {
       title: 'Give an idea its first stroke.',

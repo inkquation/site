@@ -1,25 +1,17 @@
 /* oxlint-disable next/no-html-link-for-pages -- Full document navigation works on GitHub Pages without JavaScript. */
 import type { Metadata } from 'next';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
-import { siteOrigin } from '../site.config';
+import { pageMetadata } from './page-metadata';
 import type { Locale } from './copy';
 import { siteCopy } from './copy';
 import BrandWordmark from './brand-wordmark';
 import LanguageSwitch from './language-switch';
-import { languageAlternates, localePath } from './locale-paths';
+import { localePath } from './locale-paths';
 import questions from './faq.json';
 
 export function faqMetadata(locale: Locale): Metadata {
   const copy = questions[locale];
-  return {
-    title: `${copy.title} | Inkquation`,
-    description: copy.intro,
-    metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
-    alternates: {
-      canonical: localePath(locale, 'faq/'),
-      languages: languageAlternates('faq/'),
-    },
-  };
+  return pageMetadata(locale, 'faq/', `${copy.title} | Inkquation`, copy.intro);
 }
 
 export default function FAQPage({ locale }: { locale: Locale }) {

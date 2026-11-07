@@ -1,4 +1,4 @@
-/* oxlint-disable next/no-img-element -- These local assets are already sized; preserve the original app screenshot without image processing. */
+/* oxlint-disable next/no-img-element -- Static hosting uses pre-generated responsive assets. */
 /* oxlint-disable next/no-html-link-for-pages -- Language links load the matching root document so html lang updates without client JavaScript. */
 import LanguageSwitch from './language-switch';
 import SiteNavigation from './site-navigation';
@@ -15,7 +15,7 @@ import firstSteps from './first-steps.json';
 import ContactButton from './contact-button';
 import sidecarGuides from './sidecar-guide.json';
 import questions from './faq.json';
-import { sitePath, testFlightUrl } from '../site.config';
+import { siteOrigin, sitePath, testFlightUrl } from '../site.config';
 import {
   ArrowDown,
   ArrowUpRight,
@@ -34,11 +34,9 @@ function NotebookPreview({
   copy: SiteCopy['screenshot'];
   locale: Locale;
 }) {
-  const screenshot = sitePath(
-    locale === 'en'
-      ? '/assets/inkquation-editor-en.png'
-      : '/assets/inkquation-editor.png',
-  );
+  const imageName =
+    locale === 'en' ? 'inkquation-editor-en' : 'inkquation-editor';
+  const screenshot = sitePath(`/assets/${imageName}.png`);
   return (
     <figure className="preview-figure actual-preview">
       <a
@@ -50,7 +48,14 @@ function NotebookPreview({
       >
         <img
           className="app-screenshot"
-          src={screenshot}
+          src={sitePath(`/assets/${imageName}-1440.webp`)}
+          srcSet={[480, 960, 1440, 1920]
+            .map(
+              (width) =>
+                `${sitePath(`/assets/${imageName}-${width}.webp`)} ${width}w`,
+            )
+            .join(', ')}
+          sizes="(max-width: 520px) calc(100vw - 36px), (max-width: 820px) 490px, (max-width: 1100px) calc((100vw - 92px) * 0.561), (max-width: 1340px) calc((100vw - 148px) * 0.574), 660px"
           width="3424"
           height="1994"
           fetchPriority="high"
@@ -77,8 +82,30 @@ export default function LandingPage({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
   const { tutorial, preferences } = firstSteps[locale];
   const tutorialScreenshot = sitePath(`/assets/tutorial-menu-${locale}.png`);
+  const application = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Inkquation',
+    description: copy.meta.description,
+    url: new URL(localePath(locale), siteOrigin ?? 'https://inkquation.app')
+      .href,
+    image: new URL(
+      sitePath('/assets/inkquation-icon.png'),
+      siteOrigin ?? 'https://inkquation.app',
+    ).href,
+    operatingSystem: 'macOS',
+    applicationCategory: 'ProductivityApplication',
+    inLanguage: locale,
+    downloadUrl: testFlightUrl,
+  };
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(application).replace(/</g, '\\u003c'),
+        }}
+      />
       <a href="#main" className="skip-link">
         {copy.nav.skip}
       </a>

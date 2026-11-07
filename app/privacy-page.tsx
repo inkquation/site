@@ -1,7 +1,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- These links load the matching language document on static hosting. */
 import type { Metadata } from 'next';
-import { siteOrigin } from '../site.config';
-import { localePath, languageAlternates } from './locale-paths';
+import { localePath } from './locale-paths';
+import { pageMetadata } from './page-metadata';
 import LanguageSwitch from './language-switch';
 import BrandWordmark from './brand-wordmark';
 import { siteCopy, type Locale } from './copy';
@@ -9,15 +9,12 @@ import ContactButton from './contact-button';
 import policy from './privacy-policy.json';
 
 export function privacyMetadata(locale: Locale): Metadata {
-  return {
-    title: `${policy[locale].title} | Inkquation`,
-    description: policy[locale].intro,
-    metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
-    alternates: {
-      canonical: localePath(locale, 'privacy/'),
-      languages: languageAlternates('privacy/'),
-    },
-  };
+  return pageMetadata(
+    locale,
+    'privacy/',
+    `${policy[locale].title} | Inkquation`,
+    policy[locale].intro,
+  );
 }
 
 export default function PrivacyPage({ locale }: { locale: Locale }) {

@@ -1,12 +1,9 @@
 /* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- Overflowing code and tables must be focusable for keyboard scrolling. */
 /* oxlint-disable next/no-html-link-for-pages -- Full document navigation works on GitHub Pages without JavaScript. */
 import type { Metadata } from 'next';
-import { siteOrigin, sitePath } from '../site.config';
-import {
-  aiGuideLocales,
-  aiGuidePath,
-  type AIGuideLocale,
-} from './ai-guide-paths';
+import { sitePath } from '../site.config';
+import { pageMetadata } from './page-metadata';
+import { aiGuidePath, type AIGuideLocale } from './ai-guide-paths';
 import { localePath } from './locale-paths';
 import { siteCopy } from './copy';
 import LanguageSwitch from './language-switch';
@@ -15,16 +12,16 @@ import guides from './ai-guide.json';
 import './ai-guide.css';
 
 export function aiGuideMetadata(locale: AIGuideLocale): Metadata {
+  const metadata = pageMetadata(
+    locale,
+    'ai/',
+    `${guides[locale].title} | Inkquation`,
+    guides[locale].description,
+  );
   return {
-    title: `${guides[locale].title} | Inkquation`,
-    description: guides[locale].description,
-    metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
+    ...metadata,
     alternates: {
-      canonical: aiGuidePath(locale),
-      languages: Object.fromEntries([
-        ...aiGuideLocales.map((language) => [language, aiGuidePath(language)]),
-        ['x-default', aiGuidePath('ja')],
-      ]),
+      ...metadata.alternates,
       types: { 'text/markdown': `${aiGuidePath(locale)}index.md` },
     },
   };

@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 import { siteCopy, type Locale } from './copy';
-import { siteOrigin, sitePath } from '../site.config';
-import { localePath, languageAlternates } from './locale-paths';
+import { sitePath } from '../site.config';
+import { pageMetadata } from './page-metadata';
 import './globals.css';
 
 export function localeMetadata(locale: Locale): Metadata {
   return {
-    ...siteCopy[locale].meta,
-    metadataBase: siteOrigin ? new URL(siteOrigin) : undefined,
-    alternates: {
-      canonical: localePath(locale),
-      languages: languageAlternates(),
-    },
+    ...pageMetadata(
+      locale,
+      '',
+      siteCopy[locale].meta.title,
+      siteCopy[locale].meta.description,
+    ),
     icons: {
       icon: sitePath('/assets/inkquation-icon.png'),
       apple: sitePath('/assets/inkquation-icon.png'),
