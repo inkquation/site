@@ -136,36 +136,26 @@ export const zhHans: SiteCopy = {
     note: '留白设置在导入时确定，导入后无法更改。',
   },
   ai: {
-    eyebrow: '04 / AI 连接',
     title: ['手写笔记，', '也能与 AI 一起处理。'],
     description:
-      '通过 MCP（连接 AI 应用与工具的协议），外部 AI 应用可以将打开的页面或套索选区读取为图像，并将 PNG 图像、图形和笔画添加到笔记中。',
-    capabilities: [
-      '读取页面与选区',
-      '插入 PNG 图像、图形和笔画',
-      '查看并撤销插入结果',
-    ],
-    setupTitle: '在设置中连接 AI 应用。',
-    steps: [
+      '让外部 AI 应用查看手写页面，讨论计算步骤，或在笔记中添加说明图。',
+    examplesLabel: '连接 AI 应用后的请求示例',
+    examples: [
       {
-        title: '启用 AI 连接',
-        description:
-          '在 Inkquation 的“设置”→“AI 连接”中允许连接。此功能默认关闭。',
+        title: '一起梳理计算步骤',
+        prompt: '请读一下选中的计算过程，告诉我接下来应该检查哪里。',
+        description: '将当前页面或套索选区作为图像提供给 AI。',
       },
       {
-        title: '拷贝连接配置',
-        description:
-          '将设置页面中的配置添加到Mac上支持MCP的AI应用。配置包含访问密钥，请勿与他人分享。重启后的处理方式和重新配置步骤请参阅AI集成指南。',
-      },
-      {
-        title: '打开笔记，向 AI 提出请求',
-        description:
-          '保持 Inkquation 打开，然后通过已连接的 AI 应用请求读取页面或添加图像、图形。',
+        title: '在笔记中补充说明图',
+        prompt: '请在留白处添加一张简单的示意图，帮助解释这个公式。',
+        description: '可以添加图形、笔画或 PNG 图像，再查看页面上的结果。',
       },
     ],
+    connectionNote: '需要连接兼容的外部 AI 应用。AI 连接默认关闭。',
     privacy:
       '使用前需设置外部 AI 应用，并准备其服务所需的账户等。如果使用云端 AI，读取的笔记内容可能会发送至该服务。',
-    guideLink: '阅读 AI 连接指南',
+    guideLink: '查看 AI 应用的连接步骤',
     privacyLink: '了解 AI 连接与隐私',
   },
   workflow: {
@@ -359,36 +349,26 @@ export const zhHant: SiteCopy = {
     note: '留白設定在匯入時確定，匯入後無法更改。',
   },
   ai: {
-    eyebrow: '04 / AI 連線',
     title: ['手寫筆記，', '也能與 AI 一起處理。'],
     description:
-      '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為影像，並將 PNG 影像、圖形和筆畫加入筆記。',
-    capabilities: [
-      '讀取頁面與選取範圍',
-      '插入 PNG 影像、圖形和筆畫',
-      '查看並復原插入結果',
-    ],
-    setupTitle: '在設定中連接 AI App。',
-    steps: [
+      '讓外部 AI App 查看手寫頁面，一起釐清計算步驟，或在筆記中加入說明圖。',
+    examplesLabel: '連接 AI App 後的要求範例',
+    examples: [
       {
-        title: '啟用 AI 連線',
-        description:
-          '在 Inkquation 的「設定」→「AI 連線」中允許連線。此功能預設為關閉。',
+        title: '一起釐清計算步驟',
+        prompt: '請讀一下選取的計算過程，告訴我接下來應該檢查哪裡。',
+        description: '將目前頁面或套索選取範圍作為影像提供給 AI。',
       },
       {
-        title: '拷貝連線設定',
-        description:
-          '將設定畫面中的組態加入Mac上支援MCP的AI App。設定包含存取金鑰，請勿與他人分享。重新啟動後的處理方式與重新設定步驟請參閱AI整合指南。',
-      },
-      {
-        title: '開啟筆記，向 AI 提出要求',
-        description:
-          '保持 Inkquation 開啟，再透過已連接的 AI App 要求讀取頁面或加入影像、圖形。',
+        title: '在筆記中補上說明圖',
+        prompt: '請在留白處加入簡單的示意圖，幫助說明這個公式。',
+        description: '可以加入圖形、筆畫或 PNG 影像，再查看頁面上的結果。',
       },
     ],
+    connectionNote: '需要連接相容的外部 AI App。AI 連線預設為關閉。',
     privacy:
       '使用前需設定外部 AI App，並準備其服務所需的帳號等。若使用雲端 AI，讀取的筆記內容可能會傳送至該服務。',
-    guideLink: '閱讀 AI 連線指南',
+    guideLink: '查看 AI App 的連線步驟',
     privacyLink: '了解 AI 連線與隱私權',
   },
   workflow: {
@@ -582,36 +562,26 @@ export const zhHK: SiteCopy = {
     note: '留白設定在匯入時確定，匯入後無法更改。',
   },
   ai: {
-    eyebrow: '04 / AI 連線',
     title: ['手寫筆記，', '也能與 AI 一起處理。'],
     description:
-      '透過 MCP（連接 AI App 與工具的通訊協定），外部 AI App 可以將開啟的頁面或套索選取範圍讀取為圖像，並將 PNG 圖像、圖形和筆畫加入筆記。',
-    capabilities: [
-      '讀取頁面與選取範圍',
-      '插入 PNG 圖像、圖形和筆畫',
-      '查看並還原插入結果',
-    ],
-    setupTitle: '在設定中連接 AI App。',
-    steps: [
+      '讓外部 AI App 查看手寫頁面，一起理清計算步驟，或在筆記中加入說明圖。',
+    examplesLabel: '連接 AI App 後的要求示例',
+    examples: [
       {
-        title: '啟用 AI 連線',
-        description:
-          '在 Inkquation 的「設定」→「AI 連線」中允許連線。此功能預設為關閉。',
+        title: '一起理清計算步驟',
+        prompt: '請讀一下選取的計算過程，告訴我接下來應該檢查哪裡。',
+        description: '將目前頁面或套索選取範圍作為圖像提供給 AI。',
       },
       {
-        title: '複製連線設定',
-        description:
-          '將設定畫面中的配置加入Mac上支援MCP的AI App。設定包含存取金鑰，請勿與他人分享。重新啟動後的處理方式與重新設定步驟請參閱AI整合指南。',
-      },
-      {
-        title: '開啟筆記，向 AI 提出要求',
-        description:
-          '保持 Inkquation 開啟，再透過已連接的 AI App 要求讀取頁面或加入圖像、圖形。',
+        title: '在筆記中補上說明圖',
+        prompt: '請在留白處加入簡單的示意圖，幫助說明這個公式。',
+        description: '可以加入圖形、筆畫或 PNG 圖像，再查看頁面上的結果。',
       },
     ],
+    connectionNote: '需要連接兼容的外部 AI App。AI 連線預設為關閉。',
     privacy:
       '使用前需設定外部 AI App，並準備其服務所需的帳戶等。如使用雲端 AI，讀取的筆記內容可能會傳送至該服務。',
-    guideLink: '閱讀 AI 連線指南',
+    guideLink: '查看 AI App 的連線步驟',
     privacyLink: '了解 AI 連線與私隱',
   },
   workflow: {
@@ -814,36 +784,30 @@ export const ko: SiteCopy = {
     note: '여백 설정은 가져올 때 확정되며, 가져온 뒤에는 변경할 수 없습니다.',
   },
   ai: {
-    eyebrow: '04 / AI 연결',
     title: ['손으로 쓴 노트를', 'AI와 함께 활용하세요.'],
     description:
-      'AI 앱과 도구를 연결하는 프로토콜인 MCP를 지원합니다. 외부 AI 앱에서 열린 페이지나 올가미 선택 영역을 이미지로 읽고, PNG 이미지, 도형, 펜 획을 노트에 추가할 수 있습니다.',
-    capabilities: [
-      '페이지와 선택 영역 읽기',
-      'PNG 이미지, 도형, 펜 획 삽입',
-      '삽입 결과 확인 및 실행 취소',
-    ],
-    setupTitle: '설정에서 AI 앱을 연결하세요.',
-    steps: [
+      '외부 AI 앱에 손글씨 페이지를 보여 주고 계산 과정을 함께 살펴보거나, 설명에 필요한 그림을 노트에 추가할 수 있습니다.',
+    examplesLabel: 'AI 앱을 연결한 뒤 요청해 보세요',
+    examples: [
       {
-        title: 'AI 연결 허용하기',
+        title: '계산 과정을 함께 살펴보기',
+        prompt:
+          '선택한 계산 과정을 읽고, 다음에 무엇을 확인하면 좋을지 알려 줘.',
         description:
-          'Inkquation의 설정 → AI 연결에서 연결을 허용하세요. 기본적으로 꺼져 있습니다.',
+          '열린 페이지나 올가미로 선택한 영역을 이미지로 AI에 전달할 수 있습니다.',
       },
       {
-        title: '연결 설정 복사하기',
+        title: '노트에 설명 그림 추가하기',
+        prompt: '이 수식을 설명하는 간단한 그림을 여백에 추가해 줘.',
         description:
-          '설정 화면의 구성을 Mac에서 실행되는 MCP 지원 AI 앱에 추가하세요. 구성에는 접근 키가 포함되므로 다른 사람에게 공유하지 마세요. 재시작 후 동작과 재설정 절차는 AI 연동 가이드를 확인하세요.',
-      },
-      {
-        title: '노트를 열고 AI에 요청하기',
-        description:
-          'Inkquation을 열어 둔 상태에서 연결된 AI 앱에 페이지 읽기나 이미지·도형 추가를 요청하세요.',
+          '도형, 펜 획 또는 PNG 이미지를 추가하고 페이지에서 결과를 확인할 수 있습니다.',
       },
     ],
+    connectionNote:
+      '호환되는 외부 AI 앱을 연결해야 합니다. AI 연결은 기본적으로 꺼져 있습니다.',
     privacy:
       '외부 AI 앱 설정과 해당 서비스에서 요구하는 계정 등이 필요합니다. 클라우드 기반 AI를 사용하면 읽은 노트 내용이 해당 서비스로 전송될 수 있습니다.',
-    guideLink: 'AI 연결 가이드 읽기',
+    guideLink: 'AI 앱 연결 방법 보기',
     privacyLink: 'AI 연결과 개인정보 보호 알아보기',
   },
   workflow: {

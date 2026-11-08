@@ -724,9 +724,8 @@ for (const { locale, route, file } of routes) {
       html.includes(`${expectedLanguages.get(locale)}privacy/#ai`),
       `${file}: wrong AI privacy link`,
     );
-    assert(html.includes('MCP'), `${file}: missing AI connection explanation`);
     assert(
-      html.includes(`href="${basePath}${guideRoute(locale)}"`),
+      html.includes(`href="${basePath}${guideRoute(locale)}#connect"`),
       `${file}: missing AI guide link`,
     );
   }

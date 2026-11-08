@@ -147,36 +147,29 @@ const ja = {
     note: '余白の設定は取り込み時に確定します。取り込み後に変更する機能はありません。',
   },
   ai: {
-    eyebrow: '04 / AI連携',
     title: ['手書きのノートを、', 'AIと一緒に。'],
     description:
-      'MCP（AIアプリとつなぐための仕組み）に対応。外部AIアプリから、開いているページや投げなわで選んだ範囲を画像として読み取り、PNG画像や図形、ペンの線をノートに追加できます。',
-    capabilities: [
-      'ページ・選択範囲の読み取り',
-      'PNG画像・図形・ペンの線の追加',
-      '追加結果の確認・取り消し',
-    ],
-    setupTitle: '設定から、AIアプリにつなぐ。',
-    steps: [
+      '手書きのページを外部AIアプリに見せて、途中式について相談したり、説明用の図をノートに追加したりできます。',
+    examplesLabel: '接続したAIへの依頼例',
+    examples: [
       {
-        title: 'AI接続を有効にする',
+        title: '途中式を見せて相談する',
+        prompt: '選んだ途中式を読んで、次に確かめる点を教えて。',
         description:
-          'Inkquationの「設定」→「AI接続」で許可します。初期状態では無効です。',
+          '開いているページや投げなわの選択範囲を、画像としてAIに渡せます。',
       },
       {
-        title: '接続設定をコピーする',
+        title: '説明用の図を描き足す',
+        prompt: 'この式の関係がわかる簡単な図を、余白に追加して。',
         description:
-          '設定画面の接続設定を、Mac上のMCP対応AIアプリに登録します。設定にはアクセスキーが含まれるため、第三者に渡さないでください。再起動後の扱いや再設定の手順はAI連携ガイドを確認してください。',
-      },
-      {
-        title: 'ノートを開いて、AIに依頼する',
-        description:
-          'Inkquationを開いたまま、接続先のAIアプリから読み取りや画像・図形の追加を依頼します。',
+          '図形・ペンの線・PNG画像を追加し、ページ上で結果を確認できます。',
       },
     ],
+    connectionNote:
+      '対応する外部AIアプリへの接続が必要です。AI接続は初期状態では無効です。',
     privacy:
       'AIの利用には外部AIアプリの設定と、そのサービスのアカウント等が必要です。クラウド型のAIを使う場合、読み取ったノートの内容が接続先のサービスに送信されることがあります。',
-    guideLink: 'AI連携ガイドを読む',
+    guideLink: 'AIアプリの接続手順を見る',
     privacyLink: 'AI接続とプライバシーについて',
   },
   workflow: {
@@ -395,36 +388,31 @@ const en: SiteCopy = {
     note: 'Margin settings are fixed when importing. They cannot be changed after import.',
   },
   ai: {
-    eyebrow: '04 / AI INTEGRATION',
     title: ['Bring your handwritten', 'notes into the conversation.'],
     description:
-      'Connect an external AI app through MCP, a protocol for connecting AI apps to tools. It can read an open page or lasso selection as an image and add PNG images, shapes and pen strokes to your notes.',
-    capabilities: [
-      'Read pages and selections',
-      'Insert PNG images, shapes and strokes',
-      'Inspect and undo insertions',
-    ],
-    setupTitle: 'Connect your AI app in Settings.',
-    steps: [
+      'Show a handwritten page to an external AI app to discuss your calculations or add an explanatory diagram to the note.',
+    examplesLabel: 'Requests to try with a connected AI app',
+    examples: [
       {
-        title: 'Enable AI connections',
+        title: 'Talk through your calculations',
+        prompt:
+          'Read the selected calculation steps and suggest what I should check next.',
         description:
-          'In Inkquation, open Settings → AI Connection and allow connections. This is off by default.',
+          'Share the open page or a lasso selection as an image with your AI app.',
       },
       {
-        title: 'Copy the connection configuration',
+        title: 'Add an explanatory diagram',
+        prompt:
+          'Add a simple diagram in the margin to help explain this equation.',
         description:
-          'Add the configuration from Settings to an MCP-compatible AI app on your Mac. It contains an access key; keep it private. See the AI integration guide for restart behavior and reconfiguration steps.',
-      },
-      {
-        title: 'Open a note and ask your AI app',
-        description:
-          'Keep Inkquation open, then ask the connected AI app to read a page or insert an image or shape.',
+          'Have the AI add shapes, pen strokes, or PNG images, then check the result on the page.',
       },
     ],
+    connectionNote:
+      'Requires a compatible external AI app. AI connections are off by default.',
     privacy:
       'Set up an external AI app and any account required by its service. If you use a cloud-based AI, the note content it reads may be sent to that service.',
-    guideLink: 'Read the AI integration guide',
+    guideLink: 'See how to connect your AI app',
     privacyLink: 'About AI connections and privacy',
   },
   workflow: {

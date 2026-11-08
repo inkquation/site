@@ -350,31 +350,27 @@ export default function LandingPage({ locale }: { locale: Locale }) {
               <TextLines lines={copy.ai.title} />
             </h2>
             <p className="ai-description">{copy.ai.description}</p>
-            <ul className="ai-capabilities">
-              {copy.ai.capabilities.map((capability) => (
-                <li key={capability}>{capability}</li>
-              ))}
-            </ul>
+          </div>
+          <section className="ai-examples" aria-labelledby="ai-examples-title">
+            <h3 id="ai-examples-title">{copy.ai.examplesLabel}</h3>
+            {copy.ai.examples.map((example) => (
+              <div className="ai-example" key={example.title}>
+                <h4>{example.title}</h4>
+                <blockquote className="ai-example-prompt">
+                  <p>{example.prompt}</p>
+                </blockquote>
+                <p className="ai-example-description">{example.description}</p>
+              </div>
+            ))}
+          </section>
+          <div className="ai-connect">
             <a
-              className="privacy-text-link mt-6 inline-flex items-center gap-2"
-              href={aiGuidePath(locale)}
+              className="privacy-text-link ai-guide-link"
+              href={`${aiGuidePath(locale)}#connect`}
             >
               {copy.ai.guideLink} <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-          </div>
-          <div className="ai-setup">
-            <h3>{copy.ai.setupTitle}</h3>
-            <ol className="workflow-steps">
-              {copy.ai.steps.map((step, index) => (
-                <li key={step.title}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h4>{step.title}</h4>
-                    <p>{step.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <p className="ai-connection-note">{copy.ai.connectionNote}</p>
           </div>
           <div className="ai-privacy">
             <p>{copy.ai.privacy}</p>
