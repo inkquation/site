@@ -21,7 +21,6 @@ export default function SidecarOverview({ locale }: { locale: Locale }) {
     >
       <div className="container sidecar-feature-inner">
         <div className="sidecar-feature-copy">
-          <p className="eyebrow section-eyebrow">05 / MAC + IPAD</p>
           <h2 id="sidecar-title">
             <TextLines lines={copy.landing.title} />
           </h2>

@@ -435,20 +435,6 @@ h1 {
 .screenshot-expand:hover {
   color: var(--primary);
 }
-.hero-bottom {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding-block: 0 24px;
-  color: #8390a6;
-  font: 9px/1.5 system-ui;
-  letter-spacing: 1.5px;
-}
-.scroll-cue {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 .intro-strip {
   background: white;
   border-block: 1px solid var(--border);
@@ -541,9 +527,6 @@ h1 {
     max-width: 640px;
     justify-self: center;
   }
-  .hero-bottom {
-    padding-top: 10px;
-  }
   .intro-strip .container {
     justify-content: center;
     gap: 15px;
@@ -600,10 +583,6 @@ h1 {
     font-size: 8px;
     margin-inline: 1px;
     gap: 4px;
-  }
-  .hero-bottom {
-    font-size: 7px;
-    letter-spacing: 1px;
   }
   .intro-strip p {
     font-size: 20px;
@@ -738,11 +717,6 @@ h1 {
   justify-content: space-between;
   gap: 35px;
   margin-bottom: 60px;
-}
-.section-eyebrow {
-  font-size: 10px;
-  margin-bottom: 21px;
-  letter-spacing: 1.7px;
 }
 .section-heading h2,
 .workflow-copy > h2 {
@@ -955,11 +929,6 @@ h1 {
   justify-content: space-between;
   color: var(--primary);
   margin-bottom: 25px;
-}
-.feature-icon > span {
-  color: #8191ad;
-  font: 10px system-ui;
-  letter-spacing: 1.5px;
 }
 .shape-icon {
   display: flex;
@@ -1219,9 +1188,6 @@ h1 {
   border-left: 1px solid #d9e1ee;
   padding-left: 65px;
 }
-.mac-description .eyebrow {
-  margin-bottom: 15px;
-}
 .mac-description h2 {
   font-size: 21px;
   font-family: var(--serif);
@@ -1267,12 +1233,6 @@ h1 {
   justify-content: space-between;
   gap: 70px;
   padding-block: 65px 70px;
-}
-.get-app-inner .eyebrow {
-  color: #a4b9e1;
-  margin-bottom: 20px;
-  font-size: 9px;
-  letter-spacing: 1.8px;
 }
 .get-app-inner h2 {
   margin: 0;
@@ -1661,9 +1621,6 @@ h1 {
     linear-gradient(90deg, #bacbea30 1px, transparent 1px);
   border-block: 1px solid #dce5f5;
 }
-.get-app-inner .eyebrow {
-  color: #6983b1;
-}
 .get-app-action p {
   color: #617496;
 }
@@ -1707,8 +1664,18 @@ h1 {
 .shortcut-main {
   display: grid;
   grid-template-columns: 1fr 1.12fr;
-  gap: 100px;
-  align-items: center;
+  grid-template-areas:
+    'intro reference'
+    'details reference';
+  grid-template-rows: auto 1fr;
+  column-gap: 100px;
+  align-items: start;
+}
+.shortcut-copy {
+  grid-area: intro;
+}
+.shortcut-details {
+  grid-area: details;
 }
 .shortcut-copy h2 {
   margin: 0;
@@ -1729,15 +1696,8 @@ h1 {
   padding: 20px 0 0 20px;
   border-left: 2px solid #cad8ef;
 }
-.shortcut-small-label {
-  font:
-    10px system-ui,
-    sans-serif;
-  letter-spacing: 1.5px;
-  color: #7188b3;
-}
 .shortcut-customization h3 {
-  margin: 11px 0 9px;
+  margin: 0 0 9px;
   font-size: 18px;
   font-weight: 500;
 }
@@ -1748,6 +1708,8 @@ h1 {
   line-height: 2;
 }
 .shortcut-reference {
+  grid-area: reference;
+  align-self: center;
   min-width: 0;
   background: #fff;
   padding: 28px 32px 24px;
@@ -1764,13 +1726,6 @@ h1 {
   margin-bottom: 21px;
   font-size: 15px;
   color: #39557f;
-}
-.shortcut-reference-label {
-  font:
-    10px system-ui,
-    sans-serif;
-  letter-spacing: 1.6px;
-  color: #8798b2;
 }
 .shortcut-reference .shortcut-presets {
   width: 100%;
@@ -1930,18 +1885,9 @@ h1 {
   line-height: 1.9;
   color: #637798;
 }
-.hold-duration {
-  margin-left: auto;
-  flex-shrink: 0;
-  font:
-    9px system-ui,
-    sans-serif;
-  color: #7f94b5;
-  letter-spacing: 1px;
-}
 @media (max-width: 1100px) {
   .shortcut-main {
-    gap: 48px;
+    column-gap: 48px;
     grid-template-columns: 1fr 1.2fr;
   }
   .shortcut-reference {
@@ -1964,9 +1910,6 @@ h1 {
     min-width: 30px;
     padding-inline: 6px;
   }
-  .hold-duration {
-    display: none;
-  }
 }
 @media (max-width: 820px) {
   .shortcuts-section {
@@ -1974,14 +1917,16 @@ h1 {
   }
   .shortcut-main {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      'intro'
+      'reference'
+      'details';
+    grid-template-rows: auto;
     gap: 34px;
-  }
-  .shortcut-copy .eyebrow {
-    justify-content: flex-start;
   }
   .shortcut-description {
     max-width: none;
-    margin-bottom: 25px;
+    margin-bottom: 0;
   }
   .shortcut-customization {
     padding-top: 4px;
@@ -2030,9 +1975,6 @@ h1 {
   .shortcut-reference .shortcut-preset {
     font-size: 13px;
     padding-inline: 8px;
-  }
-  .shortcut-reference-label {
-    font-size: 9px;
   }
   .shortcut-row {
     gap: 8px;

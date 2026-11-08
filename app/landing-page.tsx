@@ -147,9 +147,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         <section className="hero" id="top">
           <div className="container hero-inner">
             <div className="hero-copy">
-              <p className="eyebrow">
-                <span /> A PEN. A KEYBOARD. YOUR IDEAS.
-              </p>
               <h1>
                 {copy.hero.lead}
                 <br />
@@ -187,12 +184,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </div>
             <NotebookPreview copy={copy.screenshot} locale={locale} />
           </div>
-          <div className="hero-bottom container">
-            <span>HANDWRITING MEETS KEYBOARD SHORTCUTS.</span>
-            <span className="scroll-cue">
-              SCROLL TO EXPLORE <ArrowDown size={12} />
-            </span>
-          </div>
         </section>
         <ShortcutGuide copy={copy.shortcuts} />
         <section
@@ -202,7 +193,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="container tutorial-inner">
             <div className="tutorial-copy">
-              <p className="eyebrow section-eyebrow">{tutorial.eyebrow}</p>
               <h2 id="tutorial-title">
                 <TextLines lines={tutorial.title} />
               </h2>
@@ -255,7 +245,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow section-eyebrow">03 / THE TOOLS</p>
               <h2 id="features-title">
                 <TextLines lines={copy.features.title} />
               </h2>
@@ -268,7 +257,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             <article className="feature-item">
               <div className="feature-icon">
                 <PenLine size={24} strokeWidth={1.5} />
-                <span>WRITE</span>
               </div>
               <h3>{copy.features.write.title}</h3>
               <p>{copy.features.write.description}</p>
@@ -284,7 +272,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
                   <Square size={20} strokeWidth={1.5} />
                   <Circle size={20} strokeWidth={1.5} />
                 </div>
-                <span>SHAPE</span>
               </div>
               <h3>{copy.features.shape.title}</h3>
               <p>{copy.features.shape.description}</p>
@@ -308,7 +295,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             <article className="feature-item">
               <div className="feature-icon">
                 <Bookmark size={24} strokeWidth={1.5} />
-                <span>ORGANIZE</span>
               </div>
               <h3>{copy.features.organize.title}</h3>
               <p>{copy.features.organize.description}</p>
@@ -360,7 +346,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           aria-labelledby="ai-title"
         >
           <div className="ai-copy">
-            <p className="eyebrow section-eyebrow">{copy.ai.eyebrow}</p>
             <h2 id="ai-title">
               <TextLines lines={copy.ai.title} />
             </h2>
@@ -409,7 +394,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="container workflow-inner">
             <div className="workflow-copy">
-              <p className="eyebrow section-eyebrow">06 / THINK IN EQUATIONS</p>
               <h2 id="workflow-title">
                 <TextLines lines={copy.workflow.title} />
               </h2>
@@ -441,7 +425,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </span>
           </div>
           <div className="mac-description">
-            <p className="eyebrow section-eyebrow">AT HOME ON MACOS</p>
             <h2 id="mac-title">{copy.mac.title}</h2>
             <p>
               <TextLines lines={copy.mac.description} />
@@ -463,7 +446,6 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         >
           <div className="container get-app-inner">
             <div>
-              <p className="eyebrow">INK × EQUATION × IMAGINATION</p>
               <h2 id="get-app-title">
                 <TextLines lines={copy.contact.title} />
               </h2>

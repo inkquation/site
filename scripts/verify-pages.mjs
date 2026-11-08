@@ -650,11 +650,6 @@ for (const { locale, route, file } of routes) {
         html.indexOf('id="sidecar"') < html.indexOf('id="workflow"'),
       `${file}: Sidecar belongs after AI and before the writing workflow`,
     );
-    assert(
-      overview.includes('05 / MAC + IPAD') &&
-        html.includes('06 / THINK IN EQUATIONS'),
-      `${file}: home sections must remain sequentially numbered`,
-    );
     const overviewText = overview
       .replace(/<[^>]*>/g, '')
       .replaceAll('&amp;', '&')

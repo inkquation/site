@@ -110,47 +110,14 @@ export default function ShortcutGuide({
       >
         <div className="shortcut-main">
           <div className="shortcut-copy">
-            <p className="eyebrow section-eyebrow">01 / KEYBOARD SHORTCUTS</p>
             <h2 id="shortcuts-title">
               <TextLines lines={copy.title} />
             </h2>
             <p className="shortcut-description">{copy.description}</p>
-            <div className="shortcut-setup">
-              <h3>{copy.setupTitle}</h3>
-              <p>{copy.setupDescription}</p>
-              <p>{copy.layoutNote}</p>
-            </div>
-            <div className="shortcut-customization">
-              <span className="shortcut-small-label">MAKE IT YOURS</span>
-              <h3>{copy.customizeTitle}</h3>
-              <p>{copy.customizeDescription}</p>
-            </div>
-            <div className="shortcut-navigation">
-              <h3>{copy.navigationTitle}</h3>
-              <dl>
-                <div>
-                  <dt>{copy.pageLabel}</dt>
-                  <dd>
-                    <Keys keys={['⌘', '1']} label="Command + 1" />
-                    <span> / </span>
-                    <Keys keys={['⌘', '2']} label="Command + 2" />
-                  </dd>
-                </div>
-                <div>
-                  <dt>{copy.zoomLabel}</dt>
-                  <dd>
-                    <Keys keys={['⌘', '3']} label="Command + 3" />
-                    <span> / </span>
-                    <Keys keys={['⌘', '4']} label="Command + 4" />
-                  </dd>
-                </div>
-              </dl>
-            </div>
           </div>
           <div className="shortcut-reference">
             <div className="shortcut-reference-heading">
               <span>{copy.referenceTitle}</span>
-              <span className="shortcut-reference-label">KEY GUIDE</span>
             </div>
             <TabsList
               className="shortcut-presets"
@@ -202,6 +169,38 @@ export default function ShortcutGuide({
               </TabsContent>
             ))}
             <p className="shortcut-reference-note">{copy.note}</p>
+          </div>
+          <div className="shortcut-details">
+            <div className="shortcut-setup">
+              <h3>{copy.setupTitle}</h3>
+              <p>{copy.setupDescription}</p>
+              <p>{copy.layoutNote}</p>
+            </div>
+            <div className="shortcut-customization">
+              <h3>{copy.customizeTitle}</h3>
+              <p>{copy.customizeDescription}</p>
+            </div>
+            <div className="shortcut-navigation">
+              <h3>{copy.navigationTitle}</h3>
+              <dl>
+                <div>
+                  <dt>{copy.pageLabel}</dt>
+                  <dd>
+                    <Keys keys={['⌘', '1']} label="Command + 1" />
+                    <span> / </span>
+                    <Keys keys={['⌘', '2']} label="Command + 2" />
+                  </dd>
+                </div>
+                <div>
+                  <dt>{copy.zoomLabel}</dt>
+                  <dd>
+                    <Keys keys={['⌘', '3']} label="Command + 3" />
+                    <span> / </span>
+                    <Keys keys={['⌘', '4']} label="Command + 4" />
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
         <p className="shortcut-active-preset" aria-live="polite">
@@ -255,7 +254,6 @@ export default function ShortcutGuide({
             <h3>{copy.hintTitle}</h3>
             <p>{copy.hintDescription}</p>
           </div>
-          <span className="hold-duration">HOLD FOR 1 SEC.</span>
         </aside>
       </Tabs>
     </section>
