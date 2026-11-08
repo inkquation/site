@@ -154,7 +154,7 @@ const ja = {
     examples: [
       {
         title: '途中式を見せて相談する',
-        prompt: '選んだ途中式を読んで、次に確かめる点を教えて。',
+        prompt: '選んだ途中式を検算して、計算ミスがないか確認して。',
         description:
           '開いているページや投げなわの選択範囲を、画像としてAIに渡せます。',
       },
@@ -396,7 +396,7 @@ const en: SiteCopy = {
       {
         title: 'Talk through your calculations',
         prompt:
-          'Read the selected calculation steps and suggest what I should check next.',
+          'Double-check the selected calculation steps for any errors.',
         description:
           'Share the open page or a lasso selection as an image with your AI app.',
       },

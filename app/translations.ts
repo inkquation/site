@@ -143,7 +143,7 @@ export const zhHans: SiteCopy = {
     examples: [
       {
         title: '一起梳理计算步骤',
-        prompt: '请读一下选中的计算过程，告诉我接下来应该检查哪里。',
+        prompt: '请核对选中的计算步骤，检查是否有计算错误。',
         description: '将当前页面或套索选区作为图像提供给 AI。',
       },
       {
@@ -356,7 +356,7 @@ export const zhHant: SiteCopy = {
     examples: [
       {
         title: '一起釐清計算步驟',
-        prompt: '請讀一下選取的計算過程，告訴我接下來應該檢查哪裡。',
+        prompt: '請核對選取的計算步驟，檢查是否有計算錯誤。',
         description: '將目前頁面或套索選取範圍作為影像提供給 AI。',
       },
       {
@@ -569,7 +569,7 @@ export const zhHK: SiteCopy = {
     examples: [
       {
         title: '一起理清計算步驟',
-        prompt: '請讀一下選取的計算過程，告訴我接下來應該檢查哪裡。',
+        prompt: '請核對選取的計算步驟，檢查是否有計算錯誤。',
         description: '將目前頁面或套索選取範圍作為圖像提供給 AI。',
       },
       {
@@ -792,7 +792,7 @@ export const ko: SiteCopy = {
       {
         title: '계산 과정을 함께 살펴보기',
         prompt:
-          '선택한 계산 과정을 읽고, 다음에 무엇을 확인하면 좋을지 알려 줘.',
+          '선택한 계산 과정을 검산하고, 계산 실수가 없는지 확인해 줘.',
         description:
           '열린 페이지나 올가미로 선택한 영역을 이미지로 AI에 전달할 수 있습니다.',
       },
